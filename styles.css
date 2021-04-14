@@ -187,3 +187,31 @@ footer .message {
 .text_justify {
   text-align: justify;
 }
+
+.SeccionHistoria1 {
+  padding-top: 7rem;
+  background-color: #4e3c2d;
+}
+.SeccionHistoria2 {
+  padding-top: 2rem;
+  background-color: #62462c;
+}
+.SeccionHistoria3 {
+  padding-top: 2rem;
+  /* background-color: #62462c; */
+
+  /* background: linear-gradient(to top, green 0%, green 50%, red 50%, red 100%); */
+  background: linear-gradient(to top, #62462c 50%, #4e3c2d 50%);
+}
+
+.SeccionHistoria1 .titulo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.text-justify {
+  text-align: justify;
+}
