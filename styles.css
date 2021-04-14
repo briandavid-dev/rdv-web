@@ -111,6 +111,8 @@ body {
 
 footer {
   color: #000;
+  background-image: url(./assets/imgs/footer/FONDO_FOOTER.png);
+
   /* position: relative;
   top: -220px;
    */
@@ -185,6 +187,7 @@ footer .message {
 
 .font_20 {
   font-size: 20px;
+  line-height: 2;
 }
 
 .text_justify {
@@ -223,6 +226,10 @@ footer .message {
   padding-top: 100px;
   background-color: #443421;
 }
+.SeccionDoc1 img {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
 .SeccionElRon2 {
   background-color: #443421;
   text-align: center;
@@ -240,4 +247,21 @@ footer .message {
 
 .titulo-maestro {
   color: #d48125;
+}
+
+.SeccionDoc0 {
+  background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
+}
+.SeccionDoc1 {
+  /* background-color: #443421; */
+  text-align: center;
+  padding-top: 10rem;
+  padding-bottom: 3rem;
+}
+.SeccionDocNacimiento {
+  background-color: #4e3c2d;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
