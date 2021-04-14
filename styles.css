@@ -110,16 +110,18 @@ body {
 }
 
 footer {
-  position: relative;
+  /* position: relative;
   top: -220px;
-  color: #2c1a0c;
+  color: #2c1a0c; */
 }
 footer .message {
-  position: relative;
+  background-color: #3d2514;
+  padding: 2rem;
+
+  /* position: relative;
   background-color: #3d2514;
   top: -5rem;
-  padding: 2rem;
-  color: #fef4e4;
+  color: #fef4e4; */
 }
 
 .img_marcas {
@@ -214,4 +216,13 @@ footer .message {
 
 .text-justify {
   text-align: justify;
+}
+
+.SeccionElRon1 {
+  padding-top: 100px;
+  background-color: #443421;
+}
+.SeccionElRon2 {
+  background-color: #443421;
+  text-align: center;
 }
