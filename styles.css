@@ -9,7 +9,7 @@ body {
   background-color: var(--color-fondo);
   color: var(--color-letra);
   font-family: "Shippori Mincho", serif;
-  background-color: #b59278;
+  background-color: #62452d;
 }
 
 .seccion1 {
@@ -119,7 +119,7 @@ footer {
 }
 footer .message {
   background-color: #3d2514;
-  padding: 2rem;
+  padding: 0 0 2rem 0;
   color: #fef4e4;
   /* position: relative;
   background-color: #3d2514;
