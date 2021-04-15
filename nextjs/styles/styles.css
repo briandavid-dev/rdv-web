@@ -111,7 +111,7 @@ body {
 
 footer {
   color: #000;
-  background-image: url(./../assets/imgs/footer/FONDO_FOOTER.png);
+  background-image: url(./../public/assets/imgs/footer/FONDO_FOOTER.png);
 
   /* position: relative;
   top: -220px;
@@ -236,7 +236,7 @@ footer .message {
 }
 
 .Seccion0Gente {
-  background-image: url(./../assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg);
+  background-image: url(./../public/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg);
   background-size: 100%;
 }
 .Seccion1Gente {
