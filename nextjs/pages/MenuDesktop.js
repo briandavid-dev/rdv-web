@@ -30,7 +30,7 @@ const MenuDesktop = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="./quienes-somos">
+                  <Link href="/quienes-somos">
                     <a className="nav-link">Quienes Somos</a>
                   </Link>
                 </li>
