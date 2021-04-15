@@ -265,3 +265,7 @@ footer .message {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

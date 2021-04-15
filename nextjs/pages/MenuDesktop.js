@@ -1,8 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const MenuDesktop = () => {
+  const router = useRouter();
+  console.log(`router`, router);
+
   return (
     <>
       <div className="nav_bar_superior" style={{ zIndex: 1000 }}>
@@ -26,42 +30,82 @@ const MenuDesktop = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link href="/">
-                    <a className="nav-link active">Inicio</a>
+                    <a
+                      className={`nav-link ${
+                        router.asPath === "/" ? "active" : ""
+                      }`}
+                    >
+                      Inicio
+                    </a>
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link href="/quienes-somos">
-                    <a className="nav-link">Quienes Somos</a>
+                    <a
+                      className={`nav-link ${
+                        router.asPath === "/quienes-somos" ? "active" : ""
+                      }`}
+                    >
+                      Quienes Somos
+                    </a>
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link href="./historia">
-                    <a className="nav-link">Historia</a>
+                    <a
+                      className={`nav-link ${
+                        router.asPath === "/historia" ? "active" : ""
+                      }`}
+                    >
+                      Historia
+                    </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="./">
-                    <img
-                      src="./assets/imgs/home/logo_blanco.png"
-                      style={{ height: "60px" }}
-                    />
-                  </a>
+                  <Link href="./">
+                    <a
+                      className={`nav-link ${
+                        router.asPath === "/" ? "active" : ""
+                      }`}
+                    >
+                      <img
+                        src="./assets/imgs/home/logo_blanco.png"
+                        style={{ height: "60px" }}
+                      />
+                    </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link href="./el-ron">
-                    <a className="nav-link" href="./el-ron">
+                    <a
+                      className={`nav-link ${
+                        router.asPath === "/el-ron" ? "active" : ""
+                      }`}
+                    >
                       El Ron
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link href="./doc">
-                    <a className="nav-link">D.O.C.</a>
+                    <a
+                      className={`nav-link ${
+                        router.asPath === "/doc" ? "active" : ""
+                      }`}
+                    >
+                      D.O.C.
+                    </a>
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link href="./nuestra-gente">
-                    <a className="nav-link">Nuestra Gente</a>
+                    <a
+                      className={`nav-link ${
+                        router.asPath === "/nuestra-gente" ? "active" : ""
+                      }`}
+                    >
+                      Nuestra Gente
+                    </a>
                   </Link>
                 </li>
 
@@ -88,14 +132,22 @@ const MenuDesktop = () => {
                       alt=""
                       width={25}
                       height={25}
+                      className="cursor-pointer"
                     />
-
-                    <Image
-                      src="/assets/imgs/home/ICONO-BANDERA-INGLES.png"
-                      alt=""
-                      width={25}
-                      height={25}
-                    />
+                    <Link
+                      href={{
+                        pathname: router.pathname,
+                        query: { lang: "en" },
+                      }}
+                    >
+                      <Image
+                        src="/assets/imgs/home/ICONO-BANDERA-INGLES.png"
+                        alt=""
+                        width={25}
+                        height={25}
+                        className="cursor-pointer"
+                      />
+                    </Link>
                   </div>
                   <div
                     style={{
@@ -111,14 +163,23 @@ const MenuDesktop = () => {
                       alt=""
                       width={25}
                       height={25}
+                      className="cursor-pointer"
                     />
 
-                    <Image
-                      src="/assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
-                      alt=""
-                      width={25}
-                      height={25}
-                    />
+                    <Link
+                      href={{
+                        pathname: router.pathname,
+                        query: { lang: "es" },
+                      }}
+                    >
+                      <Image
+                        src="/assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
+                        alt=""
+                        width={25}
+                        height={25}
+                        className="cursor-pointer"
+                      />
+                    </Link>
                   </div>
                 </li>
               </ul>

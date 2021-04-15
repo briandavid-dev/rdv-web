@@ -1,8 +1,23 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import Footer from "./Footer";
 import MenuDesktop from "./MenuDesktop";
+import { useRouter } from "next/router";
 
-export default function Home() {
+export default function NuestraGente() {
+  const router = useRouter();
+  console.log(`router`, router.query.lang);
+
+  const [titulo, setTitulo] = useState("");
+
+  useEffect(() => {
+    if (!router.query.lang || router.query.lang === "es") {
+      setTitulo("español");
+    } else if (router.query.lang === "en") {
+      setTitulo("ingles");
+    }
+  }, [router.query]);
+
   return (
     <div>
       <Head>
@@ -38,6 +53,7 @@ export default function Home() {
                     className="linea1"
                     style={{ maxHeight: "4px" }}
                   />
+                  {titulo}
                   <h1>Cuerpo y alma</h1>
                   <img
                     src="./assets/imgs/home/linea1.png"
