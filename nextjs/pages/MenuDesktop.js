@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const MenuDesktop = () => {
   const router = useRouter();
-  console.log(`router`, router);
+
+  let lang = "es";
+  if (router.query.lang === "en") {
+    lang = "en";
+  }
+
+  const menu = {
+    es: {
+      inicio: "Inicio",
+      quienesSomos: "Quiénes Somos",
+      historia: "Historia",
+      elRon: "El Ron",
+      doc: "D.O.C.",
+      nuestraGente: "Nuestra Gente",
+    },
+    en: {
+      inicio: "Home",
+      quienesSomos: "About us",
+      historia: "Our history",
+      elRon: "The Ron",
+      doc: "D.O.C.",
+      nuestraGente: "Our people",
+    },
+  };
 
   return (
     <>
@@ -29,43 +52,71 @@ const MenuDesktop = () => {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link href="/">
+                  <Link
+                    href={{
+                      pathname: "/",
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
                     <a
                       className={`nav-link ${
-                        router.asPath === "/" ? "active" : ""
+                        router.pathname === "/" ? "active" : ""
                       }`}
                     >
-                      Inicio
+                      {menu[lang].inicio}
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="/quienes-somos">
+                  <Link
+                    href={{
+                      pathname: "/quienes-somos",
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
                     <a
                       className={`nav-link ${
-                        router.asPath === "/quienes-somos" ? "active" : ""
+                        router.pathname === "/quienes-somos" ? "active" : ""
                       }`}
                     >
-                      Quienes Somos
+                      {menu[lang].quienesSomos}
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="./historia">
+                  <Link
+                    href={{
+                      pathname: "./historia",
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
                     <a
                       className={`nav-link ${
-                        router.asPath === "/historia" ? "active" : ""
+                        router.pathname === "/historia" ? "active" : ""
                       }`}
                     >
-                      Historia
+                      {menu[lang].historia}
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="./">
+                  <Link
+                    href={{
+                      pathname: "./",
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
                     <a
                       className={`nav-link ${
-                        router.asPath === "/" ? "active" : ""
+                        router.pathname === "/" ? "active" : ""
                       }`}
                     >
                       <img
@@ -76,35 +127,56 @@ const MenuDesktop = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="./el-ron">
+                  <Link
+                    href={{
+                      pathname: "./el-ron",
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
                     <a
                       className={`nav-link ${
-                        router.asPath === "/el-ron" ? "active" : ""
+                        router.pathname === "/el-ron" ? "active" : ""
                       }`}
                     >
-                      El Ron
+                      {menu[lang].elRon}
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="./doc">
+                  <Link
+                    href={{
+                      pathname: "./doc",
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
                     <a
                       className={`nav-link ${
-                        router.asPath === "/doc" ? "active" : ""
+                        router.pathname === "/doc" ? "active" : ""
                       }`}
                     >
-                      D.O.C.
+                      {menu[lang].elRon}
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="./nuestra-gente">
+                  <Link
+                    href={{
+                      pathname: "./nuestra-gente",
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
                     <a
                       className={`nav-link ${
-                        router.asPath === "/nuestra-gente" ? "active" : ""
+                        router.pathname === "/nuestra-gente" ? "active" : ""
                       }`}
                     >
-                      Nuestra Gente
+                      {menu[lang].nuestraGente}
                     </a>
                   </Link>
                 </li>
