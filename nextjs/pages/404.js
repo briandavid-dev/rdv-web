@@ -1,7 +1,19 @@
 import Head from "next/head";
-import MenuDesktop from "./MenuDesktop";
+import { useRouter } from "next/router";
+import Footer from "../components/Footer";
+import MenuDesktop from "../components/MenuDesktop";
+import es from "../lang/es";
+import en from "../lang/en";
 
 export default function Page404() {
+  const router = useRouter();
+
+  let lang = "es";
+  if (router.query.lang === "en") {
+    lang = "en";
+  }
+  const strings = { es, en };
+
   return (
     <div>
       <Head>
@@ -21,14 +33,22 @@ export default function Page404() {
           rel="stylesheet"
         />
 
-        <title>Ups ! | Ron de Venezuela</title>
+        <title>{strings[lang].Page404.pageTitle}</title>
       </Head>
 
       <MenuDesktop />
 
-      <div className="text-center" style={{ marginTop: "4rem" }}>
-        No hemos encontrado esta página en nuestro sitio
+      {/* <div className="container">
+        <div className="row">
+          <div className="col-md-12">satisfacer</div>
+        </div>
+      </div> */}
+
+      <div className="text-center" style={{ padding: " 10rem 0 10rem 0" }}>
+        Ups! No hemos encontrado esta página en nuestro sitio
       </div>
+
+      <Footer />
     </div>
   );
 }

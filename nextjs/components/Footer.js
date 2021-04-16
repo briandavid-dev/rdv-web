@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import es from "./es";
-import en from "./en";
+import es from "../lang/es";
+import en from "../lang/en";
 
 const Footer = () => {
   const router = useRouter();

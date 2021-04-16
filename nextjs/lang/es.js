@@ -3,7 +3,7 @@ const strings = {
   calidad: "Calidad de un suelo, tesón de los hombres del campo.",
   melasa: "La melaza es el comienzo del Ron Venezolano.",
   aunque: `Aunque hay lugares en el Caribe que elaboran rones de jugo de caña`,
-  elron: "EL RON",
+  elron1: "EL RON",
   proceso: `Proceso de elaboración`,
   productores: `Productores de ron a nivel nacional e internacional...`,
   empresas: `Empresas`,
@@ -539,6 +539,10 @@ strings.footer = {
       <p>Todos los derechos reservados.</p>
     </>
   ),
+};
+
+strings.Page404 = {
+  pageTitle: `Ups ! | Ron de Venezuela`,
 };
 
 export default strings;

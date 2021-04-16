@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Footer from "./Footer";
-import MenuDesktop from "./MenuDesktop";
-import es from "./es";
-import en from "./en";
+import Footer from "../components/Footer";
+import MenuDesktop from "../components/MenuDesktop";
+import es from "../lang/es";
+import en from "../lang/en";
 
 export default function Home() {
   const router = useRouter();
@@ -97,7 +97,7 @@ export default function Home() {
             <div className="col-md-12" style={{ display: "flex" }}>
               <div className="content-1">
                 <h1 style={{ right: "-2rem", position: "relative" }}>
-                  {strings[lang].elron}
+                  {strings[lang].elron1}
                 </h1>
                 <p style={{ textAlign: "right", padding: "1rem" }}>
                   {strings[lang].melasa}

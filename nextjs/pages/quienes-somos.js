@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Footer from "./Footer";
-import MenuDesktop from "./MenuDesktop";
-import es from "./es";
-import en from "./en";
+import Footer from "../components/Footer";
+import MenuDesktop from "../components/MenuDesktop";
+import es from "../lang/es";
+import en from "../lang/en";
 
 export default function QuienesSomos() {
   const router = useRouter();

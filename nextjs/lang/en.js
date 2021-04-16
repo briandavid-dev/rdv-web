@@ -3,7 +3,7 @@ const strings = {
   calidad: "Quality of a soil, tenacity of the men of the field.",
   melasa: "Molasses is the beginning of Venezuelan Rum.",
   aunque: `Although there are places in the Caribbean that make cane juice rums`,
-  elron: "RUM",
+  elron1: "RUM",
   proceso: `Elaboration process`,
   productores: `Rum producers nationally and internationally`,
   empresas: `Companies`,
@@ -444,6 +444,10 @@ strings.footer = {
       <p>All rights reserved.</p>
     </>
   ),
+};
+
+strings.Page404 = {
+  pageTitle: `Ups ! | Rum from Venezuela`,
 };
 
 export default strings;
