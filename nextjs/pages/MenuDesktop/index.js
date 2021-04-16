@@ -24,7 +24,7 @@ const MenuDesktop = () => {
       inicio: "Home",
       quienesSomos: "About us",
       historia: "Our history",
-      elRon: "The Ron",
+      elRon: "Rum",
       doc: "D.O.C.",
       nuestraGente: "Our people",
     },
@@ -211,6 +211,7 @@ const MenuDesktop = () => {
                         pathname: router.pathname,
                         query: { lang: "en" },
                       }}
+                      scroll={false}
                     >
                       <Image
                         src="/assets/imgs/home/ICONO-BANDERA-INGLES.png"
@@ -243,6 +244,7 @@ const MenuDesktop = () => {
                         pathname: router.pathname,
                         query: { lang: "es" },
                       }}
+                      scroll={false}
                     >
                       <Image
                         src="/assets/imgs/home/ICONO-BANDERA-ESPANOL.png"

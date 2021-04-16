@@ -1,8 +1,19 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Footer from "./Footer";
 import MenuDesktop from "./MenuDesktop";
+import es from "./es";
+import en from "./en";
 
 export default function Home() {
+  const router = useRouter();
+
+  let lang = "es";
+  if (router.query.lang === "en") {
+    lang = "en";
+  }
+  const strings = { es, en };
+
   return (
     <div>
       <Head>
@@ -28,7 +39,7 @@ export default function Home() {
           crossorigin="anonymous"
         ></script>
 
-        <title>Ron de Venezuela</title>
+        <title>{strings[lang].pageTitle}</title>
       </Head>
 
       <MenuDesktop />
@@ -48,10 +59,8 @@ export default function Home() {
                 alignItems: "center",
               }}
             >
-              <h1>Ron de Venezuela</h1>
-              <div className="text-center">
-                Calidad de un suelo, tesón de los hombres del campo.
-              </div>
+              <h1>{strings[lang].pageTitle}</h1>
+              <div className="text-center">{strings[lang].calidad}</div>
               <div>&nbsp;</div>
               <img
                 src="./assets/imgs/home/linea1.png"
@@ -87,12 +96,13 @@ export default function Home() {
           <div className="row">
             <div className="col-md-12" style={{ display: "flex" }}>
               <div className="content-1">
-                <h1 style={{ right: "-2rem", position: "relative" }}>EL RON</h1>
+                <h1 style={{ right: "-2rem", position: "relative" }}>
+                  {strings[lang].elron}
+                </h1>
                 <p style={{ textAlign: "right", padding: "1rem" }}>
-                  La melaza es el comienzo del Ron Venezolano.
+                  {strings[lang].melasa}
                   <br />
-                  Aunque hay lugares en el Caribe que elaboran rones de jugo de
-                  caña...
+                  {strings[lang].aunque}
                 </p>
               </div>
               <div style={{ flex: 55 }}>
@@ -113,10 +123,10 @@ export default function Home() {
               </div>
               <div className="content-1">
                 <h1 style={{ left: "-2rem", position: "relative" }}>
-                  Proceso de elaboración
+                  {strings[lang].proceso}
                 </h1>
                 <p style={{ textAlign: "left", padding: "1rem" }}>
-                  Productores de ron a nivel nacional e internacional...
+                  {strings[lang].productores}
                 </p>
               </div>
             </div>
@@ -133,7 +143,7 @@ export default function Home() {
                   src="./assets/imgs/home/linea2.png"
                   style={{ height: "8px" }}
                 />
-                <h1>Empresas</h1>
+                <h1>{strings[lang].empresas}</h1>
                 <img
                   src="./assets/imgs/home/linea1.png"
                   style={{ height: "8px" }}
@@ -327,7 +337,7 @@ export default function Home() {
             >
               <div className="titulo">
                 <img src="./assets/imgs/home/linea2.png" className="linea1" />
-                <h1>Maestros Roneros</h1>
+                <h1>{strings[lang].maestrosRoneros}</h1>
                 <img src="./assets/imgs/home/linea1.png" className="linea2" />
               </div>
             </div>
@@ -376,7 +386,7 @@ export default function Home() {
                   src="./assets/imgs/home/linea2.png"
                   style={{ height: "8px" }}
                 />
-                <h1>Noticias y Artículos</h1>
+                <h1>{strings[lang].noticias}</h1>
                 <img
                   src="./assets/imgs/home/linea1.png"
                   style={{ height: "8px" }}
