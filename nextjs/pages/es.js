@@ -79,7 +79,72 @@ strings.quienes = {
   participación y el compromiso en la generación de ideas e
   iniciativas que optimicen la calidad y los niveles de
   competitividad.`,
-  aaaa: ``,
+};
+
+strings.historia = {
+  pageTitle: `Nuestra Historia | Ron de Venezuela`,
+  titulo: `Nuestra Historia`,
+  parrafo1: `La historia del ron comenzó con la llegada de los europeos pues
+  ellos trajeron la caña de azúcar que tuvo como primer domicilio
+  la República Dominicana y como vecino al Mar Caribe. Esta planta
+  formó parte del equipaje que acompañó a Cristóbal Colón, en su
+  segundo viaje a América, en 1493.`,
+  parrafo2: `En la historia del ron los piratas también tienen su capítulo ya
+  que trajeron a las Antillas una bebida que elaboraban a partir
+  del guarapo de la caña de azúcar que llamaron Kill-Devil (mata
+  diablo) o rumbellion, que significa tumulto. No se sabe si el
+  nombre del ron se originó de esa palabra o del nombre científico
+  de la caña de azúcar: Saccharum Officiarum. El primer documento
+  donde se menciona data del 8 de julio de 1661. Fue emitido por
+  el gobernador de Jamaica y en ese texto se le llamaba
+  simplemente “rum”.`,
+  parrafo3: `Dave Broom en su libro titulado Rum señala que: “Al principio el
+  ron fue una bebida autóctona pensada para sirvientes”. En los
+  siglos XVII y XVIII sirvió como moneda para comprar a los
+  esclavos que trabajaban en los cañaverales. Hasta finales del
+  siglo XVIII era la bebida preferida de los marinos. En 1693 un
+  dominico estudioso del ron, el padre Jean-Baptiste Labat,
+  perfeccionó el alambique y utilizó el método empleado para el
+  coñac. El resultado revolucionó la industria del ron en las
+  colonias francesas.`,
+  parrafo4: `Los piratas y filibusteros amaban el ron y en las islas se hizo
+  omnipresente. El ponche de ron con especias se transformó en la
+  bebida preferida de los marinos. Después entró a Inglaterra
+  donde se tomaba caliente. Mientras ese ponche se extendía por
+  Europa, el ron dejaba su pasado poco honorable y ascendía a
+  otras clases sociales.`,
+  parrafo5: `Venezuela destiló su propia historia que suma dos siglos de
+  tradición. La caña de azúcar llegó a Venezuela con los
+  conquistadores españoles, quienes la usaban para endulzar y
+  hacer sus guarapos, predecesores del ron.`,
+  parrafo6: `Hay indicios de que la caña de azúcar llegó a Venezuela por
+  Coro. En el siglo XVIII, “casi todos expresan que era el segundo
+  fruto en estas tierras”, dice José Ángel Rodríguez en el libro
+  Nuestra cultura gastronómica. Y donde hay azúcar, están sus
+  bebidas. “Donde germinó el azúcar se destiló aguardiente”,
+  recuerda el historiador.`,
+  parrafo7: `El aguardiente prosperó en el siglo XVIII en Venezuela porque la
+  colonia española, para proteger los vinos peninsulares, prohibió
+  su elaboración. Ese antecedente permitió que la historia del ron
+  en el país comenzara temprano, en el siglo XIX. A partir de
+  1880, los altos derechos de importación y los bajos impuestos a
+  la producción interna auparon su elaboración. Entonces, los
+  rones de Carúpano consiguieron un lugar protagónico. Allí no
+  sólo prosperó el ron común. También “el ron Viejo Carúpano”. Los
+  destiladores guardaban el ron en barricas tomadas de vinos
+  europeos a la espera de mejor oportunidad en los precios. Y allí
+  se dieron cuenta lo bien que envejecían.`,
+  parrafo8: `En el siglo XIX no sólo había ron en Carúpano, estado Sucre;
+  sino también en Zulia, Miranda, Carabobo, Aragua. Yaracuy,
+  Cojedes, Guárico, en los estados andinos y en la región capital
+  de Venezuela. El ron se concentraba en los lugares urbanos,
+  mientras el aguardiente prosperaba en los rurales.`,
+  parrafo9: `Posteriormente surgieron otros nombres que se han ido
+  consolidando en el país y se proyectan con una imagen sólida en
+  el exterior porque ofrecen al consumidor algo más que calidad,
+  en sus botellas hay historia. Una historia que alimentó un
+  anecdotario que le dio al ron de Venezuela una trayectoria de
+  más de dos siglos de tradición.`,
 };
 
 export default strings;

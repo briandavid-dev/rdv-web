@@ -158,7 +158,7 @@ const MenuDesktop = () => {
                         router.pathname === "/doc" ? "active" : ""
                       }`}
                     >
-                      {menu[lang].elRon}
+                      {menu[lang].doc}
                     </a>
                   </Link>
                 </li>
