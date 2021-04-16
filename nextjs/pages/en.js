@@ -218,6 +218,232 @@ strings.doc = {
 
 strings.gente = {
   pageTitle: "Our people | Rum from Venezuela",
+  cuerpo: {
+    title: `Body and Soul`,
+    parrafo1: (
+      <span>
+        When we talk about Venezuelan Rum, there is no reference to secret
+        chemical formulas that have given it prizes and applause around the
+        world. Each bottle captures the work of men of the field who take care
+        of a cane that is unique and of which they are proud. Added to ancestral
+        tradition are the technologies applied with expectations to optimize
+        their derivative, the molasses.
+      </span>
+    ),
+    parrafo2: (
+      <span>
+        There are the anecdotes of those who extract it and then take it to the
+        distilleries and empty it in those large deposits that guard it until it
+        turns into liquor.
+      </span>
+    ),
+    parrafo3: (
+      <span>
+        There are the master rum-makers whose noses are able to perceive the
+        taste, through smell. With a privileged sense of smell, which they care
+        for and protect, these master rum-makers transmit their passion to that
+        final product that proudly makes it to the glass.
+      </span>
+    ),
+    parrafo4: (
+      <span>
+        Community projects, solidarity towards the community, encouragement to
+        entrepreneurs, support for the arts and promotion of sports are added to
+        each label. In short, anything that contributes to the development of
+        the country, because the men and women of rum are Venezuela and work for
+        it.
+      </span>
+    ),
+  },
+  maestros: {
+    title: `Masters Rum-Maker`,
+    carmen: (
+      <>
+        <h4 className="titulo-maestro">Master Rum-Maker Ron Carúpano</h4>
+        <p className="font_20 text-justify">
+          Rums from Destilería Carúpano have additional magic. Its creation
+          depends on the only woman master rum-maker in the country: Carmen
+          López de Bastidas, who has been developing the profiles of the
+          unrivalled products of Destilería Carúpano for 30 years.
+        </p>
+        <p className="font_20 text-justify">
+          Today, Carmen López de Bastidas has earned a place and recognition in
+          the industry since she knows how to perfectly select exclusive
+          alcohols with superior character and use the purest water of their own
+          abundant springs of Destilería Carúpano.
+        </p>
+        <p className="font_20 text-justify">
+          Carmen López de Bastidas' commitment is magnified by knowing how to
+          balance the accumulated craft experience of many years with the
+          knowledge of the most current sensory analysis technique that
+          guarantee the unique final quality of rums from Ron Carúpano.
+        </p>
+        <p className="font_20 text-justify">
+          In her own words, being a master rum-maker means "having the ability,
+          taste and olfactory sensibility, as well as the dedication to know how
+          to blend different types of rums with different aging years to be able
+          to create products of the highest quality”
+        </p>
+        <p className="font_20 text-justify">
+          It is the combination of her knowledge, experience and feminine
+          sensitivity that gives the special touch to Carúpano aged rums,
+          therefore their unique flavors and aromas are of an exceptional
+          quality, managing to awaken infinite sensations in those who taste
+          them.
+        </p>
+      </>
+    ),
+    tito: (
+      <>
+        <h4 className="titulo-maestro">Master Rum-Maker for Ron Diplomático</h4>
+        <p className="font_20 text-justify">
+          Tito Cordero joined Destilerías Unidas S.A. in 1988 (at the time
+          called Licorerías Unidas S.A.) the company that owns and produces Ron
+          Diplomático. He has worked with the brand since its inception and has
+          acquired, over the years, the necessary experience and knowledge to
+          fulfill the obligations of his current role: Master Rum-Maker for
+          Diplomático.
+        </p>
+        <p className="font_20 text-justify">
+          He assures that Ron Diplomático is the result of the dedication and
+          efforts of the team working for the brand. Along with the Diplomático
+          Tradición range, Tito is particularly proud of Diplomático Ambassador,
+          Premium rum made from the best rum reserves of the distillery which
+          highlights his experience, representing the ultimate expression of his
+          lifelong work.
+        </p>
+        <p className="font_20 text-justify">
+          In addition to its dedication to the quality of Diplomático rums, Tito
+          has also helped the distillery to ensure a perfect harmony between
+          production and the environment, contributing to the certification
+          process under ISO 14001 environmental criteria.
+        </p>
+        <p className="font_20 text-justify">
+          Tito also holds a variety of international competition awards for the
+          Diplomático brand such as: "Master Rum-Maker of the Year” at the
+          London Rum Barrel Awards in 2011 and 2013, and "Best Master Blender in
+          the World" at the Rum International Conference in Madrid in 2014.
+        </p>
+        <p className="font_20 text-justify">
+          As Master Rum-Maker, his effort is focused on creating an art that
+          everyone can enjoy: the art of Ron Diplomático.
+        </p>
+      </>
+    ),
+    giorgio: (
+      <>
+        <h4 className="titulo-maestro">Master Rum-Maker de Ron Robles </h4>
+        <p className="font_20 text-justify">
+          Giorgio Melis, master rum-maker of recognized trajectory and more than
+          50 years of experience, is responsible for the excellent notes and
+          attributes that distinguish Ron Roble Viejo ®.
+        </p>
+        <p className="font_20 text-justify">
+          A Chemical Engineer graduated from the Universidad Central de
+          Venezuela in 1966. In 1967 he began his professional career in the
+          production of Venezuelan rums, work that continues to do to this day
+          demonstrating his tireless commitment to excellence.
+        </p>
+        <p className="font_20 text-justify">
+          His perseverance and hard work for the creation of exceptional rums
+          bear fruit in obtaining multiple recognitions that have been awarded
+          to Ron Roble Viejo® at the main international fairs in Madrid,
+          Barcelona, New York, San Francisco, Mexico City, Tokyo, Prague, Berlin
+          and Rome.
+        </p>
+      </>
+    ),
+    nestor: (
+      <>
+        <h4 className="titulo-maestro">
+          Master Rum-Maker for Ron Santa Teresa
+        </h4>
+        <p className="font_20 text-justify">
+          Néstor Ortega is considered one of the best Master Rum-Makers in the
+          world and has been the winner, on two occasions, of the recognition as
+          "Best Rum-Maker" by the International Rum Congress in Madrid (2012)
+          and by the CDO Rum from Venezuela (2016); Ortega represents the
+          expertise, mastery and maturity of the rums from Santa Teresa.
+        </p>
+        <p className="font_20 text-justify">
+          Néstor is a Chemical Engineer and has a 40-year career in Ron Santa
+          Teresa. Ortega has been a key player in the development of unique
+          blends that have given Santa Teresa its worldwide recognition. His
+          expertise and knowledge in the art of distillation, formulation and
+          aging and a careful selection of the best raw materials, allowed
+          Nestor to create the best spirits that, subsequently, made it the best
+          rum in the world.
+        </p>
+        <p className="font_20 text-justify">
+          His rigorous methodology and experience in different areas have made
+          him take care, with special interest, of every part of the process of
+          Santa Teresa’s aged rums, guaranteeing the perfect balance of the
+          blends and giving them the unique sensory profile of our beverages
+          (rum with character: dry and balanced).
+        </p>
+        <p className="font_20 text-justify">
+          As part of his legacy, Néstor Ortega was the one who created the
+          Bodega de Solera and has been responsible for the development of most
+          of the brands that are now part of Santa Teresa’s catalogue.
+        </p>
+        <p className="font_20 text-justify">
+          His commitment and eagerness to generate differentiating products,
+          together with the values of the brand and of the Vollmer family, mean
+          that Nestor does not take shortcuts, that he devotes the necessary
+          time to develop blends without using additives or chemicals, in the
+          most artisanal and natural way possible, to obtain the desired
+          results.
+        </p>
+      </>
+    ),
+  },
+  unnombre: {
+    titulo: `A name with several last names`,
+    parrafos: (
+      <>
+        <p className="font_20 text-justify">
+          Rum from Venezuela is more than the name of a product. It represents
+          the combined work of many people adding their efforts until they reach
+          the final result which, in this case, is the rum.
+        </p>
+        <p className="font_20 text-justify">
+          Based on the Controlled Designation of Origin, each distillery sets
+          its own parameters but they coincide in the pursuit of quality, in
+          reaching its own identity and at the same time sheltering, thanks to
+          its quality, under a nationality, the Venezuelan nationality.
+        </p>
+        <p className="font_20 text-justify">
+          Under the name of Venezuela, companies that have made excellence their
+          north and prestige their common name. Therein rests the difference
+          that has developed into recognitions to catapult our rum as the best
+          in the world.
+        </p>
+      </>
+    ),
+  },
+};
+
+strings.footer = {
+  parrafo1: (
+    <>
+      <p>
+        FONPRONVEN invites you to enjoy responsibly.
+        <br />
+        Our products are for the consumption of people over 18 years of age.
+        <br />
+        Direction: Av. Libertador con Av. Alameda, Edif. Exa, piso PH 9,
+        <br />
+        business office PH-09, Urb. El retiro, Edo. Miranda, Municipio Chacao,
+        Caracas.
+      </p>
+    </>
+  ),
+  contacto: (
+    <>
+      <p>Contact: info@rondevenezuela.com</p>
+      <p>All rights reserved.</p>
+    </>
+  ),
 };
 
 export default strings;

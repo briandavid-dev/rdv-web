@@ -1,29 +1,28 @@
 import React from "react";
+import { useRouter } from "next/router";
+import es from "./es";
+import en from "./en";
 
 const Footer = () => {
+  const router = useRouter();
+  let lang = "es";
+  if (router.query.lang === "en") {
+    lang = "en";
+  }
+  const strings = { es, en };
+
   return (
     <>
       <footer>
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center message">
-              <p>
-                FONPROVEN te invita a disfrutar de forma responzable.
-                <br />
-                Nuestros productos son para el consumo de mayores de 18 años.
-                <br />
-                Domicilio Fiscal: Av. Libertador con Av. Alameda, Edif. Exa,
-                piso PH 9,
-                <br />
-                oficina PH-09, Urb. El retiro, Edo. Miranda, Municipio Chacao,
-                Caracas.
-              </p>
+              {strings[lang].footer.parrafo1}
             </div>
           </div>
           <div className="row">
             <div className="col-md-12 text-center p-4">
-              <p>Contacto: info@rondevenezuela.com</p>
-              <p>Todos los derechos reservados.</p>
+              {strings[lang].footer.contacto}
             </div>
           </div>
         </div>
