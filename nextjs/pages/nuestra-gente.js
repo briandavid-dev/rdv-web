@@ -3,20 +3,16 @@ import Head from "next/head";
 import Footer from "./Footer";
 import MenuDesktop from "./MenuDesktop";
 import { useRouter } from "next/router";
+import es from "./es";
+import en from "./en";
 
 export default function NuestraGente() {
   const router = useRouter();
-  console.log(`router`, router.query.lang);
-
-  const [titulo, setTitulo] = useState("");
-
-  useEffect(() => {
-    if (!router.query.lang || router.query.lang === "es") {
-      setTitulo("español");
-    } else if (router.query.lang === "en") {
-      setTitulo("ingles");
-    }
-  }, [router.query]);
+  let lang = "es";
+  if (router.query.lang === "en") {
+    lang = "en";
+  }
+  const strings = { es, en };
 
   return (
     <div>
@@ -37,7 +33,7 @@ export default function NuestraGente() {
           rel="stylesheet"
         />
 
-        <title>Nuestra Gente | Ron de Venezuela</title>
+        <title>{strings[lang].gente.pageTitle}</title>
       </Head>
 
       <MenuDesktop />
@@ -53,7 +49,6 @@ export default function NuestraGente() {
                     className="linea1"
                     style={{ maxHeight: "4px" }}
                   />
-                  {titulo}
                   <h1>Cuerpo y alma</h1>
                   <img
                     src="./assets/imgs/home/linea1.png"

@@ -138,12 +138,86 @@ strings.doc = {
       </p>
     </>
   ),
-  regulador: ``,
-  regulador1: ``,
-  funciones: ``,
-  funciones1: ``,
-  organizacion: ``,
-  organizacion1: ``,
+  regulador: `Organismo regulador`,
+  regulador1: (
+    <>
+      <p className="font_20 text-justify">
+        Es el órgano técnico encargado de controlar y certificar el cumplimiento
+        de las condiciones de calidad asociadas a la Denominación de Origen
+        Controlada Ron de Venezuela, así como la generación de normativas
+        necesarias para la verificación de la D.O.C. y evaluación para la
+        admisión de nuevos miembros.
+      </p>
+    </>
+  ),
+  funciones: (
+    <>
+      <h4 className="titulo-maestro">Funciones:</h4>
+      <p className="font_20 text-justify">
+        <ol type="a" className="font_20">
+          <li>
+            Recopilar los usos, buenas prácticas y las condiciones de calidad
+            aplicables a la Denominación de Origen Controlada “Ron de Venezuela
+          </li>
+          <li>
+            Certificar que las empresas que así lo hayan solicitado, cuenten con
+            las capacidades y condiciones que le permitan el uso de la
+            Denominación de Origen Controlada “Ron de Venezuela”{" "}
+          </li>
+          <li>
+            Llevar un registro actualizado de las empresas inscritas y aprobadas
+            para hacer uso de la Denominación de Origen “Ron de Venezuela”, así
+            como centrales azucareros, destilerías de alcohol y empresas
+            productoras de ron con bodegas de añejamiento
+          </li>
+          <li>
+            Velar mediante auditorias bi-anuales de post certificación que las
+            condiciones bajo las cuales se autorizó el uso de la Denominación de
+            Origen “Ron de Venezuela” se mantengan en el tiempo.{" "}
+          </li>
+          <li>
+            Ejercer el control sobre la Denominación de Origen “Ron de
+            Venezuela”, adoptando medidas y recomendaciones en caso de uso
+            inadecuado de tal Denominación, ya sea por uno de sus miembros
+            autorizados o por cualquier tercero
+          </li>
+        </ol>
+      </p>
+    </>
+  ),
+  organizacion: (
+    <>
+      <h4 className="titulo-maestro">Organización:</h4>
+      <p className="font_20 text-justify">
+        El Consejo Regulador contará con una Junta y con un Consejo Técnico
+      </p>
+      <p className="font_20 text-justify">
+        La Junta del Consejo Regulador estará integrado por:
+      </p>
+      <ul className="font_20">
+        <li>Dos maestros roneros miembros del Consejo Técnico</li>
+        <li>
+          Un representante de la asociación civil FONDONORMA o empresa dedicada
+          a auditorías de calidad
+        </li>
+        <li>
+          Un representante de organizaciones gubernamentales, académicas,
+          científicas y culturales
+        </li>
+        <li>El Gerente General de FONPRONVEN.</li>
+      </ul>
+      <p className="font_20 text-justify">
+        El Consejo Técnico es el órgano de consulta de la Junta del Consejo
+        Regulador, que garantizará además la objetividad de sus decisiones y
+        está conformado por los maestros roneros certificados por el Consejo
+        Regulador
+      </p>
+    </>
+  ),
+};
+
+strings.gente = {
+  pageTitle: "Our people | Rum from Venezuela",
 };
 
 export default strings;
