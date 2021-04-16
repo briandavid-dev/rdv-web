@@ -1,8 +1,18 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Footer from "./Footer";
 import MenuDesktop from "./MenuDesktop";
+import es from "./es";
+import en from "./en";
 
 export default function ElRon() {
+  const router = useRouter();
+  let lang = "es";
+  if (router.query.lang === "en") {
+    lang = "en";
+  }
+  const strings = { es, en };
+
   return (
     <div>
       <Head>
@@ -22,7 +32,7 @@ export default function ElRon() {
           rel="stylesheet"
         />
 
-        <title>El Ron | Ron de Venezuela</title>
+        <title>{strings[lang].elron.pageTitle}</title>
       </Head>
 
       <MenuDesktop />
@@ -37,7 +47,7 @@ export default function ElRon() {
                   className="linea1"
                   style={{ maxHeight: "4px" }}
                 />
-                <h1>Elaboración y materia prima</h1>
+                <h1>{strings[lang].elron.title}</h1>
                 <img
                   src="./assets/imgs/home/linea1.png"
                   className="linea2"

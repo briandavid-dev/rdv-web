@@ -48,4 +48,102 @@ strings.historia = {
   parrafo9: `Subsequently, other names emerged that have been consolidating in the country and are projecting with a solid image abroad because they offer the consumer more than quality, in their bottles there is history. A history that fed a collection of anecdotes that gave Venezuelan rum a trajectory of more than two centuries of tradition.`,
 };
 
+strings.elron = {
+  pageTitle: `RUM | Rum from Venezuela`,
+  title: `Processing and raw materials `,
+};
+
+strings.doc = {
+  pageTitle: `D.O.C. | Rum from Venezuela`,
+  title1: (
+    <span>
+      Controlled Designation
+      <br />
+      of Origin
+    </span>
+  ),
+  quees: `What is it?`,
+  quees1: (
+    <>
+      <p className="font_20 text-justify">
+        The Controlled Designation of Origin is a geographical indication used
+        in a product that has a specific geographical origin, whose qualities,
+        reputation and characteristics are essentially due to its place of
+        origin. Its quality or characteristics are due exclusively or
+        essentially to the geographical environment, comprising natural,
+        cultural and human factors.
+      </p>
+      <p className="font_20 text-justify">
+        But it is not just geography, it is about people who, with their hands,
+        sow the cane, harvest it, ferment it, distill it and age it.
+      </p>
+    </>
+  ),
+  existe: `Why does it exist?`,
+  existe1: (
+    <>
+      <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
+        The Controlled Designation of Origin regulates and protects those
+        specific characteristics of a particular product, requiring that the
+        manufacturing processes be met and the exact raw materials are used.
+      </p>
+      <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
+        This regulation and network of regulations guarantee the world that a
+        product is unique according to its native soil.
+      </p>
+    </>
+  ),
+  nacimiento: `Birth Certificate`,
+  nacimiento1: (
+    <>
+      <p className="font_20 text-justify">
+        The bulletin from the Servicio Autónomo de la Propiedad Intelectual
+        (SAPI or Autonomous Service for Intellectual Property) Nº 459 dated
+        November 4, 2003 published that the Denomination Rum from Venezuela is a
+        Designation of Origin of the Venezuelan State to be applied to the
+        alcoholic beverage called rum and that it can only be applied in the
+        exact concept of rum established by the COVENIN rules, for the benefit
+        of producers who are part of the Cámara de la Industria Venezolana de
+        Especies Alcohólicas (CIVEA or Venezuelan Chamber of The Alcoholic
+        Species Industry) for having complied with the requirements in Articles
+        201, 202, 203 and 204 of Decision 486 of the Andean Community of
+        Nations.
+      </p>
+      <p className="font_20 text-justify">
+        According to the minutes of the general assembly held in Caracas on June
+        4, 2019, members of the Cámara de la Industria Venezolana de Especies
+        Alcohólicas (CIVEA or Venezuelan Chamber of The Alcoholic Species
+        Industry) expressed their agreement that the control and ownership of
+        the Venezuelan Rum Controlled Designation of Origin fell, starting on
+        the above-mentioned date, on the Civil Association Fondo de Promoción
+        del Ron de Venezuela or Venezuelan Fund for the Promotion of Rum
+        (FONPRONVEN). This way CIVEA transferred ownership, control,
+        dissemination, promotion and other actions linked to the Venezuelan Rum
+        Controlled Denomination of Origin to FONPRONVEN.
+      </p>
+      <p className="font_20 text-justify">
+        The Fondo de Promoción del Ron de Venezuela or Venezuelan Fund for the
+        Promotion of Rum was created in 2009 and since its inception has been
+        aimed at ensuring that the requirements of the Rum from Venezuela CDO
+        are met, to promote it nationally and internationally as the flag
+        product of the country, as well as promote it through the Ron de Rum
+        from Venezuela tourist route.
+      </p>
+      <p className="font_20 text-justify">
+        In August 2019, SAPI ratified the Controlled Designation of Origin
+        awarded in 2003 in accordance with Resolution Nº 798 of the Autonomous
+        Service for Intellectual Property dated November 4, 2003. This update
+        allows us to continue to legally protect Venezuelan rum in major export
+        markets and at the national level.
+      </p>
+    </>
+  ),
+  regulador: ``,
+  regulador1: ``,
+  funciones: ``,
+  funciones1: ``,
+  organizacion: ``,
+  organizacion1: ``,
+};
+
 export default strings;
