@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import axios from "axios";
+
+// const urlProd = "";
+const urlProd = ".html";
 
 const MenuDesktop = () => {
   const router = useRouter();
@@ -10,6 +14,21 @@ const MenuDesktop = () => {
   if (router.query.lang === "en") {
     lang = "en";
   }
+
+  useEffect(() => {
+    async function getX() {
+      console.log("Consultando...");
+      axios
+        .get("https://www.bmosoluciones.com/api1/")
+        .then((response) => {
+          console.log(`response`, response);
+        })
+        .catch((error) => {
+          console.log(`error`, error);
+        });
+    }
+    getX();
+  }, []);
 
   const menu = {
     es: {
@@ -72,7 +91,7 @@ const MenuDesktop = () => {
                 <li className="nav-item">
                   <Link
                     href={{
-                      pathname: "/quienes-somos",
+                      pathname: `/quienes-somos${urlProd}`,
                       query: {
                         lang,
                       },
@@ -90,7 +109,7 @@ const MenuDesktop = () => {
                 <li className="nav-item">
                   <Link
                     href={{
-                      pathname: "./historia",
+                      pathname: `./historia${urlProd}`,
                       query: {
                         lang,
                       },
@@ -129,7 +148,7 @@ const MenuDesktop = () => {
                 <li className="nav-item">
                   <Link
                     href={{
-                      pathname: "./el-ron",
+                      pathname: `./el-ron${urlProd}`,
                       query: {
                         lang,
                       },
@@ -147,7 +166,7 @@ const MenuDesktop = () => {
                 <li className="nav-item">
                   <Link
                     href={{
-                      pathname: "./doc",
+                      pathname: `./doc${urlProd}`,
                       query: {
                         lang,
                       },
@@ -165,7 +184,7 @@ const MenuDesktop = () => {
                 <li className="nav-item">
                   <Link
                     href={{
-                      pathname: "./nuestra-gente",
+                      pathname: `./nuestra-gente${urlProd}`,
                       query: {
                         lang,
                       },
@@ -182,6 +201,72 @@ const MenuDesktop = () => {
                 </li>
 
                 <li
+                  className="nav-item social_icons"
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div style={{ width: "100%" }}>
+                    <img
+                      src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                      className="cursor-pointer"
+                      style={{
+                        height: "30px",
+                        padding: "30px",
+                        padding: "3px",
+                      }}
+                    />
+                    <Link
+                      href={{
+                        pathname: router.pathname,
+                        query: { lang: "en" },
+                      }}
+                      scroll={false}
+                    >
+                      <img
+                        src="./assets/imgs/home/ICONO-BANDERA-INGLES.png"
+                        className="cursor-pointer"
+                        style={{
+                          height: "30px",
+                          padding: "30px",
+                          padding: "3px",
+                        }}
+                      />
+                    </Link>
+                  </div>
+                  <div style={{ width: "100%" }}>
+                    <img
+                      src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                      className="cursor-pointer"
+                      style={{
+                        height: "30px",
+                        padding: "30px",
+                        padding: "3px",
+                      }}
+                    />
+                    <Link
+                      href={{
+                        pathname: router.pathname,
+                        query: { lang: "es" },
+                      }}
+                      scroll={false}
+                    >
+                      <img
+                        src="./assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
+                        className="cursor-pointer"
+                        style={{
+                          height: "30px",
+                          padding: "30px",
+                          padding: "3px",
+                        }}
+                      />
+                    </Link>
+                  </div>
+                </li>
+
+                {/* <li
                   className="nav-item social_icons"
                   style={{
                     display: "flex",
@@ -255,7 +340,7 @@ const MenuDesktop = () => {
                       />
                     </Link>
                   </div>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
