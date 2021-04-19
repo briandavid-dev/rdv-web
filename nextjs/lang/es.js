@@ -523,7 +523,7 @@ strings.footer = {
   parrafo1: (
     <>
       <p>
-        FONPROVEN te invita a disfrutar de forma responzable.
+        FONPROVEN te invita a disfrutar de forma responsable.
         <br />
         Nuestros productos son para el consumo de mayores de 18 años.
         <br />
