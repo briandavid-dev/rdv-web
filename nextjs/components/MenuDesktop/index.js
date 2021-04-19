@@ -19,7 +19,7 @@ const MenuDesktop = () => {
     async function getX() {
       console.log("Consultando...");
       axios
-        .get("https://www.bmosoluciones.com/api1/")
+        .get("https://www.bmosoluciones.com/api-rdv/cc/")
         .then((response) => {
           console.log(`response`, response);
         })
