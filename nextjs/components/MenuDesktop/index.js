@@ -32,7 +32,7 @@ const MenuDesktop = () => {
 
   const menu = {
     es: {
-      inicio: "Inicio",
+      inicio: "Inicio ok",
       quienesSomos: "Quiénes Somos",
       historia: "Historia",
       elRon: "El Ron",
