@@ -1,9 +1,22 @@
 import Head from "next/head";
+import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+
+const stylesCss = css.global`
+  .Seccion0Gente {
+    /* background-image: url("./../public/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg"); */
+    background-image: url("/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg");
+    background-size: 100%;
+  }
+  .Seccion1Gente {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+`;
 
 export default function NuestraGente() {
   const router = useRouter();
