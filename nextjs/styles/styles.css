@@ -13,11 +13,9 @@ body {
 }
 
 .seccion1 {
-  /*background-image: url('./assets/imgs/home/copa.jpg');*/
 }
-
+/* 
 .nav_bar {
-  /*width: 100%;*/
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
@@ -25,10 +23,10 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: center; /* hacer el media query para mobile y cambiar este */
+  justify-content: center; /* hacer el media query para mobile y cambiar este */ /*
   position: fixed;
   background-color: rgba(0, 0, 0, 0.1) !important;
-}
+} */
 
 /* Para 960px */
 @media only screen and (max-width: 980px) and (min-width: 821px) {
@@ -111,20 +109,13 @@ body {
 
 footer {
   color: #000;
-  background-image: url(./../public/assets/imgs/footer/FONDO_FOOTER.png);
-
-  /* position: relative;
-  top: -220px;
-   */
+  /* background-image: url("./../public/assets/imgs/footer/FONDO_FOOTER.png"); */
+  background-image: url("/assets/imgs/footer/FONDO_FOOTER.png");
 }
 footer .message {
   background-color: #3d2514;
   padding: 0 0 2rem 0;
   color: #fef4e4;
-  /* position: relative;
-  background-color: #3d2514;
-  top: -5rem;
-  */
 }
 
 .img_marcas {
@@ -204,9 +195,6 @@ footer .message {
 }
 .SeccionHistoria3 {
   padding-top: 2rem;
-  /* background-color: #62462c; */
-
-  /* background: linear-gradient(to top, green 0%, green 50%, red 50%, red 100%); */
   background: linear-gradient(to top, #62462c 50%, #4e3c2d 50%);
 }
 
@@ -236,13 +224,13 @@ footer .message {
 }
 
 .Seccion0Gente {
-  background-image: url(./../public/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg);
+  /* background-image: url("./../public/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg"); */
+  background-image: url("/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg");
   background-size: 100%;
 }
 .Seccion1Gente {
   padding-top: 100px;
   padding-bottom: 100px;
-  /* background-color: #443421; */
 }
 
 .titulo-maestro {
@@ -253,7 +241,6 @@ footer .message {
   background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
 }
 .SeccionDoc1 {
-  /* background-color: #443421; */
   text-align: center;
   padding-top: 10rem;
   padding-bottom: 3rem;

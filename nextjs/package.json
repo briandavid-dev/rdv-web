@@ -12,8 +12,18 @@
     "export-x": "next export"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "antd": "^4.15.2",
+    "babel-plugin-import": "^1.13.3",
+    "less": "^4.1.1",
     "next": "10.0.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "webpack": "^4.46.0"
+  },
+  "devDependencies": {
+    "url-loader": "^4.1.1"
   }
 }

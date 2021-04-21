@@ -1,0 +1,13 @@
+.nav_bar {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.nav_bar_superior {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center !important; /* hacer el media query para mobile y cambiar este */
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  z-index: 1000;
+}

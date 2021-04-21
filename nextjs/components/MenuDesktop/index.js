@@ -1,11 +1,30 @@
 import React, { useEffect } from "react";
-import Image from "next/image";
+import css from "styled-jsx/css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
+import styles from "./Menu.module.css";
 
-// const urlProd = "";
-const urlProd = ".html";
+const styleLi = {
+  justifyContent: "center",
+  alignItems: "center",
+  display: "flex",
+};
+
+const stylesCss = css.global`
+  .nav_bar_superior {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center !important; /* hacer el media query para mobile y cambiar este */
+    position: fixed;
+    z-index: 1000;
+  }
+`;
+
+const urlProd = "";
+// const urlProd = ".html";
 
 const MenuDesktop = () => {
   const router = useRouter();
@@ -51,8 +70,14 @@ const MenuDesktop = () => {
 
   return (
     <>
-      <div className="nav_bar_superior" style={{ zIndex: 1000 }}>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark nav_bar">
+      {/* <div className={styles.nav_bar_superior} style={{ zIndex: 1000 }}> */}
+
+      {/* <div className={styles.nav_bar_superior}> */}
+      <style jsx global>
+        {stylesCss}
+      </style>
+      <div className="nav_bar_superior">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark_ ">
           <div className="container-fluid">
             <button
               className="navbar-toggler"
@@ -70,7 +95,7 @@ const MenuDesktop = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
+                <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
                       pathname: "/",
@@ -88,7 +113,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
                       pathname: `/quienes-somos${urlProd}`,
@@ -106,7 +131,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
                       pathname: `./historia${urlProd}`,
@@ -124,7 +149,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
                       pathname: "./",
@@ -145,7 +170,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
                       pathname: `./el-ron${urlProd}`,
@@ -163,7 +188,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
                       pathname: `./doc${urlProd}`,
@@ -181,7 +206,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
                       pathname: `./nuestra-gente${urlProd}`,
