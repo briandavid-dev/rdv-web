@@ -29,6 +29,9 @@ export default function NuestraGente() {
 
   return (
     <div>
+      <style jsx global>
+        {stylesCss}
+      </style>
       <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
