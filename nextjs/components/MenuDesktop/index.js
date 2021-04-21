@@ -70,9 +70,6 @@ const MenuDesktop = () => {
 
   return (
     <>
-      {/* <div className={styles.nav_bar_superior} style={{ zIndex: 1000 }}> */}
-
-      {/* <div className={styles.nav_bar_superior}> */}
       <style jsx global>
         {stylesCss}
       </style>

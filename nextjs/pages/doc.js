@@ -1,9 +1,28 @@
 import Head from "next/head";
+import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+
+const stylesCss = css.global`
+  .SeccionDoc0 {
+    background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
+  }
+  .SeccionDoc1 {
+    text-align: center;
+    padding-top: 10rem;
+    padding-bottom: 3rem;
+  }
+  .SeccionDocNacimiento {
+    background-color: #4e3c2d;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+`;
 
 export default function Doc() {
   const router = useRouter();
@@ -15,6 +34,9 @@ export default function Doc() {
 
   return (
     <div>
+      <style jsx global>
+        {stylesCss}
+      </style>
       <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />

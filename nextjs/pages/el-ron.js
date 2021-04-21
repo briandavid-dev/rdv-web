@@ -1,9 +1,25 @@
 import Head from "next/head";
+import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+
+const stylesCss = css.global`
+  .SeccionElRon1 {
+    padding-top: 100px;
+    background-color: #443421;
+  }
+  .SeccionDoc1 img {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .SeccionElRon2 {
+    background-color: #443421;
+    text-align: center;
+  }
+`;
 
 export default function ElRon() {
   const router = useRouter();
@@ -15,6 +31,9 @@ export default function ElRon() {
 
   return (
     <div>
+      <style jsx global>
+        {stylesCss}
+      </style>
       <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />

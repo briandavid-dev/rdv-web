@@ -1,9 +1,25 @@
 import Head from "next/head";
+import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+
+const stylesCss = css.global`
+  .SeccionRon {
+    padding-top: 2rem;
+    background-color: #4e3c2d;
+  }
+  .SeccionRon2 {
+    padding-top: 2rem;
+    background-color: #62462c;
+  }
+  .SeccionRon3 {
+    padding-top: 2rem;
+    background-color: #63452d;
+  }
+`;
 
 export default function QuienesSomos() {
   const router = useRouter();
@@ -15,6 +31,9 @@ export default function QuienesSomos() {
 
   return (
     <div>
+      <style jsx global>
+        {stylesCss}
+      </style>
       <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />

@@ -1,9 +1,93 @@
 import Head from "next/head";
+import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+
+const stylesCss = css.global`
+  .seccion2 h1 {
+    background-color: #4d341f;
+    text-align: center;
+    padding: 1rem;
+  }
+  .seccion2 {
+    background-color: var(--color-fondo-secondary);
+    padding: 4rem 0 4rem 0;
+    font-size: 18px;
+    position: relative;
+    top: -220px;
+  }
+
+  .seccion2 .content-1 {
+    flex: 45;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .SeccionEmpresas {
+    position: relative;
+    top: -220px;
+    background-color: var(--color-fondo-secondary);
+  }
+  .SeccionEmpresas .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SeccionMaestrosRoneros {
+    position: relative;
+    top: -220px;
+    background-color: var(--color-fondo-secondary);
+  }
+  .SeccionMaestrosRoneros .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SeccionNoticias {
+    position: relative;
+    top: -220px;
+    background-color: var(--color-fondo-secondary);
+  }
+  .SeccionNoticias .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img_marcas {
+    max-width: 50%;
+  }
+
+  .carousel-item div {
+    display: flex;
+    justify-content: center;
+  }
+
+  .noticias_img {
+    display: flex;
+    justify-content: center;
+  }
+  .noticias_cuadro {
+    background-color: #4e3522;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .iconos_abajo {
+    height: 50px;
+    width: 50px;
+    margin: 0 2rem 0 2rem;
+  }
+
+  .post_img_principal {
+    max-width: 100%;
+  }
+`;
 
 export default function Home() {
   const router = useRouter();
@@ -16,6 +100,9 @@ export default function Home() {
 
   return (
     <div>
+      <style jsx global>
+        {stylesCss}
+      </style>
       <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
