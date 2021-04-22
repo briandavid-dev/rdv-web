@@ -12,15 +12,20 @@
     "export-x": "next export"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^27.1.0",
+    "@ckeditor/ckeditor5-build-inline": "^27.1.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "antd": "^4.15.2",
     "babel-plugin-import": "^1.13.3",
+    "draft-js": "^0.11.7",
     "less": "^4.1.1",
     "next": "10.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-draft-wysiwyg": "^1.14.6",
     "webpack": "^4.46.0"
   },
   "devDependencies": {

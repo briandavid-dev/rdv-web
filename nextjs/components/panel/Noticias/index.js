@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Button, Input, Upload, Select, Modal } from "antd";
 import { UploadOutlined, InboxOutlined } from "@ant-design/icons";
+import dynamic from "next/dynamic";
+// import Scroll from './Prueba2';
+
+const Scroll = dynamic(
+  () => {
+    return import("./Prueba2");
+  },
+  { ssr: false }
+);
 
 const Noticias = () => {
   const [form] = Form.useForm();
@@ -85,7 +94,9 @@ const Noticias = () => {
                   </Upload>
                 </Form.Item>
               </Col>
-              <Col lg={24}>Contenido</Col>
+              <Col lg={24}>
+                <Scroll />
+              </Col>
               <Col lg={24} style={{ textAlign: "center" }}>
                 <Button>Volver</Button>
                 {"  "}

@@ -1,6 +1,7 @@
 import css from "styled-jsx/css";
 import "../styles/antd.less";
 import "../styles/styles.css";
+
 const stylesCss = css.global`
   .font_20 {
     font-size: 20px;
