@@ -17,7 +17,7 @@ const stylesCss = css.global`
 
 const Editor = (props) => {
   const { actions, data } = props;
-  console.log(`data`, data);
+  // console.log(`data`, data);
   return (
     <div style={{ border: "1px solid #d9d9d9" }}>
       <style jsx global>
@@ -28,11 +28,11 @@ const Editor = (props) => {
         data={data}
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.
-          console.log("Editor is ready to use!", editor);
+          // console.log("Editor is ready to use!", editor);
         }}
         onChange={(event, editor) => {
           const data = editor.getData();
-          console.log({ event, editor, data });
+          // console.log({ event, editor, data });
           actions.setContenido(data);
         }}
         onBlur={(event, editor) => {
