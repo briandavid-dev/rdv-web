@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import css from "styled-jsx/css";
 import {
@@ -43,23 +43,26 @@ const Noticias = () => {
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(true);
   const [contenido, setContenido] = useState("");
-  const [imagen, setImagen] = useState({});
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [dataSource, setDataSource] = useState([
-    {
-      key: "1",
-      id: "1",
-      titulo: "Título 1",
-      fechaCreacion: moment().format("DD-MM-YYYY"),
-    },
-    {
-      key: "2",
-      id: "2",
-      titulo: "Título 2",
-      fechaCreacion: moment().format("DD-MM-YYYY"),
-    },
-  ]);
+  const [dataSource, setDataSource] = useState();
+
+  useEffect(() => {
+    setDataSource([
+      {
+        key: "1",
+        id: "1",
+        titulo: "Título 2",
+        fechaCreacion: moment().format("DD-MM-YYYY"),
+      },
+      {
+        key: "2",
+        id: "2",
+        titulo: "Título 3",
+        fechaCreacion: moment().format("DD-MM-YYYY"),
+      },
+    ]);
+  }, []);
 
   const [fileCertificado, setFileCertificado] = useState([]);
   const [showSizeMessageCertificado, setShowSizeMessageCertificado] = useState(
@@ -157,41 +160,23 @@ const Noticias = () => {
     setIsModalVisible(false);
   };
 
-  /* 
-  const columns = [
-    {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
-    },
-    {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
-    },
-  ]; */
-
   const handleEdit = () => {
     console.log("edit");
   };
 
-  const handleDelete = (e) => {
-    console.log(e);
-    setConfirmLoading(true);
-    setTimeout(() => {
-      // setVisible(false);
-      setConfirmLoading(false);
-    }, 2000);
-  };
-
-  const handleDeleteCancel = () => {
-    console.log("Clicked cancel button");
+  const handleDelete = (id) => {
+    console.log(id);
+    // setConfirmLoading(true);
+    // setTimeout(() => {
     // setVisible(false);
+
+    // aqui el servicio para eliminar,, meter un loader,,? o dejar el mismo para que no sea tam invasivo,, o un mensaje chico
+    // que no ofusque toda la pantalla
+
+    setDataSource(dataSource.filter((noticia) => noticia.id !== id));
+
+    //   setConfirmLoading(false);
+    // }, 2000);
   };
 
   const showPopconfirm = () => {
@@ -225,19 +210,12 @@ const Noticias = () => {
                 title="¿Seguro de eliminar este contenido？"
                 okText="Si"
                 cancelText="No"
-                // visible={visible}
                 onConfirm={() => {
                   handleDelete(record.id);
                 }}
-                onCancel={handleDeleteCancel}
                 okButtonProps={{ loading: confirmLoading }}
               >
-                <DeleteTwoTone
-                  onClick={showPopconfirm}
-                  // onClick={() => {
-                  //   handleDelete(record.id);
-                  // }}
-                />
+                <DeleteTwoTone onClick={showPopconfirm} />
               </Popconfirm>
             </Space>
           )}
