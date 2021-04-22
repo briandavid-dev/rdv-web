@@ -9,6 +9,8 @@ import en from "../lang/en";
 const stylesCss = css.global`
   .SeccionDoc0 {
     background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
+    background-image: url("/assets/imgs/doc/FONDO.png");
+    background-size: cover;
   }
   .SeccionDoc1 {
     text-align: center;
