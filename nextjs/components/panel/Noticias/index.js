@@ -47,21 +47,6 @@ const Noticias = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [dataSource, setDataSource] = useState();
-  const [idUpdate, setIdUpdate] = useState(null);
-
-  const getInitialValues = () => {
-    let retVal = null;
-    if (idUpdate) {
-      console.log(
-        `object`,
-        dataSource.find((noticia) => (noticia.id = idUpdate))
-      );
-      retVal = {
-        lenguaje: "es",
-      };
-    }
-    return retVal;
-  };
 
   useEffect(() => {
     setDataSource([
@@ -175,7 +160,6 @@ const Noticias = () => {
   };
 
   const showModal = () => {
-    setIdUpdate(null);
     setIsModalVisible(true);
   };
 
@@ -275,12 +259,7 @@ const Noticias = () => {
         centered
       >
         <div>
-          <Form
-            {...layout}
-            onFinish={onFinish}
-            // initialValues={getInitialValues(idUpdate)}
-            form={form}
-          >
+          <Form {...layout} onFinish={onFinish} form={form}>
             <Row gutter={(40, 40)}>
               <Col lg={24}>
                 <Form.Item
