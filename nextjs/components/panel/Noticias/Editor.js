@@ -15,16 +15,16 @@ const stylesCss = css.global`
   }
 `;
 
-const Prueba2 = () => {
+const Editor = (props) => {
+  const { actions } = props;
   return (
-    <div>
+    <div style={{ border: "1px solid #d9d9d9" }}>
       <style jsx global>
         {stylesCss}
       </style>
-      <h2>Contenido</h2>
       <CKEditor
         editor={InlineEditor}
-        data="<p>Hello from CKEditor 5!</p>"
+        // data="<p>Hello from CKEditor 5!</p>"
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.
           console.log("Editor is ready to use!", editor);
@@ -32,6 +32,7 @@ const Prueba2 = () => {
         onChange={(event, editor) => {
           const data = editor.getData();
           console.log({ event, editor, data });
+          actions.setContenido(data);
         }}
         onBlur={(event, editor) => {
           console.log("Blur.", editor);
@@ -44,4 +45,4 @@ const Prueba2 = () => {
   );
 };
 
-export default Prueba2;
+export default Editor;

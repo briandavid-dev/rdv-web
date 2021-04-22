@@ -1,19 +1,38 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Button, Input, Upload, Select, Modal } from "antd";
-import { UploadOutlined, InboxOutlined } from "@ant-design/icons";
+import {
+  Row,
+  Col,
+  Form,
+  Button,
+  Input,
+  Upload,
+  Select,
+  Modal,
+  Table,
+  Space,
+} from "antd";
+const { Column } = Table;
+import {
+  UploadOutlined,
+  InboxOutlined,
+  DeleteTwoTone,
+  EditTwoTone,
+} from "@ant-design/icons";
 import dynamic from "next/dynamic";
 // import Scroll from './Prueba2';
 
-const Scroll = dynamic(
+const Editor = dynamic(
   () => {
-    return import("./Prueba2");
+    return import("./Editor");
   },
   { ssr: false }
 );
 
 const Noticias = () => {
   const [form] = Form.useForm();
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [contenido, setContenido] = useState("");
+  const [imagen, setImagen] = useState({});
 
   const layout = {
     labelCol: { span: 5 },
@@ -21,7 +40,13 @@ const Noticias = () => {
   };
 
   const onFinish = (values) => {
-    console.log(values);
+    const payload = {
+      ...values,
+      contenido,
+      type: "noticias",
+      imagen,
+    };
+    console.log(payload);
   };
 
   const normFile = (e) => {
@@ -44,8 +69,72 @@ const Noticias = () => {
     setIsModalVisible(false);
   };
 
+  const dataSource = [
+    {
+      key: "1",
+      name: "Mike",
+      age: 32,
+      address: "10 Downing Street",
+    },
+    {
+      key: "2",
+      name: "John",
+      age: 42,
+      address: "10 Downing Street",
+    },
+  ];
+
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+    },
+  ];
+
+  const handleEdit = () => {
+    console.log("edit");
+  };
+  const handleDelete = (e) => {
+    console.log(e);
+  };
+
   return (
     <div>
+      <Button type="primary" onClick={showModal}>
+        Agregar
+      </Button>
+      <br />
+      <br />
+      <Table dataSource={dataSource} pagination={false}>
+        <Column title="Name" dataIndex="name" key="name" />
+        <Column title="Age" dataIndex="age" key="age" />
+        <Column
+          title="Opciones"
+          key="opciones"
+          render={(text, record) => (
+            <Space size="middle">
+              <EditTwoTone onClick={handleEdit} />
+              <DeleteTwoTone
+                onClick={() => {
+                  handleDelete(record.age);
+                }}
+              />
+            </Space>
+          )}
+        />
+      </Table>
+
       <Modal
         title="Agregar Nueva Noticia"
         visible={isModalVisible}
@@ -57,7 +146,7 @@ const Noticias = () => {
       >
         <div>
           <Form {...layout} onFinish={onFinish}>
-            <Row gutter={[40, 40]}>
+            <Row>
               <Col lg={24}>
                 <Form.Item
                   label="Titulo"
@@ -71,7 +160,7 @@ const Noticias = () => {
                 <Form.Item
                   label="Lenguage"
                   name="lenguage"
-                  rules={[{ required: true }]}
+                  rules={[{ required: true, message: "Ingrese el Lenguage" }]}
                 >
                   <Select placeholder="Seleccione" allowClear>
                     <Select.Option value="es">Español</Select.Option>
@@ -94,10 +183,15 @@ const Noticias = () => {
                   </Upload>
                 </Form.Item>
               </Col>
-              <Col lg={24}>
-                <Scroll />
+              <Col lg={5} style={{ textAlign: "right" }}>
+                Contenido: &nbsp;&nbsp;
+              </Col>
+              <Col lg={19}>
+                <Editor actions={{ setContenido }} />
               </Col>
               <Col lg={24} style={{ textAlign: "center" }}>
+                <br />
+                <br />
                 <Button>Volver</Button>
                 {"  "}
                 <Button type="primary" htmlType="submit">
