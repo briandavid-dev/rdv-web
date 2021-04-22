@@ -134,9 +134,11 @@ const Noticias = () => {
     const payload = {
       ...values,
       contenido,
-      type: "noticias",
       imagen: fileCertificado,
+      type: "noticias",
+      proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
     };
+
     console.log(payload);
 
     let updateNoticias = dataSource;
