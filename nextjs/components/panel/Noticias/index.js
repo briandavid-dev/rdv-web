@@ -13,6 +13,7 @@ import {
   Table,
   Space,
   Radio,
+  Popconfirm,
 } from "antd";
 const { Column } = Table;
 import {
@@ -43,6 +44,8 @@ const Noticias = () => {
   const [isModalVisible, setIsModalVisible] = useState(true);
   const [contenido, setContenido] = useState("");
   const [imagen, setImagen] = useState({});
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [dataSource, setDataSource] = useState([
     {
       key: "1",
@@ -65,10 +68,11 @@ const Noticias = () => {
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
-    if (file.size / 1000 > 5120) {
+    if (file.size / 1000 > 512) {
       setShowSizeMessageCertificado(true);
       return false;
     }
+    setShowSizeMessageCertificado(false);
 
     if (fileCertificado.findIndex((e) => e.name === file.name) >= 0) {
       return false;
@@ -84,18 +88,7 @@ const Noticias = () => {
 
       if (rgx !== null) {
         setFileCertificado([
-          {
-            ...file,
-            name: file.name,
-            nombreArchivo: file.name,
-            extension: rgx[2],
-            base64: rgx[3],
-            bytes: null,
-          },
-        ]);
-        /* setStateSeccionDocumentacion({
-          ...stateSeccionDocumentacion,
-          fileCertificado: [
+          [
             {
               ...file,
               name: file.name,
@@ -105,8 +98,7 @@ const Noticias = () => {
               bytes: null,
             },
           ],
-          showSizeMessageCertificado: false,
-        }); */
+        ]);
       }
     };
     return false;
@@ -131,10 +123,25 @@ const Noticias = () => {
   };
 
   const normFile = (e) => {
-    console.log("Upload event:", e);
+    let superaLimite = false;
+    if (e.file.size / 1000 > 512) {
+      setShowSizeMessageCertificado(true);
+      superaLimite = true;
+    } else {
+      setShowSizeMessageCertificado(false);
+      superaLimite = false;
+    }
+
     if (Array.isArray(e)) {
       return e;
     }
+    if (e.fileList.length > 1) {
+      e.fileList.shift();
+    }
+    if (superaLimite) {
+      e.fileList = [];
+    }
+
     return e && e.fileList;
   };
 
@@ -172,8 +179,23 @@ const Noticias = () => {
   const handleEdit = () => {
     console.log("edit");
   };
+
   const handleDelete = (e) => {
     console.log(e);
+    setConfirmLoading(true);
+    setTimeout(() => {
+      // setVisible(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+
+  const handleDeleteCancel = () => {
+    console.log("Clicked cancel button");
+    // setVisible(false);
+  };
+
+  const showPopconfirm = () => {
+    setVisible(true);
   };
 
   return (
@@ -199,11 +221,24 @@ const Noticias = () => {
           render={(text, record) => (
             <Space size="middle">
               <EditTwoTone onClick={handleEdit} />
-              <DeleteTwoTone
-                onClick={() => {
-                  handleDelete(record.age);
+              <Popconfirm
+                title="¿Seguro de eliminar este contenido？"
+                okText="Si"
+                cancelText="No"
+                // visible={visible}
+                onConfirm={() => {
+                  handleDelete(record.id);
                 }}
-              />
+                onCancel={handleDeleteCancel}
+                okButtonProps={{ loading: confirmLoading }}
+              >
+                <DeleteTwoTone
+                  onClick={showPopconfirm}
+                  // onClick={() => {
+                  //   handleDelete(record.id);
+                  // }}
+                />
+              </Popconfirm>
             </Space>
           )}
         />
@@ -240,7 +275,7 @@ const Noticias = () => {
                   name="titulo"
                   rules={[
                     { required: true, message: "Ingrese el titulo" },
-                    { min: 10, message: "Minimo 10 caracteres" },
+                    { min: 10, message: "Mínimo 10 caracteres" },
                   ]}
                 >
                   <Input maxLength={50} />
@@ -259,6 +294,7 @@ const Noticias = () => {
                       superior a 500 KB)
                     </span>
                   }
+                  rules={[{ required: true, message: "Adjunte un imagen" }]}
                 >
                   {/* <Upload name="logo" action="/upload.do" listType="picture">
                     <Button icon={<UploadOutlined />}>
@@ -268,7 +304,7 @@ const Noticias = () => {
 
                   <Upload
                     name="fileCertificado"
-                    accept=".jpg, .jpeg, .png, .pdf"
+                    accept=".jpg, .jpeg, .png"
                     listType="picture"
                     // showUploadList={false}
                     beforeUpload={(file) => handleBeforeUploadCertificado(file)}
@@ -279,9 +315,12 @@ const Noticias = () => {
                       Click para adjuntar
                     </Button>
                     {showSizeMessageCertificado && (
-                      <span className="afiliacion-datos-personales__size-message">
+                      <div
+                        className="afiliacion-datos-personales__size-message "
+                        style={{ color: "red" }}
+                      >
                         El archivo no debe pesar más de 500 KB.
-                      </span>
+                      </div>
                     )}
                   </Upload>
                 </Form.Item>
