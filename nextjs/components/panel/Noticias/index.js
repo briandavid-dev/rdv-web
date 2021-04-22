@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 import css from "styled-jsx/css";
 import {
@@ -49,6 +50,7 @@ const Noticias = () => {
   const [visible, setVisible] = useState(false);
   const [dataSource, setDataSource] = useState();
   const [imageSrc, setImageSrc] = useState("");
+  const [procesoActual, setProcesoActual] = useState("AGREGAR");
 
   useEffect(() => {
     setDataSource([
@@ -137,15 +139,33 @@ const Noticias = () => {
     };
     console.log(payload);
 
-    const updateNoticias = dataSource.map((noticia) => {
-      if (noticia.id === values.id) {
-        return {
-          ...noticia,
+    let updateNoticias = dataSource;
+
+    if (procesoActual === "ACTUALIZAR") {
+      updateNoticias = dataSource.map((noticia) => {
+        if (noticia.id === values.id) {
+          return {
+            ...noticia,
+            ...payload,
+          };
+        }
+        return noticia;
+      });
+    }
+
+    if (procesoActual === "AGREGAR") {
+      const uuid = uuidv4();
+
+      updateNoticias = [
+        ...dataSource,
+        {
           ...payload,
-        };
-      }
-      return noticia;
-    });
+          key: uuid,
+          id: uuid,
+          fechaCreacion: moment().format("DD-MM-YYYY"),
+        },
+      ];
+    }
 
     setDataSource(updateNoticias);
 
@@ -175,7 +195,9 @@ const Noticias = () => {
     return e && e.fileList;
   };
 
-  const showModal = () => {
+  const handleAgregar = () => {
+    setProcesoActual("AGREGAR");
+
     form.resetFields();
     setContenidoUpdate("");
     setImageSrc("");
@@ -191,6 +213,7 @@ const Noticias = () => {
   };
 
   const handleEdit = (idUpdate) => {
+    setProcesoActual("ACTUALIZAR");
     const noticiaUpdate = dataSource.find((noticia) => noticia.id === idUpdate);
 
     form.resetFields();
@@ -240,7 +263,7 @@ const Noticias = () => {
       <style jsx global>
         {stylesCss}
       </style>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={handleAgregar}>
         Agregar
       </Button>
       <br />
@@ -281,7 +304,13 @@ const Noticias = () => {
       </Table>
 
       <Modal
-        title="Agregar Nueva Noticia"
+        title={
+          procesoActual === "ACTUALIZAR" ? (
+            <span>Actualizar noticia</span>
+          ) : (
+            <span>Agregar Nueva Noticia</span>
+          )
+        }
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -440,7 +469,11 @@ const Noticias = () => {
                 <Button onClick={handleCancel}>Volver</Button>
                 {"  "}
                 <Button type="primary" htmlType="submit">
-                  Aceptar
+                  {procesoActual === "ACTUALIZAR" ? (
+                    <span>Actualizar</span>
+                  ) : (
+                    <span>Agregar</span>
+                  )}
                 </Button>
               </Col>
             </Row>

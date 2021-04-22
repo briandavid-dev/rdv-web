@@ -36,10 +36,10 @@ const Editor = (props) => {
           actions.setContenido(data);
         }}
         onBlur={(event, editor) => {
-          console.log("Blur.", editor);
+          // console.log("Blur.", editor);
         }}
         onFocus={(event, editor) => {
-          console.log("Focus.", editor);
+          // console.log("Focus.", editor);
         }}
       />
     </div>
