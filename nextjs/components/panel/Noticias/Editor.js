@@ -16,7 +16,8 @@ const stylesCss = css.global`
 `;
 
 const Editor = (props) => {
-  const { actions } = props;
+  const { actions, data } = props;
+  console.log(`data`, data);
   return (
     <div style={{ border: "1px solid #d9d9d9" }}>
       <style jsx global>
@@ -24,7 +25,7 @@ const Editor = (props) => {
       </style>
       <CKEditor
         editor={InlineEditor}
-        // data="<p>Hello from CKEditor 5!</p>"
+        data={data}
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.
           console.log("Editor is ready to use!", editor);

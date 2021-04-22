@@ -41,11 +41,27 @@ const stylesCss = css.global`
 
 const Noticias = () => {
   const [form] = Form.useForm();
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [contenido, setContenido] = useState("");
+  const [contenidoUpdate, setContenidoUpdate] = useState("");
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [dataSource, setDataSource] = useState();
+  const [idUpdate, setIdUpdate] = useState(null);
+
+  const getInitialValues = () => {
+    let retVal = null;
+    if (idUpdate) {
+      console.log(
+        `object`,
+        dataSource.find((noticia) => (noticia.id = idUpdate))
+      );
+      retVal = {
+        lenguaje: "es",
+      };
+    }
+    return retVal;
+  };
 
   useEffect(() => {
     setDataSource([
@@ -54,12 +70,22 @@ const Noticias = () => {
         id: "1",
         titulo: "Título 2",
         fechaCreacion: moment().format("DD-MM-YYYY"),
+        imagen: "",
+        lenguaje: "es",
+        visualizacionHome: "circulo",
+        marcarPrincipal: "S",
+        contenido: "<h3>h3</h3><p>h3 bubu<p>",
       },
       {
         key: "2",
         id: "2",
         titulo: "Título 3",
         fechaCreacion: moment().format("DD-MM-YYYY"),
+        imagen: "",
+        lenguaje: "en",
+        visualizacionHome: "cuadro",
+        marcarPrincipal: "N",
+        contenido: "<h1>h1</h1><p>hola h1<p>",
       },
     ]);
   }, []);
@@ -149,6 +175,7 @@ const Noticias = () => {
   };
 
   const showModal = () => {
+    setIdUpdate(null);
     setIsModalVisible(true);
   };
 
@@ -160,10 +187,19 @@ const Noticias = () => {
     setIsModalVisible(false);
   };
 
-  const handleEdit = () => {
-    console.log("edit");
+  const handleEdit = (idUpdate) => {
+    const noticiaUpdate = dataSource.find((noticia) => noticia.id === idUpdate);
+    console.log(`noticiaUpdate`, noticiaUpdate);
+    form.setFieldsValue({
+      lenguaje: noticiaUpdate.lenguaje,
+      titulo: noticiaUpdate.titulo,
+      marcarPrincipal: noticiaUpdate.marcarPrincipal,
+      visualizacionHome: noticiaUpdate.visualizacionHome,
+    });
+    setContenidoUpdate(noticiaUpdate.contenido);
+    setIsModalVisible(true);
   };
-
+  console.log(`ontenidoUpdate`, contenidoUpdate);
   const handleDelete = (id) => {
     console.log(id);
     // setConfirmLoading(true);
@@ -194,7 +230,9 @@ const Noticias = () => {
       <br />
       <br />
       <Table dataSource={dataSource} pagination={false}>
+        <Column title="id" dataIndex="id" key="id" />
         <Column title="Titulo" dataIndex="titulo" key="titulo" />
+        <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
         <Column
           title="Fecha de Creación"
           dataIndex="fechaCreacion"
@@ -205,7 +243,12 @@ const Noticias = () => {
           key="opciones"
           render={(text, record) => (
             <Space size="middle">
-              <EditTwoTone onClick={handleEdit} />
+              <EditTwoTone
+                onClick={() => {
+                  console.log(`record.id`, record.id);
+                  handleEdit(record.id);
+                }}
+              />
               <Popconfirm
                 title="¿Seguro de eliminar este contenido？"
                 okText="Si"
@@ -232,13 +275,18 @@ const Noticias = () => {
         centered
       >
         <div>
-          <Form {...layout} onFinish={onFinish}>
+          <Form
+            {...layout}
+            onFinish={onFinish}
+            // initialValues={getInitialValues(idUpdate)}
+            form={form}
+          >
             <Row gutter={(40, 40)}>
               <Col lg={24}>
                 <Form.Item
-                  label={<strong>Lenguage</strong>}
-                  name="lenguage"
-                  rules={[{ required: true, message: "Ingrese el Lenguage" }]}
+                  label={<strong>Lenguaje</strong>}
+                  name="lenguaje"
+                  rules={[{ required: true, message: "Ingrese el lenguaje" }]}
                 >
                   <Select placeholder="Seleccione" allowClear>
                     <Select.Option value="es">Español</Select.Option>
@@ -350,7 +398,7 @@ const Noticias = () => {
               </Col>
               <Col lg={24}>
                 <br />
-                <Editor actions={{ setContenido }} />
+                <Editor data={contenidoUpdate} actions={{ setContenido }} />
               </Col>
               <Col lg={24} style={{ textAlign: "center" }}>
                 <br />
