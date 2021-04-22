@@ -257,6 +257,15 @@ export default function Home() {
                   <div className="carousel-item">
                     <div>
                       <img
+                        src="./assets/imgs/home/LOGO-MARCAS-SANTA-TERESA.png"
+                        className="d-block w-1 img_marcas"
+                        alt="..."
+                      />
+                    </div>
+                  </div>
+                  <div className="carousel-item">
+                    <div>
+                      <img
                         src="./assets/imgs/home/LOGO-MARCAS-VEROES.png"
                         className="d-block w-1 img_marcas"
                         alt="..."
