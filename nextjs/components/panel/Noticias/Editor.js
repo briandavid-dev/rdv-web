@@ -33,7 +33,7 @@ const Editor = (props) => {
         onChange={(event, editor) => {
           const data = editor.getData();
           // console.log({ event, editor, data });
-          actions.setContenido(data);
+          actions.setContenidoUpdate(data);
         }}
         onBlur={(event, editor) => {
           // console.log("Blur.", editor);

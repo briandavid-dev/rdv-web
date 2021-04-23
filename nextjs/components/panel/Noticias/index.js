@@ -44,7 +44,7 @@ const stylesCss = css.global`
 const Noticias = () => {
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [contenido, setContenido] = useState("");
+  // const [contenido, setContenido] = useState("");
   const [contenidoUpdate, setContenidoUpdate] = useState("");
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -135,7 +135,7 @@ const Noticias = () => {
   const onFinish = (values) => {
     const payload = {
       ...values,
-      contenido,
+      contenido: contenidoUpdate,
       imagen: fileCertificado,
       type: "noticias",
       proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
@@ -489,7 +489,10 @@ const Noticias = () => {
               </Col>
               <Col lg={24}>
                 <br />
-                <Editor data={contenidoUpdate} actions={{ setContenido }} />
+                <Editor
+                  data={contenidoUpdate}
+                  actions={{ setContenidoUpdate }}
+                />
               </Col>
               <Col lg={24} style={{ textAlign: "center" }}>
                 <br />
