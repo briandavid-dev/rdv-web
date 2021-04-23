@@ -25,7 +25,7 @@ import {
   EditTwoTone,
 } from "@ant-design/icons";
 import dynamic from "next/dynamic";
-// import Scroll from './Prueba2';
+import ApiNoticias from "./services";
 
 const Editor = dynamic(
   () => {
@@ -53,30 +53,32 @@ const Noticias = () => {
   const [procesoActual, setProcesoActual] = useState("AGREGAR");
 
   useEffect(() => {
-    setDataSource([
-      {
-        key: "1",
-        id: "1",
-        titulo: "Título 2 ya poo vaa ",
-        fechaCreacion: moment().format("DD-MM-YYYY"),
-        imagen: "",
-        lenguaje: "es",
-        visualizacionHome: "circulo",
-        marcarPrincipal: "S",
-        contenido: "<h3>h3</h3><p>h3 bubu<p>",
-      },
-      {
-        key: "2",
-        id: "2",
-        titulo: "Título 3 a seguir molestando",
-        fechaCreacion: moment().format("DD-MM-YYYY"),
-        imagen: "",
-        lenguaje: "en",
-        visualizacionHome: "cuadro",
-        marcarPrincipal: "N",
-        contenido: "<h1>h1</h1><p>hola h1<p>",
-      },
-    ]);
+    ApiNoticias.getNoticias()
+      .then((response) => {
+        const { codigo, results } = response.data;
+        if (codigo === "1") {
+          const newDataSource = results.map((noticia) => {
+            return {
+              key: noticia.id,
+              id: noticia.id,
+              titulo: noticia.title,
+              fechaCreacion: noticia.created_at,
+              // imagen: noticia.content_image,
+              imageBase64: noticia.image_base64,
+              imageExtension: noticia.image_extension,
+              lenguaje: noticia.language,
+              visualizacionHome: noticia.name_section,
+              marcarPrincipal: noticia.markMain,
+              contenido: noticia.content_html,
+            };
+          });
+
+          setDataSource(newDataSource);
+        }
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+      });
   }, []);
 
   const [fileCertificado, setFileCertificado] = useState([]);
@@ -139,7 +141,7 @@ const Noticias = () => {
       proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
     };
 
-    console.log(payload);
+    console.log(JSON.stringify(payload));
 
     let updateNoticias = dataSource;
 
@@ -149,6 +151,8 @@ const Noticias = () => {
           return {
             ...noticia,
             ...payload,
+            imageBase64: payload.imagen[0][0].base64,
+            imageExtension: payload.imagen[0][0].extension,
           };
         }
         return noticia;
@@ -156,22 +160,30 @@ const Noticias = () => {
     }
 
     if (procesoActual === "AGREGAR") {
-      const uuid = uuidv4();
-
-      updateNoticias = [
-        ...dataSource,
-        {
-          ...payload,
-          key: uuid,
-          id: uuid,
-          fechaCreacion: moment().format("DD-MM-YYYY"),
-        },
-      ];
+      ApiNoticias.insertNoticias(payload)
+        .then((response) => {
+          console.log(`response`, response);
+          if (response.data.codigo === "1") {
+            const uuid = uuidv4();
+            updateNoticias = [
+              ...dataSource,
+              {
+                ...payload,
+                imageBase64: payload.imagen[0][0].base64,
+                imageExtension: payload.imagen[0][0].extension,
+                key: uuid,
+                id: uuid,
+                fechaCreacion: moment().format("DD-MM-YYYY"),
+              },
+            ];
+            setDataSource(updateNoticias);
+            handleCancel();
+          }
+        })
+        .catch((error) => {
+          console.log(`error`, error);
+        });
     }
-
-    setDataSource(updateNoticias);
-
-    handleCancel();
   };
 
   const normFile = (e) => {
@@ -230,9 +242,11 @@ const Noticias = () => {
 
     setContenidoUpdate(noticiaUpdate.contenido);
 
-    if (noticiaUpdate.imagen[0]) {
+    if (noticiaUpdate.imageBase64 !== "") {
+      console.log(noticiaUpdate.imageExtension);
+      console.log(noticiaUpdate.imageBase64);
       setImageSrc(
-        `data:image/${noticiaUpdate.imagen[0][0].extension};base64,${noticiaUpdate.imagen[0][0].base64}`
+        `data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`
       );
     } else {
       setImageSrc("");
@@ -242,18 +256,17 @@ const Noticias = () => {
   };
 
   const handleDelete = (id) => {
-    console.log(id);
-    // setConfirmLoading(true);
-    // setTimeout(() => {
-    // setVisible(false);
-
-    // aqui el servicio para eliminar,, meter un loader,,? o dejar el mismo para que no sea tam invasivo,, o un mensaje chico
-    // que no ofusque toda la pantalla
-
-    setDataSource(dataSource.filter((noticia) => noticia.id !== id));
-
-    //   setConfirmLoading(false);
-    // }, 2000);
+    ApiNoticias.deteteNoticias({ id })
+      .then((response) => {
+        if (response.data.codigo === "1") {
+          setDataSource(dataSource.filter((noticia) => noticia.id !== id));
+        } else {
+          console.log("Error en peticion, codigo: " + response.data.codigo);
+        }
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+      });
   };
 
   const showPopconfirm = () => {
