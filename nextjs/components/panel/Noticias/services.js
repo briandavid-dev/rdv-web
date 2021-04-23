@@ -33,7 +33,7 @@ api.insertNoticias = (payload) => {
 
 api.updateNoticias = (payload) => {
   return request({
-    method: "UPDATE",
+    method: "PUT",
     url: "contenido/",
     data: payload,
   });

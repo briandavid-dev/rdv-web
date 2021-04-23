@@ -141,28 +141,42 @@ const Noticias = () => {
       proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
     };
 
-    console.log(JSON.stringify(payload));
-
     let updateNoticias = dataSource;
 
     if (procesoActual === "ACTUALIZAR") {
-      updateNoticias = dataSource.map((noticia) => {
-        if (noticia.id === values.id) {
-          return {
-            ...noticia,
-            ...payload,
-            imageBase64: payload.imagen[0][0].base64,
-            imageExtension: payload.imagen[0][0].extension,
-          };
-        }
-        return noticia;
-      });
+      ApiNoticias.updateNoticias(payload)
+        .then((response) => {
+          if (response.data.codigo === "1") {
+            updateNoticias = dataSource.map((noticia) => {
+              if (noticia.id === values.id) {
+                const imagen_ = {};
+                if (payload.imagen[0]) {
+                  imagen_.imageBase64 = payload.imagen[0][0].base64;
+                  imagen_.imageExtension = payload.imagen[0][0].extension;
+                }
+
+                return {
+                  ...noticia,
+                  ...payload,
+                  ...imagen_,
+                };
+              }
+              return noticia;
+            });
+
+            setDataSource(updateNoticias);
+            setFileCertificado([]);
+            handleCancel();
+          }
+        })
+        .catch((error) => {
+          console.log(`error`, error);
+        });
     }
 
     if (procesoActual === "AGREGAR") {
       ApiNoticias.insertNoticias(payload)
         .then((response) => {
-          console.log(`response`, response);
           if (response.data.codigo === "1") {
             const uuid = uuidv4();
             updateNoticias = [
@@ -177,6 +191,7 @@ const Noticias = () => {
               },
             ];
             setDataSource(updateNoticias);
+            setFileCertificado([]);
             handleCancel();
           }
         })
@@ -243,8 +258,6 @@ const Noticias = () => {
     setContenidoUpdate(noticiaUpdate.contenido);
 
     if (noticiaUpdate.imageBase64 !== "") {
-      console.log(noticiaUpdate.imageExtension);
-      console.log(noticiaUpdate.imageBase64);
       setImageSrc(
         `data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`
       );
