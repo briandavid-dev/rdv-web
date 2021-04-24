@@ -35,7 +35,7 @@ const MenuDesktop = () => {
   }
 
   useEffect(() => {
-    async function getX() {
+    /* async function getX() {
       console.log("Consultando...");
       axios
         .get("https://www.bmosoluciones.com/api-rdv/cc/")
@@ -46,7 +46,7 @@ const MenuDesktop = () => {
           console.log(`error`, error);
         });
     }
-    getX();
+    getX(); */
   }, []);
 
   const menu = {

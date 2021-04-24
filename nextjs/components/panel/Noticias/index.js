@@ -16,14 +16,10 @@ import {
   Radio,
   Popconfirm,
   Image,
+  Spin,
 } from "antd";
 const { Column } = Table;
-import {
-  UploadOutlined,
-  InboxOutlined,
-  DeleteTwoTone,
-  EditTwoTone,
-} from "@ant-design/icons";
+import { UploadOutlined, DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import dynamic from "next/dynamic";
 import ApiNoticias from "./services";
 
@@ -44,15 +40,17 @@ const stylesCss = css.global`
 const Noticias = () => {
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  // const [contenido, setContenido] = useState("");
   const [contenidoUpdate, setContenidoUpdate] = useState("");
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [dataSource, setDataSource] = useState();
   const [imageSrc, setImageSrc] = useState("");
   const [procesoActual, setProcesoActual] = useState("AGREGAR");
+  const [spinModal, setSpinModal] = useState(false);
+  const [spinListado, setSpinListado] = useState(false);
 
   useEffect(() => {
+    setSpinListado(true);
     ApiNoticias.getNoticias()
       .then((response) => {
         const { codigo, results } = response.data;
@@ -74,10 +72,12 @@ const Noticias = () => {
           });
 
           setDataSource(newDataSource);
+          setSpinListado(false);
         }
       })
       .catch((error) => {
         console.log(`error`, error);
+        setSpinListado(false);
       });
   }, []);
 
@@ -144,6 +144,7 @@ const Noticias = () => {
     let updateNoticias = dataSource;
 
     if (procesoActual === "ACTUALIZAR") {
+      setSpinModal(true);
       ApiNoticias.updateNoticias(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
@@ -167,14 +168,17 @@ const Noticias = () => {
             setDataSource(updateNoticias);
             setFileCertificado([]);
             handleCancel();
+            setSpinModal(false);
           }
         })
         .catch((error) => {
           console.log(`error`, error);
+          setSpinModal(false);
         });
     }
 
     if (procesoActual === "AGREGAR") {
+      setSpinModal(true);
       ApiNoticias.insertNoticias(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
@@ -193,10 +197,12 @@ const Noticias = () => {
             setDataSource(updateNoticias);
             setFileCertificado([]);
             handleCancel();
+            setSpinModal(false);
           }
         })
         .catch((error) => {
           console.log(`error`, error);
+          setSpinModal(false);
         });
     }
   };
@@ -253,6 +259,7 @@ const Noticias = () => {
       titulo: noticiaUpdate.titulo,
       marcarPrincipal: noticiaUpdate.marcarPrincipal,
       visualizacionHome: noticiaUpdate.visualizacionHome,
+      summary: noticiaUpdate.summary,
     });
 
     setContenidoUpdate(noticiaUpdate.contenido);
@@ -269,6 +276,7 @@ const Noticias = () => {
   };
 
   const handleDelete = (id) => {
+    setSpinListado(true);
     ApiNoticias.deteteNoticias({ id })
       .then((response) => {
         if (response.data.codigo === "1") {
@@ -276,9 +284,11 @@ const Noticias = () => {
         } else {
           console.log("Error en peticion, codigo: " + response.data.codigo);
         }
+        setSpinListado(false);
       })
       .catch((error) => {
         console.log(`error`, error);
+        setSpinListado(false);
       });
   };
 
@@ -296,40 +306,42 @@ const Noticias = () => {
       </Button>
       <br />
       <br />
-      <Table dataSource={dataSource} pagination={false}>
-        {/* <Column title="id" dataIndex="id" key="id" /> */}
-        <Column title="Titulo" dataIndex="titulo" key="titulo" />
-        <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
-        <Column
-          title="Fecha de Creación"
-          dataIndex="fechaCreacion"
-          key="fechaCreacion"
-        />
-        <Column
-          title="Opciones"
-          key="opciones"
-          render={(text, record) => (
-            <Space size="middle">
-              <EditTwoTone
-                onClick={() => {
-                  handleEdit(record.id);
-                }}
-              />
-              <Popconfirm
-                title="¿Seguro de eliminar este contenido？"
-                okText="Si"
-                cancelText="No"
-                onConfirm={() => {
-                  handleDelete(record.id);
-                }}
-                okButtonProps={{ loading: confirmLoading }}
-              >
-                <DeleteTwoTone onClick={showPopconfirm} />
-              </Popconfirm>
-            </Space>
-          )}
-        />
-      </Table>
+      <Spin spinning={spinListado}>
+        <Table dataSource={dataSource} pagination={false}>
+          {/* <Column title="id" dataIndex="id" key="id" /> */}
+          <Column title="Titulo" dataIndex="titulo" key="titulo" />
+          <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
+          <Column
+            title="Fecha de Creación"
+            dataIndex="fechaCreacion"
+            key="fechaCreacion"
+          />
+          <Column
+            title="Opciones"
+            key="opciones"
+            render={(text, record) => (
+              <Space size="middle">
+                <EditTwoTone
+                  onClick={() => {
+                    handleEdit(record.id);
+                  }}
+                />
+                <Popconfirm
+                  title="¿Seguro de eliminar este contenido？"
+                  okText="Si"
+                  cancelText="No"
+                  onConfirm={() => {
+                    handleDelete(record.id);
+                  }}
+                  okButtonProps={{ loading: confirmLoading }}
+                >
+                  <DeleteTwoTone onClick={showPopconfirm} />
+                </Popconfirm>
+              </Space>
+            )}
+          />
+        </Table>
+      </Spin>
 
       <Modal
         title={
@@ -346,170 +358,191 @@ const Noticias = () => {
         width={1000}
         centered
       >
-        <div>
-          <Form {...layout} onFinish={onFinish} form={form}>
-            <Form.Item name="id" hidden={true}>
-              <Input type="text" />
-            </Form.Item>
-            <Row gutter={(40, 40)}>
-              <Col lg={24}>
-                <Form.Item
-                  label={<strong>Lenguaje</strong>}
-                  name="lenguaje"
-                  rules={[{ required: true, message: "Ingrese el lenguaje" }]}
-                >
-                  <Select placeholder="Seleccione" allowClear>
-                    <Select.Option value="es">Español</Select.Option>
-                    <Select.Option value="en">Inglés</Select.Option>
-                  </Select>
-                </Form.Item>
-              </Col>
+        <Spin spinning={spinModal} delay={500}>
+          <div>
+            <Form {...layout} onFinish={onFinish} form={form}>
+              <Form.Item name="id" hidden={true}>
+                <Input type="text" />
+              </Form.Item>
+              <Row gutter={(40, 40)}>
+                <Col lg={24}>
+                  <Form.Item
+                    label={<strong>Lenguaje</strong>}
+                    name="lenguaje"
+                    rules={[{ required: true, message: "Ingrese el lenguaje" }]}
+                  >
+                    <Select placeholder="Seleccione" allowClear>
+                      <Select.Option value="es">Español</Select.Option>
+                      <Select.Option value="en">Inglés</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
 
-              <Col lg={24}>
-                <Form.Item
-                  label={<strong>Titulo</strong>}
-                  name="titulo"
-                  rules={[
-                    { required: true, message: "Ingrese el titulo" },
-                    { min: 10, message: "Mínimo 10 caracteres" },
-                  ]}
-                >
-                  <Input maxLength={50} />
-                </Form.Item>
-              </Col>
+                <Col lg={24}>
+                  <Form.Item
+                    label={<strong>Titulo</strong>}
+                    name="titulo"
+                    rules={[
+                      { required: true, message: "Ingrese el titulo" },
+                      { min: 10, message: "Mínimo 10 caracteres" },
+                    ]}
+                  >
+                    <Input maxLength={100} />
+                  </Form.Item>
+                </Col>
 
-              <Col lg={24}>
-                <Form.Item
-                  label={<strong>Imagen</strong>}
-                  name="imagen"
-                  valuePropName="fileList"
-                  getValueFromEvent={normFile}
-                  extra={
-                    <span>
-                      Imágenes jpg o png de <strong>800px x 800px</strong> (no
-                      superior a 500 KB)
-                    </span>
-                  }
-                  rules={[
-                    {
-                      required: imageSrc !== "" ? false : true,
-                      message: "Adjunte un imagen",
-                    },
-                  ]}
-                >
-                  {/* <Upload name="logo" action="/upload.do" listType="picture">
+                <Col lg={24}>
+                  <Form.Item
+                    label={<strong>Resumen</strong>}
+                    name="summary"
+                    rules={[
+                      { required: true, message: "Ingrese el resumen" },
+                      { min: 100, message: "Mínimo 100 caracteres" },
+                    ]}
+                  >
+                    <Input maxLength={500} />
+                  </Form.Item>
+                </Col>
+
+                <Col lg={24}>
+                  <Form.Item
+                    label={<strong>Imagen</strong>}
+                    name="imagen"
+                    valuePropName="fileList"
+                    getValueFromEvent={normFile}
+                    extra={
+                      <span>
+                        Imágenes jpg o png de <strong>800px x 800px</strong> (no
+                        superior a 500 KB)
+                      </span>
+                    }
+                    rules={[
+                      {
+                        required: imageSrc !== "" ? false : true,
+                        message: "Adjunte un imagen",
+                      },
+                    ]}
+                  >
+                    {/* <Upload name="logo" action="/upload.do" listType="picture">
                     <Button icon={<UploadOutlined />}>
                       Click para adjuntar
                     </Button>
                   </Upload> */}
 
-                  <Upload
-                    name="fileCertificado"
-                    accept=".jpg, .jpeg, .png"
-                    listType="picture"
-                    // showUploadList={false}
-                    beforeUpload={(file) => handleBeforeUploadCertificado(file)}
-                    onRemove={handleRemoveFileClickCertificado}
-                    fileList={fileCertificado}
-                  >
-                    <Button icon={<UploadOutlined />}>
-                      Click para adjuntar
-                    </Button>
+                    <Upload
+                      name="fileCertificado"
+                      accept=".jpg, .jpeg, .png"
+                      listType="picture"
+                      // showUploadList={false}
+                      beforeUpload={(file) =>
+                        handleBeforeUploadCertificado(file)
+                      }
+                      onRemove={handleRemoveFileClickCertificado}
+                      fileList={fileCertificado}
+                    >
+                      <Button icon={<UploadOutlined />}>
+                        Click para adjuntar
+                      </Button>
 
-                    {showSizeMessageCertificado && (
-                      <div
-                        className="afiliacion-datos-personales__size-message "
-                        style={{ color: "red" }}
-                      >
-                        El archivo no debe pesar más de 500 KB.
-                      </div>
-                    )}
-                  </Upload>
-                </Form.Item>
-                {imageSrc !== "" && (
-                  <div
-                    style={{
-                      boder: "1px solid #D9D9D9",
-                      padding: "0.5rem",
-                    }}
-                  >
-                    <Image
-                      width={100}
-                      height={100}
-                      src={imageSrc}
-                      fallback="data:image/png;base64,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"
-                    />
-                  </div>
-                )}
-              </Col>
-              <Col lg={24}>
-                <Form.Item
-                  label={<strong>Tipo de visualización en el Home</strong>}
-                  name="visualizacionHome"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Ingrese el Tipo de visualización en el Home",
-                    },
-                  ]}
-                >
-                  <Select placeholder="Seleccione" allowClear>
-                    <Select.Option value="circulo">Circulo</Select.Option>
-                    <Select.Option value="cuadro">Cuadro</Select.Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-              <Col lg={24}>
-                <Form.Item
-                  name="marcarPrincipal"
-                  label={
-                    <span>
-                      <strong>¿Desea marcar como principal?</strong> <br />
-                      <small>
-                        Si selecciona 'Si' se agregará como noticias principal
-                        en el home (el cuadro grande)
-                      </small>
-                    </span>
-                  }
-                  rules={[
-                    {
-                      required: true,
-                      message: "Seleccione si o no",
-                    },
-                  ]}
-                >
-                  <Radio.Group>
-                    <Radio value="S">Si</Radio>
-                    <Radio value="N">No</Radio>
-                  </Radio.Group>
-                </Form.Item>
-              </Col>
-              <Col lg={24}>
-                <strong>Contenido:</strong> &nbsp;&nbsp;
-              </Col>
-              <Col lg={24}>
-                <br />
-                <Editor
-                  data={contenidoUpdate}
-                  actions={{ setContenidoUpdate }}
-                />
-              </Col>
-              <Col lg={24} style={{ textAlign: "center" }}>
-                <br />
-                <br />
-                <Button onClick={handleCancel}>Volver</Button>
-                {"  "}
-                <Button type="primary" htmlType="submit">
-                  {procesoActual === "ACTUALIZAR" ? (
-                    <span>Actualizar</span>
-                  ) : (
-                    <span>Agregar</span>
+                      {showSizeMessageCertificado && (
+                        <div
+                          className="afiliacion-datos-personales__size-message "
+                          style={{ color: "red" }}
+                        >
+                          El archivo no debe pesar más de 500 KB.
+                        </div>
+                      )}
+                    </Upload>
+                  </Form.Item>
+                  {imageSrc !== "" && (
+                    <div
+                      style={{
+                        boder: "1px solid #D9D9D9",
+                        padding: "0.5rem",
+                      }}
+                    >
+                      <Image
+                        width={100}
+                        height={100}
+                        src={imageSrc}
+                        fallback="data:image/png;base64,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"
+                      />
+                    </div>
                   )}
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </div>
+                </Col>
+                <Col lg={24}>
+                  <Form.Item
+                    label={<strong>Tipo de visualización en el Home</strong>}
+                    name="visualizacionHome"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Ingrese el Tipo de visualización en el Home",
+                      },
+                    ]}
+                  >
+                    <Select placeholder="Seleccione" allowClear>
+                      <Select.Option value="circulo">Circulo</Select.Option>
+                      <Select.Option value="cuadro">Cuadro</Select.Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col lg={24}>
+                  {/* <Form.Item
+                    name="marcarPrincipal"
+                    label={
+                      <span>
+                        <strong>¿Desea marcar como principal?</strong> <br />
+                        <small>
+                          Si selecciona 'Si' se agregará como noticias principal
+                          en el home (el cuadro grande)
+                        </small>
+                      </span>
+                    }
+                    rules={[
+                      {
+                        required: true,
+                        message: "Seleccione si o no",
+                      },
+                    ]}
+                  >
+                    <Radio.Group>
+                      <Radio value="S">Si</Radio>
+                      <Radio value="N">No</Radio>
+                    </Radio.Group>
+                  </Form.Item> */}
+
+                  <Form.Item name="marcarPrincipal" hidden={true}>
+                    <Input type="text" />
+                  </Form.Item>
+                </Col>
+                <Col lg={24}>
+                  <strong>Contenido:</strong> &nbsp;&nbsp;
+                </Col>
+                <Col lg={24}>
+                  <br />
+                  <Editor
+                    data={contenidoUpdate}
+                    actions={{ setContenidoUpdate }}
+                  />
+                </Col>
+                <Col lg={24} style={{ textAlign: "center" }}>
+                  <br />
+                  <br />
+                  <Button onClick={handleCancel}>Volver</Button>
+                  {"  "}
+                  <Button type="primary" htmlType="submit">
+                    {procesoActual === "ACTUALIZAR" ? (
+                      <span>Actualizar</span>
+                    ) : (
+                      <span>Agregar</span>
+                    )}
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
+        </Spin>
       </Modal>
     </div>
   );

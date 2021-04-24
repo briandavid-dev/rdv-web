@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { Skeleton } from "antd";
 import Head from "next/head";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
@@ -5,6 +7,7 @@ import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+import ApiHome from "../pagesServices/home";
 
 const stylesCss = css.global`
   .seccion2 h1 {
@@ -97,6 +100,26 @@ export default function Home() {
     lang = "en";
   }
   const strings = { es, en };
+
+  const [dataNoticias, setDataNoticias] = useState([]);
+  const [dataNoticiasLoading, setDataNoticiasLoading] = useState(false);
+
+  useEffect(() => {
+    console.log(`lang`, lang);
+    setDataNoticiasLoading(true);
+    ApiHome.getHomeNoticias(lang)
+      .then((response) => {
+        const { codigo, results } = response.data;
+        if (codigo === "1") {
+          setDataNoticias(results);
+        }
+        setDataNoticiasLoading(false);
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+        setDataNoticiasLoading(false);
+      });
+  }, []);
 
   return (
     <div>
@@ -490,104 +513,87 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-md-4">
-              <div className="mb-4 text-center">
-                <h3>Los 80 años de un ron</h3>
-              </div>
-              <div className="noticias_img">
-                <img
-                  src="./assets/imgs/home/NOTICIAS-FOTO-BARRILES.png"
-                  style={{ maxWidth: "90%" }}
-                />
-              </div>
+            <Skeleton loading={dataNoticiasLoading} active>
+              {dataNoticias.circulo &&
+                dataNoticias.circulo.length > 0 &&
+                dataNoticias.circulo.map((noticia) => {
+                  const imageSrc = `data:image/${noticia.image_extension};base64,${noticia.image_base64}`;
 
-              <div className="mt-4 text-center noticias_cuadro">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
-              </div>
-            </div>
+                  return (
+                    <div className="col-md-4" key={noticia.id}>
+                      <div className="mb-4 text-center">
+                        <h3>{noticia.title}</h3>
+                      </div>
+                      <div className="noticias_img">
+                        <img src={imageSrc} style={{ maxWidth: "90%" }} />
+                      </div>
 
-            <div className="col-md-4">
-              <div className="mb-4 text-center">
-                <h3>Las delicias del monte</h3>
-              </div>
-              <div className="noticias_img">
-                <img
-                  src="./assets/imgs/home/NOTICIAS-FOTO-PAMPERO.png"
-                  style={{ maxWidth: "90%" }}
-                />
-              </div>
-              <div className="mt-4 text-center noticias_cuadro">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
-              </div>
-            </div>
-
-            <div className="col-md-4">
-              <div className="mb-4 text-center">
-                <h3>Increiblemente estabamos</h3>
-              </div>
-              <div className="noticias_img">
-                <img
-                  src="./assets/imgs/home/NOTICIAS-FOTO-CARUPANO.png"
-                  style={{ maxWidth: "90%" }}
-                />
-              </div>
-              <div className="mt-4 text-center noticias_cuadro">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
-              </div>
-            </div>
+                      <div className="mt-4 text-center noticias_cuadro">
+                        {noticia.summary}
+                      </div>
+                    </div>
+                  );
+                })}
+            </Skeleton>
           </div>
         </div>
 
         <div className="container mt-5">
-          <div className="row">
-            <div className="col-md-6">
-              <img
-                src="./assets/imgs/home/FOTO-POST-REDES-PRINCIPAL.png"
-                className="post_img_principal"
-              />
-            </div>
-            <div className="col-md-3">
+          <Skeleton loading={dataNoticiasLoading} active>
+            {dataNoticias.cuadro && dataNoticias.cuadro.length > 0 && (
               <div className="row">
-                <div className="col-md-12 mb-4">
-                  <img
-                    src="./assets/imgs/home/FOTO-POST-REDES-SEGUNDA.png"
-                    className="post_img_principal"
-                  />
+                <div className="col-md-6">
+                  {dataNoticias.cuadro[0] && (
+                    <img
+                      // src={"./assets/imgs/home/FOTO-POST-REDES-PRINCIPAL.png"}
+                      src={`data:image/${dataNoticias.cuadro[0].image_extension};base64,${dataNoticias.cuadro[0].image_base64}`}
+                      className="post_img_principal"
+                    />
+                  )}
                 </div>
-                <div className="col-md-12">
-                  <img
-                    src="./assets/imgs/home/FOTO-POST-REDES-CUARTA.png"
-                    className="post_img_principal"
-                  />
+                <div className="col-md-3">
+                  <div className="row">
+                    <div className="col-md-12 mb-4">
+                      {dataNoticias.cuadro[1] && (
+                        <img
+                          src={`data:image/${dataNoticias.cuadro[1].image_extension};base64,${dataNoticias.cuadro[1].image_base64}`}
+                          className="post_img_principal"
+                        />
+                      )}
+                    </div>
+                    <div className="col-md-12">
+                      {dataNoticias.cuadro[2] && (
+                        <img
+                          src={`data:image/${dataNoticias.cuadro[2].image_extension};base64,${dataNoticias.cuadro[2].image_base64}`}
+                          className="post_img_principal"
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-3">
+                  <div className="row">
+                    <div className="col-md-12 mb-4">
+                      {dataNoticias.cuadro[3] && (
+                        <img
+                          src={`data:image/${dataNoticias.cuadro[3].image_extension};base64,${dataNoticias.cuadro[3].image_base64}`}
+                          className="post_img_principal"
+                        />
+                      )}
+                    </div>
+                    <div className="col-md-12">
+                      {dataNoticias.cuadro[4] && (
+                        <img
+                          src={`data:image/${dataNoticias.cuadro[4].image_extension};base64,${dataNoticias.cuadro[4].image_base64}`}
+                          className="post_img_principal"
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-md-3">
-              <div className="row">
-                <div className="col-md-12 mb-4">
-                  <img
-                    src="./assets/imgs/home/FOTO-POST-REDES-TERCERA.png"
-                    className="post_img_principal"
-                  />
-                </div>
-                <div className="col-md-12">
-                  <img
-                    src="./assets/imgs/home/FOTO-POST-REDES-QUINTA.png"
-                    className="post_img_principal"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+            )}
+          </Skeleton>
         </div>
 
         <div className="container">

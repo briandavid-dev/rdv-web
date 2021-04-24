@@ -1,10 +1,4 @@
-import axios from "axios";
-
-const config = {
-  baseURL: "https://www.bmosoluciones.com/services-rdv/",
-  // "Content-Type": "application/json",
-};
-const request = axios.create(config);
+import request from "../../../config/request";
 
 const api = {};
 
