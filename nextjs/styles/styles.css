@@ -5,11 +5,21 @@
   --color-fondo-cajitas: #745537;
 }
 
+@font-face {
+  font-family: "AGaramondPro";
+  src: url("/fonts/AGaramondPro-Regular.otf");
+  font-style: normal;
+  /* font-weight: 400; */
+  font-display: swap;
+}
+
 body {
   background-color: var(--color-fondo);
   color: var(--color-letra);
-  font-family: "Shippori Mincho", serif;
+  /* font-family: "Shippori Mincho", serif; */
+  font-family: "AGaramondPro", "Shippori Mincho", serif;
   background-color: #62452d;
+  font-size: 16px;
 }
 
 h1,
