@@ -1,7 +1,8 @@
+import { useState } from "react";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { Button, Input, Form, Row, Col, notification } from "antd";
+import { Button, Input, Form, Row, Col, notification, Spin } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import ApiUser from "../../components/panel/User/services";
 
@@ -31,23 +32,16 @@ const stylesCss = css.global`
 const login = () => {
   const [form] = Form.useForm();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const formItemLayout = {
     labelCol: { span: 24 },
     wrapperCol: { span: 24 },
   };
 
-  const openNotificationWithIcon = (type) => {
-    notification[type]({
-      message: "Notification Title",
-      description:
-        "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
-    });
-  };
-
   const notifica = (mensaje) => {
     notification["warning"]({
-      message: "Hola !",
+      message: "Hola",
       description: mensaje,
     });
   };
@@ -58,9 +52,9 @@ const login = () => {
       password: values.clave,
     };
 
+    setLoading(true);
     ApiUser.login(payload)
       .then((response) => {
-        console.log(response);
         const { codigo, token, mensaje } = response.data;
         if (codigo === "1") {
           window.sessionStorage.setItem("token", token);
@@ -69,9 +63,11 @@ const login = () => {
         if (codigo === "0") {
           notifica(mensaje);
         }
+        setLoading(false);
       })
       .catch((error) => {
         console.log(`error`, error);
+        setLoading(false);
       });
   };
 
@@ -117,55 +113,57 @@ const login = () => {
             // height: "500px",
           }}
         >
-          <Form
-            form={form}
-            style={{ marginTop: "2rem" }}
-            {...formItemLayout}
-            onFinish={onFinish}
-          >
-            <Row type="flex" justify="center">
-              <Col lg={20}>
-                <Form.Item
-                  label={<strong>Email</strong>}
-                  name="email"
-                  rules={[
-                    { required: true, message: "Ingrese el email" },
-                    { type: "email", message: "Ingrese un email valido" },
-                  ]}
-                >
-                  <Input
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                  />
+          <Spin spinning={loading}>
+            <Form
+              form={form}
+              style={{ marginTop: "2rem" }}
+              {...formItemLayout}
+              onFinish={onFinish}
+            >
+              <Row type="flex" justify="center">
+                <Col lg={20}>
+                  <Form.Item
+                    label={<strong>Email</strong>}
+                    name="email"
+                    rules={[
+                      { required: true, message: "Ingrese el email" },
+                      { type: "email", message: "Ingrese un email valido" },
+                    ]}
+                  >
+                    <Input
+                      prefix={<UserOutlined className="site-form-item-icon" />}
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    label={<strong>Clave</strong>}
+                    name="clave"
+                    rules={[{ required: true, message: "Ingrese la clave" }]}
+                  >
+                    <Input
+                      prefix={<LockOutlined className="site-form-item-icon" />}
+                      type="password"
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <div style={{ textAlign: "center" }}>
+                <Form.Item>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    disabled={
+                      !form.isFieldsTouched(true) ||
+                      !!form
+                        .getFieldsError()
+                        .filter(({ errors }) => errors.length).length
+                    }
+                  >
+                    Iniciar Sesión
+                  </Button>
                 </Form.Item>
-                <Form.Item
-                  label={<strong>Clave</strong>}
-                  name="clave"
-                  rules={[{ required: true, message: "Ingrese la clave" }]}
-                >
-                  <Input
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    type="password"
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-            <div style={{ textAlign: "center" }}>
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  disabled={
-                    !form.isFieldsTouched(true) ||
-                    !!form
-                      .getFieldsError()
-                      .filter(({ errors }) => errors.length).length
-                  }
-                >
-                  Iniciar Sesión
-                </Button>
-              </Form.Item>
-            </div>
-          </Form>
+              </div>
+            </Form>
+          </Spin>
         </div>
       </div>
     </>
