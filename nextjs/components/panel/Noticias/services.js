@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const config = {
-  baseURL: "https://www.bmosoluciones.com/api-rdv/",
+  baseURL: "https://www.bmosoluciones.com/services-rdv/",
   // "Content-Type": "application/json",
 };
 const request = axios.create(config);
