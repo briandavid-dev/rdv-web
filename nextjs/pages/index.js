@@ -105,7 +105,6 @@ export default function Home() {
   const [dataNoticiasLoading, setDataNoticiasLoading] = useState(false);
 
   useEffect(() => {
-    console.log(`lang`, lang);
     setDataNoticiasLoading(true);
     ApiHome.getHomeNoticias(lang)
       .then((response) => {
@@ -119,7 +118,7 @@ export default function Home() {
         console.log(`error`, error);
         setDataNoticiasLoading(false);
       });
-  }, []);
+  }, [lang]);
 
   return (
     <div>
