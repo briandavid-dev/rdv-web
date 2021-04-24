@@ -1,13 +1,14 @@
-import React, { useState } from "react";
 import css from "styled-jsx/css";
+import { useRouter } from "next/router";
 import Head from "next/head";
-import { Button, Input, Form, Row, Col } from "antd";
+import { Button, Input, Form, Row, Col, notification } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import ApiUser from "../../components/panel/User/services";
 
 const stylesCss = css.global`
   body {
-    color: #62452d;
+    font-family: var(--bs-font-sans-serif);
+    color: #62452d !important;
   }
   .site-layout-content {
     min-height: 280px;
@@ -29,10 +30,26 @@ const stylesCss = css.global`
 
 const login = () => {
   const [form] = Form.useForm();
+  const router = useRouter();
 
   const formItemLayout = {
     labelCol: { span: 24 },
     wrapperCol: { span: 24 },
+  };
+
+  const openNotificationWithIcon = (type) => {
+    notification[type]({
+      message: "Notification Title",
+      description:
+        "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
+    });
+  };
+
+  const notifica = (mensaje) => {
+    notification["warning"]({
+      message: "Hola !",
+      description: mensaje,
+    });
   };
 
   const onFinish = (values) => {
@@ -47,9 +64,10 @@ const login = () => {
         const { codigo, token, mensaje } = response.data;
         if (codigo === "1") {
           window.sessionStorage.setItem("token", token);
+          router.push("/panel/noticias");
         }
         if (codigo === "0") {
-          console.log(mensaje);
+          notifica(mensaje);
         }
       })
       .catch((error) => {
