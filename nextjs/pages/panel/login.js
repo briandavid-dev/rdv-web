@@ -129,8 +129,10 @@ const login = () => {
                       { required: true, message: "Ingrese el email" },
                       { type: "email", message: "Ingrese un email valido" },
                     ]}
+                    autoFocus
                   >
                     <Input
+                      autoFocus
                       prefix={<UserOutlined className="site-form-item-icon" />}
                     />
                   </Form.Item>

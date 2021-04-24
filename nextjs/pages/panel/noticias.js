@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import css from "styled-jsx/css";
 import Head from "next/head";
-import { Button, Input, Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu, Breadcrumb } from "antd";
 import Noticias from "../../components/panel/Noticias";
 const { Header, Content, Footer } = Layout;
 
@@ -28,6 +29,14 @@ const stylesCss = css.global`
 `;
 
 const ant = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!window.sessionStorage.getItem("token")) {
+      router.push("/panel/login");
+    }
+  }, []);
+
   return (
     <>
       <style jsx global>
