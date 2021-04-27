@@ -7,17 +7,23 @@ import es from "../lang/es";
 import en from "../lang/en";
 
 const stylesCss = css.global`
+  body {
+    background-color: var(--color-fondo-secondary);
+    background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
+    background-image: url("/assets/imgs/historia/FONDO-NUESTRA-HISTORIA.jpg");
+    background-size: cover;
+  }
   .SeccionHistoria1 {
     padding-top: 7rem;
-    background-color: #4e3c2d;
+    /*  background-color: #4e3c2d; */
   }
   .SeccionHistoria2 {
     padding-top: 2rem;
-    background-color: #62462c;
+    /*  background-color: #62462c; */
   }
   .SeccionHistoria3 {
     padding-top: 2rem;
-    background: linear-gradient(to top, #62462c 50%, #4e3c2d 50%);
+    /* background: linear-gradient(to top, #62462c 50%, #4e3c2d 50%); */
   }
   .SeccionHistoria1 .titulo {
     display: flex;
@@ -107,15 +113,27 @@ export default function Historia() {
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <img
                   src="./assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
-                  style={{ maxWidth: "250px", margin: "2rem" }}
+                  style={{
+                    maxWidth: "250px",
+                    maxHeight: "250px",
+                    margin: "2rem",
+                  }}
                 />
                 <img
                   src="./assets/imgs/historia/BARRICAS.png"
-                  style={{ maxWidth: "250px", margin: "2rem" }}
+                  style={{
+                    maxWidth: "250px",
+                    maxHeight: "250px",
+                    margin: "2rem",
+                  }}
                 />
                 <img
-                  src="./assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
-                  style={{ maxWidth: "250px", margin: "2rem" }}
+                  src="./assets/imgs/historia/LOGO.png"
+                  style={{
+                    maxWidth: "250px",
+                    maxHeight: "250px",
+                    margin: "2rem",
+                  }}
                 />
               </div>
             </div>

@@ -10,13 +10,20 @@ import en from "../lang/en";
 import ApiHome from "../pagesServices/home";
 
 const stylesCss = css.global`
+  body {
+    background-color: var(--color-fondo-secondary);
+    background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
+    background-image: url("/assets/imgs/home/FONDO-INICIO.jpg");
+    background-size: cover;
+  }
+
   .seccion2 h1 {
     background-color: #4d341f;
     text-align: center;
     padding: 1rem;
   }
   .seccion2 {
-    background-color: var(--color-fondo-secondary);
+    /* background-color: var(--color-fondo-secondary); */
     padding: 4rem 0 4rem 0;
     font-size: 18px;
     position: relative;
@@ -32,7 +39,7 @@ const stylesCss = css.global`
   .SeccionEmpresas {
     position: relative;
     top: -220px;
-    background-color: var(--color-fondo-secondary);
+    /* background-color: var(--color-fondo-secondary); */
   }
   .SeccionEmpresas .titulo {
     display: flex;
@@ -43,7 +50,7 @@ const stylesCss = css.global`
   .SeccionMaestrosRoneros {
     position: relative;
     top: -220px;
-    background-color: var(--color-fondo-secondary);
+    /* background-color: var(--color-fondo-secondary); */
   }
   .SeccionMaestrosRoneros .titulo {
     display: flex;
@@ -54,7 +61,7 @@ const stylesCss = css.global`
   .SeccionNoticias {
     position: relative;
     top: -220px;
-    background-color: var(--color-fondo-secondary);
+    /* background-color: var(--color-fondo-secondary); */
   }
   .SeccionNoticias .titulo {
     display: flex;
@@ -247,16 +254,10 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mb-1">
-              <div className="titulo">
-                <img
-                  src="./assets/imgs/home/linea2.png"
-                  style={{ height: "8px" }}
-                />
+              <div className="seccion_titulo">
+                <img src="./assets/imgs/home/linea2.png" className="linea1" />
                 <h1>{strings[lang].empresas}</h1>
-                <img
-                  src="./assets/imgs/home/linea1.png"
-                  style={{ height: "8px" }}
-                />
+                <img src="./assets/imgs/home/linea1.png" className="linea2" />
               </div>
             </div>
             <div className="col-md-3"></div>
