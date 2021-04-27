@@ -545,4 +545,8 @@ strings.Page404 = {
   pageTitle: `Ups ! | Ron de Venezuela`,
 };
 
+strings.articulos = {
+  pageTitle: `Noticias | Rum from Venezuela`,
+};
+
 export default strings;
