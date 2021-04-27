@@ -18,7 +18,7 @@ body {
   color: var(--color-letra);
   /* font-family: "Shippori Mincho", serif; */
   font-family: "AGaramondPro", "Shippori Mincho", serif;
-  background-color: #62452d;
+  background-color: var(--color-fondo-secondary);
   font-size: 16px;
 }
 

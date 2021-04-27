@@ -8,8 +8,6 @@ import en from "../lang/en";
 
 const stylesCss = css.global`
   body {
-    background-color: var(--color-fondo-secondary);
-    background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
     background-image: url("/assets/imgs/historia/FONDO-NUESTRA-HISTORIA.jpg");
     background-size: cover;
   }

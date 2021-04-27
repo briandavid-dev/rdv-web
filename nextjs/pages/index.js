@@ -11,8 +11,6 @@ import ApiHome from "../pagesServices/home";
 
 const stylesCss = css.global`
   body {
-    background-color: var(--color-fondo-secondary);
-    background: linear-gradient(to top, #62462c 10%, #4e3c2d 50%);
     background-image: url("/assets/imgs/home/FONDO-INICIO.jpg");
     background-size: cover;
   }
@@ -511,6 +509,7 @@ export default function Home() {
                   style={{ height: "8px" }}
                 />
               </div>
+              <br />
             </div>
 
             <Skeleton loading={dataNoticiasLoading} active>
