@@ -8,7 +8,6 @@ import en from "../lang/en";
 
 const stylesCss = css.global`
   .Seccion0Gente {
-    /* background-image: url("./../public/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg"); */
     background-image: url("/assets/imgs/gente/NUESTRA-GENTE-FONDO.jpg");
     background-size: 100%;
   }
