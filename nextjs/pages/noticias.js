@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { Card, Row, Col, Affix } from "antd";
+import { Card, Row, Col, Affix, Skeleton } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
@@ -24,7 +24,10 @@ const PageNoticias = () => {
   const strings = { es, en };
 
   const [offsetTop, setOffsetTop] = useState(0);
+  const [dataNoticia, setDataNoticia] = useState([]);
   const [dataNoticias, setDataNoticias] = useState([]);
+  const [dataNoticiaLoading, setDataNoticiaLoading] = useState(false);
+  const [dataNoticiasLoading, setDataNoticiasLoading] = useState(false);
 
   const revisaHeigth = () => {
     const offsetHeight = document.querySelector(".calculateHeigth")
@@ -33,32 +36,62 @@ const PageNoticias = () => {
   };
 
   const getNoticiasListado = (lang) => {
+    setDataNoticiasLoading(true);
     ApiNoticias.getNoticiasListado(lang)
       .then((response) => {
         console.log(`response`, response);
         const { codigo, results } = response.data;
         if (codigo === "1") {
           setDataNoticias(results);
-          revisaHeigth();
         }
         if (codigo === "0") {
           console.log(`error `, codigo);
         }
+        setDataNoticiasLoading(false);
       })
       .catch((error) => {
         console.log(`error`, error);
+        setDataNoticiasLoading(false);
+      });
+
+    setDataNoticiaLoading(true);
+    ApiNoticias.getNoticiasUltima(lang)
+      .then((response) => {
+        console.log(`response`, response);
+        const { codigo, results } = response.data;
+        if (codigo === "1") {
+          setDataNoticia(results);
+        }
+        if (codigo === "0") {
+          console.log(`error `, codigo);
+        }
+        setDataNoticiaLoading(false);
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+        setDataNoticiaLoading(false);
       });
   };
 
-  useEffect(() => {
-    revisaHeigth();
-
+  /*  useEffect(() => {
     if (window.location.href.includes("lang=es")) {
       getNoticiasListado("es");
     } else if (window.location.href.includes("lang=en")) {
       getNoticiasListado("en");
     }
-  }, []);
+  }, []); */
+
+  useEffect(() => {
+    if (window.location.href.includes("lang=es")) {
+      getNoticiasListado("es");
+    } else if (window.location.href.includes("lang=en")) {
+      getNoticiasListado("en");
+    }
+  }, [lang]);
+
+  useEffect(() => {
+    revisaHeigth();
+  }, [dataNoticia]);
 
   return (
     <>
@@ -91,24 +124,30 @@ const PageNoticias = () => {
           <Col xs={22} lg={14}>
             <Row className="font_20">
               <Col>
+                {dataNoticiaLoading && <Skeleton active />}
+
                 <div className="calculateHeigth">
-                  {dataNoticias.length > 0 && (
+                  {dataNoticia.length > 0 && (
                     <Affix
                       offsetTop={-offsetTop}
                       // offsetBottom={100}
                     >
-                      <h1>{dataNoticias[0].title}</h1>
+                      <h1>{dataNoticia[0].title}</h1>
                       <br />
                       <img
                         alt="example"
-                        src={`data:image/${dataNoticias[0].image_extension};base64,${dataNoticias[0].image_base64}`}
+                        src={`data:image/${dataNoticia[0].image_extension};base64,${dataNoticia[0].image_base64}`}
                         // height={800}
                         width={800}
                         style={{ maxWidth: "100%" }}
                       />
                       <br />
                       <br />
-                      {dataNoticias[0].content_html}
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: dataNoticia[0].content_html,
+                        }}
+                      ></div>
                     </Affix>
                   )}
                 </div>
@@ -116,25 +155,27 @@ const PageNoticias = () => {
             </Row>
           </Col>
           <Col xs={11} lg={7}>
-            {[100, 200, 300, 140, 158, 164].map((number) => (
-              <>
-                <Card
-                  hoverable
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+            <Skeleton loading={dataNoticiasLoading} active>
+              {dataNoticias.map((noticia) => (
+                <>
+                  <Card
+                    hoverable
+                    cover={
+                      <img
+                        alt={noticia.title}
+                        src={`data:image/${noticia.image_extension};base64,${noticia.image_base64}`}
+                      />
+                    }
+                  >
+                    <Card.Meta
+                      title={noticia.title}
+                      description={noticia.summary}
                     />
-                  }
-                >
-                  <Card.Meta
-                    title="Europe Street beat"
-                    description="www.instagram.com"
-                  />
-                </Card>
-                <br />
-              </>
-            ))}
+                  </Card>
+                  <br />
+                </>
+              ))}
+            </Skeleton>
           </Col>
         </Row>
       </div>

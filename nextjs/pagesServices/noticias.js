@@ -9,4 +9,11 @@ api.getNoticiasListado = (lang) => {
   });
 };
 
+api.getNoticiasUltima = (lang) => {
+  return request({
+    method: "GET",
+    url: `noticias-ultima/${lang}`,
+  });
+};
+
 export default api;
