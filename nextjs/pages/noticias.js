@@ -10,7 +10,11 @@ import es from "../lang/es";
 import en from "../lang/en";
 import ApiNoticias from "../pagesServices/noticias";
 
-const stylesCss = css.global``;
+const stylesCss = css.global`
+  .Section0 {
+    background-image: url("/assets/imgs/home/fondoEmpresas.png");
+  }
+`;
 
 const PageNoticias = () => {
   const router = useRouter();
@@ -120,7 +124,7 @@ const PageNoticias = () => {
       </Head>
       <MenuDesktop />
 
-      <div style={{ padding: "7rem 0 2rem 0 " }}>
+      <div style={{ padding: "7rem 0 2rem 0 " }} className="Section0">
         <Row gutter={[16, 16]} type="flex" justify="center" align="top">
           <Col xs={22} lg={14}>
             <Row className="font_20">

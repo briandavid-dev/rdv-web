@@ -9,6 +9,7 @@ const strings = {
   empresas: `Empresas`,
   maestrosRoneros: `Maestros Roneros`,
   noticias: `Noticias y Artículos`,
+  noData: "Estamos agregando información a esta sección",
 };
 
 strings.quienes = {
@@ -547,6 +548,10 @@ strings.Page404 = {
 
 strings.articulos = {
   pageTitle: `Noticias | Ron de Venezuela`,
+};
+
+strings.empresas = {
+  pageTitle: `Empresas | Ron de Venezuela`,
 };
 
 strings.validacionEdad = {

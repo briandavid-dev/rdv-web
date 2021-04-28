@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import css from "styled-jsx/css";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -32,21 +31,6 @@ const MenuDesktop = () => {
     lang = "en";
   }
 
-  useEffect(() => {
-    /* async function getX() {
-      console.log("Consultando...");
-      axios
-        .get("https://www.bmosoluciones.com/api-rdv/cc/")
-        .then((response) => {
-          console.log(`response`, response);
-        })
-        .catch((error) => {
-          console.log(`error`, error);
-        });
-    }
-    getX(); */
-  }, []);
-
   const menu = {
     es: {
       inicio: "Inicio",
@@ -55,6 +39,7 @@ const MenuDesktop = () => {
       elRon: "El Ron",
       doc: "D.O.C.",
       noticias: "Noticias",
+      empresas: "Empresas",
       nuestraGente: "Nuestra Gente",
     },
     en: {
@@ -64,6 +49,7 @@ const MenuDesktop = () => {
       elRon: "Rum",
       doc: "D.O.C.",
       noticias: "News",
+      empresas: "Companies",
       nuestraGente: "Our people",
     },
   };
@@ -149,27 +135,6 @@ const MenuDesktop = () => {
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: "/",
-                      query: {
-                        lang,
-                      },
-                    }}
-                  >
-                    <a
-                      className={`nav-link ${
-                        router.pathname === "/" ? "active" : ""
-                      }`}
-                    >
-                      <img
-                        src="/assets/imgs/home/logo_blanco.png"
-                        style={{ height: "60px" }}
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="nav-item" style={styleLi}>
-                  <Link
-                    href={{
                       pathname: `/el-ron${urlProd}`,
                       query: {
                         lang,
@@ -203,10 +168,11 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
+
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: `/noticias${urlProd}`,
+                      pathname: "/",
                       query: {
                         lang,
                       },
@@ -214,13 +180,17 @@ const MenuDesktop = () => {
                   >
                     <a
                       className={`nav-link ${
-                        router.pathname === "/noticias" ? "active" : ""
+                        router.pathname === "/" ? "active" : ""
                       }`}
                     >
-                      {menu[lang].noticias}
+                      <img
+                        src="/assets/imgs/home/logo_blanco.png"
+                        style={{ height: "60px" }}
+                      />
                     </a>
                   </Link>
                 </li>
+
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
@@ -236,6 +206,43 @@ const MenuDesktop = () => {
                       }`}
                     >
                       {menu[lang].nuestraGente}
+                    </a>
+                  </Link>
+                </li>
+                <li className="nav-item" style={styleLi}>
+                  <Link
+                    href={{
+                      pathname: `/empresas${urlProd}`,
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
+                    <a
+                      className={`nav-link ${
+                        router.pathname === "/empresas" ? "active" : ""
+                      }`}
+                    >
+                      {menu[lang].empresas}
+                    </a>
+                  </Link>
+                </li>
+
+                <li className="nav-item" style={styleLi}>
+                  <Link
+                    href={{
+                      pathname: `/noticias${urlProd}`,
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
+                    <a
+                      className={`nav-link ${
+                        router.pathname === "/noticias" ? "active" : ""
+                      }`}
+                    >
+                      {menu[lang].noticias}
                     </a>
                   </Link>
                 </li>

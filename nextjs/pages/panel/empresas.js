@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import css from "styled-jsx/css";
-import Head from "next/head";
 import Link from "next/link";
+import Head from "next/head";
 import { Layout, Menu, Breadcrumb } from "antd";
-import Noticias from "../../components/panel/Noticias";
+import Empresas from "../../components/panel/Empresas";
 const { Header, Content, Footer } = Layout;
 
 const stylesCss = css.global`
@@ -60,12 +60,12 @@ const ant = () => {
           rel="stylesheet"
         />
 
-        <title>Noticias - Panel</title>
+        <title>Empresas - Panel</title>
       </Head>
       <Layout className="layout">
         <Header>
           <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
             <Menu.Item key="1">
               <Link href="/panel/noticias">Noticias</Link>
             </Menu.Item>
@@ -77,10 +77,10 @@ const ant = () => {
         <Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>Panel</Breadcrumb.Item>
-            <Breadcrumb.Item>Noticias</Breadcrumb.Item>
+            <Breadcrumb.Item>Empresas</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-content">
-            <Noticias />
+            <Empresas />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>bmosoluciones.com</Footer>

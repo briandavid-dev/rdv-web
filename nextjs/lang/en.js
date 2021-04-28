@@ -9,6 +9,7 @@ const strings = {
   empresas: `Companies`,
   maestrosRoneros: `Roneros Masters`,
   noticias: `News & Articles`,
+  noData: "We are adding information to this section",
 };
 
 strings.quienes = {
@@ -452,6 +453,10 @@ strings.Page404 = {
 
 strings.articulos = {
   pageTitle: `News | Rum from Venezuela`,
+};
+
+strings.empresas = {
+  pageTitle: `Companies | Ron de Venezuela`,
 };
 
 strings.validacionEdad = {

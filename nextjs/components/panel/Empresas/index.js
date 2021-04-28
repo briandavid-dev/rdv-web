@@ -51,7 +51,7 @@ const Noticias = () => {
 
   useEffect(() => {
     setSpinListado(true);
-    ApiNoticias.getNoticias("noticias")
+    ApiNoticias.getNoticias("empresas")
       .then((response) => {
         const { codigo, results } = response.data;
         if (codigo === "1") {
@@ -137,7 +137,7 @@ const Noticias = () => {
       ...values,
       contenido: contenidoUpdate,
       imagen: fileCertificado,
-      type: "noticias",
+      type: "empresas",
       proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
     };
 
@@ -346,9 +346,9 @@ const Noticias = () => {
       <Modal
         title={
           procesoActual === "ACTUALIZAR" ? (
-            <span>Actualizar noticia</span>
+            <span>Actualizar Empresa</span>
           ) : (
-            <span>Agregar Nueva Noticia</span>
+            <span>Agregar Nueva Empresa</span>
           )
         }
         visible={isModalVisible}
@@ -391,7 +391,7 @@ const Noticias = () => {
                   </Form.Item>
                 </Col>
 
-                <Col lg={24}>
+                {/* <Col lg={24}>
                   <Form.Item
                     label={<strong>Resumen</strong>}
                     name="summary"
@@ -402,7 +402,7 @@ const Noticias = () => {
                   >
                     <Input maxLength={500} />
                   </Form.Item>
-                </Col>
+                </Col> */}
 
                 <Col lg={24}>
                   <Form.Item
@@ -470,23 +470,23 @@ const Noticias = () => {
                     </div>
                   )}
                 </Col>
-                <Col lg={24}>
+                {/* <Col lg={24}>
                   <Form.Item
-                    label={<strong>Tipo de visualización en el Home</strong>}
+                    label={<strong>¿Desea visualización en el Home?</strong>}
                     name="visualizacionHome"
                     rules={[
                       {
                         required: true,
-                        message: "Ingrese el Tipo de visualización en el Home",
+                        message: "Ingrese visualización en el Home",
                       },
                     ]}
                   >
                     <Select placeholder="Seleccione" allowClear>
-                      <Select.Option value="circulo">Circulo</Select.Option>
-                      <Select.Option value="cuadro">Cuadro</Select.Option>
+                      <Select.Option value="S">Si</Select.Option>
+                      <Select.Option value="N">No</Select.Option>
                     </Select>
                   </Form.Item>
-                </Col>
+                </Col> */}
                 <Col lg={24}>
                   {/* <Form.Item
                     name="marcarPrincipal"
