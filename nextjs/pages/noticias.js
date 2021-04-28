@@ -33,7 +33,7 @@ const PageNoticias = () => {
   const revisaHeigth = () => {
     const offsetHeight = document.querySelector(".calculateHeigth")
       .offsetHeight;
-    setOffsetTop(offsetHeight - 450);
+    setOffsetTop(offsetHeight - 440);
   };
 
   const getNoticiasListado = (lang) => {

@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import { Card, Row, Col, Affix, Skeleton } from "antd";
 import css from "styled-jsx/css";
-import { useRouter } from "next/router";
 import Footer from "../../components/Footer";
 import MenuDesktop from "../../components/MenuDesktop";
 import es from "../../lang/es";
@@ -11,6 +12,14 @@ import ApiNoticias from "../../pagesServices/noticias";
 const stylesCss = css.global``;
 
 const PageNoticia = () => {
+  const [dataNoticia, setDataNoticia] = useState({
+    title: "",
+    image_base64: "",
+    image_extension: "",
+    content_html: "",
+  });
+  const [offsetTop, setOffsetTop] = useState(0);
+
   const router = useRouter();
   const { url } = router.query;
 
@@ -22,6 +31,44 @@ const PageNoticia = () => {
   }
 
   const strings = { es, en };
+
+  const getNoticia = () => {
+    if (url) {
+      const url_ = url.replaceAll("-", " ");
+      ApiNoticias.getNoticia(lang, url_)
+        .then((response) => {
+          const { codigo, results, mensaje } = response.data;
+          if (codigo === "1") {
+            setDataNoticia({
+              title: results[0].title,
+              image_base64: results[0].image_base64,
+              image_extension: results[0].image_extension,
+              content_html: results[0].content_html,
+            });
+          }
+          if (codigo === "0") {
+            console.log(`error`, mensaje);
+          }
+        })
+        .catch((error) => {
+          console.log(`error`, error);
+        });
+    }
+  };
+
+  useEffect(() => {
+    getNoticia();
+  }, [url]);
+
+  const revisaHeigth = () => {
+    const offsetHeight = document.querySelector(".calculateHeigth")
+      .offsetHeight;
+    setOffsetTop(offsetHeight - 440);
+  };
+
+  useEffect(() => {
+    revisaHeigth();
+  }, [dataNoticia]);
 
   return (
     <>
@@ -45,7 +92,7 @@ const PageNoticia = () => {
           rel="stylesheet"
         />
 
-        <title>{strings[lang].articulos.pageTitle}</title>
+        <title>{dataNoticia.title}</title>
       </Head>
 
       <MenuDesktop />
@@ -54,7 +101,33 @@ const PageNoticia = () => {
         <Row gutter={[16, 16]} type="flex" justify="center" align="top">
           <Col xs={22} lg={14}>
             <Row className="font_20">
-              <Col>{url.replaceAll("-", " ")}</Col>
+              <Col>
+                <div className="calculateHeigth">
+                  {dataNoticia.title.trim() !== "" && (
+                    <Affix
+                      offsetTop={-offsetTop}
+                      // offsetBottom={100}
+                    >
+                      <h1>{dataNoticia.title}</h1>
+                      <br />
+                      <img
+                        alt="example"
+                        src={`data:image/${dataNoticia.image_extension};base64,${dataNoticia.image_base64}`}
+                        // height={800}
+                        width={800}
+                        style={{ maxWidth: "100%" }}
+                      />
+                      <br />
+                      <br />
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: dataNoticia.content_html,
+                        }}
+                      ></div>
+                    </Affix>
+                  )}
+                </div>
+              </Col>
             </Row>
           </Col>
         </Row>

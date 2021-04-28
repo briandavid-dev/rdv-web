@@ -16,4 +16,11 @@ api.getNoticiasUltima = (lang) => {
   });
 };
 
+api.getNoticia = (lang, url) => {
+  return request({
+    method: "GET",
+    url: `noticias/${url}/${lang}`,
+  });
+};
+
 export default api;
