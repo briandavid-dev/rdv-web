@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import css from "styled-jsx/css";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import axios from "axios";
-import styles from "./Menu.module.css";
 
 const styleLi = {
   justifyContent: "center",
@@ -133,7 +131,7 @@ const MenuDesktop = () => {
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: `./historia${urlProd}`,
+                      pathname: `/historia${urlProd}`,
                       query: {
                         lang,
                       },
@@ -151,7 +149,7 @@ const MenuDesktop = () => {
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: "./",
+                      pathname: "/",
                       query: {
                         lang,
                       },
@@ -163,7 +161,7 @@ const MenuDesktop = () => {
                       }`}
                     >
                       <img
-                        src="./assets/imgs/home/logo_blanco.png"
+                        src="/assets/imgs/home/logo_blanco.png"
                         style={{ height: "60px" }}
                       />
                     </a>
@@ -172,7 +170,7 @@ const MenuDesktop = () => {
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: `./el-ron${urlProd}`,
+                      pathname: `/el-ron${urlProd}`,
                       query: {
                         lang,
                       },
@@ -190,7 +188,7 @@ const MenuDesktop = () => {
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: `./doc${urlProd}`,
+                      pathname: `/doc${urlProd}`,
                       query: {
                         lang,
                       },
@@ -208,7 +206,7 @@ const MenuDesktop = () => {
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: `./noticias${urlProd}`,
+                      pathname: `/noticias${urlProd}`,
                       query: {
                         lang,
                       },
@@ -226,7 +224,7 @@ const MenuDesktop = () => {
                 <li className="nav-item" style={styleLi}>
                   <Link
                     href={{
-                      pathname: `./nuestra-gente${urlProd}`,
+                      pathname: `/nuestra-gente${urlProd}`,
                       query: {
                         lang,
                       },
@@ -252,7 +250,7 @@ const MenuDesktop = () => {
                 >
                   <div style={{ width: "100%" }}>
                     <img
-                      src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                      src="/assets/imgs/home/ICONO-FACEBOOK.png"
                       className="cursor-pointer"
                       style={{
                         height: "30px",
@@ -268,7 +266,7 @@ const MenuDesktop = () => {
                       scroll={false}
                     >
                       <img
-                        src="./assets/imgs/home/ICONO-BANDERA-INGLES.png"
+                        src="/assets/imgs/home/ICONO-BANDERA-INGLES.png"
                         className="cursor-pointer"
                         style={{
                           height: "30px",
@@ -280,7 +278,7 @@ const MenuDesktop = () => {
                   </div>
                   <div style={{ width: "100%" }}>
                     <img
-                      src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                      src="/assets/imgs/home/ICONO-INSTAGRAM.png"
                       className="cursor-pointer"
                       style={{
                         height: "30px",
@@ -296,7 +294,7 @@ const MenuDesktop = () => {
                       scroll={false}
                     >
                       <img
-                        src="./assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
+                        src="/assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
                         className="cursor-pointer"
                         style={{
                           height: "30px",

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import Link from "next/Link";
 import { Card, Row, Col, Affix, Skeleton } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
@@ -158,20 +159,27 @@ const PageNoticias = () => {
             <Skeleton loading={dataNoticiasLoading} active>
               {dataNoticias.map((noticia) => (
                 <>
-                  <Card
-                    hoverable
-                    cover={
-                      <img
-                        alt={noticia.title}
-                        src={`data:image/${noticia.image_extension};base64,${noticia.image_base64}`}
-                      />
-                    }
+                  <Link
+                    href={{
+                      pathname: `/noticias/${noticia.url}`,
+                      query: { lang },
+                    }}
                   >
-                    <Card.Meta
-                      title={noticia.title}
-                      description={noticia.summary}
-                    />
-                  </Card>
+                    <Card
+                      hoverable
+                      cover={
+                        <img
+                          alt={noticia.title}
+                          src={`data:image/${noticia.image_extension};base64,${noticia.image_base64}`}
+                        />
+                      }
+                    >
+                      <Card.Meta
+                        title={noticia.title}
+                        description={noticia.summary}
+                      />
+                    </Card>
+                  </Link>
                   <br />
                 </>
               ))}
