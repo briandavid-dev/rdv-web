@@ -454,4 +454,17 @@ strings.articulos = {
   pageTitle: `News | Rum from Venezuela`,
 };
 
+strings.validacionEdad = {
+  invita: (
+    <span>
+      FONPRONVEN <br />
+      invites you to enjoy responsibly.
+    </span>
+  ),
+  eres: <span>Are you of legal age in your country of residence?</span>,
+  si: "YES",
+  no: "NO",
+  noTienesEdad: "You are not old enough to view the content of the site yet",
+};
+
 export default strings;

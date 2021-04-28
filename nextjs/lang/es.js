@@ -549,4 +549,18 @@ strings.articulos = {
   pageTitle: `Noticias | Ron de Venezuela`,
 };
 
+strings.validacionEdad = {
+  invita: (
+    <span>
+      FONPRONVEN <br />
+      te envita a disfrutar de forma responsable.
+    </span>
+  ),
+  eres: <span>¿Eres mayor de edad en tu país de residencia?</span>,
+  si: "SI",
+  no: "NO",
+  noTienesEdad:
+    "Aún no tienes edad suficiente para visualizar el contenido del sitio",
+};
+
 export default strings;

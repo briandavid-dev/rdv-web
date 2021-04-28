@@ -142,9 +142,7 @@ export default function Home() {
       setModalEdadVisible(false);
       setTextoMayorEdad("");
     } else if (mayorDeEdad === "N") {
-      setTextoMayorEdad(
-        "Aún no tienes edad suficiente para visualizar el contenido del sitio"
-      );
+      setTextoMayorEdad(strings[lang].validacionEdad.noTienesEdad);
     }
   };
 
@@ -759,8 +757,8 @@ export default function Home() {
                 <br />
               </Col>
               <Col span={24}>
-                FONPRONVEN <br />
-                te envita a disfrutar de forma responsable.
+                {strings[lang].validacionEdad.invita}
+
                 <br />
                 <br />
               </Col>
@@ -772,7 +770,7 @@ export default function Home() {
                     padding: "1rem",
                   }}
                 >
-                  ¿Eres mayor de edad en tu país de residencia?
+                  {strings[lang].validacionEdad.eres}
                 </div>
                 <br />
               </Col>
@@ -792,7 +790,7 @@ export default function Home() {
                         handleEdad("S");
                       }}
                     >
-                      <strong>SI</strong>
+                      <strong>{strings[lang].validacionEdad.si}</strong>
                     </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button
@@ -806,7 +804,7 @@ export default function Home() {
                         handleEdad("N");
                       }}
                     >
-                      <strong>NO</strong>
+                      <strong>{strings[lang].validacionEdad.no}</strong>
                     </Button>
                   </>
                 )}
