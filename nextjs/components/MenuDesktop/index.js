@@ -56,6 +56,7 @@ const MenuDesktop = () => {
       historia: "Historia",
       elRon: "El Ron",
       doc: "D.O.C.",
+      noticias: "Noticias",
       nuestraGente: "Nuestra Gente",
     },
     en: {
@@ -64,6 +65,7 @@ const MenuDesktop = () => {
       historia: "Our history",
       elRon: "Rum",
       doc: "D.O.C.",
+      noticias: "News",
       nuestraGente: "Our people",
     },
   };
@@ -200,6 +202,24 @@ const MenuDesktop = () => {
                       }`}
                     >
                       {menu[lang].doc}
+                    </a>
+                  </Link>
+                </li>
+                <li className="nav-item" style={styleLi}>
+                  <Link
+                    href={{
+                      pathname: `./noticias${urlProd}`,
+                      query: {
+                        lang,
+                      },
+                    }}
+                  >
+                    <a
+                      className={`nav-link ${
+                        router.pathname === "/noticias" ? "active" : ""
+                      }`}
+                    >
+                      {menu[lang].noticias}
                     </a>
                   </Link>
                 </li>

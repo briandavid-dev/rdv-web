@@ -1,21 +1,64 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Affix } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+import ApiNoticias from "../pagesServices/noticias";
 
 const stylesCss = css.global``;
 
 const PageNoticias = () => {
   const router = useRouter();
-  let lang = "es";
+
+  let lang = "en";
   if (router.query.lang === "en") {
     lang = "en";
+  } else {
+    lang = "es";
   }
+
   const strings = { es, en };
+
+  const [offsetTop, setOffsetTop] = useState(0);
+  const [dataNoticias, setDataNoticias] = useState([]);
+
+  const revisaHeigth = () => {
+    const offsetHeight = document.querySelector(".calculateHeigth")
+      .offsetHeight;
+    setOffsetTop(offsetHeight - 450);
+  };
+
+  const getNoticiasListado = (lang) => {
+    ApiNoticias.getNoticiasListado(lang)
+      .then((response) => {
+        console.log(`response`, response);
+        const { codigo, results } = response.data;
+        if (codigo === "1") {
+          setDataNoticias(results);
+          revisaHeigth();
+        }
+        if (codigo === "0") {
+          console.log(`error `, codigo);
+        }
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+      });
+  };
+
+  useEffect(() => {
+    revisaHeigth();
+
+    if (window.location.href.includes("lang=es")) {
+      getNoticiasListado("es");
+    } else if (window.location.href.includes("lang=en")) {
+      getNoticiasListado("en");
+    }
+  }, []);
 
   return (
     <>
@@ -45,60 +88,30 @@ const PageNoticias = () => {
 
       <div style={{ padding: "7rem 0 2rem 0 " }}>
         <Row gutter={[16, 16]} type="flex" justify="center" align="top">
-          <Col xs={0} lg={14}>
-            <Row>
+          <Col xs={22} lg={14}>
+            <Row className="font_20">
               <Col>
-                <h1>What is Lorem Ipsum?</h1>
-                <br />
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                  height={800}
-                  width={800}
-                />
-                <br />
-                <br />
-                {[100, 200].map((number) => (
-                  <>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged. It was popularised in the
-                      1960s with the release of Letraset sheets containing Lorem
-                      Ipsum passages, and more recently with desktop publishing
-                      software like Aldus PageMaker including versions of Lorem
-                      Ipsum
-                    </p>
-                    <p>
-                      Contrary to popular belief, Lorem Ipsum is not simply
-                      random text. It has roots in a piece of classical Latin
-                      literature from 45 BC, making it over 2000 years old.
-                      Richard McClintock, a Latin professor at Hampden-Sydney
-                      College in Virginia, looked up one of the more obscure
-                      Latin words, consectetur, from a Lorem Ipsum passage, and
-                      going through the cites of the word in classical
-                      literature, discovered the undoubtable source. Lorem Ipsum
-                      comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                      Bonorum et Malorum" (The Extremes of Good and Evil) by
-                      Cicero, written in 45 BC. This book is a treatise on the
-                      theory of ethics, very popular during the Renaissance. The
-                      first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..",
-                      comes from a line in section 1.10.32.
-                    </p>
-                    <p>
-                      The standard chunk of Lorem Ipsum used since the 1500s is
-                      reproduced below for those interested. Sections 1.10.32
-                      and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero
-                      are also reproduced in their exact original form,
-                      accompanied by English versions from the 1914 translation
-                      by H. Rackham.
-                    </p>
-                  </>
-                ))}
+                <div className="calculateHeigth">
+                  {dataNoticias.length > 0 && (
+                    <Affix
+                      offsetTop={-offsetTop}
+                      // offsetBottom={100}
+                    >
+                      <h1>{dataNoticias[0].title}</h1>
+                      <br />
+                      <img
+                        alt="example"
+                        src={`data:image/${dataNoticias[0].image_extension};base64,${dataNoticias[0].image_base64}`}
+                        // height={800}
+                        width={800}
+                        style={{ maxWidth: "100%" }}
+                      />
+                      <br />
+                      <br />
+                      {dataNoticias[0].content_html}
+                    </Affix>
+                  )}
+                </div>
               </Col>
             </Row>
           </Col>

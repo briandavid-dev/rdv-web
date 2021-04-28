@@ -546,7 +546,7 @@ strings.Page404 = {
 };
 
 strings.articulos = {
-  pageTitle: `Noticias | Rum from Venezuela`,
+  pageTitle: `Noticias | Ron de Venezuela`,
 };
 
 export default strings;
