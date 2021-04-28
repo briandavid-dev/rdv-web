@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Link from "next/Link";
 import { Skeleton } from "antd";
 import Head from "next/head";
 import css from "styled-jsx/css";
@@ -501,7 +502,7 @@ export default function Home() {
         <div className="SeccionNoticias">
           <div className="container">
             <div className="row">
-              <div className="col-md-12 m-5" className="titulo">
+              <div className="col-md-12 mb-5">
                 <div className="titulo">
                   <img
                     src="./assets/imgs/home/linea2.png"
@@ -510,10 +511,9 @@ export default function Home() {
                   <h1>{strings[lang].noticias}</h1>
                   <img
                     src="./assets/imgs/home/linea1.png"
-                    style={{ height: "8px" }}
+                    style={{ height: "8px", marginLeft: "8px" }}
                   />
                 </div>
-                <br />
               </div>
 
               <Skeleton loading={dataNoticiasLoading} active>
@@ -523,18 +523,32 @@ export default function Home() {
                     const imageSrc = `data:image/${noticia.image_extension};base64,${noticia.image_base64}`;
 
                     return (
-                      <div className="col-md-4" key={noticia.id}>
-                        <div className="mb-4 text-center">
-                          <h3>{noticia.title}</h3>
-                        </div>
-                        <div className="noticias_img">
-                          <img src={imageSrc} style={{ maxWidth: "90%" }} />
-                        </div>
+                      <Link
+                        href={{
+                          pathname: `/noticias/${noticia.url}`,
+                          query: { lang },
+                        }}
+                      >
+                        <div
+                          className="col-md-4 cursor-pointer hover-notice-home"
+                          key={noticia.id}
+                        >
+                          <div className="mb-4 text-center">
+                            <h3>{noticia.title}</h3>
+                          </div>
+                          <div className="noticias_img">
+                            <img
+                              src={imageSrc}
+                              style={{ maxWidth: "90%" }}
+                              alt={noticia.title}
+                            />
+                          </div>
 
-                        <div className="mt-4 text-center noticias_cuadro">
-                          {noticia.summary}
+                          <div className="mt-4 text-center noticias_cuadro">
+                            {noticia.summary}
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })}
               </Skeleton>
@@ -545,31 +559,54 @@ export default function Home() {
             <Skeleton loading={dataNoticiasLoading} active>
               {dataNoticias.cuadro && dataNoticias.cuadro.length > 0 && (
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-6 ">
                     {dataNoticias.cuadro[0] && (
-                      <img
-                        // src={"./assets/imgs/home/FOTO-POST-REDES-PRINCIPAL.png"}
-                        src={`data:image/${dataNoticias.cuadro[0].image_extension};base64,${dataNoticias.cuadro[0].image_base64}`}
-                        className="post_img_principal"
-                      />
+                      <Link
+                        href={{
+                          pathname: `/noticias/${dataNoticias.cuadro[0].url}`,
+                          query: { lang },
+                        }}
+                      >
+                        <img
+                          alt={dataNoticias.cuadro[0].title}
+                          src={`data:image/${dataNoticias.cuadro[0].image_extension};base64,${dataNoticias.cuadro[0].image_base64}`}
+                          className="post_img_principal cursor-pointer hover-notice-home"
+                        />
+                      </Link>
                     )}
                   </div>
                   <div className="col-md-3">
                     <div className="row">
                       <div className="col-md-12 mb-4">
                         {dataNoticias.cuadro[1] && (
-                          <img
-                            src={`data:image/${dataNoticias.cuadro[1].image_extension};base64,${dataNoticias.cuadro[1].image_base64}`}
-                            className="post_img_principal"
-                          />
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[1].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[1].title}
+                              src={`data:image/${dataNoticias.cuadro[1].image_extension};base64,${dataNoticias.cuadro[1].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
                         )}
                       </div>
                       <div className="col-md-12">
                         {dataNoticias.cuadro[2] && (
-                          <img
-                            src={`data:image/${dataNoticias.cuadro[2].image_extension};base64,${dataNoticias.cuadro[2].image_base64}`}
-                            className="post_img_principal"
-                          />
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[2].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[2].title}
+                              src={`data:image/${dataNoticias.cuadro[2].image_extension};base64,${dataNoticias.cuadro[2].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
                         )}
                       </div>
                     </div>
@@ -578,18 +615,34 @@ export default function Home() {
                     <div className="row">
                       <div className="col-md-12 mb-4">
                         {dataNoticias.cuadro[3] && (
-                          <img
-                            src={`data:image/${dataNoticias.cuadro[3].image_extension};base64,${dataNoticias.cuadro[3].image_base64}`}
-                            className="post_img_principal"
-                          />
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[3].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[3].title}
+                              src={`data:image/${dataNoticias.cuadro[3].image_extension};base64,${dataNoticias.cuadro[3].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
                         )}
                       </div>
                       <div className="col-md-12">
                         {dataNoticias.cuadro[4] && (
-                          <img
-                            src={`data:image/${dataNoticias.cuadro[4].image_extension};base64,${dataNoticias.cuadro[4].image_base64}`}
-                            className="post_img_principal"
-                          />
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[4].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[4].title}
+                              src={`data:image/${dataNoticias.cuadro[4].image_extension};base64,${dataNoticias.cuadro[4].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
                         )}
                       </div>
                     </div>

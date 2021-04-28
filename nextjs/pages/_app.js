@@ -43,6 +43,11 @@ const stylesCss = css.global`
     cursor: pointer;
   }
 
+  .hover-notice-home:hover {
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 3px;
+  }
+
   footer {
     color: #000;
     /* background-image: url("./../public/assets/imgs/footer/FONDO_FOOTER.png"); */

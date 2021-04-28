@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import Head from "next/head";
 import { Card, Row, Col, Affix, Skeleton } from "antd";
 import css from "styled-jsx/css";
@@ -18,6 +19,10 @@ const PageNoticia = () => {
     image_extension: "",
     content_html: "",
   });
+  const [dataNoticias, setDataNoticias] = useState([]);
+  const [dataNoticiaLoading, setDataNoticiaLoading] = useState(false);
+  const [dataNoticiasLoading, setDataNoticiasLoading] = useState(false);
+
   const [offsetTop, setOffsetTop] = useState(0);
 
   const router = useRouter();
@@ -35,6 +40,8 @@ const PageNoticia = () => {
   const getNoticia = () => {
     if (url) {
       const url_ = url.replaceAll("-", " ");
+
+      setDataNoticiaLoading(true);
       ApiNoticias.getNoticia(lang, url_)
         .then((response) => {
           const { codigo, results, mensaje } = response.data;
@@ -49,9 +56,28 @@ const PageNoticia = () => {
           if (codigo === "0") {
             console.log(`error`, mensaje);
           }
+          setDataNoticiaLoading(false);
         })
         .catch((error) => {
           console.log(`error`, error);
+          setDataNoticiaLoading(false);
+        });
+
+      setDataNoticiasLoading(true);
+      ApiNoticias.getNoticiaExcepto(lang, url_)
+        .then((response) => {
+          const { codigo, results, mensaje } = response.data;
+          if (codigo === "1") {
+            setDataNoticias(results);
+          }
+          if (codigo === "0") {
+            console.log(`error`, mensaje);
+          }
+          setDataNoticiasLoading(false);
+        })
+        .catch((error) => {
+          console.log(`error`, error);
+          setDataNoticiasLoading(false);
         });
     }
   };
@@ -102,6 +128,8 @@ const PageNoticia = () => {
           <Col xs={22} lg={14}>
             <Row className="font_20">
               <Col>
+                {dataNoticiaLoading && <Skeleton active />}
+
                 <div className="calculateHeigth">
                   {dataNoticia.title.trim() !== "" && (
                     <Affix
@@ -129,6 +157,36 @@ const PageNoticia = () => {
                 </div>
               </Col>
             </Row>
+          </Col>
+          <Col xs={11} lg={7}>
+            <Skeleton loading={dataNoticiasLoading} active>
+              {dataNoticias.map((noticia) => (
+                <>
+                  <Link
+                    href={{
+                      pathname: `/noticias/${noticia.url}`,
+                      query: { lang },
+                    }}
+                  >
+                    <Card
+                      hoverable
+                      cover={
+                        <img
+                          alt={noticia.title}
+                          src={`data:image/${noticia.image_extension};base64,${noticia.image_base64}`}
+                        />
+                      }
+                    >
+                      <Card.Meta
+                        title={noticia.title}
+                        description={noticia.summary}
+                      />
+                    </Card>
+                  </Link>
+                  <br />
+                </>
+              ))}
+            </Skeleton>
           </Col>
         </Row>
       </div>

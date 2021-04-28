@@ -23,4 +23,11 @@ api.getNoticia = (lang, url) => {
   });
 };
 
+api.getNoticiaExcepto = (lang, url) => {
+  return request({
+    method: "GET",
+    url: `noticias-excepto/${url}/${lang}`,
+  });
+};
+
 export default api;
