@@ -199,15 +199,14 @@ export default function Home() {
                   }}
                 >
                   <h1>{strings[lang].home.pageTitle}</h1>
-                  <div className="text-center">{strings[lang].calidad}</div>
+                  <div className="text-center font_20">
+                    {strings[lang].calidad}
+                  </div>
                   <div>&nbsp;</div>
                   <img
                     src="./assets/imgs/home/linea1.png"
                     style={{ height: "8px" }}
                   />
-                  <div>&nbsp;</div>
-                  <div>&nbsp;</div>
-                  <div>&nbsp;</div>
                   {/* <!-- <div>Registra tu correo para más información</div>
         <div style={{display: 'flex', alignItems: 'center', height: '60px'}}>
           <div style=
@@ -233,7 +232,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="seccion2">
+          <div className="seccion2 font_20">
             <div className="container">
               <div className="row">
                 <div className="col-md-12" style={{ display: "flex" }}>
