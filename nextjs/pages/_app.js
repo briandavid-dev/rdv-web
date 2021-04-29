@@ -61,6 +61,12 @@ const stylesCss = css.global`
   .titulo-maestro {
     color: #d48125;
   }
+
+  @media only screen and (max-width: 620px) {
+    .valida_mobile {
+      display: none !important;
+    }
+  }
 `;
 
 function MyApp({ Component, pageProps }) {

@@ -2,21 +2,41 @@ import css from "styled-jsx/css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const styleLi = {
-  justifyContent: "center",
-  alignItems: "center",
-  display: "flex",
-};
-
 const stylesCss = css.global`
-  .nav_bar_superior {
+  /* .nav_bar_superior {
     background-color: rgba(0, 0, 0, 0.1) !important;
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: center !important; /* hacer el media query para mobile y cambiar este */
+    justify-content: center !important;
     position: fixed;
     z-index: 1000;
+  }
+  .styleLi {
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+  } */
+
+  @media only screen and (max-width: 620px) {
+    .nav_bar_superior {
+      background-color: rgba(0, 0, 0, 0.7) !important;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+    .styleLi {
+      display: flex !important;
+      justify-content: flex-end !important;
+      margin-right: 1rem;
+    }
+    .valida_mobile {
+      display: none !important;
+    }
+    .social_icons {
+      text-align: right;
+      margin-right: 0.8rem;
+    }
   }
 `;
 
@@ -62,6 +82,12 @@ const MenuDesktop = () => {
       <div className="nav_bar_superior">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark_ ">
           <div className="container-fluid">
+            <a className="navbar-brand" href="#">
+              <img
+                src="/assets/imgs/home/logo_blanco.png"
+                style={{ height: "30px" }}
+              />
+            </a>
             <button
               className="navbar-toggler"
               type="button"
@@ -78,7 +104,7 @@ const MenuDesktop = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: "/",
@@ -96,7 +122,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: `/quienes-somos${urlProd}`,
@@ -114,7 +140,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: `/historia${urlProd}`,
@@ -132,7 +158,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: `/el-ron${urlProd}`,
@@ -150,7 +176,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: `/doc${urlProd}`,
@@ -169,7 +195,7 @@ const MenuDesktop = () => {
                   </Link>
                 </li>
 
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi valida_mobile">
                   <Link
                     href={{
                       pathname: "/",
@@ -191,7 +217,7 @@ const MenuDesktop = () => {
                   </Link>
                 </li>
 
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: `/nuestra-gente${urlProd}`,
@@ -209,7 +235,7 @@ const MenuDesktop = () => {
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: `/empresas${urlProd}`,
@@ -228,7 +254,7 @@ const MenuDesktop = () => {
                   </Link>
                 </li>
 
-                <li className="nav-item" style={styleLi}>
+                <li className="nav-item styleLi">
                   <Link
                     href={{
                       pathname: `/noticias${urlProd}`,

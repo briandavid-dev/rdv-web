@@ -154,7 +154,7 @@ export default function Home() {
         </style>
         <Head>
           <meta charSet="UTF-8" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"
@@ -182,7 +182,7 @@ export default function Home() {
         </Head>
 
         <MenuDesktop />
-        <div className="seccion0">
+        <div className="seccion0 valida_mobile">
           <div className="seccion1">
             <div
               className="container"
