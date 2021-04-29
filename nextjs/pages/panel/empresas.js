@@ -29,7 +29,7 @@ const stylesCss = css.global`
   }
 `;
 
-const ant = () => {
+const PanelEmpresas = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -89,4 +89,4 @@ const ant = () => {
   );
 };
 
-export default ant;
+export default PanelEmpresas;

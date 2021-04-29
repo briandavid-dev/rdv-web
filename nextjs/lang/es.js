@@ -1,15 +1,18 @@
 const strings = {
-  pageTitle: "Ron de Venezuela",
   calidad: "Calidad de un suelo, tesón de los hombres del campo.",
   melasa: "La melaza es el comienzo del Ron Venezolano.",
   aunque: `Aunque hay lugares en el Caribe que elaboran rones de jugo de caña`,
   elron1: "EL RON",
   proceso: `Proceso de elaboración`,
   productores: `Productores de ron a nivel nacional e internacional...`,
-  empresas: `Empresas`,
   maestrosRoneros: `Maestros Roneros`,
   noticias: `Noticias y Artículos`,
   noData: "Estamos agregando información a esta sección",
+};
+
+strings.home = {
+  pageTitle: "Ron de Venezuela",
+  empresas: `Empresas`,
 };
 
 strings.quienes = {

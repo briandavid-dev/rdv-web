@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Link from "next/Link";
+import Link from "next/link";
 import { Skeleton, Modal, Row, Col, Button } from "antd";
 import Head from "next/head";
 import css from "styled-jsx/css";
@@ -178,7 +178,7 @@ export default function Home() {
             crossorigin="anonymous"
           ></script>
 
-          <title>{strings[lang].pageTitle}</title>
+          <title>{strings[lang].home.pageTitle}</title>
         </Head>
 
         <MenuDesktop />
@@ -198,7 +198,7 @@ export default function Home() {
                     alignItems: "center",
                   }}
                 >
-                  <h1>{strings[lang].pageTitle}</h1>
+                  <h1>{strings[lang].home.pageTitle}</h1>
                   <div className="text-center">{strings[lang].calidad}</div>
                   <div>&nbsp;</div>
                   <img
@@ -285,7 +285,7 @@ export default function Home() {
                       src="./assets/imgs/home/linea2.png"
                       className="linea1"
                     />
-                    <h1>{strings[lang].empresas}</h1>
+                    <h1>{strings[lang].home.empresas}</h1>
                     <img
                       src="./assets/imgs/home/linea1.png"
                       className="linea2"

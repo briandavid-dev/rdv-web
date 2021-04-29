@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import Link from "next/Link";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { Card, Row, Col, Affix, Skeleton } from "antd";
 import css from "styled-jsx/css";
-import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";

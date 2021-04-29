@@ -38,12 +38,6 @@ export default function Page404() {
 
       <MenuDesktop />
 
-      {/* <div className="container">
-        <div className="row">
-          <div className="col-md-12">satisfacer</div>
-        </div>
-      </div> */}
-
       <div className="text-center" style={{ padding: " 10rem 0 10rem 0" }}>
         Ups! No hemos encontrado esta página en nuestro sitio
       </div>

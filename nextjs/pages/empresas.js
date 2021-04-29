@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import { Row, Col, Collapse, Skeleton } from "antd";
 import css from "styled-jsx/css";
-import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";

@@ -1,15 +1,18 @@
 const strings = {
-  pageTitle: "Rum from Venezuela",
   calidad: "Quality of a soil, tenacity of the men of the field.",
   melasa: "Molasses is the beginning of Venezuelan Rum.",
   aunque: `Although there are places in the Caribbean that make cane juice rums`,
   elron1: "RUM",
   proceso: `Elaboration process`,
   productores: `Rum producers nationally and internationally`,
-  empresas: `Companies`,
   maestrosRoneros: `Roneros Masters`,
   noticias: `News & Articles`,
   noData: "We are adding information to this section",
+};
+
+strings.home = {
+  pageTitle: "Rum from Venezuela",
+  empresas: `Companies`,
 };
 
 strings.quienes = {
