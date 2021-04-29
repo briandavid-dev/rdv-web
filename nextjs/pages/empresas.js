@@ -108,7 +108,7 @@ const PageEmpresas = () => {
             <Row className="font_20">
               <Col span={24}>
                 <Skeleton active loading={loading}>
-                  {dataEmpresas.length > 1 ? (
+                  {dataEmpresas.length > 0 ? (
                     <Collapse accordion expandIconPosition="right">
                       {dataEmpresas.map((empresa) => (
                         <Collapse.Panel
@@ -116,11 +116,22 @@ const PageEmpresas = () => {
                           key={empresa.id}
                           className="font_20"
                         >
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: empresa.content_html,
-                            }}
-                          ></div>
+                          <Row gutter={20}>
+                            <Col xs={24} lg={4}>
+                              <img
+                                alt={empresa.title}
+                                src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
+                                style={{ maxWidth: "100%" }}
+                              />
+                            </Col>
+                            <Col xs={24} lg={20}>
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html: empresa.content_html,
+                                }}
+                              ></div>
+                            </Col>
+                          </Row>
                         </Collapse.Panel>
                       ))}
                     </Collapse>
