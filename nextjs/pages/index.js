@@ -105,6 +105,13 @@ const stylesCss = css.global`
   .ant-modal-content {
     background-color: transparent;
   }
+
+  .SectionMobile0 {
+    background-color: #0e0e0e;
+  }
+  .SectionMobile1 {
+    background-image: url("/assets/imgs/home/fondoEmpresas.png");
+  }
 `;
 
 export default function Home() {
@@ -240,7 +247,10 @@ export default function Home() {
                     <h1 style={{ right: "-2rem", position: "relative" }}>
                       {strings[lang].elron1}
                     </h1>
-                    <p style={{ textAlign: "right", padding: "1rem" }}>
+                    <p
+                      className="font_20"
+                      style={{ textAlign: "right", padding: "1rem" }}
+                    >
                       {strings[lang].melasa}
                       <br />
                       {strings[lang].aunque}
@@ -266,7 +276,10 @@ export default function Home() {
                     <h1 style={{ left: "-2rem", position: "relative" }}>
                       {strings[lang].proceso}
                     </h1>
-                    <p style={{ textAlign: "left", padding: "1rem" }}>
+                    <p
+                      className="font_20"
+                      style={{ textAlign: "left", padding: "1rem" }}
+                    >
                       {strings[lang].productores}
                     </p>
                   </div>
@@ -719,6 +732,468 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className="SectionMobile0 valida_desktop">
+          <Row type="flex" justify="center" className="SectionMobile0">
+            <Col xs={24}>
+              <img
+                src="/assets/imgs/home/copa.jpg"
+                style={{ maxWidth: "100%", marginTop: "58px" }}
+              />
+            </Col>
+            <Col xs={22} className="text-center">
+              <br />
+              <h1 className="text-center">{strings[lang].home.pageTitle}</h1>
+              <p className="text-center font_20">{strings[lang].calidad}</p>
+              <img
+                src="./assets/imgs/home/linea1.png"
+                style={{ height: "8px" }}
+              />
+              <br />
+              <br />
+            </Col>
+          </Row>
+          <Row type="flex" justify="center" className="SectionMobile1">
+            <Col xs={22}>
+              <br />
+              <h1>{strings[lang].elron1}</h1>
+              <p>
+                {strings[lang].melasa}
+                <br />
+                {strings[lang].aunque}
+              </p>
+              <img
+                src="./assets/imgs/home/foto-ron.jpg"
+                style={{ maxWidth: "100%" }}
+              />
+              <br />
+              <br />
+            </Col>
+          </Row>
+          <Row type="flex" justify="center" className="SectionMobile1">
+            <Col xs={22}>
+              <h1>{strings[lang].proceso}</h1>
+              <p>{strings[lang].productores}</p>
+              <img
+                src="./assets/imgs/home/foto-proceso.jpg"
+                style={{ maxWidth: "100%" }}
+              />
+              <br />
+              <br />
+            </Col>
+          </Row>
+
+          <Row type="flex" justify="center" className="SectionMobile1">
+            <Col xs={22}>
+              <div className="col-md-12 mb-1">
+                <div className="seccion_titulo_mobile">
+                  <img
+                    src="./assets/imgs/home/linea2.png"
+                    className="linea1mobile"
+                  />
+                  <h1>{strings[lang].home.empresas}</h1>
+                  <img
+                    src="./assets/imgs/home/linea1.png"
+                    className="linea2mobile"
+                  />
+                </div>
+              </div>
+              <div className="col-md-3"></div>
+              <div className="col-md-6">
+                <div
+                  id="carouselExampleIndicators2"
+                  className="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-inner">
+                    <div className="carousel-item active">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-CANAVERAL.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-SANTA-TERESA.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-VEROES.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-ROBLE.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-QUIMERA.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-PAMPERO.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-OCUMARE.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-DIPLOMATICO.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-CARUPANO.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-CALAZAN.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-CACIQUE.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-CABALLO-VIEJO.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-BUCARE.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-BODEGA-1800.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-MARCAS-BARRICA.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <div className="carousel-item">
+                      <div>
+                        <img
+                          src="./assets/imgs/home/LOGO-ESTELAR.png"
+                          className="d-block w-1 img_marcas"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    className="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators2"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      className="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    className="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators2"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      className="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+              <div className="col-md-3"></div>
+              <br />
+              <br />
+            </Col>
+          </Row>
+
+          <Row
+            type="flex"
+            justify="center"
+            className="SectionMobile1"
+            gutter={[10, 10]}
+          >
+            <Col xs={22}>
+              <div className="seccion_titulo_mobile">
+                <img
+                  src="./assets/imgs/home/linea2.png"
+                  className="linea1mobile"
+                />
+                <h1 className="text-center">{strings[lang].maestrosRoneros}</h1>
+                <img
+                  src="./assets/imgs/home/linea1.png"
+                  className="linea2mobile"
+                />
+              </div>
+            </Col>
+            <Col xs={11}>
+              <img
+                src="./assets/imgs/home/m_CARMEN-LOPEZ.png"
+                style={{ maxWidth: "100%" }}
+              />
+            </Col>
+            <Col xs={11}>
+              <img
+                src="./assets/imgs/home/m_TITO-CORDERO.png"
+                style={{ maxWidth: "100%" }}
+              />
+            </Col>
+            <Col xs={11}>
+              <img
+                src="./assets/imgs/home/m_NESTRO-ORTEGA.png"
+                style={{ maxWidth: "100%" }}
+              />
+            </Col>
+            <Col xs={11}>
+              <img
+                src="./assets/imgs/home/m_GIOGIO-MELIS.png"
+                style={{ maxWidth: "100%" }}
+              />
+            </Col>
+            <Col xs={22}>
+              <img
+                src="./assets/imgs/home/mesa-maestros.png"
+                style={{ maxWidth: "100%" }}
+              />
+            </Col>
+          </Row>
+
+          <Row type="flex" justify="center" className="SectionMobile1">
+            <Col xs={22}>
+              <div className="seccion_titulo_mobile">
+                <img
+                  src="./assets/imgs/home/linea2.png"
+                  className="linea1mobile"
+                />
+                <h1 className="text-center">{strings[lang].noticias}</h1>
+                <img
+                  src="./assets/imgs/home/linea1.png"
+                  className="linea2mobile"
+                />
+              </div>
+            </Col>
+            <Col xs={22}>
+              <Row>
+                <Skeleton loading={dataNoticiasLoading} active>
+                  {dataNoticias.circulo &&
+                    dataNoticias.circulo.length > 0 &&
+                    dataNoticias.circulo.map((noticia) => {
+                      const imageSrc = `data:image/${noticia.image_extension};base64,${noticia.image_base64}`;
+
+                      return (
+                        <Link
+                          href={{
+                            pathname: `/noticias/${noticia.url}`,
+                            query: { lang },
+                          }}
+                        >
+                          <div
+                            className="col-md-4 cursor-pointer hover-notice-home"
+                            key={noticia.id}
+                          >
+                            <div className="mb-4 text-center">
+                              <h3>{noticia.title}</h3>
+                            </div>
+                            <div className="noticias_img">
+                              <img
+                                src={imageSrc}
+                                style={{ maxWidth: "90%" }}
+                                alt={noticia.title}
+                              />
+                            </div>
+
+                            <div className="mt-4 text-center noticias_cuadro">
+                              {noticia.summary}
+                            </div>
+                            <br />
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </Skeleton>
+                <Skeleton loading={dataNoticiasLoading} active>
+                  {dataNoticias.cuadro && dataNoticias.cuadro.length > 0 && (
+                    <div className="row">
+                      <div className="col-md-6 ">
+                        {dataNoticias.cuadro[0] && (
+                          <Col span={24}>
+                            <Link
+                              href={{
+                                pathname: `/noticias/${dataNoticias.cuadro[0].url}`,
+                                query: { lang },
+                              }}
+                            >
+                              <img
+                                alt={dataNoticias.cuadro[0].title}
+                                src={`data:image/${dataNoticias.cuadro[0].image_extension};base64,${dataNoticias.cuadro[0].image_base64}`}
+                                className="post_img_principal cursor-pointer hover-notice-home"
+                              />
+                            </Link>
+                          </Col>
+                        )}
+                      </div>
+                      <div className="col-md-12 mb-4">
+                        {dataNoticias.cuadro[1] && (
+                          <Col span={12}>
+                            <Link
+                              href={{
+                                pathname: `/noticias/${dataNoticias.cuadro[1].url}`,
+                                query: { lang },
+                              }}
+                            >
+                              <img
+                                alt={dataNoticias.cuadro[1].title}
+                                src={`data:image/${dataNoticias.cuadro[1].image_extension};base64,${dataNoticias.cuadro[1].image_base64}`}
+                                className="post_img_principal cursor-pointer hover-notice-home"
+                              />
+                            </Link>
+                          </Col>
+                        )}
+                      </div>
+                      <div className="col-md-12">
+                        {dataNoticias.cuadro[2] && (
+                          <Col span={12}>
+                            <Link
+                              href={{
+                                pathname: `/noticias/${dataNoticias.cuadro[2].url}`,
+                                query: { lang },
+                              }}
+                            >
+                              <img
+                                alt={dataNoticias.cuadro[2].title}
+                                src={`data:image/${dataNoticias.cuadro[2].image_extension};base64,${dataNoticias.cuadro[2].image_base64}`}
+                                className="post_img_principal cursor-pointer hover-notice-home"
+                              />
+                            </Link>
+                          </Col>
+                        )}
+                      </div>
+                      {dataNoticias.cuadro[3] && (
+                        <Col span={12}>
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[3].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[3].title}
+                              src={`data:image/${dataNoticias.cuadro[3].image_extension};base64,${dataNoticias.cuadro[3].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
+                        </Col>
+                      )}
+                      {dataNoticias.cuadro[4] && (
+                        <Col span={12}>
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[4].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[4].title}
+                              src={`data:image/${dataNoticias.cuadro[4].image_extension};base64,${dataNoticias.cuadro[4].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
+                        </Col>
+                      )}
+                    </div>
+                  )}
+                </Skeleton>
+              </Row>
+            </Col>
+          </Row>
+
+          <Row type="flex" justify="center" className="SectionMobile1">
+            <Col xs={22}></Col>
+          </Row>
+
+          <Row type="flex" justify="center" className="SectionMobile1">
+            <Col xs={22}></Col>
+            <br />
+            <br />
+          </Row>
+        </div>
+
         <Footer />
       </div>
 

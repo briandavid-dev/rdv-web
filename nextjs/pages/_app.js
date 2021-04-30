@@ -30,6 +30,20 @@ const stylesCss = css.global`
     margin: 2rem 0 2rem 0;
   }
 
+  .seccion_titulo_mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 2rem 0;
+  }
+  .linea1mobile {
+    max-height: 3px;
+  }
+  .linea2mobile {
+    height: 3px;
+    margin-left: 8px;
+  }
+
   h1,
   h2,
   h3,
@@ -64,6 +78,11 @@ const stylesCss = css.global`
 
   @media only screen and (max-width: 620px) {
     .valida_mobile {
+      display: none !important;
+    }
+  }
+  @media only screen and (min-width: 621px) {
+    .valida_desktop {
       display: none !important;
     }
   }
