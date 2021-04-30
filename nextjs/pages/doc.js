@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Row, Col } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
@@ -23,6 +24,13 @@ const stylesCss = css.global`
     margin-bottom: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  .SectionMobile0 {
+    background-color: #443421;
+  }
+  .SectionMobile1 {
+    background-image: url("/assets/imgs/historia/FONDO-NUESTRA-HISTORIA-MOBILE.jpg");
   }
 `;
 
@@ -56,12 +64,18 @@ export default function Doc() {
           rel="stylesheet"
         />
 
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+          crossorigin="anonymous"
+        ></script>
+
         <title>{strings[lang].doc.pageTitle}</title>
       </Head>
 
       <MenuDesktop />
 
-      <div className="SeccionDoc0">
+      <div className="SeccionDoc0 valida_mobile">
         <div className="SeccionDoc1">
           <img
             src="./assets/imgs/doc/BARRIL-LETRA-D.png"
@@ -191,6 +205,88 @@ export default function Doc() {
         </div>
       </div>
 
+      <div className="SeccionDoc0 valida_desktop">
+        <Row type="flex" justify="center">
+          <Col xs={22} className="text-center" style={{ marginTop: "58px" }}>
+            <br />
+            <img
+              src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+              style={{ maxWidth: "30%" }}
+            />{" "}
+            &nbsp;&nbsp;
+            <img
+              src="./assets/imgs/doc/BARRIL-LETRA-O.png"
+              style={{ maxWidth: "30%" }}
+            />{" "}
+            &nbsp;&nbsp;
+            <img
+              src="./assets/imgs/doc/BARRIL-LETRA-C.png"
+              style={{ maxWidth: "30%" }}
+            />
+            <br />
+            <br />
+          </Col>
+          <Col xs={22}>
+            <h1>{strings[lang].doc.title1}</h1>
+            <br />
+
+            <h3 className="titulo-maestro">{strings[lang].doc.quees}</h3>
+            {strings[lang].doc.quees1}
+
+            <h3 className="titulo-maestro">{strings[lang].doc.existe}</h3>
+            {strings[lang].doc.existe1}
+          </Col>
+          <Col xs={22} className="text-center">
+            <img
+              src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
+              style={{ maxWidth: "100%" }}
+            />
+            <br />
+            <br />
+          </Col>
+          <Col xs={22}>
+            <h3 className="titulo-maestro">{strings[lang].doc.nacimiento}</h3>
+            {strings[lang].doc.nacimiento1}
+            <h3 className="titulo-maestro">{strings[lang].doc.regulador}</h3>
+            {strings[lang].doc.regulador1}
+
+            {strings[lang].doc.funciones}
+
+            {strings[lang].doc.organizacion}
+          </Col>
+          <Col xs={22} className="text-center">
+            <img
+              src="./assets/imgs/doc/FOTO-CAMION.png"
+              style={{
+                maxWidth: "30%",
+              }}
+            />{" "}
+            &nbsp;&nbsp;
+            <img
+              src="./assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
+              style={{
+                maxWidth: "30%",
+              }}
+            />{" "}
+            &nbsp;&nbsp;
+            <img
+              src="./assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
+              style={{
+                maxWidth: "30%",
+              }}
+            />
+            <br />
+            <br />
+          </Col>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+                <br />
+              </div>
+            </div>
+          </div>
+        </Row>
+      </div>
       <Footer />
     </div>
   );
