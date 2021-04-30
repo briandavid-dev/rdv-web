@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Row, Col } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
@@ -18,6 +19,13 @@ const stylesCss = css.global`
   .SeccionElRon2 {
     background-color: #443421;
     text-align: center;
+  }
+
+  .SectionMobile0 {
+    background-color: #443421;
+  }
+  .SectionMobile1 {
+    background-image: url("/assets/imgs/historia/FONDO-NUESTRA-HISTORIA-MOBILE.jpg");
   }
 `;
 
@@ -51,6 +59,12 @@ export default function ElRon() {
           rel="stylesheet"
         />
 
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+          crossorigin="anonymous"
+        ></script>
+
         <title>{strings[lang].elron.pageTitle}</title>
       </Head>
 
@@ -60,7 +74,7 @@ export default function ElRon() {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="seccion_titulo">
+              <div className="seccion_titulo valida_mobile">
                 <img
                   src="./assets/imgs/home/linea2.png"
                   className="linea1"
@@ -73,23 +87,34 @@ export default function ElRon() {
                   style={{ maxHeight: "4px" }}
                 />
               </div>
+
+              <div className="valida_desktop">
+                <h1 className="text-center">{strings[lang].elron.title}</h1>
+                <br />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="SeccionElRon2">
+      <div className="SeccionElRon2 text-center">
         <img
           src="./assets/imgs/elrom/RON1.png"
           style={{ width: "1000px", maxWidth: "100%" }}
         />
+      </div>
+      <div className="SeccionElRon2 text-center">
         <img
           src="./assets/imgs/elrom/RON2.png"
           style={{ width: "1000px", maxWidth: "100%" }}
         />
+      </div>
+      <div className="SeccionElRon2 text-center">
         <img
           src="./assets/imgs/elrom/RON3.png"
           style={{ width: "1000px", maxWidth: "100%" }}
         />
+      </div>
+      <div className="SeccionElRon2 text-center">
         <img
           src="./assets/imgs/elrom/RON4.png"
           style={{ width: "1000px", maxWidth: "100%" }}
@@ -102,8 +127,13 @@ export default function ElRon() {
         <div className="container">
           <div className="row">
             <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
-              <br />
-              <br />
+              <div className="valida_mobile">
+                <br />
+                <br />
+              </div>
+              <div className="valida_desktop">
+                <br />
+              </div>
             </div>
           </div>
         </div>

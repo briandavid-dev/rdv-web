@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Row, Col } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
@@ -18,6 +19,13 @@ const stylesCss = css.global`
   .SeccionRon3 {
     padding-top: 2rem;
     background-color: #63452d;
+  }
+
+  .SectionMobile0 {
+    background-color: #4e3c2d;
+  }
+  .SectionMobile1 {
+    background-image: url("/assets/imgs/home/fondoEmpresas.png");
   }
 `;
 
@@ -51,52 +59,95 @@ export default function QuienesSomos() {
           rel="stylesheet"
         />
 
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+          crossorigin="anonymous"
+        ></script>
+
         <title>{strings[lang].quienes.pageTitle}</title>
       </Head>
 
       <MenuDesktop />
 
-      <div className="SeccionCopa">
-        <div style={{ position: "relative" }}>
-          <img
-            src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
-            style={{ maxWidth: "100%" }}
-          />
+      <div className="valida_mobile font_20">
+        <div className="SeccionCopa">
+          <div style={{ position: "relative" }}>
+            <img
+              src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              style={{ maxWidth: "100%" }}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="SeccionRon">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="seccion_titulo">
-                <img src="./assets/imgs/home/linea2.png" className="linea1" />
-                <h1>{strings[lang].quienes.title1}</h1>
-                <img src="./assets/imgs/home/linea1.png" className="linea2" />
+        <div className="SeccionRon">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="seccion_titulo">
+                  <img src="./assets/imgs/home/linea2.png" className="linea1" />
+                  <h1>{strings[lang].quienes.title1}</h1>
+                  <img src="./assets/imgs/home/linea1.png" className="linea2" />
+                </div>
               </div>
-            </div>
-            <div className="col-md-6 font_20" style={{ textAlign: "justify" }}>
-              {strings[lang].quienes.parrafo1}
-            </div>
-            <div className="col-md-6 font_20" style={{ textAlign: "justify" }}>
-              {strings[lang].quienes.parrafo2}
-            </div>
-            <div className="col-md-12">
-              <br />
-              <br />
-              <div style={{ display: "flex", justifyContent: "center" }}>
+              <div
+                className="col-md-6 font_20"
+                style={{ textAlign: "justify" }}
+              >
+                {strings[lang].quienes.parrafo1}
+              </div>
+              <div
+                className="col-md-6 font_20"
+                style={{ textAlign: "justify" }}
+              >
+                {strings[lang].quienes.parrafo2}
+              </div>
+              <div className="col-md-12">
+                <br />
+                <br />
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <img
+                    src="./assets/imgs/quienessomos/ICONO-SOL.png"
+                    style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
+                  />
+                  <img
+                    src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
+                    style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
+                  />
+                  <img
+                    src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                    style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
+                  />
+                </div>
+                <div>
+                  <br />
+                  <br />
+                  <br />
+                </div>
+              </div>
+              <div className="col-md-6" style={{ textAlign: "center" }}>
                 <img
-                  src="./assets/imgs/quienessomos/ICONO-SOL.png"
-                  style={{ maxWidth: "250px", margin: "2rem" }}
+                  src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
+                  style={{ maxWidth: "100%", maxHeight: "600px" }}
                 />
-                <img
-                  src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
-                  style={{ maxWidth: "250px", margin: "2rem" }}
-                />
-                <img
-                  src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
-                  style={{ maxWidth: "250px", margin: "2rem" }}
-                />
+              </div>
+              <div className="col-md-6" style={{ textAlign: "right" }}>
+                <div>
+                  <div className="titulo">
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      style={{ height: "8px", marginRight: "110px" }}
+                    />
+                    <h1>{strings[lang].quienes.quienes}</h1>
+                    <img src="./assets/imgs/home/linea2.png" />
+                  </div>
+                </div>
+                <br />
+
+                <p className="font_20">{strings[lang].quienes.elfondo1}</p>
+                <br />
+
+                <p className="font_20">{strings[lang].quienes.elfondo2}</p>
               </div>
               <div>
                 <br />
@@ -104,125 +155,222 @@ export default function QuienesSomos() {
                 <br />
               </div>
             </div>
-            <div className="col-md-6" style={{ textAlign: "center" }}>
+          </div>
+        </div>
+
+        <div className="SeccionRon2">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6">
+                <p className="font_20" style={{ textAlign: "justify" }}>
+                  {strings[lang].quienes.tambien}
+                </p>
+                <br />
+                <p className="font_20" style={{ textAlign: "justify" }}>
+                  {strings[lang].quienes.integran}
+                </p>
+              </div>
+              <div className="col-md-6">
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <img
+                    src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
+                    style={{ maxWidth: "100%", maxHeight: "500px" }}
+                  />
+                </div>
+              </div>
+              <div>
+                <br />
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="SeccionRon3 font_20 text_justify">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="col-md-12">
+                  <div>
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      style={{ height: "8px", marginRight: "110px" }}
+                    />
+                    <h1>{strings[lang].quienes.mision}</h1>
+                    <br />
+                    <p>{strings[lang].quienes.promover}</p>
+                  </div>
+                  <br />
+                </div>
+                <div className="col-md-12">
+                  <div>
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      style={{ height: "8px", marginRight: "110px" }}
+                    />
+                    <h1>{strings[lang].quienes.vision}</h1>
+                    <br />
+                    <p>{strings[lang].quienes.vision1}</p>
+                  </div>
+                  <br />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div>
+                  <img
+                    src="./assets/imgs/home/linea1.png"
+                    style={{ height: "8px", marginRight: "110px" }}
+                  />
+                  <h1>{strings[lang].quienes.valores}</h1>
+                  <br />
+                  <p>{strings[lang].quienes.entusiasmo}</p>
+                  <p>{strings[lang].quienes.entusiasmo1}</p>
+                  <br />
+
+                  <p>{strings[lang].quienes.profesionalismo}</p>
+                  <p>{strings[lang].quienes.profesionalismo1}</p>
+                  <br />
+
+                  <p>{strings[lang].quienes.colaboracion}</p>
+                  <p>{strings[lang].quienes.colaboracion1}</p>
+                  <br />
+                </div>
+                <br />
+              </div>
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="valida_desktop font_20">
+        <Row type="flex" justify="center" className="SectionMobile0">
+          <Col xs={24}>
+            <img
+              src="/assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              style={{ maxWidth: "100%", marginTop: "58px" }}
+            />
+          </Col>
+          <Col xs={22} className="text-center">
+            <div className="seccion_titulo_mobile">
               <img
-                src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
-                style={{ maxWidth: "100%", maxHeight: "600px" }}
+                src="/assets/imgs/home/linea2.png"
+                className="linea1mobile"
+              />
+              <h1>{strings[lang].quienes.title1}</h1>
+              <img
+                src="/assets/imgs/home/linea1.png"
+                className="linea2mobile"
               />
             </div>
-            <div className="col-md-6" style={{ textAlign: "right" }}>
-              <div>
-                <div className="titulo">
-                  <img
-                    src="./assets/imgs/home/linea1.png"
-                    style={{ height: "8px", marginRight: "110px" }}
-                  />
-                  <h1>{strings[lang].quienes.quienes}</h1>
-                  <img src="./assets/imgs/home/linea1.png" />
-                </div>
-              </div>
-              <br />
+          </Col>
+          <Col xs={22}>
+            <p>{strings[lang].quienes.parrafo1}</p>
+            <p>{strings[lang].quienes.parrafo2}</p>
+            <div className="text-center">
+              <img
+                src="./assets/imgs/quienessomos/ICONO-SOL.png"
+                style={{ maxWidth: "25%", margin: "0.5rem" }}
+              />
+              <img
+                src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
+                style={{ maxWidth: "25%", margin: "0.5rem" }}
+              />
+              <img
+                src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                style={{ maxWidth: "25%", margin: "0.5rem" }}
+              />
+            </div>
+            <br />
+          </Col>
+          <Col xs={22}>
+            <img
+              src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
+              style={{ maxWidth: "100%", maxHeight: "600px" }}
+            />
+            <div className="seccion_titulo_mobile">
+              <img
+                src="/assets/imgs/home/linea2.png"
+                className="linea1mobile"
+              />
+              <h1 className="text-center">{strings[lang].quienes.quienes}</h1>
+              <img
+                src="/assets/imgs/home/linea1.png"
+                className="linea2mobile"
+              />
+            </div>
+            <p className="font_20">{strings[lang].quienes.elfondo1}</p>
+            <p className="font_20">{strings[lang].quienes.elfondo2}</p>
+          </Col>
+          <Col xs={22}>
+            <img
+              src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
+              style={{ maxWidth: "100%", maxHeight: "500px" }}
+            />
+            <br />
+            <br />
+            <p>{strings[lang].quienes.tambien}</p>
+            <p>{strings[lang].quienes.integran}</p>
+            <br />
+          </Col>
+          <Col xs={22}>
+            <img
+              src="./assets/imgs/home/linea1.png"
+              style={{ height: "3px" }}
+            />
+            <h1>{strings[lang].quienes.mision}</h1>
+            <br />
+            <p>{strings[lang].quienes.promover}</p>
 
-              <p className="font_20">{strings[lang].quienes.elfondo1}</p>
-              <br />
+            <br />
 
-              <p className="font_20">{strings[lang].quienes.elfondo2}</p>
-            </div>
-            <div>
-              <br />
-              <br />
-              <br />
-            </div>
-          </div>
-        </div>
-      </div>
+            <img
+              src="./assets/imgs/home/linea1.png"
+              style={{ height: "3px" }}
+            />
+            <h1>{strings[lang].quienes.vision}</h1>
+            <br />
+            <p>{strings[lang].quienes.vision1}</p>
+            <br />
 
-      <div className="SeccionRon2">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <p className="font_20" style={{ textAlign: "justify" }}>
-                {strings[lang].quienes.tambien}
-              </p>
-              <br />
-              <p className="font_20" style={{ textAlign: "justify" }}>
-                {strings[lang].quienes.integran}
-              </p>
-            </div>
-            <div className="col-md-6">
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <img
-                  src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
-                  style={{ maxWidth: "100%", maxHeight: "500px" }}
-                />
-              </div>
-            </div>
-            <div>
-              <br />
-              <br />
-              <br />
-            </div>
-          </div>
-        </div>
-      </div>
+            <img
+              src="./assets/imgs/home/linea1.png"
+              style={{ height: "3px" }}
+            />
+            <h1>{strings[lang].quienes.valores}</h1>
+            <br />
+            <p>{strings[lang].quienes.entusiasmo}</p>
+            <p>{strings[lang].quienes.entusiasmo1}</p>
+            <br />
 
-      <div className="SeccionRon3 font_20 text_justify">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="col-md-12">
-                <div>
-                  <img
-                    src="./assets/imgs/home/linea1.png"
-                    style={{ height: "8px", marginRight: "110px" }}
-                  />
-                  <h1>{strings[lang].quienes.mision}</h1>
-                  <br />
-                  <p>{strings[lang].quienes.promover}</p>
-                </div>
-                <br />
-              </div>
-              <div className="col-md-12">
-                <div>
-                  <img
-                    src="./assets/imgs/home/linea1.png"
-                    style={{ height: "8px", marginRight: "110px" }}
-                  />
-                  <h1>{strings[lang].quienes.vision}</h1>
-                  <br />
-                  <p>{strings[lang].quienes.vision1}</p>
-                </div>
-                <br />
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div>
-                <img
-                  src="./assets/imgs/home/linea1.png"
-                  style={{ height: "8px", marginRight: "110px" }}
-                />
-                <h1>{strings[lang].quienes.valores}</h1>
-                <br />
-                <p>{strings[lang].quienes.entusiasmo}</p>
-                <p>{strings[lang].quienes.entusiasmo1}</p>
-                <br />
+            <p>{strings[lang].quienes.profesionalismo}</p>
+            <p>{strings[lang].quienes.profesionalismo1}</p>
+            <br />
 
-                <p>{strings[lang].quienes.profesionalismo}</p>
-                <p>{strings[lang].quienes.profesionalismo1}</p>
-                <br />
+            <p>{strings[lang].quienes.colaboracion}</p>
+            <p>{strings[lang].quienes.colaboracion1}</p>
+            <br />
+          </Col>
+          <Col xs={22}></Col>
+          <Col xs={22}></Col>
+          <Col xs={22}></Col>
 
-                <p>{strings[lang].quienes.colaboracion}</p>
-                <p>{strings[lang].quienes.colaboracion1}</p>
-                <br />
-              </div>
-              <br />
-            </div>
-          </div>
-        </div>
+          <br />
+          <br />
+        </Row>
 
         <div className="container">
           <div className="row">
             <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+              <br />
               <br />
             </div>
           </div>

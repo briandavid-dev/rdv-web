@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Row, Col } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
@@ -29,6 +30,13 @@ const stylesCss = css.global`
     justify-content: center;
     align-items: center;
     margin: 2rem 0 2rem 0;
+  }
+
+  .SectionMobile0 {
+    background-color: #4e3c2d;
+  }
+  .SectionMobile1 {
+    background-image: url("/assets/imgs/historia/FONDO-NUESTRA-HISTORIA-MOBILE.jpg");
   }
 `;
 
@@ -62,124 +70,210 @@ export default function Historia() {
           rel="stylesheet"
         />
 
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+          crossorigin="anonymous"
+        ></script>
+
         <title>{strings[lang].historia.pageTitle}</title>
       </Head>
 
       <MenuDesktop />
 
-      <div className="SeccionHistoria1">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-7 font_20 text-justify">
-              <div className="seccion_titulo">
+      <div className="valida_mobile font_20">
+        <div className="SeccionHistoria1">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-7 font_20 text-justify">
+                <div className="seccion_titulo">
+                  <img
+                    src="./assets/imgs/home/linea2.png"
+                    className="linea1"
+                    style={{ maxHeight: "4px" }}
+                  />
+                  <h1>{strings[lang].historia.titulo}</h1>
+                  <img
+                    src="./assets/imgs/home/linea1.png"
+                    className="linea2"
+                    style={{ maxHeight: "4px" }}
+                  />
+                </div>
+                <p>{strings[lang].historia.parrafo1}</p>
+              </div>
+              <div className="col-md-5 font_20  text-center">
                 <img
-                  src="./assets/imgs/home/linea2.png"
-                  className="linea1"
-                  style={{ maxHeight: "4px" }}
-                />
-                <h1>{strings[lang].historia.titulo}</h1>
-                <img
-                  src="./assets/imgs/home/linea1.png"
-                  className="linea2"
-                  style={{ maxHeight: "4px" }}
+                  src="./assets/imgs/historia/IMAGEN-COFRE.png"
+                  style={{ maxWidth: "80%" }}
                 />
               </div>
-              <p>{strings[lang].historia.parrafo1}</p>
-            </div>
-            <div className="col-md-5 font_20  text-center">
-              <img
-                src="./assets/imgs/historia/IMAGEN-COFRE.png"
-                style={{ maxWidth: "80%" }}
-              />
-            </div>
-            <div className="col-md-12 font_20 text-justify">
-              <br />
-              <br />
-              <p>{strings[lang].historia.parrafo2}</p>
-              <br />
+              <div className="col-md-12 font_20 text-justify">
+                <br />
+                <br />
+                <p>{strings[lang].historia.parrafo2}</p>
+                <br />
 
-              <p>{strings[lang].historia.parrafo3}</p>
+                <p>{strings[lang].historia.parrafo3}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="SeccionHistoria3">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <img
+                    src="./assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
+                    style={{
+                      maxWidth: "250px",
+                      maxHeight: "250px",
+                      margin: "2rem",
+                    }}
+                  />
+                  <img
+                    src="./assets/imgs/historia/BARRICAS.png"
+                    style={{
+                      maxWidth: "250px",
+                      maxHeight: "250px",
+                      margin: "2rem",
+                    }}
+                  />
+                  <img
+                    src="./assets/imgs/historia/LOGO.png"
+                    style={{
+                      maxWidth: "250px",
+                      maxHeight: "250px",
+                      margin: "2rem",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="SeccionHistoria2">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 font_20 text-justify">
+                <p>{strings[lang].historia.parrafo4}</p>
+                <br />
+                <p>{strings[lang].historia.parrafo5}</p>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-12 font_20 text-center">
+                <img
+                  src="./assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
+                  style={{ maxWidth: "450px", margin: "2rem" }}
+                />
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-12 font_20 text-justify">
+                <p>{strings[lang].historia.parrafo6}</p>
+                <br />
+                <p>{strings[lang].historia.parrafo7}</p>
+                <br />
+                <p>{strings[lang].historia.parrafo8}</p>
+                <br />
+                <p>{strings[lang].historia.parrafo9}</p>
+                <br />
+              </div>
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+                <br />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="SeccionHistoria3">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <img
-                  src="./assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
-                  style={{
-                    maxWidth: "250px",
-                    maxHeight: "250px",
-                    margin: "2rem",
-                  }}
-                />
-                <img
-                  src="./assets/imgs/historia/BARRICAS.png"
-                  style={{
-                    maxWidth: "250px",
-                    maxHeight: "250px",
-                    margin: "2rem",
-                  }}
-                />
-                <img
-                  src="./assets/imgs/historia/LOGO.png"
-                  style={{
-                    maxWidth: "250px",
-                    maxHeight: "250px",
-                    margin: "2rem",
-                  }}
-                />
+      <div className="valida_desktop font_20">
+        <Row type="flex" justify="center" className="SectionMobile1">
+          <Col xs={22} className="text-center" style={{ marginTop: "58px" }}>
+            <div className="seccion_titulo_mobile">
+              <img
+                src="/assets/imgs/home/linea2.png"
+                className="linea1mobile"
+              />
+              <h1>{strings[lang].historia.titulo}</h1>
+              <img
+                src="/assets/imgs/home/linea1.png"
+                className="linea2mobile"
+              />
+            </div>
+          </Col>
+          <Col xs={22} className="text-center">
+            <img
+              src="./assets/imgs/historia/IMAGEN-COFRE.png"
+              style={{ maxWidth: "80%" }}
+            />
+          </Col>
+          <Col xs={22}>
+            <br />
+            <p>{strings[lang].historia.parrafo1}</p>
+            <p>{strings[lang].historia.parrafo2}</p>
+            <p>{strings[lang].historia.parrafo3}</p>
+          </Col>
+          <Col xs={22} className="text-center">
+            <img
+              src="/assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
+              style={{
+                maxWidth: "25%",
+                margin: "0.2rem",
+              }}
+            />
+            <img
+              src="/assets/imgs/historia/BARRICAS.png"
+              style={{
+                maxWidth: "25%",
+                margin: "0.2rem",
+              }}
+            />
+            <img
+              src="/assets/imgs/historia/LOGO.png"
+              style={{
+                maxWidth: "25%",
+                margin: "0.2rem",
+              }}
+            />
+            <br />
+            <br />
+          </Col>
+          <Col xs={22}>
+            <p>{strings[lang].historia.parrafo4}</p>
+            <p>{strings[lang].historia.parrafo5}</p>
+          </Col>
+          <Col xs={22} className="text-center">
+            <img
+              src="./assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
+              style={{ maxWidth: "80%" }}
+            />
+          </Col>
+          <Col xs={22}>
+            <p>{strings[lang].historia.parrafo6}</p>
+            <p>{strings[lang].historia.parrafo7}</p>
+            <p>{strings[lang].historia.parrafo8}</p>
+            <p>{strings[lang].historia.parrafo9}</p>
+          </Col>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+                <br />
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="SeccionHistoria2">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 font_20 text-justify">
-              <p>{strings[lang].historia.parrafo4}</p>
-              <br />
-              <p>{strings[lang].historia.parrafo5}</p>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-12 font_20 text-center">
-              <img
-                src="./assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
-                style={{ maxWidth: "450px", margin: "2rem" }}
-              />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-12 font_20 text-justify">
-              <p>{strings[lang].historia.parrafo6}</p>
-              <br />
-              <p>{strings[lang].historia.parrafo7}</p>
-              <br />
-              <p>{strings[lang].historia.parrafo8}</p>
-              <br />
-              <p>{strings[lang].historia.parrafo9}</p>
-              <br />
-            </div>
-          </div>
-        </div>
-
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
-              <br />
-              <br />
-            </div>
-          </div>
-        </div>
+        </Row>
       </div>
 
       <Footer />

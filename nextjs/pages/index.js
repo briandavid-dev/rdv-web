@@ -94,6 +94,12 @@ const stylesCss = css.global`
     margin: 0 2rem 0 2rem;
   }
 
+  .iconos_abajo_mobile {
+    height: 50px;
+    width: 50px;
+    margin: 0 1rem 0 1rem;
+  }
+
   .post_img_principal {
     max-width: 100%;
   }
@@ -728,6 +734,7 @@ export default function Home() {
             <div className="row">
               <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
                 <br />
+                <br />
               </div>
             </div>
           </div>
@@ -1049,7 +1056,7 @@ export default function Home() {
               </div>
             </Col>
             <Col xs={22}>
-              <Row>
+              <Row gutter={[10, 10]} type="flex" justify="center">
                 <Skeleton loading={dataNoticiasLoading} active>
                   {dataNoticias.circulo &&
                     dataNoticias.circulo.length > 0 &&
@@ -1089,61 +1096,55 @@ export default function Home() {
                 </Skeleton>
                 <Skeleton loading={dataNoticiasLoading} active>
                   {dataNoticias.cuadro && dataNoticias.cuadro.length > 0 && (
-                    <div className="row">
-                      <div className="col-md-6 ">
-                        {dataNoticias.cuadro[0] && (
-                          <Col span={24}>
-                            <Link
-                              href={{
-                                pathname: `/noticias/${dataNoticias.cuadro[0].url}`,
-                                query: { lang },
-                              }}
-                            >
-                              <img
-                                alt={dataNoticias.cuadro[0].title}
-                                src={`data:image/${dataNoticias.cuadro[0].image_extension};base64,${dataNoticias.cuadro[0].image_base64}`}
-                                className="post_img_principal cursor-pointer hover-notice-home"
-                              />
-                            </Link>
-                          </Col>
-                        )}
-                      </div>
-                      <div className="col-md-12 mb-4">
-                        {dataNoticias.cuadro[1] && (
-                          <Col span={12}>
-                            <Link
-                              href={{
-                                pathname: `/noticias/${dataNoticias.cuadro[1].url}`,
-                                query: { lang },
-                              }}
-                            >
-                              <img
-                                alt={dataNoticias.cuadro[1].title}
-                                src={`data:image/${dataNoticias.cuadro[1].image_extension};base64,${dataNoticias.cuadro[1].image_base64}`}
-                                className="post_img_principal cursor-pointer hover-notice-home"
-                              />
-                            </Link>
-                          </Col>
-                        )}
-                      </div>
-                      <div className="col-md-12">
-                        {dataNoticias.cuadro[2] && (
-                          <Col span={12}>
-                            <Link
-                              href={{
-                                pathname: `/noticias/${dataNoticias.cuadro[2].url}`,
-                                query: { lang },
-                              }}
-                            >
-                              <img
-                                alt={dataNoticias.cuadro[2].title}
-                                src={`data:image/${dataNoticias.cuadro[2].image_extension};base64,${dataNoticias.cuadro[2].image_base64}`}
-                                className="post_img_principal cursor-pointer hover-notice-home"
-                              />
-                            </Link>
-                          </Col>
-                        )}
-                      </div>
+                    <>
+                      {dataNoticias.cuadro[0] && (
+                        <Col span={24}>
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[0].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[0].title}
+                              src={`data:image/${dataNoticias.cuadro[0].image_extension};base64,${dataNoticias.cuadro[0].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
+                        </Col>
+                      )}
+                      {dataNoticias.cuadro[1] && (
+                        <Col span={12}>
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[1].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[1].title}
+                              src={`data:image/${dataNoticias.cuadro[1].image_extension};base64,${dataNoticias.cuadro[1].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
+                        </Col>
+                      )}
+                      {dataNoticias.cuadro[2] && (
+                        <Col span={12}>
+                          <Link
+                            href={{
+                              pathname: `/noticias/${dataNoticias.cuadro[2].url}`,
+                              query: { lang },
+                            }}
+                          >
+                            <img
+                              alt={dataNoticias.cuadro[2].title}
+                              src={`data:image/${dataNoticias.cuadro[2].image_extension};base64,${dataNoticias.cuadro[2].image_base64}`}
+                              className="post_img_principal cursor-pointer hover-notice-home"
+                            />
+                          </Link>
+                        </Col>
+                      )}
                       {dataNoticias.cuadro[3] && (
                         <Col span={12}>
                           <Link
@@ -1176,7 +1177,7 @@ export default function Home() {
                           </Link>
                         </Col>
                       )}
-                    </div>
+                    </>
                   )}
                 </Skeleton>
               </Row>
@@ -1184,7 +1185,27 @@ export default function Home() {
           </Row>
 
           <Row type="flex" justify="center" className="SectionMobile1">
-            <Col xs={22}></Col>
+            <Col xs={22} className="text-center">
+              <br />
+              <br />
+              <img
+                src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                className="iconos_abajo_mobile"
+              />
+              <img
+                src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                className="iconos_abajo_mobile"
+              />
+              <img
+                src="./assets/imgs/home/ICONO-YOUTUBE.png"
+                className="iconos_abajo_mobile"
+              />
+            </Col>
+            <Col xs={22} className="text-center">
+              <br />
+              <br />
+              @RONDEVENEZUELA
+            </Col>
           </Row>
 
           <Row type="flex" justify="center" className="SectionMobile1">
@@ -1192,6 +1213,14 @@ export default function Home() {
             <br />
             <br />
           </Row>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
         </div>
 
         <Footer />

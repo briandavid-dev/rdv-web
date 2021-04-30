@@ -16,7 +16,7 @@ const Footer = () => {
       <footer>
         <div className="container">
           <div className="row">
-            <div className="col-md-12 text-center message">
+            <div className="col-md-12 text-center message ">
               {strings[lang].footer.parrafo1}
             </div>
           </div>

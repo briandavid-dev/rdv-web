@@ -69,7 +69,7 @@ const stylesCss = css.global`
   }
   footer .message {
     background-color: #3d2514;
-    padding: 0 0 2rem 0;
+    padding: 0 2rem 2rem 2rem;
     color: #fef4e4;
   }
   .titulo-maestro {
