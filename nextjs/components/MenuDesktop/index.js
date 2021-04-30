@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const stylesCss = css.global`
-  /* .nav_bar_superior {
+  .nav_bar_superior {
     background-color: rgba(0, 0, 0, 0.1) !important;
     display: flex;
     flex-direction: row;
@@ -16,11 +16,17 @@ const stylesCss = css.global`
     justify-content: center !important;
     display: flex !important;
     align-items: center !important;
-  } */
+  }
+
+  .valida_desktop {
+    display: none !important;
+  }
 
   @media only screen and (max-width: 620px) {
     .nav_bar_superior {
       background-color: rgba(0, 0, 0, 0.7) !important;
+      display: inline;
+      flex-direction: row;
       position: fixed;
       width: 100%;
       z-index: 1000;
@@ -32,6 +38,9 @@ const stylesCss = css.global`
     }
     .valida_mobile {
       display: none !important;
+    }
+    .valida_desktop {
+      display: inline !important;
     }
     .social_icons {
       text-align: right;
@@ -82,7 +91,7 @@ const MenuDesktop = () => {
       <div className="nav_bar_superior">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark_ ">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand valida_desktop" href="#">
               <img
                 src="/assets/imgs/home/logo_blanco.png"
                 style={{ height: "30px" }}
