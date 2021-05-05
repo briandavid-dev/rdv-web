@@ -17,6 +17,7 @@ import {
   Popconfirm,
   Image,
   Spin,
+  notification,
 } from "antd";
 const { Column } = Table;
 import { UploadOutlined, DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
@@ -49,6 +50,20 @@ const Noticias = () => {
   const [spinModal, setSpinModal] = useState(false);
   const [spinListado, setSpinListado] = useState(false);
 
+  const notifica = (tipo) => {
+    if (tipo === "success") {
+      notification["success"]({
+        message: "Hola",
+        description: "Tu operación ha sido realizada.",
+      });
+    } else if (tipo === "error") {
+      notification["error"]({
+        message: "Lo siento",
+        description: `Ha ocurrido un error en la transacción, intenta de nuevo en unos minutos.`,
+      });
+    }
+  };
+
   useEffect(() => {
     setSpinListado(true);
     ApiNoticias.getNoticias("noticias")
@@ -74,10 +89,12 @@ const Noticias = () => {
 
           setDataSource(newDataSource);
           setSpinListado(false);
+        } else {
+          notifica("error");
         }
       })
       .catch((error) => {
-        console.log(`error`, error);
+        notifica("error");
         setSpinListado(false);
       });
   }, []);
@@ -170,10 +187,13 @@ const Noticias = () => {
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
+            notifica("success");
+          } else {
+            notifica("error");
           }
         })
         .catch((error) => {
-          console.log(`error`, error);
+          notifica("error");
           setSpinModal(false);
         });
     }
@@ -199,10 +219,13 @@ const Noticias = () => {
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
+            notifica("success");
+          } else {
+            notifica("error");
           }
         })
         .catch((error) => {
-          console.log(`error`, error);
+          notifica("error");
           setSpinModal(false);
         });
     }
@@ -282,13 +305,15 @@ const Noticias = () => {
       .then((response) => {
         if (response.data.codigo === "1") {
           setDataSource(dataSource.filter((noticia) => noticia.id !== id));
+          notifica("success");
         } else {
-          console.log("Error en peticion, codigo: " + response.data.codigo);
+          notifica("error");
+          // console.log("Error en peticion, codigo: " + response.data.codigo);
         }
         setSpinListado(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        notifica("error");
         setSpinListado(false);
       });
   };
