@@ -68,6 +68,7 @@ const Noticias = () => {
               visualizacionHome: noticia.name_section,
               marcarPrincipal: noticia.markMain,
               contenido: noticia.content_html,
+              summary: noticia.summary,
             };
           });
 
@@ -190,7 +191,7 @@ const Noticias = () => {
                 imageBase64: payload.imagen[0][0].base64,
                 imageExtension: payload.imagen[0][0].extension,
                 key: uuid,
-                id: uuid,
+                id: response.data.results.insertId,
                 fechaCreacion: moment().format("DD-MM-YYYY"),
               },
             ];
