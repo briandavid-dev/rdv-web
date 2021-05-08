@@ -559,12 +559,13 @@ strings.empresas = {
 
 strings.validacionEdad = {
   invita: (
-    <span>
+    <h3>
       FONPRONVEN <br />
       te envita a disfrutar de forma responsable.
-    </span>
+    </h3>
   ),
-  eres: <span>¿Eres mayor de edad en tu país de residencia?</span>,
+  eres: <span>Debes ser mayor de edad para visualizar este contenido.</span>,
+  loEres: <span>¿Lo eres?</span>,
   si: "SI",
   no: "NO",
   noTienesEdad:

@@ -291,15 +291,20 @@ const MenuDesktop = () => {
                   }}
                 >
                   <div style={{ width: "100%" }}>
-                    <img
-                      src="/assets/imgs/home/ICONO-FACEBOOK.png"
-                      className="cursor-pointer"
-                      style={{
-                        height: "30px",
-                        padding: "30px",
-                        padding: "3px",
-                      }}
-                    />
+                    <a
+                      href="https://www.facebook.com/RondeVenezuela"
+                      target="_blank"
+                    >
+                      <img
+                        src="/assets/imgs/home/ICONO-FACEBOOK.png"
+                        className="cursor-pointer"
+                        style={{
+                          height: "30px",
+                          padding: "30px",
+                          padding: "3px",
+                        }}
+                      />
+                    </a>
                     <Link
                       href={{
                         pathname: router.pathname,
@@ -319,15 +324,20 @@ const MenuDesktop = () => {
                     </Link>
                   </div>
                   <div style={{ width: "100%" }}>
-                    <img
-                      src="/assets/imgs/home/ICONO-INSTAGRAM.png"
-                      className="cursor-pointer"
-                      style={{
-                        height: "30px",
-                        padding: "30px",
-                        padding: "3px",
-                      }}
-                    />
+                    <a
+                      href="https://www.instagram.com/rondevenezuela/"
+                      target="_blank"
+                    >
+                      <img
+                        src="/assets/imgs/home/ICONO-INSTAGRAM.png"
+                        className="cursor-pointer"
+                        style={{
+                          height: "30px",
+                          padding: "30px",
+                          padding: "3px",
+                        }}
+                      />
+                    </a>
                     <Link
                       href={{
                         pathname: router.pathname,

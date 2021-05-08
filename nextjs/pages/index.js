@@ -708,16 +708,32 @@ export default function Home() {
             <div className="container">
               <div className="row">
                 <div className="col-md-12 text-center mt-5">
+                  <a
+                    href="https://www.facebook.com/RondeVenezuela"
+                    target="_blank"
+                  >
+                    <img
+                      src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                      className="iconos_abajo"
+                    />
+                  </a>
                   <img
-                    src="./assets/imgs/home/ICONO-FACEBOOK.png"
-                    className="iconos_abajo"
+                    src="./assets/imgs/home/LINEA-REDES-1.png"
+                    className="linea1"
                   />
-                  <img src="./assets/imgs/home/linea2.png" className="linea1" />
+                  <a
+                    href="https://www.instagram.com/rondevenezuela/"
+                    target="_blank"
+                  >
+                    <img
+                      src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                      className="iconos_abajo"
+                    />
+                  </a>
                   <img
-                    src="./assets/imgs/home/ICONO-INSTAGRAM.png"
-                    className="iconos_abajo"
+                    src="./assets/imgs/home/LINEA-REDES-2.png"
+                    className="linea1"
                   />
-                  <img src="./assets/imgs/home/linea1.png" className="linea1" />
                   <img
                     src="./assets/imgs/home/ICONO-YOUTUBE.png"
                     className="iconos_abajo"
@@ -1188,14 +1204,23 @@ export default function Home() {
             <Col xs={22} className="text-center">
               <br />
               <br />
-              <img
-                src="./assets/imgs/home/ICONO-FACEBOOK.png"
-                className="iconos_abajo_mobile"
-              />
-              <img
-                src="./assets/imgs/home/ICONO-INSTAGRAM.png"
-                className="iconos_abajo_mobile"
-              />
+
+              <a href="https://www.facebook.com/RondeVenezuela" target="_blank">
+                <img
+                  src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                  className="iconos_abajo_mobile"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/rondevenezuela/"
+                target="_blank"
+              >
+                <img
+                  src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                  className="iconos_abajo_mobile"
+                />
+              </a>
+
               <img
                 src="./assets/imgs/home/ICONO-YOUTUBE.png"
                 className="iconos_abajo_mobile"
@@ -1282,12 +1307,14 @@ export default function Home() {
                   <p>{textoMayorEdad}</p>
                 ) : (
                   <>
+                    <h2>{strings[lang].validacionEdad.loEres}</h2>
+                    <br />
                     <Button
                       size="large"
                       style={{
                         width: "60px",
                         color: "#582E10",
-                        backgroundColor: "#B17557",
+                        backgroundColor: "#FBF2E5",
                       }}
                       onClick={() => {
                         handleEdad("S");
@@ -1301,7 +1328,7 @@ export default function Home() {
                       style={{
                         width: "60px",
                         color: "#582E10",
-                        backgroundColor: "#B17557",
+                        backgroundColor: "#FBF2E5",
                       }}
                       onClick={() => {
                         handleEdad("N");

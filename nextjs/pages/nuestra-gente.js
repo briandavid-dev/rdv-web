@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Row, Col, Divider } from "antd";
+import { Row, Col, Divider, Carousel } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
@@ -59,6 +59,7 @@ export default function NuestraGente() {
       </Head>
 
       <MenuDesktop />
+
       <div className="valida_mobile font_20">
         <div className="Seccion0Gente">
           <div className="Seccion1Gente">
@@ -104,67 +105,159 @@ export default function NuestraGente() {
             </div>
           </div>
 
-          <div className="Seccion2Gente">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="seccion_titulo">
-                    <img
-                      src="./assets/imgs/home/linea2.png"
-                      className="linea1"
-                      style={{ maxHeight: "4px" }}
-                    />
-                    <h1>{strings[lang].gente.maestros.title}</h1>
-                    <img
-                      src="./assets/imgs/home/linea1.png"
-                      className="linea2"
-                      style={{ maxHeight: "4px" }}
-                    />
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="seccion_titulo">
+                  <img
+                    src="./assets/imgs/home/linea2.png"
+                    className="linea1"
+                    style={{ maxHeight: "4px" }}
+                  />
+                  <h1>{strings[lang].gente.maestros.title}</h1>
+                  <img
+                    src="./assets/imgs/home/linea1.png"
+                    className="linea2"
+                    style={{ maxHeight: "4px" }}
+                  />
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <Carousel dotPosition="top">
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        color: "#fef4e4",
+                        marginTop: "3rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          flex: 4,
+                          paddingRight: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        <img
+                          src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
+                          style={{ maxWidth: "100%" }}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          flex: 8,
+                          paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        {strings[lang].gente.maestros.carmen}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        color: "#fef4e4",
+                        marginTop: "3rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          flex: 4,
+                          paddingRight: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        <img
+                          src="./assets/imgs/gente/m_TITO-CORDERO.png"
+                          style={{ maxWidth: "100%" }}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          flex: 8,
+                          paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        {strings[lang].gente.maestros.tito}
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        color: "#fef4e4",
+                        marginTop: "3rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          flex: 4,
+                          paddingRight: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        <img
+                          src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
+                          style={{ maxWidth: "100%" }}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          flex: 8,
+                          paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        {strings[lang].gente.maestros.giorgio}
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        color: "#fef4e4",
+                        marginTop: "3rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          flex: 4,
+                          paddingRight: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        <img
+                          src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
+                          style={{ maxWidth: "100%" }}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          flex: 8,
+                          paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        {strings[lang].gente.maestros.nestor}
+                      </div>
+                    </div>
+                  </div>
+                </Carousel>
+              </div>
+            </div>
+          </div>
 
-                <div className="col-md-4">
-                  <img
-                    src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
-                    style={{ maxWidth: "100%" }}
-                  />
-                </div>
-                <div className="col-md-8">
-                  {strings[lang].gente.maestros.carmen}
-                </div>
-                <hr style={{ margin: "3rem 0 3rem 0" }} />
-
-                <div className="col-md-4">
-                  <img
-                    src="./assets/imgs/gente/m_TITO-CORDERO.png"
-                    style={{ maxWidth: "100%" }}
-                  />
-                </div>
-                <div className="col-md-8">
-                  {strings[lang].gente.maestros.tito}
-                </div>
-                <hr style={{ margin: "3rem 0 3rem 0" }} />
-
-                <div className="col-md-4">
-                  <img
-                    src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
-                    style={{ maxWidth: "100%" }}
-                  />
-                </div>
-                <div className="col-md-8">
-                  {strings[lang].gente.maestros.giorgio}
-                </div>
-                <hr style={{ margin: "3rem 0 3rem 0" }} />
-
-                <div className="col-md-4">
-                  <img
-                    src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
-                    style={{ maxWidth: "100%" }}
-                  />
-                </div>
-                <div className="col-md-8">
-                  {strings[lang].gente.maestros.nestor}
-                </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
                 <hr style={{ margin: "3rem 0 3rem 0" }} />
               </div>
             </div>
@@ -231,39 +324,41 @@ export default function NuestraGente() {
             <br />
 
             <h1>{strings[lang].gente.maestros.title}</h1>
-            <br />
-            <img
-              src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
-              style={{ maxWidth: "100%" }}
-            />
-            <br />
-            <br />
-            {strings[lang].gente.maestros.carmen}
-            <Divider></Divider>
-            <img
-              src="./assets/imgs/gente/m_TITO-CORDERO.png"
-              style={{ maxWidth: "100%" }}
-            />
-            <br />
-            <br />
-            {strings[lang].gente.maestros.tito}
-            <Divider></Divider>
-            <img
-              src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
-              style={{ maxWidth: "100%" }}
-            />
-            <br />
-            <br />
-            {strings[lang].gente.maestros.giorgio}
-            <Divider></Divider>
-            <img
-              src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
-              style={{ maxWidth: "100%" }}
-            />
-            <br />
-            <br />
-            {strings[lang].gente.maestros.nestor}
-            <Divider></Divider>
+
+            <Carousel dotPosition="top" style={{ color: "#fef4e4" }}>
+              <div>
+                <img
+                  src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
+                  style={{ maxWidth: "100%", marginTop: "2rem" }}
+                />
+                <br />
+                {strings[lang].gente.maestros.carmen}
+              </div>
+              <div>
+                <img
+                  src="./assets/imgs/gente/m_TITO-CORDERO.png"
+                  style={{ maxWidth: "100%", marginTop: "2rem" }}
+                />
+                <br />
+                {strings[lang].gente.maestros.tito}
+              </div>
+              <div>
+                <img
+                  src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
+                  style={{ maxWidth: "100%", marginTop: "2rem" }}
+                />
+                <br />
+                {strings[lang].gente.maestros.giorgio}
+              </div>
+              <div>
+                <img
+                  src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
+                  style={{ maxWidth: "100%", marginTop: "2rem" }}
+                />
+                <br />
+                {strings[lang].gente.maestros.nestor}
+              </div>
+            </Carousel>
           </Col>
 
           <Col xs={22}>
