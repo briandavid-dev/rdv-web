@@ -1,11 +1,19 @@
 import Head from "next/head";
 import { Row, Col } from "antd";
 import css from "styled-jsx/css";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+
+const MapeoImagen1 = dynamic(
+  () => {
+    return import("../components/common/MapeoImagen1");
+  },
+  { ssr: false }
+);
 
 const stylesCss = css.global`
   .SeccionElRon1 {
@@ -51,7 +59,7 @@ export default function ElRon() {
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -97,10 +105,14 @@ export default function ElRon() {
         </div>
       </div>
       <div className="SeccionElRon2 text-center">
-        <img
+        <MapeoImagen1 />
+
+        {/* <img
           src="./assets/imgs/elrom/RON1.png"
           style={{ width: "1000px", maxWidth: "100%" }}
-        />
+
+          
+        /> */}
       </div>
       <div className="SeccionElRon2 text-center">
         <img
