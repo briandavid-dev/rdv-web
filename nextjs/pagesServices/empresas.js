@@ -9,4 +9,11 @@ api.getEmpresas = (lang) => {
   });
 };
 
+api.getEmpresa = (id) => {
+  return request({
+    method: "GET",
+    url: `empresa/${id}`,
+  });
+};
+
 export default api;

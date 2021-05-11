@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Link from "next/link";
 import { Row, Col, Collapse, Skeleton } from "antd";
 import css from "styled-jsx/css";
 import Footer from "../components/Footer";
@@ -130,36 +131,43 @@ const PageEmpresas = () => {
                   <>
                     {dataEmpresas.map((empresa) => (
                       <Col lg={12} sm={12} xs={24}>
-                        <div className="card-empresa">
-                          <div style={{ minHeight: "150px" }}>
-                            <div style={{ textAlign: "left" }}>
-                              <img
-                                src="./assets/imgs/home/linea2.png"
-                                style={{ height: "4px" }}
-                              />
+                        <Link
+                          href={{
+                            pathname: "/marca/[id]",
+                            query: { id: empresa.id, lang },
+                          }}
+                        >
+                          <div className="card-empresa">
+                            <div style={{ minHeight: "150px" }}>
+                              <div style={{ textAlign: "left" }}>
+                                <img
+                                  src="./assets/imgs/home/linea2.png"
+                                  style={{ height: "4px" }}
+                                />
+                              </div>
+                              <div
+                                style={{ fontSize: "1.5rem" }}
+                                className="text-center"
+                              >
+                                {empresa.title}
+                              </div>
+                              <div style={{ textAlign: "right" }}>
+                                <img
+                                  src="./assets/imgs/home/linea2.png"
+                                  style={{ height: "4px" }}
+                                />
+                              </div>
                             </div>
-                            <div
-                              style={{ fontSize: "1.5rem" }}
-                              className="text-center"
-                            >
-                              {empresa.title}
-                            </div>
-                            <div style={{ textAlign: "right" }}>
+                            <p className="text-justify">{empresa.summary}</p>
+                            <div className="text-center">
                               <img
-                                src="./assets/imgs/home/linea2.png"
-                                style={{ height: "4px" }}
+                                alt={empresa.title}
+                                src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
+                                style={{ width: "400px", maxWidth: "70%" }}
                               />
                             </div>
                           </div>
-                          <p className="text-justify">{empresa.summary}</p>
-                          <div className="text-center">
-                            <img
-                              alt={empresa.title}
-                              src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
-                              style={{ width: "400px", maxWidth: "70%" }}
-                            />
-                          </div>
-                        </div>
+                        </Link>
                       </Col>
                     ))}
                   </>
