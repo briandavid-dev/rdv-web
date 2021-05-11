@@ -11,7 +11,8 @@ import ApiEmpresas from "../pagesServices/empresas";
 
 const stylesCss = css.global`
   .Section0 {
-    background-image: url("/assets/imgs/home/fondoEmpresas.png");
+    // background-image: url("/assets/imgs/home/fondoEmpresas.png");
+    background-color: #553c28;
   }
 
   .ant-collapse {
@@ -30,6 +31,18 @@ const stylesCss = css.global`
   table td {
     border: 1px #fef4e4 solid;
     padding: 0.3rem;
+  }
+
+  .card-empresa {
+    background-color: rgba(68, 49, 34, 0.8);
+    color: #fff4e4;
+    border-radius: 3px;
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px transparent solid;
+  }
+  .card-empresa:hover {
+    border: 0.5px rgba(255, 244, 228, 0.4) solid;
   }
 `;
 
@@ -110,42 +123,76 @@ const PageEmpresas = () => {
 
       <div style={{ padding: "7rem 0 0 0 " }} className="Section0 ">
         <Row gutter={[16, 16]} type="flex" justify="center" align="top">
-          <Col xs={22} lg={15}>
-            <Row className="font_20">
-              <Col span={24}>
-                <Skeleton active loading={loading}>
-                  {dataEmpresas.length > 0 ? (
-                    <Collapse accordion expandIconPosition="right">
-                      {dataEmpresas.map((empresa) => (
-                        <Collapse.Panel
-                          header={empresa.title}
-                          key={empresa.id}
-                          className="font_20"
-                        >
-                          <Row gutter={20}>
-                            <Col xs={24} lg={4}>
+          <Col xs={22} sm={20} md={18} lg={18} xl={13} xxl={12}>
+            <Row gutter={[20, 20]}>
+              <Skeleton active loading={loading}>
+                {dataEmpresas.length > 0 ? (
+                  <>
+                    {dataEmpresas.map((empresa) => (
+                      <Col lg={12} sm={12} xs={24}>
+                        <div className="card-empresa">
+                          <div style={{ minHeight: "150px" }}>
+                            <div style={{ textAlign: "left" }}>
                               <img
-                                alt={empresa.title}
-                                src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
-                                style={{ maxWidth: "100%" }}
+                                src="./assets/imgs/home/linea2.png"
+                                style={{ height: "4px" }}
                               />
-                            </Col>
-                            <Col xs={24} lg={20}>
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: empresa.content_html,
-                                }}
-                              ></div>
-                            </Col>
-                          </Row>
-                        </Collapse.Panel>
-                      ))}
-                    </Collapse>
-                  ) : (
-                    <p className="text-center">{strings[lang].noData}</p>
-                  )}
-                </Skeleton>
-              </Col>
+                            </div>
+                            <div
+                              style={{ fontSize: "1.5rem" }}
+                              className="text-center"
+                            >
+                              {empresa.title}
+                            </div>
+                            <div style={{ textAlign: "right" }}>
+                              <img
+                                src="./assets/imgs/home/linea2.png"
+                                style={{ height: "4px" }}
+                              />
+                            </div>
+                          </div>
+                          <p className="text-justify">{empresa.summary}</p>
+                          <div className="text-center">
+                            <img
+                              alt={empresa.title}
+                              src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
+                              style={{ width: "400px", maxWidth: "70%" }}
+                            />
+                          </div>
+                        </div>
+                      </Col>
+                    ))}
+                  </>
+                ) : (
+                  // <Collapse accordion expandIconPosition="right">
+                  //   {dataEmpresas.map((empresa) => (
+                  //     <Collapse.Panel
+                  //       header={empresa.title}
+                  //       key={empresa.id}
+                  //       className="font_20"
+                  //     >
+                  //       <Row gutter={20}>
+                  //         <Col xs={24} lg={4}>
+                  //           <img
+                  //             alt={empresa.title}
+                  //             src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
+                  //             style={{ maxWidth: "100%" }}
+                  //           />
+                  //         </Col>
+                  //         <Col xs={24} lg={20}>
+                  //           <div
+                  //             dangerouslySetInnerHTML={{
+                  //               __html: empresa.content_html,
+                  //             }}
+                  //           ></div>
+                  //         </Col>
+                  //       </Row>
+                  //     </Collapse.Panel>
+                  //   ))}
+                  // </Collapse>
+                  <p className="text-center">{strings[lang].noData}</p>
+                )}
+              </Skeleton>
             </Row>
           </Col>
         </Row>

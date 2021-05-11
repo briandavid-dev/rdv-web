@@ -68,6 +68,7 @@ const Noticias = () => {
               visualizacionHome: noticia.name_section,
               marcarPrincipal: noticia.markMain,
               contenido: noticia.content_html,
+              summary: noticia.summary,
             };
           });
 
@@ -82,9 +83,8 @@ const Noticias = () => {
   }, []);
 
   const [fileCertificado, setFileCertificado] = useState([]);
-  const [showSizeMessageCertificado, setShowSizeMessageCertificado] = useState(
-    false
-  );
+  const [showSizeMessageCertificado, setShowSizeMessageCertificado] =
+    useState(false);
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
@@ -309,7 +309,7 @@ const Noticias = () => {
       <Spin spinning={spinListado}>
         <Table dataSource={dataSource} pagination={false}>
           {/* <Column title="id" dataIndex="id" key="id" /> */}
-          <Column title="Titulo" dataIndex="titulo" key="titulo" />
+          <Column title="Nombre" dataIndex="titulo" key="titulo" />
           <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
           <Column
             title="Fecha de Creación"
@@ -380,7 +380,7 @@ const Noticias = () => {
 
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Titulo</strong>}
+                    label={<strong>Nombre</strong>}
                     name="titulo"
                     rules={[
                       { required: true, message: "Ingrese el titulo" },
@@ -391,7 +391,7 @@ const Noticias = () => {
                   </Form.Item>
                 </Col>
 
-                {/* <Col lg={24}>
+                <Col lg={24}>
                   <Form.Item
                     label={<strong>Resumen</strong>}
                     name="summary"
@@ -402,7 +402,7 @@ const Noticias = () => {
                   >
                     <Input maxLength={500} />
                   </Form.Item>
-                </Col> */}
+                </Col>
 
                 <Col lg={24}>
                   <Form.Item
@@ -412,7 +412,7 @@ const Noticias = () => {
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de <strong>800px x 800px</strong> (no
+                        Imágenes jpg o png de <strong>400px x 400px</strong> (no
                         superior a 500 KB)
                       </span>
                     }
