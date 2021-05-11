@@ -518,24 +518,28 @@ export default function Home() {
                 </div>
                 <div className="col-md-3">
                   <img
+                    className="zoom"
                     src="./assets/imgs/home/m_CARMEN-LOPEZ.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </div>
                 <div className="col-md-3">
                   <img
+                    className="zoom"
                     src="./assets/imgs/home/m_TITO-CORDERO.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </div>
                 <div className="col-md-3">
                   <img
+                    className="zoom"
                     src="./assets/imgs/home/m_NESTRO-ORTEGA.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </div>
                 <div className="col-md-3">
                   <img
+                    className="zoom"
                     src="./assets/imgs/home/m_GIOGIO-MELIS.png"
                     style={{ maxWidth: "100%" }}
                   />
@@ -586,6 +590,7 @@ export default function Home() {
                             className="col-md-4 cursor-pointer hover-notice-home"
                             key={noticia.id}
                           >
+                            <br />
                             <div className="mb-4 text-center">
                               <h3>{noticia.title}</h3>
                             </div>
@@ -714,7 +719,7 @@ export default function Home() {
                   >
                     <img
                       src="./assets/imgs/home/ICONO-FACEBOOK.png"
-                      className="iconos_abajo"
+                      className="iconos_abajo zoom"
                     />
                   </a>
                   <img
@@ -727,7 +732,7 @@ export default function Home() {
                   >
                     <img
                       src="./assets/imgs/home/ICONO-INSTAGRAM.png"
-                      className="iconos_abajo"
+                      className="iconos_abajo zoom"
                     />
                   </a>
                   <img
@@ -736,7 +741,7 @@ export default function Home() {
                   />
                   <img
                     src="./assets/imgs/home/ICONO-YOUTUBE.png"
-                    className="iconos_abajo"
+                    className="iconos_abajo zoom"
                   />
                 </div>
                 <div className="col-md-12 text-center mt-5">

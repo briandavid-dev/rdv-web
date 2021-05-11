@@ -73,7 +73,7 @@ const stylesCss = css.global`
     color: #fef4e4;
   }
   .titulo-maestro {
-    color: #d48125;
+    color: #f1c430;
   }
 
   @media only screen and (max-width: 620px) {
@@ -85,6 +85,52 @@ const stylesCss = css.global`
     .valida_desktop {
       display: none !important;
     }
+  }
+
+  .zoom {
+    transition: transform 0.2s; /* Animation */
+  }
+
+  .zoom:hover {
+    transform: scale(
+      1.2
+    ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  .zoom-elron {
+    transition: transform 0.2s; /* Animation */
+  }
+
+  .zoom-elron:hover {
+    transform: scale(1.1);
+  }
+
+  .titulo-bello {
+    background-color: #ddd2c2;
+    color: #443421;
+    border-radius: 2px;
+    // cursor: pointer;
+    // padding: 0.5rem 1rem 0.5rem 1rem;
+    // font-size: 1.3rem;
+    // width: 300px;
+  }
+
+  .titulo-bello:hover {
+    background-color: #ddd2c2;
+    color: #443421;
+    border-radius: 2px;
+  }
+
+  .titulo-bello:active {
+    background-color: #ddd2c2 !important;
+    color: #443421;
+    border-radius: 2px;
+  }
+
+  .titulo-bello:focus {
+    background-color: #ddd2c2 !important;
+    color: #443421;
+    border-radius: 2px;
   }
 `;
 

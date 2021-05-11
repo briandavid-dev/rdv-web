@@ -1,19 +1,20 @@
+import { useState } from "react";
 import Head from "next/head";
-import { Row, Col } from "antd";
+import { Row, Col, Modal, Button } from "antd";
 import css from "styled-jsx/css";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
 
-const MapeoImagen1 = dynamic(
+/* const MapeoImagen1 = dynamic(
   () => {
     return import("../components/common/MapeoImagen1");
   },
   { ssr: false }
-);
+); */
 
 const stylesCss = css.global`
   .SeccionElRon1 {
@@ -35,6 +36,21 @@ const stylesCss = css.global`
   .SectionMobile1 {
     background-image: url("/assets/imgs/historia/FONDO-NUESTRA-HISTORIA-MOBILE.jpg");
   }
+
+  .ant-modal-content {
+    background-color: transparent;
+  }
+
+  .ant-modal-body {
+    background-color: rgba(221, 210, 194, 0.85);
+    border-radius: 5px;
+    font-size: 1.5rem;
+  }
+
+  .ant-btn-lg {
+    height: 50px;
+    font-size: 20px;
+  }
 `;
 
 export default function ElRon() {
@@ -45,8 +61,25 @@ export default function ElRon() {
   }
   const strings = { es, en };
 
+  const [modal, setModal] = useState({
+    visible: false,
+    text: "",
+  });
+
   return (
     <div>
+      <Modal
+        visible={modal.visible}
+        footer={false}
+        centered
+        onCancel={() => {
+          setModal({
+            visible: false,
+          });
+        }}
+      >
+        {modal.text}
+      </Modal>
       <style jsx global>
         {stylesCss}
       </style>
@@ -104,34 +137,148 @@ export default function ElRon() {
           </div>
         </div>
       </div>
-      <div className="SeccionElRon2 text-center">
-        <MapeoImagen1 />
 
-        {/* <img
-          src="./assets/imgs/elrom/RON1.png"
-          style={{ width: "1000px", maxWidth: "100%" }}
+      <Row className="SeccionElRon2" type="flex" justify="center">
+        <Col span={22} className="text-center">
+          <Button
+            size="large"
+            className="titulo-bello zoom-elron "
+            onClick={() => {
+              setModal({
+                visible: true,
+                text: strings[lang].elron.laCana.info,
+              });
+            }}
+          >
+            {strings[lang].elron.laCana.titulo}
+          </Button>
+          <br />
+          <br />
+        </Col>
+        <Col lg={20} xs={0}>
+          <img
+            src="./assets/imgs/elrom/PROCESO-RON-CANA-DE-AZUCAR.png"
+            style={{ width: "300px", maxWidth: "100%" }}
+            className="zoom-elron"
+          />
+          &nbsp; &nbsp; &nbsp;
+          <img
+            src="./assets/imgs/elrom/PROCESO-RON-CAMION.png"
+            style={{ width: "300px", maxWidth: "100%" }}
+            className="zoom-elron"
+          />
+        </Col>
+        <Col lg={0} xs={22}>
+          <img
+            src="./assets/imgs/elrom/PROCESO-RON-CANA-DE-AZUCAR.png"
+            style={{ width: "40%", maxWidth: "100%" }}
+            className="zoom-elron"
+          />
+          &nbsp; &nbsp; &nbsp;
+          <img
+            src="./assets/imgs/elrom/PROCESO-RON-CAMION.png"
+            style={{ width: "40%", maxWidth: "100%" }}
+            className="zoom-elron"
+          />
+        </Col>
+        <Col span={22} className="text-center">
+          <br />
+          <br />
+          <Button
+            size="large"
+            className="titulo-bello zoom-elron"
+            onClick={() => {
+              setModal({
+                visible: true,
+                text: strings[lang].elron.laMelasa.info,
+              });
+            }}
+          >
+            {strings[lang].elron.laMelasa.titulo}
+          </Button>
+        </Col>
+        <Col span={22}>
+          <img
+            src="./assets/imgs/elrom/PROCESO-RON-CAMION-Y-FABRICA.png"
+            style={{ maxWidth: "100%", width: "1000px" }}
+          />
+        </Col>
 
-          
-        /> */}
-      </div>
-      <div className="SeccionElRon2 text-center">
-        <img
-          src="./assets/imgs/elrom/RON2.png"
-          style={{ width: "1000px", maxWidth: "100%" }}
-        />
-      </div>
-      <div className="SeccionElRon2 text-center">
-        <img
-          src="./assets/imgs/elrom/RON3.png"
-          style={{ width: "1000px", maxWidth: "100%" }}
-        />
-      </div>
-      <div className="SeccionElRon2 text-center">
-        <img
-          src="./assets/imgs/elrom/RON4.png"
-          style={{ width: "1000px", maxWidth: "100%" }}
-        />
+        <Col span={22} className="text-center">
+          <br />
+          <Button
+            size="large"
+            className="titulo-bello zoom-elron"
+            onClick={() => {
+              setModal({
+                visible: true,
+                text: strings[lang].elron.laFermentacion.info,
+              });
+            }}
+          >
+            {strings[lang].elron.laFermentacion.titulo}
+          </Button>
+          <br />
+          <br />
+        </Col>
 
+        <Col lg={22}>
+          <img
+            className="zoom-elron cursor-pointer"
+            onClick={() => {
+              setModal({
+                visible: true,
+                text: strings[lang].elron.destilacion.info,
+              });
+            }}
+            src="./assets/imgs/elrom/PROCESO-RON-DESTILACION.png"
+            style={{ maxWidth: "100%", width: "1000px" }}
+          />
+        </Col>
+
+        <Col span={22} className="text-center">
+          <br />
+          <br />
+          <Button
+            size="large"
+            className="titulo-bello zoom-elron"
+            onClick={() => {
+              setModal({
+                visible: true,
+                text: strings[lang].elron.elAnejamiento.info,
+              });
+            }}
+          >
+            {strings[lang].elron.elAnejamiento.titulo}
+          </Button>
+          <br />
+        </Col>
+
+        <Col lg={20}>
+          <img
+            src="./assets/imgs/elrom/PROCESO-RON-ANEJAMIENTO.png"
+            style={{ maxWidth: "100%", width: "1000px" }}
+          />
+          <br />
+          <br />
+        </Col>
+
+        <Col lg={20}>
+          <img
+            className="zoom-elron cursor-pointer"
+            onClick={() => {
+              setModal({
+                visible: true,
+                text: strings[lang].elron.destilacion.info,
+              });
+            }}
+            src="./assets/imgs/elrom/PROCESO-RON-MESCLAS-Y-EMBASADO.png"
+            style={{ maxWidth: "100%", width: "1000px" }}
+          />
+        </Col>
+      </Row>
+
+      <div className="SeccionElRon2 text-center">
         <br />
         <br />
         <br />

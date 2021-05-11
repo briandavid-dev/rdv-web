@@ -55,6 +55,111 @@ strings.historia = {
 strings.elron = {
   pageTitle: `RUM | Rum from Venezuela`,
   title: `Processing and raw materials `,
+  laCana: {
+    titulo: <span>Sugarcane, that's the secret</span>,
+    info: (
+      <p>
+        Sugarcane provides the raw material that makes the difference in
+        Venezuelan rum. That's where the miracle begins. The plant grows in much
+        of the national territory. The local climate with the difference in
+        temperatures between day and night is benign for the cane which is
+        particularly sweet and, in addition, produces a cleaner alcohol.
+      </p>
+    ),
+  },
+  laMelasa: {
+    titulo: <span>Molasses, the soul of Venezuelan rum</span>,
+    info: (
+      <p>
+        If sugarcane is the genesis of rum, molasses is the beginning of its
+        production. Dense, with an intense caramel color, it comes from the cane
+        juice from which crystalizing sugar has been extracted at the sugar
+        mills. Venezuelan molasses contains more sugar and fewer impurities,
+        which influences the quality of the alcohol. The more sugar there is in
+        the molasses, the higher the elements of quality in the alcohol. The
+        Denomination of Origin determines that the molasses have to be from
+        Venezuela in order to present its peculiar characteristics.
+      </p>
+    ),
+  },
+  laFermentacion: {
+    titulo: <span>Fermentation, part of the secret</span>,
+    info: (
+      <p>
+        Prior to distillation is fermentation, which begins when molasses is
+        diluted in hot water and the yeasts undertake their task of converting
+        sugar (sucrose) into carbon dioxide and alcohol. This stage of the
+        process also gives particular characteristics to the rum. The quality of
+        the molasses, of the water, which must be pure, free of smells and
+        flavors; the personality of the yeasts, which present the peculiarities
+        of each area; man's hand and the time given to fermentation have great
+        influence. The more patience you have, the more richness it has.
+      </p>
+    ),
+  },
+  destilacion: {
+    titulo: <span>Distillation, alchemy is present</span>,
+    info: (
+      <p>
+        During distillation the alcohol is separated from the water and
+        definitively profiles if a rum will be "heavy" that presents many
+        congeners, i.e. more aromas and flavors; or "light", the most common,
+        which are achieved in abundance and at industrial speed. The fundamental
+        difference in Venezuelan rum is the alcohol. They are clean,
+        well-distilled rums. Distillation can be in stills or in columns.
+      </p>
+    ),
+  },
+  elAnejamiento: {
+    titulo: <span>Aging, time for patience</span>,
+    info: (
+      <>
+        <p>
+          In Venezuela to be called rum it has to be aged in barrels for two
+          years. Since there is sun all year round, aging is intense,
+          evaporation, as well as oxidation is higher.
+        </p>
+        <p>
+          Each type of alcohol has its aging potential. There are light alcohols
+          that cannot be aged more than two years, while a heavy one requires
+          perhaps more than four. That is why there is talk about maturing them
+          to their optimum age.
+        </p>
+        <p>
+          By law, in Venezuela, if you want to indicate the age of blended rum,
+          that of the rum with less age should be used. When it comes to the
+          barrels for aging, they should be from white oak, which were usually
+          previously used to age American bourbon or Scotch whisky.
+        </p>
+      </>
+    ),
+  },
+  mezclas: {
+    titulo: <span>Blends, an art</span>,
+    info: (
+      <>
+        <p>
+          Venezuelan rums are usually the result of a blend of rums of different
+          ages that is made to obtain a distillate that is superior to each one
+          of those parts. The blends are made by the master Rum-Makers or
+          “Maestros Roneros” who possess a trained sense of smell and experience
+          that amounts to decades.
+        </p>
+        <p>
+          These mixes give personality to the blend. In the case of heavy rums
+          the blend is usually the result of the union of younger rums. If you
+          climb the scale to the premiums, in their formula there are older
+          rums. Final adjustments are made to finish the process. Each rum
+          company has its own secret touches.
+        </p>
+        <p>
+          The master rum-makers are the guarantors that each label is true to
+          itself; they are the custodians of the blends, a secret that only they
+          know.
+        </p>
+      </>
+    ),
+  },
 };
 
 strings.doc = {

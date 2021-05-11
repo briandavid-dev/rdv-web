@@ -79,15 +79,15 @@ export default function Doc() {
         <div className="SeccionDoc1">
           <img
             src="./assets/imgs/doc/BARRIL-LETRA-D.png"
-            style={{ maxWidth: "200px" }}
+            style={{ maxWidth: "100%", width: "25%" }}
           />
           <img
             src="./assets/imgs/doc/BARRIL-LETRA-O.png"
-            style={{ maxWidth: "200px" }}
+            style={{ maxWidth: "100%", width: "25%" }}
           />
           <img
             src="./assets/imgs/doc/BARRIL-LETRA-C.png"
-            style={{ maxWidth: "200px" }}
+            style={{ maxWidth: "100%", width: "25%" }}
           />
         </div>
         <div className="SeccionDoc2">
