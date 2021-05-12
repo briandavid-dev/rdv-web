@@ -147,8 +147,10 @@ const BtnActualizar = (props) => {
     const payload = {
       ...values,
       content_html: contenidoUpdate,
-      image_extension: fileCertificado[0][0].extension,
-      image_base64: fileCertificado[0][0].base64,
+      image_extension: fileCertificado[0]
+        ? fileCertificado[0][0].extension
+        : null,
+      image_base64: fileCertificado[0] ? fileCertificado[0][0].base64 : null,
     };
 
     let updateNoticias = dataProductos;
@@ -161,9 +163,10 @@ const BtnActualizar = (props) => {
             updateNoticias = dataProductos.map((noticia) => {
               if (noticia.id === values.id) {
                 const imagen_ = {};
-                if (payload.imagen[0]) {
-                  imagen_.imageBase64 = payload.imagen[0][0].base64;
-                  imagen_.imageExtension = payload.imagen[0][0].extension;
+
+                if (fileCertificado[0]) {
+                  imagen_.imageBase64 = fileCertificado[0][0].base64;
+                  imagen_.imageExtension = fileCertificado[0][0].extension;
                 }
 
                 return {
