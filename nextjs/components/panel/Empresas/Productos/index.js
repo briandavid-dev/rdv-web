@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Button, Modal, Divider, Table, Spin, Popconfirm } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Modal, Divider, Table, Spin, Popconfirm, Space } from "antd";
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
-
 import css from "styled-jsx/css";
 import BtnAgregar from "./BtnAgregar";
+import ApiProductos from "./services";
 
 const stylesCss = css.global`
   h2,
@@ -23,6 +23,12 @@ const Productos = (props) => {
   const [modalProductosVisible, setModalProductosVisible] = useState(false);
   const [loadingTable, setLoadingTable] = useState(false);
   const [dataProductos, setDataProductos] = useState([]);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const showPopconfirm = () => {
+    setVisible(true);
+  };
 
   const handleProductos = () => {
     setModalProductosVisible(true);
@@ -33,6 +39,35 @@ const Productos = (props) => {
   const handleDelete = (id) => {
     console.log(`id`, id);
   };
+
+  useEffect(() => {
+    setLoadingTable(true);
+    ApiProductos.getProductos(empresaId)
+      .then((response) => {
+        const { codigo, results } = response.data;
+        if (codigo === "1") {
+          const dataProductos = results.map((producto) => {
+            return {
+              key: producto.id,
+              id: producto.id,
+              titulo: producto.name,
+              fechaCreacion: producto.created_at,
+              imageBase64: producto.image_base64,
+              imageExtension: producto.image_extension,
+              lenguaje: producto.language,
+              contenido: producto.content_html,
+            };
+          });
+
+          setDataProductos(dataProductos);
+          setLoadingTable(false);
+        }
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+        setLoadingTable(false);
+      });
+  }, []);
 
   return (
     <>
