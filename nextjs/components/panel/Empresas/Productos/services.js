@@ -35,7 +35,7 @@ api.insertProducto = (payload) => {
 api.updateProducto = (payload) => {
   return request({
     method: "PUT",
-    url: "empresa/productos",
+    url: "empresa/producto/",
     data: payload,
   });
 };
