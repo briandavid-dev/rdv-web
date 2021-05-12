@@ -11,7 +11,6 @@ import {
   Col,
   Select,
   Upload,
-  notification,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import dynamic from "next/dynamic";

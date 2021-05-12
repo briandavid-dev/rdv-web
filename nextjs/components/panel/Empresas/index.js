@@ -198,7 +198,7 @@ const Noticias = () => {
                 imageBase64: payload.imagen[0][0].base64,
                 imageExtension: payload.imagen[0][0].extension,
                 key: uuid,
-                id: uuid,
+                id: response.data.results.insertId,
                 fechaCreacion: moment().format("DD-MM-YYYY"),
               },
             ];
@@ -349,6 +349,7 @@ const Noticias = () => {
                 >
                   <DeleteTwoTone onClick={showPopconfirm} />
                 </Popconfirm>
+
                 <Productos
                   empresaId={record.id}
                   empresaNombre={record.titulo}
