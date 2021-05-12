@@ -1,14 +1,15 @@
 {
+  "homepage": "https://www.bmosoluciones.com/qa/nextjs/out/",
   "name": "RDV",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.bmosoluciones.com/qa/nextjs/out/",
   "scripts": {
     "dev": "next dev",
     "build-x": "next build",
     "build": "next build && next export",
     "start": "next start",
     "export": "npm run build-x && next export",
+    "export-w": "npm run build-x && next export PUBLIC_URL=https://www.bmosoluciones.com/qa/nextjs/out/ ",
     "export-x": "next export"
   },
   "dependencies": {
