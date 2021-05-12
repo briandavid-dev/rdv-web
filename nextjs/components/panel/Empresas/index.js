@@ -35,6 +35,7 @@ const stylesCss = css.global`
   body {
     font-family: var(--bs-font-sans-serif);
     color: #62452d !important;
+    background-color: #f0f2f5;
   }
 `;
 

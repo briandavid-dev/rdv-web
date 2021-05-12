@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+import moment from "moment";
 import {
   Button,
   Modal,
@@ -9,9 +11,12 @@ import {
   Col,
   Select,
   Upload,
+  notification,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import dynamic from "next/dynamic";
+import ApiProductos from "../services";
+import notifica from "../../../../../utils/notifica";
 
 const Editor = dynamic(
   () => {
@@ -21,7 +26,13 @@ const Editor = dynamic(
 );
 
 const BtnAgregar = (props) => {
-  const { empresaId, empresaNombre, empresaLenguaje } = props;
+  const {
+    empresaId,
+    empresaNombre,
+    empresaLenguaje,
+    dataProductos,
+    setDataProductos,
+  } = props;
 
   const [form] = Form.useForm();
 
@@ -117,20 +128,21 @@ const BtnAgregar = (props) => {
   const onFinish = (values) => {
     const payload = {
       ...values,
-      contenido: contenidoUpdate,
-      imagen: fileCertificado,
-      type: "empresas",
-      proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
+      content_html: contenidoUpdate,
+      image_extension: fileCertificado[0][0].extension,
+      image_base64: fileCertificado[0][0].base64,
     };
 
-    let updateNoticias = dataSource;
+    delete payload.imagen;
+
+    let updateNoticias = dataProductos;
 
     if (procesoActual === "ACTUALIZAR") {
       setSpinModal(true);
-      ApiNoticias.updateNoticias(payload)
+      ApiProductos.updateProducto(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
-            updateNoticias = dataSource.map((noticia) => {
+            updateNoticias = dataProductos.map((noticia) => {
               if (noticia.id === values.id) {
                 const imagen_ = {};
                 if (payload.imagen[0]) {
@@ -147,43 +159,51 @@ const BtnAgregar = (props) => {
               return noticia;
             });
 
-            setDataSource(updateNoticias);
+            setDataProductos(updateNoticias);
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
+            notifica("success");
+          } else {
+            notifica("error");
           }
         })
         .catch((error) => {
-          console.log(`error`, error);
+          notifica("error");
           setSpinModal(false);
         });
     }
 
     if (procesoActual === "AGREGAR") {
       setSpinModal(true);
-      ApiNoticias.insertNoticias(payload)
+      ApiProductos.insertProducto(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
             const uuid = uuidv4();
             updateNoticias = [
-              ...dataSource,
+              ...dataProductos,
               {
                 ...payload,
-                imageBase64: payload.imagen[0][0].base64,
-                imageExtension: payload.imagen[0][0].extension,
+                titulo: payload.name,
+                lenguaje: payload.language,
+                imageBase64: payload.image_base64,
+                imageExtension: payload.image_extension,
                 key: uuid,
                 id: uuid,
                 fechaCreacion: moment().format("DD-MM-YYYY"),
               },
             ];
-            setDataSource(updateNoticias);
+            setDataProductos(updateNoticias);
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
+            notifica("success");
+          } else {
+            notifica("error");
           }
         })
         .catch((error) => {
-          console.log(`error`, error);
+          notifica("error");
           setSpinModal(false);
         });
     }
@@ -223,16 +243,22 @@ const BtnAgregar = (props) => {
               {...layout}
               onFinish={onFinish}
               form={form}
-              initialValues={{ lenguaje: empresaLenguaje }}
+              initialValues={{
+                language: empresaLenguaje,
+                empresa_id: empresaId,
+              }}
             >
               <Form.Item name="id" hidden={true}>
+                <Input type="text" />
+              </Form.Item>
+              <Form.Item name="empresa_id" hidden={true}>
                 <Input type="text" />
               </Form.Item>
               <Row gutter={(40, 40)}>
                 <Col lg={24}>
                   <Form.Item
                     label={<strong>Lenguaje</strong>}
-                    name="lenguaje"
+                    name="language"
                     rules={[{ required: true, message: "Ingrese el lenguaje" }]}
                   >
                     <Select placeholder="Seleccione" allowClear disabled>
@@ -245,9 +271,9 @@ const BtnAgregar = (props) => {
                 <Col lg={24}>
                   <Form.Item
                     label={<strong>Nombre</strong>}
-                    name="titulo"
+                    name="name"
                     rules={[
-                      { required: true, message: "Ingrese el titulo" },
+                      { required: true, message: "Ingrese el nombre" },
                       { min: 10, message: "Mínimo 10 caracteres" },
                     ]}
                   >
@@ -380,9 +406,9 @@ const BtnAgregar = (props) => {
                     </Radio.Group>
                   </Form.Item> */}
 
-                  <Form.Item name="marcarPrincipal" hidden={true}>
+                  {/* <Form.Item name="marcarPrincipal" hidden={true}>
                     <Input type="text" />
-                  </Form.Item>
+                  </Form.Item> */}
                 </Col>
                 <Col lg={24}>
                   <strong>Contenido:</strong> &nbsp;&nbsp;
@@ -401,9 +427,9 @@ const BtnAgregar = (props) => {
                   {"  "}
                   <Button type="primary" htmlType="submit">
                     {procesoActual === "ACTUALIZAR" ? (
-                      <span>Actualizar</span>
+                      <span>Actualizar producto</span>
                     ) : (
-                      <span>Agregar</span>
+                      <span>Agregar producto</span>
                     )}
                   </Button>
                 </Col>

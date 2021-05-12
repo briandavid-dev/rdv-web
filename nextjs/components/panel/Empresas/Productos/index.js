@@ -4,6 +4,7 @@ import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import css from "styled-jsx/css";
 import BtnAgregar from "./BtnAgregar";
 import ApiProductos from "./services";
+import notifica from "../../../../utils/notifica";
 
 const stylesCss = css.global`
   h2,
@@ -37,7 +38,26 @@ const Productos = (props) => {
     console.log(`id`, id);
   };
   const handleDelete = (id) => {
-    console.log(`id`, id);
+    ApiProductos.deteteProducto({ id })
+      .then((response) => {
+        if (response.data.codigo === "1") {
+          const updateProductos = dataProductos.filter(
+            (producto) => producto.id !== id
+          );
+
+          setDataProductos(updateProductos);
+          // setFileCertificado([]);
+          // handleCancel();
+          setConfirmLoading(false);
+          notifica("success");
+        } else {
+          notifica("error");
+        }
+      })
+      .catch((error) => {
+        notifica("error");
+        setConfirmLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -71,6 +91,9 @@ const Productos = (props) => {
 
   return (
     <>
+      <style jsx global>
+        {stylesCss}
+      </style>
       <Button
         onClick={() => {
           handleProductos();
@@ -92,19 +115,21 @@ const Productos = (props) => {
           empresaId={empresaId}
           empresaNombre={empresaNombre}
           empresaLenguaje={empresaLenguaje}
+          dataProductos={dataProductos}
+          setDataProductos={setDataProductos}
         />
         <br />
         <br />
         <Spin spinning={loadingTable}>
           <Table dataSource={dataProductos} pagination={false}>
             {/* <Column title="id" dataIndex="id" key="id" /> */}
-            <Column title="Nombre" dataIndex="titulo" key="titulo" />
-            <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
+            <Column title="Producto" dataIndex="titulo" key="titulo" />
+            {/* <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
             <Column
               title="Fecha de Creación"
               dataIndex="fechaCreacion"
               key="fechaCreacion"
-            />
+            /> */}
             <Column
               title="Opciones"
               key="opciones"
@@ -116,7 +141,7 @@ const Productos = (props) => {
                     }}
                   />
                   <Popconfirm
-                    title="¿Seguro de eliminar este producto"
+                    title="¿Seguro de eliminar este producto?"
                     okText="Si"
                     cancelText="No"
                     onConfirm={() => {

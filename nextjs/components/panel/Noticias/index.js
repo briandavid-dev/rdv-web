@@ -13,7 +13,7 @@ import {
   Modal,
   Table,
   Space,
-  Radio,
+  // Radio,
   Popconfirm,
   Image,
   Spin,
@@ -35,6 +35,7 @@ const stylesCss = css.global`
   body {
     font-family: var(--bs-font-sans-serif);
     color: #62452d !important;
+    background-color: #f0f2f5;
   }
 `;
 
@@ -100,9 +101,8 @@ const Noticias = () => {
   }, []);
 
   const [fileCertificado, setFileCertificado] = useState([]);
-  const [showSizeMessageCertificado, setShowSizeMessageCertificado] = useState(
-    false
-  );
+  const [showSizeMessageCertificado, setShowSizeMessageCertificado] =
+    useState(false);
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
