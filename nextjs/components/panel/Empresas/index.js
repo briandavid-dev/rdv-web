@@ -23,6 +23,7 @@ import { UploadOutlined, DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import dynamic from "next/dynamic";
 import ApiNoticias from "../services";
 import Productos from "./Productos";
+import notifica from "../../../utils/notifica";
 
 const Editor = dynamic(
   () => {
@@ -76,10 +77,12 @@ const Noticias = () => {
 
           setDataSource(newDataSource);
           setSpinListado(false);
+        } else {
+          notifica("error");
         }
       })
       .catch((error) => {
-        console.log(`error`, error);
+        notifica("error");
         setSpinListado(false);
       });
   }, []);
@@ -171,10 +174,13 @@ const Noticias = () => {
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
+            notifica("success");
+          } else {
+            notifica("error");
           }
         })
         .catch((error) => {
-          console.log(`error`, error);
+          notifica("error");
           setSpinModal(false);
         });
     }
@@ -200,10 +206,13 @@ const Noticias = () => {
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
+            notifica("success");
+          } else {
+            notifica("error");
           }
         })
         .catch((error) => {
-          console.log(`error`, error);
+          notifica("error");
           setSpinModal(false);
         });
     }
@@ -283,13 +292,14 @@ const Noticias = () => {
       .then((response) => {
         if (response.data.codigo === "1") {
           setDataSource(dataSource.filter((noticia) => noticia.id !== id));
+          notifica("success");
         } else {
-          console.log("Error en peticion, codigo: " + response.data.codigo);
+          notifica("error");
         }
         setSpinListado(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        notifica("error");
         setSpinListado(false);
       });
   };
