@@ -37,6 +37,35 @@ const Productos = (props) => {
   const handleEdit = (id) => {
     console.log(`id`, id);
   };
+
+  // const handleEdit = (idUpdate) => {
+  //   setProcesoActual("ACTUALIZAR");
+  //   const noticiaUpdate = dataSource.find((noticia) => noticia.id === idUpdate);
+
+  //   form.resetFields();
+
+  //   form.setFieldsValue({
+  //     id: noticiaUpdate.id,
+  //     lenguaje: noticiaUpdate.lenguaje,
+  //     titulo: noticiaUpdate.titulo,
+  //     marcarPrincipal: noticiaUpdate.marcarPrincipal,
+  //     visualizacionHome: noticiaUpdate.visualizacionHome,
+  //     summary: noticiaUpdate.summary,
+  //   });
+
+  //   setContenidoUpdate(noticiaUpdate.contenido);
+
+  //   if (noticiaUpdate.imageBase64 !== "") {
+  //     setImageSrc(
+  //       `data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`
+  //     );
+  //   } else {
+  //     setImageSrc("");
+  //   }
+
+  //   setIsModalVisible(true);
+  // };
+
   const handleDelete = (id) => {
     ApiProductos.deteteProducto({ id })
       .then((response) => {
