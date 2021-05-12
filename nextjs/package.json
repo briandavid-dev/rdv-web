@@ -1,8 +1,8 @@
 {
-  "name": "nextjs",
+  "name": "RDV",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.bmosoluciones.com/",
+  "homepage": "https://www.bmosoluciones.com/qa/nextjs/out/",
   "scripts": {
     "dev": "next dev",
     "build-x": "next build",

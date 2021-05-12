@@ -25,6 +25,7 @@ const stylesCss = css.global`
     border: 0.5px rgba(68, 49, 34, 0.5) solid;
     color: #fff4e4;
     padding: 1rem;
+    font-size: 1rem;
   }
 
   .card-empresa-premios {
@@ -123,7 +124,7 @@ const PageNoticia = () => {
 
       <MenuDesktop />
 
-      <div className="valida_mobile font_20 Section0">
+      <div className="valida_mobile Section0">
         <div style={{ padding: "7rem 0 2rem 0 " }}>
           <Row gutter={[16, 16]} type="flex" justify="center" align="top">
             <Col xs={22} lg={15}>
@@ -179,7 +180,28 @@ const PageNoticia = () => {
         <Row type="flex" justify="center" className="Section0">
           <Col xs={22} style={{ marginTop: "58px" }}>
             <br />
-            11
+            <div className="card-empresa-info">
+              <h1 className="text-center">{empresa.title}</h1>
+
+              <div className="text-center">
+                <img
+                  alt={empresa.title}
+                  src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
+                  style={{ width: "300px", maxWidth: "80%" }}
+                />
+              </div>
+
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: empresa.content_html,
+                }}
+              ></div>
+            </div>
+            <div className="text-center">
+              <Button className="card-empresa-premios zoom-elron">
+                VER PREMIOS
+              </Button>
+            </div>
           </Col>
 
           <div className="container">
