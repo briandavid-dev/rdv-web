@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal, Divider, Table, Spin, Popconfirm, Space } from "antd";
-import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
+import { DeleteTwoTone } from "@ant-design/icons";
 import css from "styled-jsx/css";
 import BtnAgregar from "./BtnAgregar";
+import BtnActualizar from "./BtnActualizar";
 import ApiProductos from "./services";
 import notifica from "../../../../utils/notifica";
 
@@ -33,9 +34,6 @@ const Productos = (props) => {
 
   const handleProductos = () => {
     setModalProductosVisible(true);
-  };
-  const handleEdit = (id) => {
-    console.log(`id`, id);
   };
 
   // const handleEdit = (idUpdate) => {
@@ -164,11 +162,15 @@ const Productos = (props) => {
               key="opciones"
               render={(text, record) => (
                 <Space size="middle">
-                  <EditTwoTone
-                    onClick={() => {
-                      handleEdit(record.id);
-                    }}
+                  <BtnActualizar
+                    empresaId={empresaId}
+                    empresaNombre={empresaNombre}
+                    empresaLenguaje={empresaLenguaje}
+                    dataProductos={dataProductos}
+                    setDataProductos={setDataProductos}
+                    idUpdate={record.id}
                   />
+
                   <Popconfirm
                     title="¿Seguro de eliminar este producto?"
                     okText="Si"
