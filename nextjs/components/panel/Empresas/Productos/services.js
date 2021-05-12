@@ -5,30 +5,37 @@ const api = {};
 api.getProductos = (empresaId) => {
   return request({
     method: "GET",
-    url: `productos/${empresaId}`,
+    url: `empresa/${empresaId}/productos/`,
   });
 };
 
-api.deteteProductos = (payload) => {
+api.getProducto = (productoId) => {
+  return request({
+    method: "GET",
+    url: `empresa/producto/${productoId}`,
+  });
+};
+
+api.deteteProducto = (payload) => {
   return request({
     method: "DELETE",
-    url: "productos/",
+    url: "empresa/producto/",
     data: payload,
   });
 };
 
-api.insertProductos = (payload) => {
+api.insertProducto = (payload) => {
   return request({
     method: "POST",
-    url: "productos/",
+    url: "empresa/producto/",
     data: payload,
   });
 };
 
-api.updateProductos = (payload) => {
+api.updateProducto = (payload) => {
   return request({
     method: "PUT",
-    url: "productos/",
+    url: "empresa/productos",
     data: payload,
   });
 };
