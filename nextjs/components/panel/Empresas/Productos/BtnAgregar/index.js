@@ -1,91 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-import moment from "moment";
-import css from "styled-jsx/css";
 import {
+  Button,
+  Modal,
+  Spin,
+  Form,
+  Input,
   Row,
   Col,
-  Form,
-  Button,
-  Input,
-  Upload,
   Select,
-  Modal,
-  Table,
-  Space,
-  // Radio,
-  Popconfirm,
-  Image,
-  Spin,
+  Upload,
 } from "antd";
-const { Column } = Table;
-import { UploadOutlined, DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
+import { UploadOutlined } from "@ant-design/icons";
 import dynamic from "next/dynamic";
-import ApiNoticias from "../services";
-import Productos from "./Productos";
 
 const Editor = dynamic(
   () => {
-    return import("./Editor");
+    return import("../../Editor");
   },
   { ssr: false }
 );
 
-const stylesCss = css.global`
-  body {
-    font-family: var(--bs-font-sans-serif);
-    color: #62452d !important;
-  }
-`;
+const BtnAgregar = (props) => {
+  const { empresaId, empresaNombre, empresaLenguaje } = props;
 
-const Noticias = () => {
   const [form] = Form.useForm();
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [contenidoUpdate, setContenidoUpdate] = useState("");
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [dataSource, setDataSource] = useState();
-  const [imageSrc, setImageSrc] = useState("");
+
   const [procesoActual, setProcesoActual] = useState("AGREGAR");
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [spinModal, setSpinModal] = useState(false);
-  const [spinListado, setSpinListado] = useState(false);
-
-  useEffect(() => {
-    setSpinListado(true);
-    ApiNoticias.getNoticias("empresas")
-      .then((response) => {
-        const { codigo, results } = response.data;
-        if (codigo === "1") {
-          const newDataSource = results.map((noticia) => {
-            return {
-              key: noticia.id,
-              id: noticia.id,
-              titulo: noticia.title,
-              fechaCreacion: noticia.created_at,
-              // imagen: noticia.content_image,
-              imageBase64: noticia.image_base64,
-              imageExtension: noticia.image_extension,
-              lenguaje: noticia.language,
-              visualizacionHome: noticia.name_section,
-              marcarPrincipal: noticia.markMain,
-              contenido: noticia.content_html,
-              summary: noticia.summary,
-            };
-          });
-
-          setDataSource(newDataSource);
-          setSpinListado(false);
-        }
-      })
-      .catch((error) => {
-        console.log(`error`, error);
-        setSpinListado(false);
-      });
-  }, []);
-
   const [fileCertificado, setFileCertificado] = useState([]);
   const [showSizeMessageCertificado, setShowSizeMessageCertificado] =
     useState(false);
+  const [imageSrc, setImageSrc] = useState("");
+  const [contenidoUpdate, setContenidoUpdate] = useState("");
+
+  useEffect(() => {
+    form.resetFields();
+    setContenidoUpdate("");
+    setImageSrc("");
+    // setIsModalVisible(true);
+  }, []);
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
@@ -126,6 +84,29 @@ const Noticias = () => {
   };
   const handleRemoveFileClickCertificado = () => {
     setFileCertificado([]);
+  };
+
+  const normFile = (e) => {
+    let superaLimite = false;
+    if (e.file.size / 1000 > 512) {
+      setShowSizeMessageCertificado(true);
+      superaLimite = true;
+    } else {
+      setShowSizeMessageCertificado(false);
+      superaLimite = false;
+    }
+
+    if (Array.isArray(e)) {
+      return e;
+    }
+    if (e.fileList.length > 1) {
+      e.fileList.shift();
+    }
+    if (superaLimite) {
+      e.fileList = [];
+    }
+
+    return e && e.fileList;
   };
 
   const layout = {
@@ -208,165 +189,42 @@ const Noticias = () => {
     }
   };
 
-  const normFile = (e) => {
-    let superaLimite = false;
-    if (e.file.size / 1000 > 512) {
-      setShowSizeMessageCertificado(true);
-      superaLimite = true;
-    } else {
-      setShowSizeMessageCertificado(false);
-      superaLimite = false;
-    }
-
-    if (Array.isArray(e)) {
-      return e;
-    }
-    if (e.fileList.length > 1) {
-      e.fileList.shift();
-    }
-    if (superaLimite) {
-      e.fileList = [];
-    }
-
-    return e && e.fileList;
-  };
-
-  const handleAgregar = () => {
-    setProcesoActual("AGREGAR");
-
-    form.resetFields();
-    setContenidoUpdate("");
-    setImageSrc("");
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleEdit = (idUpdate) => {
-    setProcesoActual("ACTUALIZAR");
-    const noticiaUpdate = dataSource.find((noticia) => noticia.id === idUpdate);
-
-    form.resetFields();
-
-    form.setFieldsValue({
-      id: noticiaUpdate.id,
-      lenguaje: noticiaUpdate.lenguaje,
-      titulo: noticiaUpdate.titulo,
-      marcarPrincipal: noticiaUpdate.marcarPrincipal,
-      visualizacionHome: noticiaUpdate.visualizacionHome,
-      summary: noticiaUpdate.summary,
-    });
-
-    setContenidoUpdate(noticiaUpdate.contenido);
-
-    if (noticiaUpdate.imageBase64 !== "") {
-      setImageSrc(
-        `data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`
-      );
-    } else {
-      setImageSrc("");
-    }
-
-    setIsModalVisible(true);
-  };
-
-  const handleDelete = (id) => {
-    setSpinListado(true);
-    ApiNoticias.deteteNoticias({ id })
-      .then((response) => {
-        if (response.data.codigo === "1") {
-          setDataSource(dataSource.filter((noticia) => noticia.id !== id));
-        } else {
-          console.log("Error en peticion, codigo: " + response.data.codigo);
-        }
-        setSpinListado(false);
-      })
-      .catch((error) => {
-        console.log(`error`, error);
-        setSpinListado(false);
-      });
-  };
-
-  const showPopconfirm = () => {
-    setVisible(true);
-  };
-
   return (
-    <div>
-      <style jsx global>
-        {stylesCss}
-      </style>
-      <Button type="primary" onClick={handleAgregar}>
+    <>
+      <Button
+        type="primary"
+        onClick={() => {
+          setIsModalVisible(true);
+        }}
+      >
         Agregar
       </Button>
-      <br />
-      <br />
-      <Spin spinning={spinListado}>
-        <Table dataSource={dataSource} pagination={false}>
-          {/* <Column title="id" dataIndex="id" key="id" /> */}
-          <Column title="Nombre" dataIndex="titulo" key="titulo" />
-          <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
-          <Column
-            title="Fecha de Creación"
-            dataIndex="fechaCreacion"
-            key="fechaCreacion"
-          />
-          <Column
-            title="Opciones"
-            key="opciones"
-            render={(text, record) => (
-              <Space size="middle">
-                <EditTwoTone
-                  onClick={() => {
-                    handleEdit(record.id);
-                  }}
-                />
-                <Popconfirm
-                  title="¿Seguro de eliminar este contenido？"
-                  okText="Si"
-                  cancelText="No"
-                  onConfirm={() => {
-                    handleDelete(record.id);
-                  }}
-                  okButtonProps={{ loading: confirmLoading }}
-                >
-                  <DeleteTwoTone onClick={showPopconfirm} />
-                </Popconfirm>
-                <Productos
-                  empresaId={record.id}
-                  empresaNombre={record.titulo}
-                  empresaLenguaje={record.lenguaje}
-                />
-              </Space>
-            )}
-          />
-        </Table>
-      </Spin>
 
       <Modal
         title={
           procesoActual === "ACTUALIZAR" ? (
-            <span>Actualizar Empresa</span>
+            <span>Actualizar producto de {empresaNombre}</span>
           ) : (
-            <span>Agregar Nueva Empresa</span>
+            <span>Agregar nuevo producto para {empresaNombre}</span>
           )
         }
         visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        // onOk={handleOk}
+        onCancel={() => {
+          setIsModalVisible(false);
+        }}
         footer={false}
         width={1000}
         centered
       >
         <Spin spinning={spinModal} delay={500}>
           <div>
-            <Form {...layout} onFinish={onFinish} form={form}>
+            <Form
+              {...layout}
+              onFinish={onFinish}
+              form={form}
+              initialValues={{ lenguaje: empresaLenguaje }}
+            >
               <Form.Item name="id" hidden={true}>
                 <Input type="text" />
               </Form.Item>
@@ -377,7 +235,7 @@ const Noticias = () => {
                     name="lenguaje"
                     rules={[{ required: true, message: "Ingrese el lenguaje" }]}
                   >
-                    <Select placeholder="Seleccione" allowClear>
+                    <Select placeholder="Seleccione" allowClear disabled>
                       <Select.Option value="es">Español</Select.Option>
                       <Select.Option value="en">Inglés</Select.Option>
                     </Select>
@@ -397,7 +255,7 @@ const Noticias = () => {
                   </Form.Item>
                 </Col>
 
-                <Col lg={24}>
+                {/* <Col lg={24}>
                   <Form.Item
                     label={<strong>Resumen</strong>}
                     name="summary"
@@ -409,7 +267,7 @@ const Noticias = () => {
                     <Input maxLength={500} />
                   </Form.Item>
                 </Col>
-
+ */}
                 <Col lg={24}>
                   <Form.Item
                     label={<strong>Imagen</strong>}
@@ -418,8 +276,12 @@ const Noticias = () => {
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de <strong>400px x 400px</strong> (no
-                        superior a 500 KB)
+                        Imágenes jpg o png de{" "}
+                        <strong>
+                          70px x 150px{" "}
+                          <span style={{ color: "red" }}>PENDIENTE</span>
+                        </strong>{" "}
+                        (no superior a 500 KB)
                       </span>
                     }
                     rules={[
@@ -550,8 +412,8 @@ const Noticias = () => {
           </div>
         </Spin>
       </Modal>
-    </div>
+    </>
   );
 };
 
-export default Noticias;
+export default BtnAgregar;

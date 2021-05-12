@@ -24,7 +24,7 @@ const stylesCss = css.global`
     border-radius: 1px;
     border: 0.5px rgba(68, 49, 34, 0.5) solid;
     color: #fff4e4;
-    padding: 1rem;
+    padding: 2rem;
     font-size: 1rem;
   }
 
