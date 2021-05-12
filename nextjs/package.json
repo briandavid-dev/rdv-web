@@ -9,7 +9,7 @@
     "build": "next build && next export",
     "start": "next start",
     "export": "npm run build-x && next export",
-    "export-w": "npm run build-x && next export PUBLIC_URL=https://www.bmosoluciones.com/qa/nextjs/out/ ",
+    "export-w": "next build && next export",
     "export-x": "next export"
   },
   "dependencies": {
