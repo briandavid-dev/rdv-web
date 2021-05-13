@@ -311,11 +311,15 @@ const PageNoticia = () => {
                       }}
                     ></div>
                   </Col>
-                  <Col span={24} className="text-center card-botellita">
+                  <Col span={24} className="text-center card-botellita__">
                     <img
                       alt={producto.name}
                       src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                      style={{ width: "50", maxWidth: "100%" }}
+                      style={{
+                        width: "90px",
+                        maxWidth: "100%",
+                        margin: "0 0.5rem 0 0.2rem",
+                      }}
                     />
                   </Col>
                   <Col span={24}>
