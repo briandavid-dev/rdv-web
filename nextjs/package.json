@@ -1,16 +1,13 @@
 {
-  "homepage": "https://www.bmosoluciones.com/qa/nextjs/out/",
   "name": "RDV",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build-x": "next build",
     "build": "next build && next export",
     "start": "next start",
-    "export": "npm run build-x && next export",
-    "export-w": "next build && next export",
-    "export-x": "next export"
+    "export": "next export",
+    "export-w": "next build && next export"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^27.1.0",

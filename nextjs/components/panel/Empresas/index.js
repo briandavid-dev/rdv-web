@@ -23,6 +23,7 @@ import { UploadOutlined, DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import dynamic from "next/dynamic";
 import ApiNoticias from "../services";
 import Productos from "./Productos";
+import BtnPremios from "./BtnPremios";
 import notifica from "../../../utils/notifica";
 
 const Editor = dynamic(
@@ -351,6 +352,12 @@ const Noticias = () => {
                 </Popconfirm>
 
                 <Productos
+                  empresaId={record.id}
+                  empresaNombre={record.titulo}
+                  empresaLenguaje={record.lenguaje}
+                />
+
+                <BtnPremios
                   empresaId={record.id}
                   empresaNombre={record.titulo}
                   empresaLenguaje={record.lenguaje}
