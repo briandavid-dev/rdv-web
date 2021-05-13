@@ -64,47 +64,16 @@ const PageNoticia = () => {
   const router = useRouter();
   const { id, lang } = router.query;
 
-  // let lang = "en";
-  // if (router.query.lang === "en") {
-  //   lang = "en";
-  // } else {
-  //   lang = "es";
-  // }
-
-  // const strings = { es, en };
-
   const [empresa, setEmpresa] = useState({
     id: "",
     image_base64: "",
     image_extension: "",
     content_html: "",
     title: "",
+    url: "",
   });
 
   const [productos, setProductos] = useState([]);
-  /* 
-  const getMarca = () => {
-    if (id) {
-      ApiEmpresas.getEmpresa(id)
-        .then((response) => {
-          const { codigo, empresa } = response.data;
-          if (codigo === "1") {
-            setEmpresa({
-              id: empresa.id,
-              image_base64: empresa.image_base64,
-              image_extension: empresa.image_extension,
-              content_html: empresa.content_html,
-              title: empresa.title,
-            });
-          } else {
-            //
-          }
-        })
-        .catch((error) => {
-          console.log(`error`, error);
-        });
-    }
-  }; */
 
   useEffect(() => {
     ApiEmpresas.getEmpresa(id)
@@ -117,6 +86,7 @@ const PageNoticia = () => {
             image_extension: empresa.image_extension,
             content_html: empresa.content_html,
             title: empresa.title,
+            url: empresa.url,
           });
         } else {
           //
@@ -202,12 +172,18 @@ const PageNoticia = () => {
                     style={{ width: "300px", maxWidth: "80%" }}
                   />
                 </div>
+                <br />
 
                 <div
                   dangerouslySetInnerHTML={{
                     __html: empresa.content_html,
                   }}
                 ></div>
+                <p>
+                  <a className="alink" href={empresa.url} target="_blank">
+                    {empresa.url}
+                  </a>
+                </p>
               </div>
               <br />
               <div className="text-center">
@@ -226,7 +202,11 @@ const PageNoticia = () => {
               <Row>
                 {productos.map((producto) => (
                   <>
-                    <Col span={4} className="text-center card-botellita">
+                    <Col
+                      span={4}
+                      className="text-center card-botellita"
+                      key={producto.id}
+                    >
                       <img
                         alt={producto.name}
                         src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
@@ -281,12 +261,19 @@ const PageNoticia = () => {
                   style={{ width: "300px", maxWidth: "80%" }}
                 />
               </div>
+              <br />
 
               <div
                 dangerouslySetInnerHTML={{
                   __html: empresa.content_html,
                 }}
               ></div>
+
+              <p>
+                <a className="alink" href={empresa.url} target="_blank">
+                  {empresa.url}
+                </a>
+              </p>
             </div>
             <div className="text-center">
               <br />

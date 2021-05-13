@@ -142,6 +142,13 @@ const stylesCss = css.global`
     line-height: 1;
     content: "*";
   }
+
+  a.alink {
+    color: #fff4e4;
+  }
+  a.alink:hover {
+    text-decoration: underline;
+  }
 `;
 
 function MyApp({ Component, pageProps }) {

@@ -267,6 +267,7 @@ const Noticias = () => {
       marcarPrincipal: noticiaUpdate.marcarPrincipal,
       visualizacionHome: noticiaUpdate.visualizacionHome,
       summary: noticiaUpdate.summary,
+      url: noticiaUpdate.url,
     });
 
     setContenidoUpdate(noticiaUpdate.contenido);
@@ -406,6 +407,17 @@ const Noticias = () => {
                       { required: true, message: "Ingrese el titulo" },
                       { min: 10, message: "Mínimo 10 caracteres" },
                     ]}
+                  >
+                    <Input maxLength={100} />
+                  </Form.Item>
+                </Col>
+
+                <Col lg={24}>
+                  <Form.Item
+                    label={<strong>URL</strong>}
+                    name="url"
+                    rules={[{ min: 10, message: "Mínimo 5 caracteres" }]}
+                    extra={<span>Ejemplo: https://www.bmosoluciones.com/</span>}
                   >
                     <Input maxLength={100} />
                   </Form.Item>

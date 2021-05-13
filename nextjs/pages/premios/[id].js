@@ -98,6 +98,7 @@ const PageNoticia = () => {
     image_extension: "",
     content_html: "",
     title: "",
+    url: "",
   });
 
   const [productos, setProductos] = useState([]);
@@ -112,6 +113,7 @@ const PageNoticia = () => {
             image_extension: empresa.image_extension,
             content_html: empresa.content_html,
             title: empresa.title,
+            url: empresa.url,
           });
         } else {
           //
@@ -267,6 +269,22 @@ const PageNoticia = () => {
             </Col>
           </Row>
         </div>
+        {empresa.url !== "" && (
+          <div className="container">
+            <div className="row ">
+              <div className="col-md-12 text-center">
+                Para más información de los premios de {empresa.title} visita
+                <p>
+                  <a href={empresa.url} target="_blank">
+                    <Button className="card-empresa-premios zoom-elron">
+                      {empresa.url}
+                    </Button>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="container">
           <div className="row">
@@ -353,6 +371,23 @@ const PageNoticia = () => {
               ))}
             </Row>
           </Col>
+
+          {empresa.url !== "" && (
+            <div className="container">
+              <div className="row ">
+                <div className="col-md-12 text-center">
+                  Para más información de los premios de {empresa.title} visita
+                  <p>
+                    <a href={empresa.url} target="_blank">
+                      <Button className="card-empresa-premios zoom-elron">
+                        {empresa.url}
+                      </Button>
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="container">
             <div className="row">

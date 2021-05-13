@@ -409,6 +409,7 @@ const BtnAgregar = (props) => {
                   </Form.Item> */}
                 </Col>
                 <Col lg={24}>
+                  <span className="label-required"></span>
                   <strong>Contenido:</strong> &nbsp;&nbsp;
                 </Col>
                 <Col lg={24}>
