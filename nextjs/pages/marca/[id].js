@@ -9,6 +9,7 @@ import MenuDesktop from "../../components/MenuDesktop";
 import es from "../../lang/es";
 import en from "../../lang/en";
 import ApiEmpresas from "../../pagesServices/empresas";
+import ApiProductos from "../../components/panel/Empresas/Productos/services";
 
 const stylesCss = css.global`
   body {
@@ -43,6 +44,20 @@ const stylesCss = css.global`
     border-color: rgba(68, 49, 34, 0.5);
     color: #fff4e4;
   }
+
+  .card-botellita {
+    background-color: rgba(68, 49, 34, 0.8);
+  }
+  .card-botellita-content {
+    padding-left: 1rem;
+  }
+  .card-botellita-producto-uno {
+    color: #ffda44;
+    font-size: 1.3rem;
+  }
+  .card-botellita-producto-dos {
+    font-size: 1.2rem;
+  }
 `;
 
 const PageNoticia = () => {
@@ -64,6 +79,8 @@ const PageNoticia = () => {
     content_html: "",
     title: "",
   });
+
+  const [productos, setProductos] = useState([]);
 
   const getMarca = () => {
     if (id) {
@@ -88,7 +105,40 @@ const PageNoticia = () => {
   };
 
   useEffect(() => {
-    getMarca();
+    ApiEmpresas.getEmpresa(id)
+      .then((response) => {
+        const { codigo, empresa } = response.data;
+        if (codigo === "1") {
+          setEmpresa({
+            image_base64: empresa.image_base64,
+            image_extension: empresa.image_extension,
+            content_html: empresa.content_html,
+            title: empresa.title,
+          });
+        } else {
+          //
+        }
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+      });
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      ApiProductos.getProductos(id)
+        .then((response) => {
+          const { codigo, results } = response.data;
+          if (codigo === "1") {
+            setProductos(results);
+          } else {
+            //
+          }
+        })
+        .catch((error) => {
+          console.log(`error`, error);
+        });
+    }
   }, [id]);
 
   return (
@@ -162,6 +212,37 @@ const PageNoticia = () => {
                   VER PREMIOS
                 </Button>
               </div>
+              <br />
+              <Row>
+                {productos.map((producto) => (
+                  <>
+                    <Col span={4} className="text-center card-botellita">
+                      <img
+                        alt={producto.name}
+                        src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                        style={{ width: "50", maxWidth: "100%" }}
+                      />
+                    </Col>
+                    <Col span={20} className=" card-botellita-content">
+                      <div className="card-botellita-producto-uno">
+                        Producto
+                      </div>
+                      <div className="card-botellita-producto-dos">
+                        {producto.name}
+                      </div>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: producto.content_html,
+                        }}
+                      ></div>
+                    </Col>
+                    <Col span={24}>
+                      <br />
+                      <br />
+                    </Col>
+                  </>
+                ))}
+              </Row>
             </Col>
           </Row>
         </div>
@@ -198,10 +279,40 @@ const PageNoticia = () => {
               ></div>
             </div>
             <div className="text-center">
+              <br />
               <Button className="card-empresa-premios zoom-elron">
                 VER PREMIOS
               </Button>
             </div>
+            <br />
+            <Row>
+              {productos.map((producto) => (
+                <>
+                  <Col span={4} className="text-center card-botellita">
+                    <img
+                      alt={producto.name}
+                      src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                      style={{ width: "50", maxWidth: "100%" }}
+                    />
+                  </Col>
+                  <Col span={20} className=" card-botellita-content">
+                    <div className="card-botellita-producto-uno">Producto</div>
+                    <div className="card-botellita-producto-dos">
+                      {producto.name}
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: producto.content_html,
+                      }}
+                    ></div>
+                  </Col>
+                  <Col span={24}>
+                    <br />
+                    <br />
+                  </Col>
+                </>
+              ))}
+            </Row>
           </Col>
 
           <div className="container">
