@@ -10,7 +10,7 @@ if (typeof require !== "undefined") {
 }
 
 module.exports = withCSS({
-  basePath: "/qa/nextjs/out",
+  // basePath: "/qa/nextjs/out",
   // basePath: "http://localhost/nextweb/",
   // assetPrefix: "http://localhost/nextweb/",
   cssModules: true,

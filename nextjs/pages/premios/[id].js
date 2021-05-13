@@ -19,14 +19,30 @@ const stylesCss = css.global`
     background-color: #553c28;
   }
 
-  .card-empresa-info,
   table {
-    background-color: rgba(68, 49, 34, 0.8);
+    /* background-color: rgba(68, 49, 34, 0.8); */
     border-radius: 1px;
-    border: 0.5px rgba(68, 49, 34, 0.5) solid;
+    /* border: 0.5px rgba(68, 49, 34, 0.5) solid; */
     color: #fff4e4;
     padding: 2rem;
     font-size: 1rem;
+  }
+
+  table tr {
+    border-bottom-width: 0px !important;
+    margin-bottom: 1.5rem;
+  }
+  table td {
+    padding: 0;
+  }
+  table td:nth-child(1) {
+    /* padding-top: 0; */
+    vertical-align: top;
+  }
+  table td:nth-child(2) {
+    padding-left: 1rem;
+    vertical-align: top;
+    /* padding-top: 1rem; */
   }
 
   .card-empresa-premios {
@@ -58,6 +74,10 @@ const stylesCss = css.global`
   .card-botellita-producto-dos {
     font-size: 1.2rem;
   }
+
+  h4 {
+    color: #ffda44;
+  }
 `;
 
 const PageNoticia = () => {
@@ -74,7 +94,6 @@ const PageNoticia = () => {
   // const strings = { es, en };
 
   const [empresa, setEmpresa] = useState({
-    id: "",
     image_base64: "",
     image_extension: "",
     content_html: "",
@@ -82,7 +101,7 @@ const PageNoticia = () => {
   });
 
   const [productos, setProductos] = useState([]);
-  /* 
+
   const getMarca = () => {
     if (id) {
       ApiEmpresas.getEmpresa(id)
@@ -90,7 +109,6 @@ const PageNoticia = () => {
           const { codigo, empresa } = response.data;
           if (codigo === "1") {
             setEmpresa({
-              id: empresa.id,
               image_base64: empresa.image_base64,
               image_extension: empresa.image_extension,
               content_html: empresa.content_html,
@@ -104,7 +122,7 @@ const PageNoticia = () => {
           console.log(`error`, error);
         });
     }
-  }; */
+  };
 
   useEffect(() => {
     ApiEmpresas.getEmpresa(id)
@@ -112,7 +130,6 @@ const PageNoticia = () => {
         const { codigo, empresa } = response.data;
         if (codigo === "1") {
           setEmpresa({
-            id: empresa.id,
             image_base64: empresa.image_base64,
             image_extension: empresa.image_extension,
             content_html: empresa.content_html,
@@ -178,73 +195,66 @@ const PageNoticia = () => {
       <MenuDesktop />
 
       <div className="valida_mobile Section0">
-        <div style={{ padding: "7rem 0 2rem 0 " }}>
+        <Row type="flex" justify="center">
+          <Col xs={24}>
+            <img
+              src="/assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              style={{ maxWidth: "100%" }}
+            />
+          </Col>
+        </Row>
+        <div style={{ padding: "0rem 0 0rem 0 " }}>
           <Row gutter={[16, 16]} type="flex" justify="center" align="top">
-            <Col xs={22} lg={15}>
-              <div className="card-empresa-info">
-                <div className="seccion_titulo">
-                  <img
-                    src="/assets/imgs/home/linea2.png"
-                    style={{ height: "4px" }}
-                  />
-                  <h1 className="text-center">{empresa.title}</h1>
-                  &nbsp;&nbsp;
-                  <img
-                    src="/assets/imgs/home/linea1.png"
-                    style={{ height: "4px" }}
-                  />
-                </div>
-
-                <div className="text-center">
-                  <img
-                    alt={empresa.title}
-                    src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
-                    style={{ width: "300px", maxWidth: "80%" }}
-                  />
-                </div>
-
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: empresa.content_html,
-                  }}
-                ></div>
+            <Col xs={22} lg={14}>
+              <div className="seccion_titulo">
+                <img
+                  src="/assets/imgs/home/linea2.png"
+                  style={{ height: "4px" }}
+                />
+                <h1 className="text-center">Premios {empresa.title}</h1>
+                &nbsp;&nbsp;
+                <img
+                  src="/assets/imgs/home/linea1.png"
+                  style={{ height: "4px" }}
+                />
               </div>
-              <br />
-              <div className="text-center">
-                <Link
-                  href={{
-                    pathname: "/premios/[id]",
-                    query: { id: empresa.id, lang },
-                  }}
-                >
-                  <Button className="card-empresa-premios zoom-elron">
-                    VER PREMIOS
-                  </Button>
-                </Link>
-              </div>
+
               <br />
               <Row>
                 {productos.map((producto) => (
                   <>
-                    <Col span={4} className="text-center card-botellita">
-                      <img
-                        alt={producto.name}
-                        src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                        style={{ width: "50", maxWidth: "100%" }}
-                      />
-                    </Col>
-                    <Col span={20} className=" card-botellita-content">
+                    <Col
+                      span={20}
+                      className=" card-botellita-content"
+                      key={producto.id}
+                    >
                       <div className="card-botellita-producto-uno">
-                        Producto
+                        <h4>
+                          <span
+                            style={{
+                              color: "transparent",
+                              marginRight: "1rem",
+                            }}
+                          >
+                            2020
+                          </span>
+                          {producto.name}
+                        </h4>
                       </div>
-                      <div className="card-botellita-producto-dos">
-                        {producto.name}
-                      </div>
+                      <br />
+                      <div className="card-botellita-producto-dos"></div>
                       <div
                         dangerouslySetInnerHTML={{
                           __html: producto.content_html,
                         }}
                       ></div>
+                    </Col>
+                    <Col span={4} className="text-center card-botellita__">
+                      <img
+                        alt={producto.name}
+                        src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                        style={{ width: "50", maxWidth: "100%" }}
+                      />
                     </Col>
                     <Col span={24}>
                       <br />
@@ -268,60 +278,45 @@ const PageNoticia = () => {
       </div>
 
       <div className="valida_desktop font_20 Section0">
+        <Row type="flex" justify="center">
+          <Col xs={24} style={{ marginTop: "58px" }}>
+            <img
+              src="/assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              style={{ maxWidth: "100%" }}
+            />
+          </Col>
+        </Row>
         <Row type="flex" justify="center" className="Section0">
-          <Col xs={22} style={{ marginTop: "58px" }}>
-            <br />
-            <div className="card-empresa-info">
-              <h1 className="text-center">{empresa.title}</h1>
-
-              <div className="text-center">
-                <img
-                  alt={empresa.title}
-                  src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
-                  style={{ width: "300px", maxWidth: "80%" }}
-                />
-              </div>
-
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: empresa.content_html,
-                }}
-              ></div>
-            </div>
-            <div className="text-center">
-              <br />
-              <Link
-                href={{
-                  pathname: "/premios/[id]",
-                  query: { id: empresa.id, lang },
-                }}
-              >
-                <Button className="card-empresa-premios zoom-elron">
-                  VER PREMIOS
-                </Button>
-              </Link>
+          <Col xs={22} style={{ marginTop: "1rem" }}>
+            <img src="/assets/imgs/home/linea2.png" style={{ height: "4px" }} />
+            <h2 className="text-center">{empresa.title}</h2>
+            <div style={{ textAlign: "right" }}>
+              <img
+                src="/assets/imgs/home/linea2.png"
+                style={{ height: "4px" }}
+              />
             </div>
             <br />
-            <Row>
+            <Row xs={24} type="flex" justify="center">
               {productos.map((producto) => (
                 <>
-                  <Col span={4} className="text-center card-botellita">
-                    <img
-                      alt={producto.name}
-                      src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                      style={{ width: "50", maxWidth: "100%" }}
-                    />
-                  </Col>
-                  <Col span={20} className=" card-botellita-content">
-                    <div className="card-botellita-producto-uno">Producto</div>
-                    <div className="card-botellita-producto-dos">
-                      {producto.name}
+                  <Col span={24} className=" card-botellita-content__">
+                    <div className="card-botellita-producto-uno">
+                      <h4>{producto.name}</h4>
                     </div>
+                    <br />
                     <div
                       dangerouslySetInnerHTML={{
                         __html: producto.content_html,
                       }}
                     ></div>
+                  </Col>
+                  <Col span={24} className="text-center card-botellita">
+                    <img
+                      alt={producto.name}
+                      src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                      style={{ width: "50", maxWidth: "100%" }}
+                    />
                   </Col>
                   <Col span={24}>
                     <br />
