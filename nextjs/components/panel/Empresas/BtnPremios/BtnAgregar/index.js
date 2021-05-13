@@ -57,15 +57,15 @@ const BtnAgregar = (props) => {
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
-    if (file.size / 1000 > 512) {
+    if (file.size / 1000 > 256) {
       setShowSizeMessageCertificado(true);
       return false;
     }
     setShowSizeMessageCertificado(false);
 
-    if (fileCertificado.findIndex((e) => e.name === file.name) >= 0) {
-      return false;
-    }
+    // if (fileCertificado.findIndex((e) => e.name === file.name) >= 0) {
+    //   return false;
+    // }
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -77,16 +77,16 @@ const BtnAgregar = (props) => {
 
       if (rgx !== null) {
         setFileCertificado([
-          [
-            {
-              ...file,
-              name: file.name,
-              nombreArchivo: file.name,
-              extension: rgx[2],
-              base64: rgx[3],
-              bytes: null,
-            },
-          ],
+          ...fileCertificado,
+          {
+            ...file,
+            name: file.name,
+            nombreArchivo: file.name,
+            extension: rgx[2],
+            base64: rgx[3],
+            bytes: null,
+          },
+          ,
         ]);
       }
     };
@@ -98,9 +98,11 @@ const BtnAgregar = (props) => {
 
   const normFile = (e) => {
     let superaLimite = false;
-    if (e.file.size / 1000 > 512) {
+    if (e.file.size / 1000 > 256) {
       setShowSizeMessageCertificado(true);
       superaLimite = true;
+      e.fileList.pop();
+      return e && e.fileList;
     } else {
       setShowSizeMessageCertificado(false);
       superaLimite = false;
@@ -109,12 +111,12 @@ const BtnAgregar = (props) => {
     if (Array.isArray(e)) {
       return e;
     }
-    if (e.fileList.length > 1) {
-      e.fileList.shift();
-    }
-    if (superaLimite) {
-      e.fileList = [];
-    }
+    // if (e.fileList.length > 1) {
+    //   e.fileList.shift();
+    // }
+    // if (superaLimite) {
+    //   e.fileList = [];
+    // }
 
     return e && e.fileList;
   };
@@ -128,8 +130,9 @@ const BtnAgregar = (props) => {
     const payload = {
       ...values,
       content_html: contenidoUpdate,
-      image_extension: fileCertificado[0][0].extension,
-      image_base64: fileCertificado[0][0].base64,
+      image_extension: "",
+      image_base64: JSON.stringify(values.imagen),
+      type: "premios",
     };
 
     delete payload.imagen;
@@ -295,18 +298,14 @@ const BtnAgregar = (props) => {
  */}
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Imagen</strong>}
+                    label={<strong>Imagenes</strong>}
                     name="imagen"
                     valuePropName="fileList"
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de{" "}
-                        <strong>
-                          70px x 150px{" "}
-                          <span style={{ color: "red" }}>PENDIENTE</span>
-                        </strong>{" "}
-                        (no superior a 500 KB)
+                        Imágenes jpg o png de <strong>200 x 200 px </strong> (no
+                        superior a 200 KB)
                       </span>
                     }
                     rules={[
@@ -330,7 +329,7 @@ const BtnAgregar = (props) => {
                       beforeUpload={(file) =>
                         handleBeforeUploadCertificado(file)
                       }
-                      onRemove={handleRemoveFileClickCertificado}
+                      // onRemove={handleRemoveFileClickCertificado}
                       fileList={fileCertificado}
                     >
                       <Button icon={<UploadOutlined />}>
@@ -342,7 +341,7 @@ const BtnAgregar = (props) => {
                           className="afiliacion-datos-personales__size-message "
                           style={{ color: "red" }}
                         >
-                          El archivo no debe pesar más de 500 KB.
+                          El archivo no debe pesar más de 200 KB.
                         </div>
                       )}
                     </Upload>

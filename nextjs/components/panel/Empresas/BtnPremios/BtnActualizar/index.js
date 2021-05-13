@@ -76,7 +76,7 @@ const BtnActualizar = (props) => {
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
-    if (file.size / 1000 > 512) {
+    if (file.size / 1000 > 256) {
       setShowSizeMessageCertificado(true);
       return false;
     }
@@ -117,9 +117,11 @@ const BtnActualizar = (props) => {
 
   const normFile = (e) => {
     let superaLimite = false;
-    if (e.file.size / 1000 > 512) {
+    if (e.file.size / 1000 > 256) {
       setShowSizeMessageCertificado(true);
       superaLimite = true;
+      e.fileList.pop();
+      return e && e.fileList;
     } else {
       setShowSizeMessageCertificado(false);
       superaLimite = false;
@@ -128,12 +130,12 @@ const BtnActualizar = (props) => {
     if (Array.isArray(e)) {
       return e;
     }
-    if (e.fileList.length > 1) {
-      e.fileList.shift();
-    }
-    if (superaLimite) {
-      e.fileList = [];
-    }
+    // if (e.fileList.length > 1) {
+    //   e.fileList.shift();
+    // }
+    // if (superaLimite) {
+    //   e.fileList = [];
+    // }
 
     return e && e.fileList;
   };
@@ -147,10 +149,9 @@ const BtnActualizar = (props) => {
     const payload = {
       ...values,
       content_html: contenidoUpdate,
-      image_extension: fileCertificado[0]
-        ? fileCertificado[0][0].extension
-        : null,
-      image_base64: fileCertificado[0] ? fileCertificado[0][0].base64 : null,
+      image_extension: values.imagen ? "" : null,
+      image_base64: values.imagen ? JSON.stringify(values.imagen) : null,
+      type: "premios",
     };
 
     let updateNoticias = dataProductos;
@@ -320,12 +321,8 @@ const BtnActualizar = (props) => {
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de{" "}
-                        <strong>
-                          70px x 150px{" "}
-                          <span style={{ color: "red" }}>PENDIENTE</span>
-                        </strong>{" "}
-                        (no superior a 500 KB)
+                        Imágenes jpg o png de <strong>200 x 200 px </strong> (no
+                        superior a 200 KB)
                       </span>
                     }
                     rules={[
@@ -361,7 +358,7 @@ const BtnActualizar = (props) => {
                           className="afiliacion-datos-personales__size-message "
                           style={{ color: "red" }}
                         >
-                          El archivo no debe pesar más de 500 KB.
+                          El archivo no debe pesar más de 200 KB.
                         </div>
                       )}
                     </Upload>

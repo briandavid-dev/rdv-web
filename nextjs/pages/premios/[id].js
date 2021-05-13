@@ -102,28 +102,6 @@ const PageNoticia = () => {
 
   const [productos, setProductos] = useState([]);
 
-  const getMarca = () => {
-    if (id) {
-      ApiEmpresas.getEmpresa(id)
-        .then((response) => {
-          const { codigo, empresa } = response.data;
-          if (codigo === "1") {
-            setEmpresa({
-              image_base64: empresa.image_base64,
-              image_extension: empresa.image_extension,
-              content_html: empresa.content_html,
-              title: empresa.title,
-            });
-          } else {
-            //
-          }
-        })
-        .catch((error) => {
-          console.log(`error`, error);
-        });
-    }
-  };
-
   useEffect(() => {
     ApiEmpresas.getEmpresa(id)
       .then((response) => {
@@ -249,12 +227,35 @@ const PageNoticia = () => {
                         }}
                       ></div>
                     </Col>
+
                     <Col span={4} className="text-center card-botellita__">
-                      <img
-                        alt={producto.name}
-                        src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                        style={{ width: "50", maxWidth: "100%" }}
-                      />
+                      {producto.image_extension !== "" && (
+                        <img
+                          alt={producto.name}
+                          src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                          style={{ width: "50", maxWidth: "100%" }}
+                        />
+                      )}
+
+                      {producto.image_extension === "" &&
+                        producto.image_base64 !== "" && (
+                          <>
+                            {JSON.parse(producto.image_base64).map((imagen) => {
+                              return (
+                                <img
+                                  alt={producto.name}
+                                  key={imagen.uid}
+                                  src={imagen.thumbUrl}
+                                  style={{
+                                    width: "50",
+                                    maxWidth: "100%",
+                                    marginBottom: "1rem",
+                                  }}
+                                />
+                              );
+                            })}
+                          </>
+                        )}
                     </Col>
                     <Col span={24}>
                       <br />
@@ -312,15 +313,37 @@ const PageNoticia = () => {
                     ></div>
                   </Col>
                   <Col span={24} className="text-center card-botellita__">
-                    <img
-                      alt={producto.name}
-                      src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                      style={{
-                        width: "90px",
-                        maxWidth: "100%",
-                        margin: "0 0.5rem 0 0.2rem",
-                      }}
-                    />
+                    {producto.image_extension !== "" && (
+                      <img
+                        alt={producto.name}
+                        src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                        style={{
+                          width: "90px",
+                          maxWidth: "100%",
+                          margin: "0 0.5rem 0.5rem 0.2rem",
+                        }}
+                      />
+                    )}
+
+                    {producto.image_extension === "" &&
+                      producto.image_base64 !== "" && (
+                        <>
+                          {JSON.parse(producto.image_base64).map((imagen) => {
+                            return (
+                              <img
+                                alt={producto.name}
+                                key={imagen.uid}
+                                src={imagen.thumbUrl}
+                                style={{
+                                  width: "90px",
+                                  maxWidth: "100%",
+                                  margin: "0 0.5rem 0.5rem 0.2rem",
+                                }}
+                              />
+                            );
+                          })}
+                        </>
+                      )}
                   </Col>
                   <Col span={24}>
                     <br />
