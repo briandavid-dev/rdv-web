@@ -124,7 +124,7 @@ const PageNoticia = () => {
 
   useEffect(() => {
     if (id) {
-      ApiProductos.getProductos(id)
+      ApiProductos.getProductos(id, "premios")
         .then((response) => {
           const { codigo, results } = response.data;
           if (codigo === "1") {

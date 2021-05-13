@@ -89,7 +89,7 @@ const Productos = (props) => {
 
   useEffect(() => {
     setLoadingTable(true);
-    ApiProductos.getProductos(empresaId)
+    ApiProductos.getProductos(empresaId, "productos")
       .then((response) => {
         const { codigo, results } = response.data;
         if (codigo === "1") {

@@ -89,7 +89,7 @@ const Premios = (props) => {
 
   useEffect(() => {
     setLoadingTable(true);
-    ApiPremios.getProductos(empresaId)
+    ApiPremios.getProductos(empresaId, "premios")
       .then((response) => {
         const { codigo, results } = response.data;
         if (codigo === "1") {

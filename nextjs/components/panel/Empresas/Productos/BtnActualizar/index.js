@@ -151,6 +151,7 @@ const BtnActualizar = (props) => {
         ? fileCertificado[0][0].extension
         : null,
       image_base64: fileCertificado[0] ? fileCertificado[0][0].base64 : null,
+      type: "productos",
     };
 
     let updateNoticias = dataProductos;

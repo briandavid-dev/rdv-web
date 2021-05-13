@@ -130,6 +130,7 @@ const BtnAgregar = (props) => {
       content_html: contenidoUpdate,
       image_extension: fileCertificado[0][0].extension,
       image_base64: fileCertificado[0][0].base64,
+      type: "productos",
     };
 
     delete payload.imagen;

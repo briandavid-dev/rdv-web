@@ -2,10 +2,10 @@ import request from "../../../../config/request";
 
 const api = {};
 
-api.getProductos = (empresaId) => {
+api.getProductos = (empresaId, type) => {
   return request({
     method: "GET",
-    url: `empresa/${empresaId}/productos/`,
+    url: `empresa/${empresaId}/productos/${type}`,
   });
 };
 
