@@ -17,13 +17,14 @@ import { UploadOutlined, EditTwoTone } from "@ant-design/icons";
 import dynamic from "next/dynamic";
 import ApiProductos from "../services";
 import notifica from "../../../../../utils/notifica";
+import EditorImport from "../../EditorImport";
 
-const Editor = dynamic(
-  () => {
-    return import("../../Editor");
-  },
-  { ssr: false }
-);
+// const Editor = dynamic(
+//   () => {
+//     return import("../../Editor");
+//   },
+//   { ssr: false }
+// );
 
 const BtnActualizar = (props) => {
   const {
@@ -434,9 +435,13 @@ const BtnActualizar = (props) => {
                 </Col>
                 <Col lg={24}>
                   <br />
-                  <Editor
+                  {/* <EditorImport
                     data={contenidoUpdate}
                     actions={{ setContenidoUpdate }}
+                  /> */}
+                  <EditorImport
+                    contenidoUpdate={contenidoUpdate}
+                    setContenidoUpdate={setContenidoUpdate}
                   />
                 </Col>
                 <Col lg={24} style={{ textAlign: "center" }}>

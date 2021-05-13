@@ -132,6 +132,16 @@ const stylesCss = css.global`
     color: #443421;
     border-radius: 2px;
   }
+
+  .label-required::before {
+    display: inline-block;
+    margin-right: 4px;
+    color: #ff4d4f;
+    font-size: 14px;
+    font-family: SimSun, sans-serif;
+    line-height: 1;
+    content: "*";
+  }
 `;
 
 function MyApp({ Component, pageProps }) {

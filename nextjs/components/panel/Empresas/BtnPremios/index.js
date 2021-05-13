@@ -34,60 +34,7 @@ const Premios = (props) => {
 
   const handleProductos = () => {
     setModalProductosVisible(true);
-  };
 
-  // const handleEdit = (idUpdate) => {
-  //   setProcesoActual("ACTUALIZAR");
-  //   const noticiaUpdate = dataSource.find((noticia) => noticia.id === idUpdate);
-
-  //   form.resetFields();
-
-  //   form.setFieldsValue({
-  //     id: noticiaUpdate.id,
-  //     lenguaje: noticiaUpdate.lenguaje,
-  //     titulo: noticiaUpdate.titulo,
-  //     marcarPrincipal: noticiaUpdate.marcarPrincipal,
-  //     visualizacionHome: noticiaUpdate.visualizacionHome,
-  //     summary: noticiaUpdate.summary,
-  //   });
-
-  //   setContenidoUpdate(noticiaUpdate.contenido);
-
-  //   if (noticiaUpdate.imageBase64 !== "") {
-  //     setImageSrc(
-  //       `data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`
-  //     );
-  //   } else {
-  //     setImageSrc("");
-  //   }
-
-  //   setIsModalVisible(true);
-  // };
-
-  const handleDelete = (id) => {
-    ApiPremios.deteteProducto({ id })
-      .then((response) => {
-        if (response.data.codigo === "1") {
-          const updateProductos = dataProductos.filter(
-            (producto) => producto.id !== id
-          );
-
-          setDataProductos(updateProductos);
-          // setFileCertificado([]);
-          // handleCancel();
-          setConfirmLoading(false);
-          notifica("success");
-        } else {
-          notifica("error");
-        }
-      })
-      .catch((error) => {
-        notifica("error");
-        setConfirmLoading(false);
-      });
-  };
-
-  useEffect(() => {
     setLoadingTable(true);
     ApiPremios.getProductos(empresaId, "premios")
       .then((response) => {
@@ -114,7 +61,59 @@ const Premios = (props) => {
         console.log(`error`, error);
         setLoadingTable(false);
       });
-  }, []);
+  };
+
+  const handleDelete = (id) => {
+    ApiPremios.deteteProducto({ id })
+      .then((response) => {
+        if (response.data.codigo === "1") {
+          const updateProductos = dataProductos.filter(
+            (producto) => producto.id !== id
+          );
+
+          setDataProductos(updateProductos);
+          // setFileCertificado([]);
+          // handleCancel();
+          setConfirmLoading(false);
+          notifica("success");
+        } else {
+          notifica("error");
+        }
+      })
+      .catch((error) => {
+        notifica("error");
+        setConfirmLoading(false);
+      });
+  };
+
+  // useEffect(() => {
+  //   setLoadingTable(true);
+  //   ApiPremios.getProductos(empresaId, "premios")
+  //     .then((response) => {
+  //       const { codigo, results } = response.data;
+  //       if (codigo === "1") {
+  //         const dataProductos = results.map((producto) => {
+  //           return {
+  //             key: producto.id,
+  //             id: producto.id,
+  //             titulo: producto.name,
+  //             fechaCreacion: producto.created_at,
+  //             imageBase64: producto.image_base64,
+  //             imageExtension: producto.image_extension,
+  //             lenguaje: producto.language,
+  //             contenido: producto.content_html,
+  //           };
+  //         });
+
+  //         setDataProductos(dataProductos);
+  //         setLoadingTable(false);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(`error`, error);
+  //       setLoadingTable(false);
+  //     });
+  // }, []);
 
   return (
     <>

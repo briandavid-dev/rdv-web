@@ -16,13 +16,14 @@ import { UploadOutlined } from "@ant-design/icons";
 import dynamic from "next/dynamic";
 import ApiProductos from "../services";
 import notifica from "../../../../../utils/notifica";
+import EditorImport from "../../EditorImport";
 
-const Editor = dynamic(
-  () => {
-    return import("../../Editor");
-  },
-  { ssr: false }
-);
+// const Editor = dynamic(
+//   () => {
+//     return import("./Editor");
+//   },
+//   { ssr: false }
+// );
 
 const BtnAgregar = (props) => {
   const {
@@ -34,6 +35,7 @@ const BtnAgregar = (props) => {
   } = props;
 
   const [form] = Form.useForm();
+  // const [form] = Form.useForm({ forceFormElementConnection: false });
 
   const [procesoActual, setProcesoActual] = useState("AGREGAR");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -240,9 +242,9 @@ const BtnAgregar = (props) => {
         <Spin spinning={spinModal} delay={500}>
           <div>
             <Form
+              form={form}
               {...layout}
               onFinish={onFinish}
-              form={form}
               initialValues={{
                 language: empresaLenguaje,
                 empresa_id: empresaId,
@@ -293,7 +295,8 @@ const BtnAgregar = (props) => {
                     <Input maxLength={500} />
                   </Form.Item>
                 </Col>
- */}
+                */}
+
                 <Col lg={24}>
                   <Form.Item
                     label={<strong>Imagen</strong>}
@@ -415,9 +418,15 @@ const BtnAgregar = (props) => {
                 </Col>
                 <Col lg={24}>
                   <br />
-                  <Editor
+                  {/* <Editor
+                    key={uuidv4()}
                     data={contenidoUpdate}
                     actions={{ setContenidoUpdate }}
+                  /> */}
+
+                  <EditorImport
+                    contenidoUpdate={contenidoUpdate}
+                    setContenidoUpdate={setContenidoUpdate}
                   />
                 </Col>
                 <Col lg={24} style={{ textAlign: "center" }}>

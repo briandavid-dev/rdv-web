@@ -1,7 +1,7 @@
 import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import InlineEditor from "@ckeditor/ckeditor5-build-inline";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import InlineEditor from "@ckeditor/ckeditor5-build-inline";
 // https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installation.html
 import css from "styled-jsx/css";
 
@@ -24,7 +24,9 @@ const Editor = (props) => {
         {stylesCss}
       </style>
       <CKEditor
-        editor={InlineEditor}
+        // key={123}
+        // id={123}
+        editor={ClassicEditor}
         data={data}
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.

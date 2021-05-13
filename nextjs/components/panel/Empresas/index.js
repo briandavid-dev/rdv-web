@@ -26,12 +26,7 @@ import Productos from "./Productos";
 import BtnPremios from "./BtnPremios";
 import notifica from "../../../utils/notifica";
 
-const Editor = dynamic(
-  () => {
-    return import("./Editor");
-  },
-  { ssr: false }
-);
+import EditorImport from "./EditorImport";
 
 const stylesCss = css.global`
   body {
@@ -542,13 +537,14 @@ const Noticias = () => {
                   </Form.Item>
                 </Col>
                 <Col lg={24}>
+                  <span className="label-required"></span>
                   <strong>Contenido:</strong> &nbsp;&nbsp;
                 </Col>
                 <Col lg={24}>
                   <br />
-                  <Editor
-                    data={contenidoUpdate}
-                    actions={{ setContenidoUpdate }}
+                  <EditorImport
+                    contenidoUpdate={contenidoUpdate}
+                    setContenidoUpdate={setContenidoUpdate}
                   />
                 </Col>
                 <Col lg={24} style={{ textAlign: "center" }}>
