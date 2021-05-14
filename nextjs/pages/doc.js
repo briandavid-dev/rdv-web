@@ -20,10 +20,10 @@ const stylesCss = css.global`
   }
   .SeccionDocNacimiento {
     background-color: #4e3c2d;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 
   .SectionMobile0 {
@@ -92,7 +92,7 @@ export default function Doc() {
         </div>
         <div className="SeccionDoc2">
           <div className="container">
-            <div className="row">
+            <div className="row justify-content-center gx-1">
               <div className="col-md-12">
                 <div className="seccion_titulo text-center">
                   <img
@@ -108,18 +108,18 @@ export default function Doc() {
                   />
                 </div>
               </div>
-              <div className="col-md-12">
+              <div className="col-md-10">
                 <h3 className="titulo-maestro">{strings[lang].doc.quees}</h3>
                 {strings[lang].doc.quees1}
 
                 <br />
                 <br />
               </div>
-              <div className="col-md-6">
+              <div className="col-md-7">
                 <h3 className="titulo-maestro">{strings[lang].doc.existe}</h3>
                 {strings[lang].doc.existe1}
               </div>
-              <div className="col-md-6 text-center">
+              <div className="col-md-3 " style={{ textAlign: "right" }}>
                 <img
                   src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
                   style={{ maxWidth: "80%" }}
@@ -128,15 +128,15 @@ export default function Doc() {
             </div>
           </div>
           <div className="container">
-            <div className="row">
-              <div className="col-md-12 SeccionDocNacimiento">
+            <div className="row justify-content-center ">
+              <div className="col-md-10 SeccionDocNacimiento">
                 <h3 className="titulo-maestro">
                   {strings[lang].doc.nacimiento}
                 </h3>
                 {strings[lang].doc.nacimiento1}
               </div>
 
-              <div className="col-md-12">
+              <div className="col-md-10">
                 <h3 className="titulo-maestro">
                   {strings[lang].doc.regulador}
                 </h3>
@@ -157,7 +157,7 @@ export default function Doc() {
           </div>
 
           <div className="container">
-            <div className="row">
+            <div className="row justify-content-center gx-1">
               <div className="col-md-12 text-center">
                 <img
                   src="./assets/imgs/doc/FOTO-CAMION.png"

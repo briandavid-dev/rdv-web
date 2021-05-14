@@ -84,34 +84,32 @@ export default function Historia() {
       <div className="valida_mobile font_20">
         <div className="SeccionHistoria1">
           <div className="container">
-            <div className="row">
-              <div className="col-md-7 font_20 text-justify">
+            <div className="row  justify-content-center gx-1">
+              <div className="col-sm-12 col-md-6 col-lg-7 font_20 text-justify">
                 <div className="seccion_titulo">
                   <img
                     src="./assets/imgs/home/linea2.png"
                     className="linea1"
-                    style={{ maxHeight: "4px" }}
+                    style={{ maxHeight: "3px" }}
                   />
                   <h1>{strings[lang].historia.titulo}</h1>
                   <img
                     src="./assets/imgs/home/linea1.png"
                     className="linea2"
-                    style={{ maxHeight: "4px" }}
+                    style={{ maxHeight: "3px" }}
                   />
                 </div>
                 <p>{strings[lang].historia.parrafo1}</p>
               </div>
-              <div className="col-md-5 font_20  text-center">
+              <div className="col-sm-12 col-md-4 col-lg-3 font_20  text-center align-center">
                 <img
                   src="./assets/imgs/historia/IMAGEN-COFRE.png"
                   style={{ maxWidth: "80%" }}
                 />
               </div>
-              <div className="col-md-12 font_20 text-justify">
-                <br />
+              <div className="col-md-10 font_20 text-justify">
                 <br />
                 <p>{strings[lang].historia.parrafo2}</p>
-                <br />
 
                 <p>{strings[lang].historia.parrafo3}</p>
               </div>
@@ -121,15 +119,15 @@ export default function Historia() {
 
         <div className="SeccionHistoria3">
           <div className="container">
-            <div className="row">
-              <div className="col-md-12">
+            <div className="row  justify-content-center gx-5">
+              <div className="col-md-10">
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
                     src="./assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
                     style={{
                       maxWidth: "250px",
                       maxHeight: "250px",
-                      margin: "2rem",
+                      margin: "1.2rem",
                     }}
                   />
                   <img
@@ -137,7 +135,7 @@ export default function Historia() {
                     style={{
                       maxWidth: "250px",
                       maxHeight: "250px",
-                      margin: "2rem",
+                      margin: "1.2rem",
                     }}
                   />
                   <img
@@ -145,7 +143,7 @@ export default function Historia() {
                     style={{
                       maxWidth: "250px",
                       maxHeight: "250px",
-                      margin: "2rem",
+                      margin: "1.2rem",
                     }}
                   />
                 </div>
@@ -156,31 +154,27 @@ export default function Historia() {
 
         <div className="SeccionHistoria2">
           <div className="container">
-            <div className="row">
-              <div className="col-md-12 font_20 text-justify">
+            <div className="row  justify-content-center gx-5">
+              <div className="col-md-10 font_20 text-justify">
                 <p>{strings[lang].historia.parrafo4}</p>
-                <br />
                 <p>{strings[lang].historia.parrafo5}</p>
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-md-12 font_20 text-center">
+            <div className="row  justify-content-center gx-5">
+              <div className="col-md-10 font_20 text-center">
                 <img
                   src="./assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
-                  style={{ maxWidth: "450px", margin: "2rem" }}
+                  style={{ maxWidth: "450px", margin: "1.5rem" }}
                 />
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-md-12 font_20 text-justify">
+            <div className="row justify-content-center gx-5">
+              <div className="col-md-10 font_20 text-justify">
                 <p>{strings[lang].historia.parrafo6}</p>
-                <br />
                 <p>{strings[lang].historia.parrafo7}</p>
-                <br />
                 <p>{strings[lang].historia.parrafo8}</p>
-                <br />
                 <p>{strings[lang].historia.parrafo9}</p>
                 <br />
               </div>
@@ -200,19 +194,22 @@ export default function Historia() {
       <div className="valida_desktop font_20">
         <Row type="flex" justify="center" className="SectionMobile1">
           <Col xs={22} className="text-center" style={{ marginTop: "58px" }}>
-            <div className="seccion_titulo_mobile">
-              <img
+            <br />
+            <div className="seccion_titulo_mobile__">
+              {/* <img
                 src="/assets/imgs/home/linea2.png"
                 className="linea1mobile"
-              />
+              /> */}
               <h1>{strings[lang].historia.titulo}</h1>
-              <img
+              {/* <img
                 src="/assets/imgs/home/linea1.png"
                 className="linea2mobile"
-              />
+              /> */}
             </div>
+            <img src="/assets/imgs/home/linea1.png" className="linea2mobile" />
           </Col>
           <Col xs={22} className="text-center">
+            <br />
             <img
               src="./assets/imgs/historia/IMAGEN-COFRE.png"
               style={{ maxWidth: "80%" }}
@@ -228,22 +225,22 @@ export default function Historia() {
             <img
               src="/assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
               style={{
-                maxWidth: "25%",
-                margin: "0.2rem",
+                maxWidth: "30%",
+                margin: "0.1rem",
               }}
             />
             <img
               src="/assets/imgs/historia/BARRICAS.png"
               style={{
-                maxWidth: "25%",
-                margin: "0.2rem",
+                maxWidth: "30%",
+                margin: "0.1rem",
               }}
             />
             <img
               src="/assets/imgs/historia/LOGO.png"
               style={{
-                maxWidth: "25%",
-                margin: "0.2rem",
+                maxWidth: "30%",
+                margin: "0.1rem",
               }}
             />
             <br />
