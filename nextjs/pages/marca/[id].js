@@ -14,7 +14,7 @@ import ApiProductos from "../../components/panel/Empresas/Productos/services";
 const stylesCss = css.global`
   body {
     background-color: #5b402b;
-    background-image: url("./assets/imgs/empresas/fondo-marcas.jpg");
+    background-image: url("/assets/imgs/empresas/fondo-marcas.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
@@ -171,13 +171,13 @@ const PageNoticia = () => {
                 <div className="card-empresa-info">
                   <div className="seccion_titulo">
                     <img
-                      src="./assets/imgs/home/linea2.png"
+                      src="/assets/imgs/home/linea2.png"
                       style={{ height: "4px" }}
                     />
                     <h1 className="text-center">{empresa.title}</h1>
                     &nbsp;&nbsp;
                     <img
-                      src="./assets/imgs/home/linea1.png"
+                      src="/assets/imgs/home/linea1.png"
                       style={{ height: "4px" }}
                     />
                   </div>
