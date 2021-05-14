@@ -66,7 +66,7 @@ const login = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        //
         setLoading(false);
       });
   };

@@ -68,13 +68,13 @@ export default function NuestraGente() {
                 <div className="col-md-6">
                   <div className="seccion_titulo">
                     <img
-                      src="./assets/imgs/home/linea2.png"
+                      src="/assets/imgs/home/linea2.png"
                       className="linea1"
                       style={{ maxHeight: "4px" }}
                     />
                     <h1>{strings[lang].gente.cuerpo.title}</h1>
                     <img
-                      src="./assets/imgs/home/linea1.png"
+                      src="/assets/imgs/home/linea1.png"
                       className="linea2"
                       style={{ maxHeight: "4px" }}
                     />
@@ -85,7 +85,7 @@ export default function NuestraGente() {
                 </div>
                 <div className="col-md-6 text-center">
                   <img
-                    src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
+                    src="/assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
                     style={{ width: "400px", maxWidth: "100%" }}
                   />
                 </div>
@@ -110,13 +110,13 @@ export default function NuestraGente() {
               <div className="col-md-12">
                 <div className="seccion_titulo">
                   <img
-                    src="./assets/imgs/home/linea2.png"
+                    src="/assets/imgs/home/linea2.png"
                     className="linea1"
                     style={{ maxHeight: "4px" }}
                   />
                   <h1>{strings[lang].gente.maestros.title}</h1>
                   <img
-                    src="./assets/imgs/home/linea1.png"
+                    src="/assets/imgs/home/linea1.png"
                     className="linea2"
                     style={{ maxHeight: "4px" }}
                   />
@@ -146,7 +146,7 @@ export default function NuestraGente() {
                         }}
                       >
                         <img
-                          src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
+                          src="/assets/imgs/gente/m_CARMEN-LOPEZ.png"
                           style={{ maxWidth: "100%" }}
                         />
                       </div>
@@ -176,7 +176,7 @@ export default function NuestraGente() {
                         }}
                       >
                         <img
-                          src="./assets/imgs/gente/m_TITO-CORDERO.png"
+                          src="/assets/imgs/gente/m_TITO-CORDERO.png"
                           style={{ maxWidth: "100%" }}
                         />
                       </div>
@@ -206,7 +206,7 @@ export default function NuestraGente() {
                         }}
                       >
                         <img
-                          src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
+                          src="/assets/imgs/gente/m_GIOGIO-MELIS.png"
                           style={{ maxWidth: "100%" }}
                         />
                       </div>
@@ -236,7 +236,7 @@ export default function NuestraGente() {
                         }}
                       >
                         <img
-                          src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
+                          src="/assets/imgs/gente/m_NESTRO-ORTEGA.png"
                           style={{ maxWidth: "100%" }}
                         />
                       </div>
@@ -268,14 +268,14 @@ export default function NuestraGente() {
               <div className="col-md-12">
                 <div className="seccion_titulo">
                   <img
-                    src="./assets/imgs/home/linea2.png"
+                    src="/assets/imgs/home/linea2.png"
                     className="linea1"
                     style={{ maxHeight: "4px" }}
                   />
 
                   <h1> {strings[lang].gente.unnombre.titulo}</h1>
                   <img
-                    src="./assets/imgs/home/linea1.png"
+                    src="/assets/imgs/home/linea1.png"
                     className="linea2"
                     style={{ maxHeight: "4px" }}
                   />
@@ -309,7 +309,7 @@ export default function NuestraGente() {
           </Col>
           <Col xs={22} className="text-center">
             <img
-              src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
+              src="/assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
               style={{ maxWidth: "100%" }}
             />
           </Col>
@@ -328,7 +328,7 @@ export default function NuestraGente() {
             <Carousel dotPosition="top" style={{ color: "#fef4e4" }}>
               <div>
                 <img
-                  src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
+                  src="/assets/imgs/gente/m_CARMEN-LOPEZ.png"
                   style={{ maxWidth: "100%", marginTop: "2rem" }}
                 />
                 <br />
@@ -336,7 +336,7 @@ export default function NuestraGente() {
               </div>
               <div>
                 <img
-                  src="./assets/imgs/gente/m_TITO-CORDERO.png"
+                  src="/assets/imgs/gente/m_TITO-CORDERO.png"
                   style={{ maxWidth: "100%", marginTop: "2rem" }}
                 />
                 <br />
@@ -344,7 +344,7 @@ export default function NuestraGente() {
               </div>
               <div>
                 <img
-                  src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
+                  src="/assets/imgs/gente/m_GIOGIO-MELIS.png"
                   style={{ maxWidth: "100%", marginTop: "2rem" }}
                 />
                 <br />
@@ -352,7 +352,7 @@ export default function NuestraGente() {
               </div>
               <div>
                 <img
-                  src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
+                  src="/assets/imgs/gente/m_NESTRO-ORTEGA.png"
                   style={{ maxWidth: "100%", marginTop: "2rem" }}
                 />
                 <br />

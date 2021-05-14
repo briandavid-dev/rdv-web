@@ -54,11 +54,13 @@ const Premios = (props) => {
           });
 
           setDataProductos(dataProductos);
-          setLoadingTable(false);
+        } else {
+          //
         }
+        setLoadingTable(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        //
         setLoadingTable(false);
       });
   };
@@ -85,35 +87,6 @@ const Premios = (props) => {
         setConfirmLoading(false);
       });
   };
-
-  // useEffect(() => {
-  //   setLoadingTable(true);
-  //   ApiPremios.getProductos(empresaId, "premios")
-  //     .then((response) => {
-  //       const { codigo, results } = response.data;
-  //       if (codigo === "1") {
-  //         const dataProductos = results.map((producto) => {
-  //           return {
-  //             key: producto.id,
-  //             id: producto.id,
-  //             titulo: producto.name,
-  //             fechaCreacion: producto.created_at,
-  //             imageBase64: producto.image_base64,
-  //             imageExtension: producto.image_extension,
-  //             lenguaje: producto.language,
-  //             contenido: producto.content_html,
-  //           };
-  //         });
-
-  //         setDataProductos(dataProductos);
-  //         setLoadingTable(false);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(`error`, error);
-  //       setLoadingTable(false);
-  //     });
-  // }, []);
 
   return (
     <>

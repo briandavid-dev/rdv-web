@@ -78,15 +78,15 @@ export default function Doc() {
       <div className="SeccionDoc0 valida_mobile">
         <div className="SeccionDoc1">
           <img
-            src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+            src="/assets/imgs/doc/BARRIL-LETRA-D.png"
             style={{ maxWidth: "25%", width: "400px" }}
           />
           <img
-            src="./assets/imgs/doc/BARRIL-LETRA-O.png"
+            src="/assets/imgs/doc/BARRIL-LETRA-O.png"
             style={{ maxWidth: "25%", width: "400px" }}
           />
           <img
-            src="./assets/imgs/doc/BARRIL-LETRA-C.png"
+            src="/assets/imgs/doc/BARRIL-LETRA-C.png"
             style={{ maxWidth: "25%", width: "400px" }}
           />
         </div>
@@ -96,13 +96,13 @@ export default function Doc() {
               <div className="col-md-12">
                 <div className="seccion_titulo text-center">
                   <img
-                    src="./assets/imgs/home/linea2.png"
+                    src="/assets/imgs/home/linea2.png"
                     className="linea1"
                     style={{ maxHeight: "4px" }}
                   />
                   <h1>{strings[lang].doc.title1}</h1>
                   <img
-                    src="./assets/imgs/home/linea1.png"
+                    src="/assets/imgs/home/linea1.png"
                     className="linea2"
                     style={{ maxHeight: "4px" }}
                   />
@@ -121,7 +121,7 @@ export default function Doc() {
               </div>
               <div className="col-md-3 " style={{ textAlign: "right" }}>
                 <img
-                  src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
+                  src="/assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
                   style={{ maxWidth: "80%" }}
                 />
               </div>
@@ -160,7 +160,7 @@ export default function Doc() {
             <div className="row justify-content-center gx-1">
               <div className="col-md-12 text-center">
                 <img
-                  src="./assets/imgs/doc/FOTO-CAMION.png"
+                  src="/assets/imgs/doc/FOTO-CAMION.png"
                   style={{
                     marginLeft: "1rem",
                     marginRight: "1rem",
@@ -169,7 +169,7 @@ export default function Doc() {
                   }}
                 />
                 <img
-                  src="./assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
+                  src="/assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
                   style={{
                     marginLeft: "1rem",
                     marginRight: "1rem",
@@ -178,7 +178,7 @@ export default function Doc() {
                   }}
                 />
                 <img
-                  src="./assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
+                  src="/assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
                   style={{
                     marginLeft: "1rem",
                     marginRight: "1rem",
@@ -210,17 +210,17 @@ export default function Doc() {
           <Col xs={22} className="text-center" style={{ marginTop: "58px" }}>
             <br />
             <img
-              src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+              src="/assets/imgs/doc/BARRIL-LETRA-D.png"
               style={{ maxWidth: "30%" }}
             />{" "}
             &nbsp;&nbsp;
             <img
-              src="./assets/imgs/doc/BARRIL-LETRA-O.png"
+              src="/assets/imgs/doc/BARRIL-LETRA-O.png"
               style={{ maxWidth: "30%" }}
             />{" "}
             &nbsp;&nbsp;
             <img
-              src="./assets/imgs/doc/BARRIL-LETRA-C.png"
+              src="/assets/imgs/doc/BARRIL-LETRA-C.png"
               style={{ maxWidth: "30%" }}
             />
             <br />
@@ -238,7 +238,7 @@ export default function Doc() {
           </Col>
           <Col xs={22} className="text-center">
             <img
-              src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
+              src="/assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
               style={{ maxWidth: "100%" }}
             />
             <br />
@@ -256,21 +256,21 @@ export default function Doc() {
           </Col>
           <Col xs={22} className="text-center">
             <img
-              src="./assets/imgs/doc/FOTO-CAMION.png"
+              src="/assets/imgs/doc/FOTO-CAMION.png"
               style={{
                 maxWidth: "30%",
               }}
             />{" "}
             &nbsp;&nbsp;
             <img
-              src="./assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
+              src="/assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
               style={{
                 maxWidth: "30%",
               }}
             />{" "}
             &nbsp;&nbsp;
             <img
-              src="./assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
+              src="/assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
               style={{
                 maxWidth: "30%",
               }}

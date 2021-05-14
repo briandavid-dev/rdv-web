@@ -308,7 +308,6 @@ const Noticias = () => {
           notifica("success");
         } else {
           notifica("error");
-          // console.log("Error en peticion, codigo: " + response.data.codigo);
         }
         setSpinListado(false);
       })

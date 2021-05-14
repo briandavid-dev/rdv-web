@@ -54,12 +54,12 @@ const PageNoticia = () => {
             });
           }
           if (codigo === "0") {
-            console.log(`error`, mensaje);
+            //
           }
           setDataNoticiaLoading(false);
         })
         .catch((error) => {
-          console.log(`error`, error);
+          //
           setDataNoticiaLoading(false);
         });
 
@@ -71,12 +71,12 @@ const PageNoticia = () => {
             setDataNoticias(results);
           }
           if (codigo === "0") {
-            console.log(`error`, mensaje);
+            //
           }
           setDataNoticiasLoading(false);
         })
         .catch((error) => {
-          console.log(`error`, error);
+          //
           setDataNoticiasLoading(false);
         });
     }
@@ -87,8 +87,8 @@ const PageNoticia = () => {
   }, [url]);
 
   const revisaHeigth = () => {
-    const offsetHeight = document.querySelector(".calculateHeigth")
-      .offsetHeight;
+    const offsetHeight =
+      document.querySelector(".calculateHeigth").offsetHeight;
     setOffsetTop(offsetHeight - 440);
   };
 

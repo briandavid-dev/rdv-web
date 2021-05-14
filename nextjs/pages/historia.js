@@ -88,13 +88,13 @@ export default function Historia() {
               <div className="col-sm-12 col-md-6 col-lg-7 font_20 text-justify">
                 <div className="seccion_titulo">
                   <img
-                    src="./assets/imgs/home/linea2.png"
+                    src="/assets/imgs/home/linea2.png"
                     className="linea1"
                     style={{ maxHeight: "3px" }}
                   />
                   <h1>{strings[lang].historia.titulo}</h1>
                   <img
-                    src="./assets/imgs/home/linea1.png"
+                    src="/assets/imgs/home/linea1.png"
                     className="linea2"
                     style={{ maxHeight: "3px" }}
                   />
@@ -103,7 +103,7 @@ export default function Historia() {
               </div>
               <div className="col-sm-12 col-md-4 col-lg-3 font_20  text-center align-center">
                 <img
-                  src="./assets/imgs/historia/IMAGEN-COFRE.png"
+                  src="/assets/imgs/historia/IMAGEN-COFRE.png"
                   style={{ maxWidth: "80%" }}
                 />
               </div>
@@ -123,7 +123,7 @@ export default function Historia() {
               <div className="col-md-10">
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
-                    src="./assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
+                    src="/assets/imgs/historia/HOMBRE-CAMPO-SIEMBRA.png"
                     style={{
                       maxWidth: "250px",
                       maxHeight: "250px",
@@ -131,7 +131,7 @@ export default function Historia() {
                     }}
                   />
                   <img
-                    src="./assets/imgs/historia/BARRICAS.png"
+                    src="/assets/imgs/historia/BARRICAS.png"
                     style={{
                       maxWidth: "250px",
                       maxHeight: "250px",
@@ -139,7 +139,7 @@ export default function Historia() {
                     }}
                   />
                   <img
-                    src="./assets/imgs/historia/LOGO.png"
+                    src="/assets/imgs/historia/LOGO.png"
                     style={{
                       maxWidth: "250px",
                       maxHeight: "250px",
@@ -164,7 +164,7 @@ export default function Historia() {
             <div className="row  justify-content-center gx-5">
               <div className="col-md-10 font_20 text-center">
                 <img
-                  src="./assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
+                  src="/assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
                   style={{ maxWidth: "450px", margin: "1.5rem" }}
                 />
               </div>
@@ -211,7 +211,7 @@ export default function Historia() {
           <Col xs={22} className="text-center">
             <br />
             <img
-              src="./assets/imgs/historia/IMAGEN-COFRE.png"
+              src="/assets/imgs/historia/IMAGEN-COFRE.png"
               style={{ maxWidth: "80%" }}
             />
           </Col>
@@ -252,7 +252,7 @@ export default function Historia() {
           </Col>
           <Col xs={22} className="text-center">
             <img
-              src="./assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
+              src="/assets/imgs/historia/IMAGEN-TRAGO-CANA-DE-AZUCAR.png"
               style={{ maxWidth: "80%" }}
             />
           </Col>

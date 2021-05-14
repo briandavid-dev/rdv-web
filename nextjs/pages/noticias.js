@@ -35,8 +35,8 @@ const PageNoticias = () => {
   const [dataNoticiasLoading, setDataNoticiasLoading] = useState(false);
 
   const revisaHeigth = () => {
-    const offsetHeight = document.querySelector(".calculateHeigth")
-      .offsetHeight;
+    const offsetHeight =
+      document.querySelector(".calculateHeigth").offsetHeight;
     setOffsetTop(offsetHeight - 440);
   };
 
@@ -44,36 +44,34 @@ const PageNoticias = () => {
     setDataNoticiasLoading(true);
     ApiNoticias.getNoticiasListado(lang)
       .then((response) => {
-        console.log(`response`, response);
         const { codigo, results } = response.data;
         if (codigo === "1") {
           setDataNoticias(results);
         }
         if (codigo === "0") {
-          console.log(`error `, codigo);
+          //
         }
         setDataNoticiasLoading(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        //
         setDataNoticiasLoading(false);
       });
 
     setDataNoticiaLoading(true);
     ApiNoticias.getNoticiasUltima(lang)
       .then((response) => {
-        console.log(`response`, response);
         const { codigo, results } = response.data;
         if (codigo === "1") {
           setDataNoticia(results);
         }
         if (codigo === "0") {
-          console.log(`error `, codigo);
+          //
         }
         setDataNoticiaLoading(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        //
         setDataNoticiaLoading(false);
       });
   };

@@ -118,7 +118,6 @@ const BtnActualizar = (props) => {
   };
 
   const normFile = (e) => {
-    console.log(`e.fileList`, e.fileList);
     let superaLimite = false;
     if (e.file.size / 1000 > 256) {
       setShowSizeMessageCertificado(true);

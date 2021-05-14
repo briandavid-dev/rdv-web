@@ -74,7 +74,7 @@ export default function QuienesSomos() {
         <div className="SeccionCopa">
           <div style={{ position: "relative" }}>
             <img
-              src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              src="/assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
               style={{ maxWidth: "100%" }}
             />
           </div>
@@ -85,9 +85,9 @@ export default function QuienesSomos() {
             <div className="row justify-content-center gx-5">
               <div className="col-md-12">
                 <div className="seccion_titulo">
-                  <img src="./assets/imgs/home/linea2.png" className="linea1" />
+                  <img src="/assets/imgs/home/linea2.png" className="linea1" />
                   <h1>{strings[lang].quienes.title1}</h1>
-                  <img src="./assets/imgs/home/linea1.png" className="linea2" />
+                  <img src="/assets/imgs/home/linea1.png" className="linea2" />
                 </div>
               </div>
               <div
@@ -107,15 +107,15 @@ export default function QuienesSomos() {
 
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
-                    src="./assets/imgs/quienessomos/ICONO-SOL.png"
+                    src="/assets/imgs/quienessomos/ICONO-SOL.png"
                     style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
                   />
                   <img
-                    src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
+                    src="/assets/imgs/quienessomos/ICONO-HOMBRE.png"
                     style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
                   />
                   <img
-                    src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                    src="/assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
                     style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
                   />
                 </div>
@@ -125,7 +125,7 @@ export default function QuienesSomos() {
               </div>
               <div className="col-md-5" style={{ textAlign: "center" }}>
                 <img
-                  src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
+                  src="/assets/imgs/quienessomos/FOTO-TRAGO.png"
                   style={{ maxWidth: "100%", maxHeight: "600px" }}
                 />
               </div>
@@ -133,12 +133,12 @@ export default function QuienesSomos() {
                 <div>
                   <div className="titulo">
                     <img
-                      src="./assets/imgs/home/linea1.png"
+                      src="/assets/imgs/home/linea1.png"
                       style={{ height: "5px", marginRight: "110px" }}
                     />
                     <h1>{strings[lang].quienes.quienes}</h1>
                     <img
-                      src="./assets/imgs/home/linea2.png"
+                      src="/assets/imgs/home/linea2.png"
                       style={{ height: "5px" }}
                     />
                   </div>
@@ -170,7 +170,7 @@ export default function QuienesSomos() {
               <div className="col-md-5">
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
-                    src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
+                    src="/assets/imgs/quienessomos/FOTO-BARIICA.png"
                     style={{ maxWidth: "100%", maxHeight: "500px" }}
                   />
                 </div>
@@ -189,7 +189,7 @@ export default function QuienesSomos() {
                 <div className="col-md-12">
                   <div>
                     <img
-                      src="./assets/imgs/home/linea1.png"
+                      src="/assets/imgs/home/linea1.png"
                       style={{ height: "5px", marginRight: "110px" }}
                     />
                     <h1>{strings[lang].quienes.mision}</h1>
@@ -201,7 +201,7 @@ export default function QuienesSomos() {
                 <div className="col-md-12">
                   <div>
                     <img
-                      src="./assets/imgs/home/linea1.png"
+                      src="/assets/imgs/home/linea1.png"
                       style={{ height: "5px", marginRight: "110px" }}
                     />
                     <h1>{strings[lang].quienes.vision}</h1>
@@ -214,7 +214,7 @@ export default function QuienesSomos() {
               <div className="col-md-5">
                 <div>
                   <img
-                    src="./assets/imgs/home/linea1.png"
+                    src="/assets/imgs/home/linea1.png"
                     style={{ height: "5px", marginRight: "110px" }}
                   />
                   <h1>{strings[lang].quienes.valores}</h1>
@@ -274,15 +274,15 @@ export default function QuienesSomos() {
             <p>{strings[lang].quienes.parrafo2}</p>
             <div className="text-center">
               <img
-                src="./assets/imgs/quienessomos/ICONO-SOL.png"
+                src="/assets/imgs/quienessomos/ICONO-SOL.png"
                 style={{ maxWidth: "25%", margin: "0.5rem" }}
               />
               <img
-                src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
+                src="/assets/imgs/quienessomos/ICONO-HOMBRE.png"
                 style={{ maxWidth: "25%", margin: "0.5rem" }}
               />
               <img
-                src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                src="/assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
                 style={{ maxWidth: "25%", margin: "0.5rem" }}
               />
             </div>
@@ -290,7 +290,7 @@ export default function QuienesSomos() {
           </Col>
           <Col xs={22}>
             <img
-              src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
+              src="/assets/imgs/quienessomos/FOTO-TRAGO.png"
               style={{ maxWidth: "100%", maxHeight: "600px" }}
             />
             <br />
@@ -312,7 +312,7 @@ export default function QuienesSomos() {
           </Col>
           <Col xs={22}>
             <img
-              src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
+              src="/assets/imgs/quienessomos/FOTO-BARIICA.png"
               style={{ maxWidth: "100%", maxHeight: "500px" }}
             />
             <br />
@@ -322,29 +322,20 @@ export default function QuienesSomos() {
             <br />
           </Col>
           <Col xs={22}>
-            <img
-              src="./assets/imgs/home/linea1.png"
-              style={{ height: "3px" }}
-            />
+            <img src="/assets/imgs/home/linea1.png" style={{ height: "3px" }} />
             <h1>{strings[lang].quienes.mision}</h1>
             <br />
             <p>{strings[lang].quienes.promover}</p>
 
             <br />
 
-            <img
-              src="./assets/imgs/home/linea1.png"
-              style={{ height: "3px" }}
-            />
+            <img src="/assets/imgs/home/linea1.png" style={{ height: "3px" }} />
             <h1>{strings[lang].quienes.vision}</h1>
             <br />
             <p>{strings[lang].quienes.vision1}</p>
             <br />
 
-            <img
-              src="./assets/imgs/home/linea1.png"
-              style={{ height: "3px" }}
-            />
+            <img src="/assets/imgs/home/linea1.png" style={{ height: "3px" }} />
             <h1>{strings[lang].quienes.valores}</h1>
             <br />
             <p>{strings[lang].quienes.entusiasmo}</p>

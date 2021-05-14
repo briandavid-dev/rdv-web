@@ -74,12 +74,12 @@ const PageEmpresas = () => {
           setDataEmpresas(results);
         }
         if (codigo === "0") {
-          console.log(`error `, codigo);
+          //
         }
         setLoading(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        //
         setLoading(false);
       });
   };
@@ -143,7 +143,7 @@ const PageEmpresas = () => {
                             <div style={{ minHeight: "150px" }}>
                               <div style={{ textAlign: "left" }}>
                                 <img
-                                  src="./assets/imgs/home/linea2.png"
+                                  src="/assets/imgs/home/linea2.png"
                                   style={{ height: "4px" }}
                                 />
                               </div>
@@ -155,7 +155,7 @@ const PageEmpresas = () => {
                               </div>
                               <div style={{ textAlign: "right" }}>
                                 <img
-                                  src="./assets/imgs/home/linea2.png"
+                                  src="/assets/imgs/home/linea2.png"
                                   style={{ height: "4px" }}
                                 />
                               </div>
