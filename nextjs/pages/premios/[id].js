@@ -189,10 +189,6 @@ const PageNoticia = () => {
         <Row type="flex" justify="center">
           <Col xs={24}>
             <img
-              src="../../assets/imgs/premios/banner-premios.jpg"
-              style={{ maxWidth: "100%" }}
-            />
-            <img
               src="./../assets/imgs/premios/banner-premios.jpg"
               style={{ maxWidth: "100%" }}
             />
@@ -320,7 +316,7 @@ const PageNoticia = () => {
         <Row type="flex" justify="center">
           <Col xs={24} style={{ marginTop: "58px" }}>
             <img
-              src="/assets/imgs/premios/banner-premios.jpg"
+              src="./../assets/imgs/premios/banner-premios.jpg"
               style={{ maxWidth: "100%" }}
             />
           </Col>
