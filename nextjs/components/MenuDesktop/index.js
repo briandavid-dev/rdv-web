@@ -93,7 +93,7 @@ const MenuDesktop = () => {
           <div className="container-fluid">
             <a className="navbar-brand valida_desktop" href="#">
               <img
-                src="/assets/imgs/home/logo_blanco.png"
+                src="./assets/imgs/home/logo_blanco.png"
                 style={{ height: "30px" }}
               />
             </a>
@@ -219,7 +219,7 @@ const MenuDesktop = () => {
                       }`}
                     >
                       <img
-                        src="/assets/imgs/home/logo_blanco.png"
+                        src="./assets/imgs/home/logo_blanco.png"
                         style={{ height: "60px" }}
                       />
                     </a>
@@ -296,7 +296,7 @@ const MenuDesktop = () => {
                       target="_blank"
                     >
                       <img
-                        src="/assets/imgs/home/ICONO-FACEBOOK.png"
+                        src="./assets/imgs/home/ICONO-FACEBOOK.png"
                         className="cursor-pointer"
                         style={{
                           height: "30px",
@@ -313,7 +313,7 @@ const MenuDesktop = () => {
                       scroll={false}
                     >
                       <img
-                        src="/assets/imgs/home/ICONO-BANDERA-INGLES.png"
+                        src="./assets/imgs/home/ICONO-BANDERA-INGLES.png"
                         className="cursor-pointer"
                         style={{
                           height: "30px",
@@ -329,7 +329,7 @@ const MenuDesktop = () => {
                       target="_blank"
                     >
                       <img
-                        src="/assets/imgs/home/ICONO-INSTAGRAM.png"
+                        src="./assets/imgs/home/ICONO-INSTAGRAM.png"
                         className="cursor-pointer"
                         style={{
                           height: "30px",
@@ -346,7 +346,7 @@ const MenuDesktop = () => {
                       scroll={false}
                     >
                       <img
-                        src="/assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
+                        src="./assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
                         className="cursor-pointer"
                         style={{
                           height: "30px",
@@ -377,7 +377,7 @@ const MenuDesktop = () => {
                     }}
                   >
                     <Image
-                      src="/assets/imgs/home/ICONO-FACEBOOK.png"
+                      src="./assets/imgs/home/ICONO-FACEBOOK.png"
                       alt=""
                       width={25}
                       height={25}
@@ -391,7 +391,7 @@ const MenuDesktop = () => {
                       scroll={false}
                     >
                       <Image
-                        src="/assets/imgs/home/ICONO-BANDERA-INGLES.png"
+                        src="./assets/imgs/home/ICONO-BANDERA-INGLES.png"
                         alt=""
                         width={25}
                         height={25}
@@ -409,7 +409,7 @@ const MenuDesktop = () => {
                     }}
                   >
                     <Image
-                      src="/assets/imgs/home/ICONO-INSTAGRAM.png"
+                      src="./assets/imgs/home/ICONO-INSTAGRAM.png"
                       alt=""
                       width={25}
                       height={25}
@@ -424,7 +424,7 @@ const MenuDesktop = () => {
                       scroll={false}
                     >
                       <Image
-                        src="/assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
+                        src="./assets/imgs/home/ICONO-BANDERA-ESPANOL.png"
                         alt=""
                         width={25}
                         height={25}

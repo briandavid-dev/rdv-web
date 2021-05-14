@@ -64,8 +64,7 @@ const stylesCss = css.global`
 
   footer {
     color: #000;
-    /* background-image: url("./../public/assets/imgs/footer/FONDO_FOOTER.png"); */
-    background-image: url("/assets/imgs/footer/FONDO_FOOTER.png");
+    background-image: url("./assets/imgs/footer/FONDO_FOOTER.png");
   }
   footer .message {
     background-color: #3d2514;

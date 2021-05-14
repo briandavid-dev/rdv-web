@@ -12,7 +12,7 @@ import ApiNoticias from "../pagesServices/noticias";
 
 const stylesCss = css.global`
   .Section0 {
-    background-image: url("/assets/imgs/home/fondoEmpresas.png");
+    background-image: url("./assets/imgs/home/fondoEmpresas.png");
   }
 `;
 

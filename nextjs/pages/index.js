@@ -12,7 +12,7 @@ import ApiHome from "../pagesServices/home";
 
 const stylesCss = css.global`
   .seccion0 {
-    background-image: url("/assets/imgs/home/FONDO-INICIO.jpg");
+    background-image: url("./assets/imgs/home/FONDO-INICIO.jpg");
     background-size: cover;
     background-size: 100%;
   }
@@ -116,7 +116,7 @@ const stylesCss = css.global`
     background-color: #0e0e0e;
   }
   .SectionMobile1 {
-    background-image: url("/assets/imgs/home/fondoEmpresas.png");
+    background-image: url("./assets/imgs/home/fondoEmpresas.png");
   }
 `;
 
@@ -227,7 +227,7 @@ export default function Home() {
                       </div>
                       <div>&nbsp;</div>
                       <img
-                        src="/assets/imgs/home/linea1.png"
+                        src="./assets/imgs/home/linea1.png"
                         style={{ height: "8px" }}
                       />
                       {/* <!-- <div>Registra tu correo para más información</div>
@@ -249,7 +249,7 @@ export default function Home() {
                 </div>
                 <div style={{ position: "relative", top: "-220px" }}>
                   <img
-                    src="/assets/imgs/home/copa.jpg"
+                    src="./assets/imgs/home/copa.jpg"
                     style={{ maxWidth: "100%" }}
                   />
                 </div>
@@ -274,7 +274,7 @@ export default function Home() {
                       </div>
                       <div style={{ flex: 55 }}>
                         <img
-                          src="/assets/imgs/home/foto-ron.jpg"
+                          src="./assets/imgs/home/foto-ron.jpg"
                           style={{ maxWidth: "100%" }}
                         />
                       </div>
@@ -284,7 +284,7 @@ export default function Home() {
                     <div className="col-md-12" style={{ display: "flex" }}>
                       <div style={{ flex: 55 }}>
                         <img
-                          src="/assets/imgs/home/foto-proceso.jpg"
+                          src="./assets/imgs/home/foto-proceso.jpg"
                           style={{ maxWidth: "100%" }}
                         />
                       </div>
@@ -310,12 +310,12 @@ export default function Home() {
                     <div className="col-md-12 mb-1">
                       <div className="seccion_titulo">
                         <img
-                          src="/assets/imgs/home/linea2.png"
+                          src="./assets/imgs/home/linea2.png"
                           className="linea1"
                         />
                         <h1>{strings[lang].home.empresas}</h1>
                         <img
-                          src="/assets/imgs/home/linea1.png"
+                          src="./assets/imgs/home/linea1.png"
                           className="linea2"
                         />
                       </div>
@@ -331,7 +331,7 @@ export default function Home() {
                           <div className="carousel-item active">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-CANAVERAL.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-CANAVERAL.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -340,7 +340,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-SANTA-TERESA.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-SANTA-TERESA.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -349,7 +349,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-VEROES.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-VEROES.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -358,7 +358,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-ROBLE.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-ROBLE.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -367,7 +367,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-QUIMERA.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-QUIMERA.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -376,7 +376,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-PAMPERO.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-PAMPERO.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -385,7 +385,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-OCUMARE.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-OCUMARE.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -394,7 +394,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-DIPLOMATICO.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-DIPLOMATICO.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -403,7 +403,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-CARUPANO.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-CARUPANO.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -412,7 +412,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-CALAZAN.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-CALAZAN.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -421,7 +421,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-CACIQUE.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-CACIQUE.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -430,7 +430,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-CABALLO-VIEJO.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-CABALLO-VIEJO.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -439,7 +439,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-BUCARE.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-BUCARE.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -448,7 +448,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-BODEGA-1800.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-BODEGA-1800.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -457,7 +457,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-MARCAS-BARRICA.png"
+                                src="./assets/imgs/home/LOGO-MARCAS-BARRICA.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -466,7 +466,7 @@ export default function Home() {
                           <div className="carousel-item">
                             <div>
                               <img
-                                src="/assets/imgs/home/LOGO-ESTELAR.png"
+                                src="./assets/imgs/home/LOGO-ESTELAR.png"
                                 className="d-block w-1 img_marcas"
                                 alt="..."
                               />
@@ -516,12 +516,12 @@ export default function Home() {
                     >
                       <div className="titulo">
                         <img
-                          src="/assets/imgs/home/linea2.png"
+                          src="./assets/imgs/home/linea2.png"
                           className="linea1"
                         />
                         <h1>{strings[lang].maestrosRoneros}</h1>
                         <img
-                          src="/assets/imgs/home/linea1.png"
+                          src="./assets/imgs/home/linea1.png"
                           className="linea2"
                         />
                       </div>
@@ -529,34 +529,34 @@ export default function Home() {
                     <div className="col-md-3">
                       <img
                         className="zoom"
-                        src="/assets/imgs/home/m_CARMEN-LOPEZ.png"
+                        src="./assets/imgs/home/m_CARMEN-LOPEZ.png"
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
                     <div className="col-md-3">
                       <img
                         className="zoom"
-                        src="/assets/imgs/home/m_TITO-CORDERO.png"
+                        src="./assets/imgs/home/m_TITO-CORDERO.png"
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
                     <div className="col-md-3">
                       <img
                         className="zoom"
-                        src="/assets/imgs/home/m_NESTRO-ORTEGA.png"
+                        src="./assets/imgs/home/m_NESTRO-ORTEGA.png"
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
                     <div className="col-md-3">
                       <img
                         className="zoom"
-                        src="/assets/imgs/home/m_GIOGIO-MELIS.png"
+                        src="./assets/imgs/home/m_GIOGIO-MELIS.png"
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
                     <div className="col-md-12" style={{ marginTop: "2rem" }}>
                       <img
-                        src="/assets/imgs/home/mesa-maestros.png"
+                        src="./assets/imgs/home/mesa-maestros.png"
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
@@ -572,12 +572,12 @@ export default function Home() {
                     <div className="col-md-12 mb-5">
                       <div className="titulo">
                         <img
-                          src="/assets/imgs/home/linea2.png"
+                          src="./assets/imgs/home/linea2.png"
                           style={{ height: "8px" }}
                         />
                         <h1>{strings[lang].noticias}</h1>
                         <img
-                          src="/assets/imgs/home/linea1.png"
+                          src="./assets/imgs/home/linea1.png"
                           style={{ height: "8px", marginLeft: "8px" }}
                         />
                       </div>
@@ -728,12 +728,12 @@ export default function Home() {
                         target="_blank"
                       >
                         <img
-                          src="/assets/imgs/home/ICONO-FACEBOOK.png"
+                          src="./assets/imgs/home/ICONO-FACEBOOK.png"
                           className="iconos_abajo zoom"
                         />
                       </a>
                       <img
-                        src="/assets/imgs/home/LINEA-REDES-1.png"
+                        src="./assets/imgs/home/LINEA-REDES-1.png"
                         className="linea1"
                       />
                       <a
@@ -741,16 +741,16 @@ export default function Home() {
                         target="_blank"
                       >
                         <img
-                          src="/assets/imgs/home/ICONO-INSTAGRAM.png"
+                          src="./assets/imgs/home/ICONO-INSTAGRAM.png"
                           className="iconos_abajo zoom"
                         />
                       </a>
                       <img
-                        src="/assets/imgs/home/LINEA-REDES-2.png"
+                        src="./assets/imgs/home/LINEA-REDES-2.png"
                         className="linea1"
                       />
                       <img
-                        src="/assets/imgs/home/ICONO-YOUTUBE.png"
+                        src="./assets/imgs/home/ICONO-YOUTUBE.png"
                         className="iconos_abajo zoom"
                       />
                     </div>
@@ -778,7 +778,7 @@ export default function Home() {
               <Row type="flex" justify="center" className="SectionMobile0">
                 <Col xs={24}>
                   <img
-                    src="/assets/imgs/home/copa.jpg"
+                    src="./assets/imgs/home/copa.jpg"
                     style={{ maxWidth: "100%", marginTop: "58px" }}
                   />
                 </Col>
@@ -789,7 +789,7 @@ export default function Home() {
                   </h1>
                   <p className="text-center font_20">{strings[lang].calidad}</p>
                   <img
-                    src="/assets/imgs/home/linea1.png"
+                    src="./assets/imgs/home/linea1.png"
                     style={{ height: "8px" }}
                   />
                   <br />
@@ -806,7 +806,7 @@ export default function Home() {
                     {strings[lang].aunque}
                   </p>
                   <img
-                    src="/assets/imgs/home/foto-ron.jpg"
+                    src="./assets/imgs/home/foto-ron.jpg"
                     style={{ maxWidth: "100%" }}
                   />
                   <br />
@@ -818,7 +818,7 @@ export default function Home() {
                   <h1>{strings[lang].proceso}</h1>
                   <p>{strings[lang].productores}</p>
                   <img
-                    src="/assets/imgs/home/foto-proceso.jpg"
+                    src="./assets/imgs/home/foto-proceso.jpg"
                     style={{ maxWidth: "100%" }}
                   />
                   <br />
@@ -831,12 +831,12 @@ export default function Home() {
                   <div className="col-md-12 mb-1">
                     <div className="seccion_titulo_mobile">
                       <img
-                        src="/assets/imgs/home/linea2.png"
+                        src="./assets/imgs/home/linea2.png"
                         className="linea1mobile"
                       />
                       <h1>{strings[lang].home.empresas}</h1>
                       <img
-                        src="/assets/imgs/home/linea1.png"
+                        src="./assets/imgs/home/linea1.png"
                         className="linea2mobile"
                       />
                     </div>
@@ -852,7 +852,7 @@ export default function Home() {
                         <div className="carousel-item active">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-CANAVERAL.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-CANAVERAL.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -861,7 +861,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-SANTA-TERESA.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-SANTA-TERESA.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -870,7 +870,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-VEROES.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-VEROES.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -879,7 +879,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-ROBLE.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-ROBLE.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -888,7 +888,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-QUIMERA.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-QUIMERA.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -897,7 +897,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-PAMPERO.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-PAMPERO.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -906,7 +906,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-OCUMARE.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-OCUMARE.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -915,7 +915,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-DIPLOMATICO.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-DIPLOMATICO.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -924,7 +924,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-CARUPANO.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-CARUPANO.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -933,7 +933,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-CALAZAN.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-CALAZAN.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -942,7 +942,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-CACIQUE.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-CACIQUE.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -951,7 +951,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-CABALLO-VIEJO.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-CABALLO-VIEJO.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -960,7 +960,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-BUCARE.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-BUCARE.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -969,7 +969,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-BODEGA-1800.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-BODEGA-1800.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -978,7 +978,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-MARCAS-BARRICA.png"
+                              src="./assets/imgs/home/LOGO-MARCAS-BARRICA.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -987,7 +987,7 @@ export default function Home() {
                         <div className="carousel-item">
                           <div>
                             <img
-                              src="/assets/imgs/home/LOGO-ESTELAR.png"
+                              src="./assets/imgs/home/LOGO-ESTELAR.png"
                               className="d-block w-1 img_marcas"
                               alt="..."
                             />
@@ -1035,45 +1035,45 @@ export default function Home() {
                 <Col xs={22}>
                   <div className="seccion_titulo_mobile">
                     <img
-                      src="/assets/imgs/home/linea2.png"
+                      src="./assets/imgs/home/linea2.png"
                       className="linea1mobile"
                     />
                     <h1 className="text-center">
                       {strings[lang].maestrosRoneros}
                     </h1>
                     <img
-                      src="/assets/imgs/home/linea1.png"
+                      src="./assets/imgs/home/linea1.png"
                       className="linea2mobile"
                     />
                   </div>
                 </Col>
                 <Col xs={11}>
                   <img
-                    src="/assets/imgs/home/m_CARMEN-LOPEZ.png"
+                    src="./assets/imgs/home/m_CARMEN-LOPEZ.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </Col>
                 <Col xs={11}>
                   <img
-                    src="/assets/imgs/home/m_TITO-CORDERO.png"
+                    src="./assets/imgs/home/m_TITO-CORDERO.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </Col>
                 <Col xs={11}>
                   <img
-                    src="/assets/imgs/home/m_NESTRO-ORTEGA.png"
+                    src="./assets/imgs/home/m_NESTRO-ORTEGA.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </Col>
                 <Col xs={11}>
                   <img
-                    src="/assets/imgs/home/m_GIOGIO-MELIS.png"
+                    src="./assets/imgs/home/m_GIOGIO-MELIS.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </Col>
                 <Col xs={22}>
                   <img
-                    src="/assets/imgs/home/mesa-maestros.png"
+                    src="./assets/imgs/home/mesa-maestros.png"
                     style={{ maxWidth: "100%" }}
                   />
                 </Col>
@@ -1083,12 +1083,12 @@ export default function Home() {
                 <Col xs={22}>
                   <div className="seccion_titulo_mobile">
                     <img
-                      src="/assets/imgs/home/linea2.png"
+                      src="./assets/imgs/home/linea2.png"
                       className="linea1mobile"
                     />
                     <h1 className="text-center">{strings[lang].noticias}</h1>
                     <img
-                      src="/assets/imgs/home/linea1.png"
+                      src="./assets/imgs/home/linea1.png"
                       className="linea2mobile"
                     />
                   </div>
@@ -1232,7 +1232,7 @@ export default function Home() {
                     target="_blank"
                   >
                     <img
-                      src="/assets/imgs/home/ICONO-FACEBOOK.png"
+                      src="./assets/imgs/home/ICONO-FACEBOOK.png"
                       className="iconos_abajo_mobile"
                     />
                   </a>
@@ -1241,13 +1241,13 @@ export default function Home() {
                     target="_blank"
                   >
                     <img
-                      src="/assets/imgs/home/ICONO-INSTAGRAM.png"
+                      src="./assets/imgs/home/ICONO-INSTAGRAM.png"
                       className="iconos_abajo_mobile"
                     />
                   </a>
 
                   <img
-                    src="/assets/imgs/home/ICONO-YOUTUBE.png"
+                    src="./assets/imgs/home/ICONO-YOUTUBE.png"
                     className="iconos_abajo_mobile"
                   />
                 </Col>
@@ -1308,7 +1308,7 @@ export default function Home() {
             <Row type="flex" justify="center">
               <Col span={24}>
                 <img
-                  src="/assets/imgs/home/logo_blanco.png"
+                  src="./assets/imgs/home/logo_blanco.png"
                   style={{ height: "150px" }}
                 />
                 <br />

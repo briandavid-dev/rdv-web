@@ -171,13 +171,13 @@ const PageNoticia = () => {
                 <div className="card-empresa-info">
                   <div className="seccion_titulo">
                     <img
-                      src="/assets/imgs/home/linea2.png"
+                      src="./assets/imgs/home/linea2.png"
                       style={{ height: "4px" }}
                     />
                     <h1 className="text-center">{empresa.title}</h1>
                     &nbsp;&nbsp;
                     <img
-                      src="/assets/imgs/home/linea1.png"
+                      src="./assets/imgs/home/linea1.png"
                       style={{ height: "4px" }}
                     />
                   </div>

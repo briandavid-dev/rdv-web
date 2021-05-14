@@ -200,13 +200,13 @@ const PageNoticia = () => {
               <Skeleton active loading={loadingEmpresa}>
                 <div className="seccion_titulo">
                   <img
-                    src="/assets/imgs/home/linea2.png"
+                    src="./assets/imgs/home/linea2.png"
                     style={{ height: "4px" }}
                   />
                   <h1 className="text-center">Premios {empresa.title}</h1>
                   &nbsp;&nbsp;
                   <img
-                    src="/assets/imgs/home/linea1.png"
+                    src="./assets/imgs/home/linea1.png"
                     style={{ height: "4px" }}
                   />
                 </div>
@@ -325,13 +325,13 @@ const PageNoticia = () => {
           <Col xs={22} style={{ marginTop: "1rem" }}>
             <Skeleton active loading={loadingEmpresa}>
               <img
-                src="/assets/imgs/home/linea2.png"
+                src="./assets/imgs/home/linea2.png"
                 style={{ height: "4px" }}
               />
               <h2 className="text-center"> Premios {empresa.title}</h2>
               <div style={{ textAlign: "right" }}>
                 <img
-                  src="/assets/imgs/home/linea2.png"
+                  src="./assets/imgs/home/linea2.png"
                   style={{ height: "4px" }}
                 />
               </div>
