@@ -190,9 +190,10 @@ const BtnAgregar = (props) => {
                 lenguaje: payload.language,
                 imageBase64: payload.image_base64,
                 imageExtension: payload.image_extension,
-                key: uuid,
-                id: uuid,
+                key: response.data.results.insertId,
+                id: response.data.results.insertId,
                 fechaCreacion: moment().format("DD-MM-YYYY"),
+                contenido: payload.content_html,
               },
             ];
             setDataProductos(updateNoticias);
@@ -311,7 +312,7 @@ const BtnAgregar = (props) => {
                     rules={[
                       {
                         required: imageSrc !== "" ? false : true,
-                        message: "Adjunte un imagen",
+                        message: "Adjunte las imagenes",
                       },
                     ]}
                   >

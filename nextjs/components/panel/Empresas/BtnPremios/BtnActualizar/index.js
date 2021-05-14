@@ -62,9 +62,11 @@ const BtnActualizar = (props) => {
     setContenidoUpdate(producto.contenido);
 
     if (producto.imageBase64 !== "") {
-      setImageSrc(
-        `data:image/${producto.imageExtension};base64,${producto.imageBase64}`
-      );
+      // setImageSrc(
+      //   `data:image/${producto.imageExtension};base64,${producto.imageBase64}`
+      // );
+
+      setFileCertificado(JSON.parse(producto.imageBase64));
     } else {
       setImageSrc("");
     }
@@ -116,6 +118,7 @@ const BtnActualizar = (props) => {
   };
 
   const normFile = (e) => {
+    console.log(`e.fileList`, e.fileList);
     let superaLimite = false;
     if (e.file.size / 1000 > 256) {
       setShowSizeMessageCertificado(true);
@@ -154,6 +157,8 @@ const BtnActualizar = (props) => {
       type: "premios",
     };
 
+    delete payload.imagen;
+
     let updateNoticias = dataProductos;
 
     if (procesoActual === "ACTUALIZAR") {
@@ -165,10 +170,12 @@ const BtnActualizar = (props) => {
               if (noticia.id === values.id) {
                 const imagen_ = {};
 
-                if (fileCertificado[0]) {
-                  imagen_.imageBase64 = fileCertificado[0][0].base64;
-                  imagen_.imageExtension = fileCertificado[0][0].extension;
-                }
+                // if (fileCertificado[0]) {
+                //   imagen_.imageBase64 = fileCertificado[0][0].base64;
+                //   imagen_.imageExtension = fileCertificado[0][0].extension;
+                // }
+                // ya esto lo tengo arriba
+                // imageBase64: producto.image_base64,
 
                 return {
                   ...noticia,
@@ -176,6 +183,7 @@ const BtnActualizar = (props) => {
                   ...imagen_,
                   titulo: payload.name,
                   lenguaje: payload.language,
+                  contenido: payload.content_html,
                 };
               }
               return noticia;
@@ -242,9 +250,9 @@ const BtnActualizar = (props) => {
       <Modal
         title={
           procesoActual === "ACTUALIZAR" ? (
-            <span>Actualizar producto de {empresaNombre}</span>
+            <span>Actualizar premio de {empresaNombre}</span>
           ) : (
-            <span>Agregar nuevo producto para {empresaNombre}</span>
+            <span>Agregar nuevo premio para {empresaNombre}</span>
           )
         }
         visible={isModalVisible}
@@ -315,7 +323,7 @@ const BtnActualizar = (props) => {
  */}
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Imagen</strong>}
+                    label={<strong>Imagenes</strong>}
                     name="imagen"
                     valuePropName="fileList"
                     getValueFromEvent={normFile}
@@ -325,12 +333,12 @@ const BtnActualizar = (props) => {
                         superior a 200 KB)
                       </span>
                     }
-                    rules={[
-                      {
-                        required: imageSrc !== "" ? false : true,
-                        message: "Adjunte un imagen",
-                      },
-                    ]}
+                    // rules={[
+                    //   {
+                    //     required: imageSrc !== "" ? false : true,
+                    //     message: "Adjunte las imagenes",
+                    //   },
+                    // ]}
                   >
                     {/* <Upload name="logo" action="/upload.do" listType="picture">
                     <Button icon={<UploadOutlined />}>
@@ -347,7 +355,32 @@ const BtnActualizar = (props) => {
                         handleBeforeUploadCertificado(file)
                       }
                       onRemove={handleRemoveFileClickCertificado}
-                      fileList={fileCertificado}
+                      // fileList={fileCertificado}
+                      defaultFileList={fileCertificado}
+                      // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+
+                      /* defaultFileList={[
+                        {
+                          uid: "1",
+                          name: "xxx.png",
+                          status: "done",
+                          response: "Server Error 500", // custom error message to show
+                          url: "https://www.bmosoluciones.com/assets/images/logo_node.png",
+                        },
+                        {
+                          uid: "2",
+                          name: "yyy.png",
+                          status: "done",
+                          url: "https://www.bmosoluciones.com/assets/images/logo_c_sharp.svg",
+                        },
+                        {
+                          uid: "3",
+                          name: "zzz.png",
+                          status: "error",
+                          response: "Server Error 500", // custom error message to show
+                          url: "https://www.bmosoluciones.com/assets/images/logo_react.svg",
+                        },
+                      ]} */
                     >
                       <Button icon={<UploadOutlined />}>
                         Click para adjuntar
@@ -443,9 +476,9 @@ const BtnActualizar = (props) => {
                   {"  "}
                   <Button type="primary" htmlType="submit">
                     {procesoActual === "ACTUALIZAR" ? (
-                      <span>Actualizar producto</span>
+                      <span>Actualizar premio</span>
                     ) : (
-                      <span>Agregar producto</span>
+                      <span>Agregar premio</span>
                     )}
                   </Button>
                 </Col>
