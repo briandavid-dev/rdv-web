@@ -13,7 +13,7 @@ import ApiEmpresas from "../pagesServices/empresas";
 const stylesCss = css.global`
   .Section0 {
     background-color: #5b402b;
-    background-image: url("/assets/imgs/empresas/fondo-marcas.jpg");
+    background-image: url("./assets/imgs/empresas/fondo-marcas.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
