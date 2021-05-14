@@ -82,7 +82,7 @@ export default function QuienesSomos() {
 
         <div className="SeccionRon">
           <div className="container">
-            <div className="row">
+            <div className="row justify-content-center gx-5">
               <div className="col-md-12">
                 <div className="seccion_titulo">
                   <img src="./assets/imgs/home/linea2.png" className="linea1" />
@@ -91,20 +91,20 @@ export default function QuienesSomos() {
                 </div>
               </div>
               <div
-                className="col-md-6 font_20"
+                className="col-md-5 font_20"
                 style={{ textAlign: "justify" }}
               >
                 {strings[lang].quienes.parrafo1}
               </div>
               <div
-                className="col-md-6 font_20"
+                className="col-md-5 font_20"
                 style={{ textAlign: "justify" }}
               >
                 {strings[lang].quienes.parrafo2}
               </div>
               <div className="col-md-12">
                 <br />
-                <br />
+
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
                     src="./assets/imgs/quienessomos/ICONO-SOL.png"
@@ -121,37 +121,34 @@ export default function QuienesSomos() {
                 </div>
                 <div>
                   <br />
-                  <br />
-                  <br />
                 </div>
               </div>
-              <div className="col-md-6" style={{ textAlign: "center" }}>
+              <div className="col-md-5" style={{ textAlign: "center" }}>
                 <img
                   src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
                   style={{ maxWidth: "100%", maxHeight: "600px" }}
                 />
               </div>
-              <div className="col-md-6" style={{ textAlign: "right" }}>
+              <div className="col-md-5" style={{ textAlign: "right" }}>
                 <div>
                   <div className="titulo">
                     <img
                       src="./assets/imgs/home/linea1.png"
-                      style={{ height: "8px", marginRight: "110px" }}
+                      style={{ height: "5px", marginRight: "110px" }}
                     />
                     <h1>{strings[lang].quienes.quienes}</h1>
-                    <img src="./assets/imgs/home/linea2.png" />
+                    <img
+                      src="./assets/imgs/home/linea2.png"
+                      style={{ height: "5px" }}
+                    />
                   </div>
                 </div>
-                <br />
 
                 <p className="font_20">{strings[lang].quienes.elfondo1}</p>
-                <br />
 
                 <p className="font_20">{strings[lang].quienes.elfondo2}</p>
               </div>
               <div>
-                <br />
-                <br />
                 <br />
               </div>
             </div>
@@ -160,8 +157,8 @@ export default function QuienesSomos() {
 
         <div className="SeccionRon2">
           <div className="container">
-            <div className="row">
-              <div className="col-md-6">
+            <div className="row justify-content-center">
+              <div className="col-md-5">
                 <p className="font_20" style={{ textAlign: "justify" }}>
                   {strings[lang].quienes.tambien}
                 </p>
@@ -170,7 +167,7 @@ export default function QuienesSomos() {
                   {strings[lang].quienes.integran}
                 </p>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-5">
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
                     src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
@@ -180,8 +177,6 @@ export default function QuienesSomos() {
               </div>
               <div>
                 <br />
-                <br />
-                <br />
               </div>
             </div>
           </div>
@@ -189,13 +184,13 @@ export default function QuienesSomos() {
 
         <div className="SeccionRon3 font_20 text_justify">
           <div className="container">
-            <div className="row">
-              <div className="col-md-6">
+            <div className="row  justify-content-center gx-5">
+              <div className="col-md-5">
                 <div className="col-md-12">
                   <div>
                     <img
                       src="./assets/imgs/home/linea1.png"
-                      style={{ height: "8px", marginRight: "110px" }}
+                      style={{ height: "5px", marginRight: "110px" }}
                     />
                     <h1>{strings[lang].quienes.mision}</h1>
                     <br />
@@ -207,7 +202,7 @@ export default function QuienesSomos() {
                   <div>
                     <img
                       src="./assets/imgs/home/linea1.png"
-                      style={{ height: "8px", marginRight: "110px" }}
+                      style={{ height: "5px", marginRight: "110px" }}
                     />
                     <h1>{strings[lang].quienes.vision}</h1>
                     <br />
@@ -216,11 +211,11 @@ export default function QuienesSomos() {
                   <br />
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-5">
                 <div>
                   <img
                     src="./assets/imgs/home/linea1.png"
-                    style={{ height: "8px", marginRight: "110px" }}
+                    style={{ height: "5px", marginRight: "110px" }}
                   />
                   <h1>{strings[lang].quienes.valores}</h1>
                   <br />
@@ -260,17 +255,19 @@ export default function QuienesSomos() {
             />
           </Col>
           <Col xs={22} className="text-center">
-            <div className="seccion_titulo_mobile">
-              <img
+            <br />
+            <div className="seccion_titulo_mobiles">
+              {/* <img
                 src="/assets/imgs/home/linea2.png"
                 className="linea1mobile"
-              />
+              /> */}
               <h1>{strings[lang].quienes.title1}</h1>
-              <img
+              {/* <img
                 src="/assets/imgs/home/linea1.png"
                 className="linea2mobile"
-              />
+              /> */}
             </div>
+            <img src="/assets/imgs/home/linea1.png" className="linea2mobile" />
           </Col>
           <Col xs={22}>
             <p>{strings[lang].quienes.parrafo1}</p>
@@ -296,17 +293,20 @@ export default function QuienesSomos() {
               src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
               style={{ maxWidth: "100%", maxHeight: "600px" }}
             />
-            <div className="seccion_titulo_mobile">
-              <img
+            <br />
+            <br />
+            <div className="seccion_titulo_mobile_">
+              {/* <img
                 src="/assets/imgs/home/linea2.png"
                 className="linea1mobile"
-              />
-              <h1 className="text-center">{strings[lang].quienes.quienes}</h1>
-              <img
+              /> */}
+              <h1 className="text-center_">{strings[lang].quienes.quienes}</h1>
+              {/* <img
                 src="/assets/imgs/home/linea1.png"
                 className="linea2mobile"
-              />
+              /> */}
             </div>
+            <img src="/assets/imgs/home/linea1.png" className="linea2mobile" />
             <p className="font_20">{strings[lang].quienes.elfondo1}</p>
             <p className="font_20">{strings[lang].quienes.elfondo2}</p>
           </Col>
