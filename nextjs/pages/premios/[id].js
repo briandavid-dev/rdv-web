@@ -13,7 +13,7 @@ import ApiProductos from "../../components/panel/Empresas/Productos/services";
 const stylesCss = css.global`
   body {
     background-color: #5b402b;
-    background-image: url("/assets/imgs/empresas/fondo-marcas.jpg");
+    background-image: url("./assets/imgs/empresas/fondo-marcas.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
@@ -189,7 +189,11 @@ const PageNoticia = () => {
         <Row type="flex" justify="center">
           <Col xs={24}>
             <img
-              src="/assets/imgs/premios/banner-premios.jpg"
+              src="../../assets/imgs/premios/banner-premios.jpg"
+              style={{ maxWidth: "100%" }}
+            />
+            <img
+              src="./../assets/imgs/premios/banner-premios.jpg"
               style={{ maxWidth: "100%" }}
             />
           </Col>
