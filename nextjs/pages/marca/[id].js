@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Head from "next/head";
-import { Card, Row, Col, Button } from "antd";
+import { Skeleton, Row, Col, Button } from "antd";
 import css from "styled-jsx/css";
 import Footer from "../../components/Footer";
 import MenuDesktop from "../../components/MenuDesktop";
@@ -50,7 +50,11 @@ const stylesCss = css.global`
   }
 
   .card-botellita {
-    background-color: rgba(68, 49, 34, 0.8);
+    /* Por acá:
+    Código de color Marrón
+    para cuadros de las botellas, y texto principal de la marca
+    #483323 */
+    background-color: rgba(72, 51, 35, 0.8);
   }
   .card-botellita-content {
     padding-left: 1rem;
@@ -68,6 +72,8 @@ const PageNoticia = () => {
   const router = useRouter();
   const { id, lang } = router.query;
 
+  const [loadingEmpresa, setLoadingEmpresa] = useState(false);
+  const [loadingProductos, setLoadingProductos] = useState(false);
   const [empresa, setEmpresa] = useState({
     id: "",
     image_base64: "",
@@ -80,6 +86,7 @@ const PageNoticia = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
+    setLoadingEmpresa(true);
     ApiEmpresas.getEmpresa(id)
       .then((response) => {
         const { codigo, empresa } = response.data;
@@ -95,14 +102,17 @@ const PageNoticia = () => {
         } else {
           //
         }
+        setLoadingEmpresa(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        //
+        setLoadingEmpresa(false);
       });
   }, [id]);
 
   useEffect(() => {
     if (id) {
+      setLoadingProductos(true);
       ApiProductos.getProductos(id, "productos")
         .then((response) => {
           const { codigo, results } = response.data;
@@ -111,9 +121,11 @@ const PageNoticia = () => {
           } else {
             //
           }
+          setLoadingProductos(false);
         })
         .catch((error) => {
-          console.log(`error`, error);
+          //
+          setLoadingProductos(false);
         });
     }
   }, [id]);
@@ -155,20 +167,125 @@ const PageNoticia = () => {
         <div style={{ padding: "7rem 0 2rem 0 " }}>
           <Row gutter={[16, 16]} type="flex" justify="center" align="top">
             <Col xs={22} lg={15}>
-              <div className="card-empresa-info">
-                <div className="seccion_titulo">
-                  <img
-                    src="/assets/imgs/home/linea2.png"
-                    style={{ height: "4px" }}
-                  />
-                  <h1 className="text-center">{empresa.title}</h1>
-                  &nbsp;&nbsp;
-                  <img
-                    src="/assets/imgs/home/linea1.png"
-                    style={{ height: "4px" }}
-                  />
-                </div>
+              <Skeleton active loading={loadingEmpresa}>
+                <div className="card-empresa-info">
+                  <div className="seccion_titulo">
+                    <img
+                      src="/assets/imgs/home/linea2.png"
+                      style={{ height: "4px" }}
+                    />
+                    <h1 className="text-center">{empresa.title}</h1>
+                    &nbsp;&nbsp;
+                    <img
+                      src="/assets/imgs/home/linea1.png"
+                      style={{ height: "4px" }}
+                    />
+                  </div>
 
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: empresa.content_html,
+                    }}
+                  ></div>
+                  <p>
+                    <a className="alink" href={empresa.url} target="_blank">
+                      {empresa.url}
+                    </a>
+                  </p>
+
+                  <div className="text-center">
+                    <img
+                      alt={empresa.title}
+                      src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
+                      style={{ width: "300px", maxWidth: "80%" }}
+                    />
+                  </div>
+                </div>
+                <br />
+                <div className="text-center">
+                  <Link
+                    href={{
+                      pathname: "/premios/[id]",
+                      query: { id: empresa.id, lang },
+                    }}
+                  >
+                    <Button className="card-empresa-premios zoom-elron">
+                      VER PREMIOS
+                    </Button>
+                  </Link>
+                </div>
+              </Skeleton>
+
+              <Skeleton active loading={loadingProductos}>
+                <br />
+                <Row>
+                  {productos.map((producto) => (
+                    <>
+                      <Col
+                        span={4}
+                        className="text-center card-botellita"
+                        key={producto.id}
+                      >
+                        <img
+                          alt={producto.name}
+                          src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                          style={{ width: "50", maxWidth: "100%" }}
+                        />
+                      </Col>
+                      <Col span={20} className=" card-botellita-content">
+                        <div className="card-botellita-producto-uno">
+                          Producto
+                        </div>
+                        <div className="card-botellita-producto-dos">
+                          {producto.name}
+                        </div>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: producto.content_html,
+                          }}
+                        ></div>
+                      </Col>
+                      <Col span={24}>
+                        <br />
+                        <br />
+                      </Col>
+                    </>
+                  ))}
+                </Row>
+              </Skeleton>
+            </Col>
+          </Row>
+        </div>
+
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+              <br />
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="valida_desktop font_20 Section0">
+        <Row type="flex" justify="center" className="Section0">
+          <Col xs={22} style={{ marginTop: "58px" }}>
+            <Skeleton active loading={loadingEmpresa}>
+              <br />
+              <div className="card-empresa-info">
+                <h1 className="text-center">{empresa.title}</h1>
+
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: empresa.content_html,
+                  }}
+                ></div>
+
+                <p>
+                  <a className="alink" href={empresa.url} target="_blank">
+                    {empresa.url}
+                  </a>
+                </p>
                 <div className="text-center">
                   <img
                     alt={empresa.title}
@@ -176,21 +293,9 @@ const PageNoticia = () => {
                     style={{ width: "300px", maxWidth: "80%" }}
                   />
                 </div>
-                <br />
-
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: empresa.content_html,
-                  }}
-                ></div>
-                <p>
-                  <a className="alink" href={empresa.url} target="_blank">
-                    {empresa.url}
-                  </a>
-                </p>
               </div>
-              <br />
               <div className="text-center">
+                <br />
                 <Link
                   href={{
                     pathname: "/premios/[id]",
@@ -202,15 +307,14 @@ const PageNoticia = () => {
                   </Button>
                 </Link>
               </div>
+            </Skeleton>
+
+            <Skeleton active loading={loadingProductos}>
               <br />
               <Row>
                 {productos.map((producto) => (
                   <>
-                    <Col
-                      span={4}
-                      className="text-center card-botellita"
-                      key={producto.id}
-                    >
+                    <Col span={4} className="text-center card-botellita">
                       <img
                         alt={producto.name}
                         src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
@@ -237,90 +341,7 @@ const PageNoticia = () => {
                   </>
                 ))}
               </Row>
-            </Col>
-          </Row>
-        </div>
-
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
-              <br />
-              <br />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="valida_desktop font_20 Section0">
-        <Row type="flex" justify="center" className="Section0">
-          <Col xs={22} style={{ marginTop: "58px" }}>
-            <br />
-            <div className="card-empresa-info">
-              <h1 className="text-center">{empresa.title}</h1>
-
-              <div className="text-center">
-                <img
-                  alt={empresa.title}
-                  src={`data:image/${empresa.image_extension};base64,${empresa.image_base64}`}
-                  style={{ width: "300px", maxWidth: "80%" }}
-                />
-              </div>
-              <br />
-
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: empresa.content_html,
-                }}
-              ></div>
-
-              <p>
-                <a className="alink" href={empresa.url} target="_blank">
-                  {empresa.url}
-                </a>
-              </p>
-            </div>
-            <div className="text-center">
-              <br />
-              <Link
-                href={{
-                  pathname: "/premios/[id]",
-                  query: { id: empresa.id, lang },
-                }}
-              >
-                <Button className="card-empresa-premios zoom-elron">
-                  VER PREMIOS
-                </Button>
-              </Link>
-            </div>
-            <br />
-            <Row>
-              {productos.map((producto) => (
-                <>
-                  <Col span={4} className="text-center card-botellita">
-                    <img
-                      alt={producto.name}
-                      src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                      style={{ width: "50", maxWidth: "100%" }}
-                    />
-                  </Col>
-                  <Col span={20} className=" card-botellita-content">
-                    <div className="card-botellita-producto-uno">Producto</div>
-                    <div className="card-botellita-producto-dos">
-                      {producto.name}
-                    </div>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: producto.content_html,
-                      }}
-                    ></div>
-                  </Col>
-                  <Col span={24}>
-                    <br />
-                    <br />
-                  </Col>
-                </>
-              ))}
-            </Row>
+            </Skeleton>
           </Col>
 
           <div className="container">

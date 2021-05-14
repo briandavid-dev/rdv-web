@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Head from "next/head";
-import { Card, Row, Col, Button } from "antd";
+import { Skeleton, Row, Col, Button } from "antd";
 import css from "styled-jsx/css";
 import Footer from "../../components/Footer";
 import MenuDesktop from "../../components/MenuDesktop";
@@ -97,6 +96,8 @@ const PageNoticia = () => {
 
   // const strings = { es, en };
 
+  const [loadingPremios, setLoadingPremios] = useState(false);
+  const [loadingEmpresa, setLoadingEmpresa] = useState(false);
   const [empresa, setEmpresa] = useState({
     image_base64: "",
     image_extension: "",
@@ -108,6 +109,7 @@ const PageNoticia = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
+    setLoadingEmpresa(true);
     ApiEmpresas.getEmpresa(id)
       .then((response) => {
         const { codigo, empresa } = response.data;
@@ -122,14 +124,17 @@ const PageNoticia = () => {
         } else {
           //
         }
+        setLoadingEmpresa(false);
       })
       .catch((error) => {
-        console.log(`error`, error);
+        //
+        setLoadingEmpresa(false);
       });
   }, [id]);
 
   useEffect(() => {
     if (id) {
+      setLoadingPremios(true);
       ApiProductos.getProductos(id, "premios")
         .then((response) => {
           const { codigo, results } = response.data;
@@ -138,9 +143,11 @@ const PageNoticia = () => {
           } else {
             //
           }
+          setLoadingPremios(false);
         })
         .catch((error) => {
-          console.log(`error`, error);
+          //
+          setLoadingPremios(false);
         });
     }
   }, [id]);
@@ -190,86 +197,91 @@ const PageNoticia = () => {
         <div style={{ padding: "0rem 0 0rem 0 " }}>
           <Row gutter={[16, 16]} type="flex" justify="center" align="top">
             <Col xs={22} lg={14}>
-              <div className="seccion_titulo">
-                <img
-                  src="/assets/imgs/home/linea2.png"
-                  style={{ height: "4px" }}
-                />
-                <h1 className="text-center">Premios {empresa.title}</h1>
-                &nbsp;&nbsp;
-                <img
-                  src="/assets/imgs/home/linea1.png"
-                  style={{ height: "4px" }}
-                />
-              </div>
+              <Skeleton active loading={loadingEmpresa}>
+                <div className="seccion_titulo">
+                  <img
+                    src="/assets/imgs/home/linea2.png"
+                    style={{ height: "4px" }}
+                  />
+                  <h1 className="text-center">Premios {empresa.title}</h1>
+                  &nbsp;&nbsp;
+                  <img
+                    src="/assets/imgs/home/linea1.png"
+                    style={{ height: "4px" }}
+                  />
+                </div>
+              </Skeleton>
+              <Skeleton active loading={loadingPremios}>
+                <br />
+                <Row>
+                  {productos.map((producto) => (
+                    <>
+                      <Col
+                        span={20}
+                        className=" card-botellita-content"
+                        key={producto.id}
+                      >
+                        <div className="card-botellita-producto-uno">
+                          <h4>
+                            <span
+                              style={{
+                                color: "transparent",
+                                marginRight: "1rem",
+                              }}
+                            >
+                              2020
+                            </span>
+                            {producto.name}
+                          </h4>
+                        </div>
+                        <br />
+                        <div className="card-botellita-producto-dos"></div>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: producto.content_html,
+                          }}
+                        ></div>
+                      </Col>
 
-              <br />
-              <Row>
-                {productos.map((producto) => (
-                  <>
-                    <Col
-                      span={20}
-                      className=" card-botellita-content"
-                      key={producto.id}
-                    >
-                      <div className="card-botellita-producto-uno">
-                        <h4>
-                          <span
-                            style={{
-                              color: "transparent",
-                              marginRight: "1rem",
-                            }}
-                          >
-                            2020
-                          </span>
-                          {producto.name}
-                        </h4>
-                      </div>
-                      <br />
-                      <div className="card-botellita-producto-dos"></div>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: producto.content_html,
-                        }}
-                      ></div>
-                    </Col>
-
-                    <Col span={4} className="text-center card-botellita__">
-                      {producto.image_extension !== "" && (
-                        <img
-                          alt={producto.name}
-                          src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                          style={{ width: "50", maxWidth: "100%" }}
-                        />
-                      )}
-
-                      {producto.image_extension === "" &&
-                        producto.image_base64 !== "" && (
-                          <>
-                            {JSON.parse(producto.image_base64).map((imagen) => {
-                              return (
-                                <img
-                                  alt={producto.name}
-                                  key={imagen.uid}
-                                  src={imagen.thumbUrl}
-                                  style={{
-                                    width: "50",
-                                    maxWidth: "100%",
-                                    marginBottom: "1rem",
-                                  }}
-                                />
-                              );
-                            })}
-                          </>
+                      <Col span={4} className="text-center card-botellita__">
+                        {producto.image_extension !== "" && (
+                          <img
+                            alt={producto.name}
+                            src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                            style={{ width: "50", maxWidth: "100%" }}
+                          />
                         )}
-                    </Col>
-                    <Col span={24}>
-                      <br />
-                      <br />
-                    </Col>
-                  </>
-                ))}
-              </Row>
+
+                        {producto.image_extension === "" &&
+                          producto.image_base64 !== "" && (
+                            <>
+                              {JSON.parse(producto.image_base64).map(
+                                (imagen) => {
+                                  return (
+                                    <img
+                                      alt={producto.name}
+                                      key={imagen.uid}
+                                      src={imagen.thumbUrl}
+                                      style={{
+                                        width: "50",
+                                        maxWidth: "100%",
+                                        marginBottom: "1rem",
+                                      }}
+                                    />
+                                  );
+                                }
+                              )}
+                            </>
+                          )}
+                      </Col>
+                      <Col span={24}>
+                        <br />
+                        <br />
+                      </Col>
+                    </>
+                  ))}
+                </Row>
+              </Skeleton>
             </Col>
           </Row>
         </div>
@@ -311,69 +323,77 @@ const PageNoticia = () => {
         </Row>
         <Row type="flex" justify="center" className="Section0">
           <Col xs={22} style={{ marginTop: "1rem" }}>
-            <img src="/assets/imgs/home/linea2.png" style={{ height: "4px" }} />
-            <h2 className="text-center">{empresa.title}</h2>
-            <div style={{ textAlign: "right" }}>
+            <Skeleton active loading={loadingEmpresa}>
               <img
                 src="/assets/imgs/home/linea2.png"
                 style={{ height: "4px" }}
               />
-            </div>
-            <br />
-            <Row xs={24} type="flex" justify="center">
-              {productos.map((producto) => (
-                <>
-                  <Col span={24} className=" card-botellita-content__">
-                    <div className="card-botellita-producto-uno">
-                      <h4>{producto.name}</h4>
-                    </div>
-                    <br />
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: producto.content_html,
-                      }}
-                    ></div>
-                  </Col>
-                  <Col span={24} className="text-center card-botellita__">
-                    {producto.image_extension !== "" && (
-                      <img
-                        alt={producto.name}
-                        src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
-                        style={{
-                          width: "90px",
-                          maxWidth: "100%",
-                          margin: "0 0.5rem 0.5rem 0.2rem",
-                        }}
-                      />
-                    )}
+              <h2 className="text-center"> Premios {empresa.title}</h2>
+              <div style={{ textAlign: "right" }}>
+                <img
+                  src="/assets/imgs/home/linea2.png"
+                  style={{ height: "4px" }}
+                />
+              </div>
+            </Skeleton>
 
-                    {producto.image_extension === "" &&
-                      producto.image_base64 !== "" && (
-                        <>
-                          {JSON.parse(producto.image_base64).map((imagen) => {
-                            return (
-                              <img
-                                alt={producto.name}
-                                key={imagen.uid}
-                                src={imagen.thumbUrl}
-                                style={{
-                                  width: "90px",
-                                  maxWidth: "100%",
-                                  margin: "0 0.5rem 0.5rem 0.2rem",
-                                }}
-                              />
-                            );
-                          })}
-                        </>
+            <Skeleton active loading={loadingPremios}>
+              <br />
+              <Row xs={24} type="flex" justify="center">
+                {productos.map((producto) => (
+                  <>
+                    <Col span={24} className=" card-botellita-content__">
+                      <div className="card-botellita-producto-uno">
+                        <h4>{producto.name}</h4>
+                      </div>
+                      <br />
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: producto.content_html,
+                        }}
+                      ></div>
+                    </Col>
+                    <Col span={24} className="text-center card-botellita__">
+                      {producto.image_extension !== "" && (
+                        <img
+                          alt={producto.name}
+                          src={`data:image/${producto.image_extension};base64,${producto.image_base64}`}
+                          style={{
+                            width: "90px",
+                            maxWidth: "100%",
+                            margin: "0 0.5rem 0.5rem 0.2rem",
+                          }}
+                        />
                       )}
-                  </Col>
-                  <Col span={24}>
-                    <br />
-                    <br />
-                  </Col>
-                </>
-              ))}
-            </Row>
+
+                      {producto.image_extension === "" &&
+                        producto.image_base64 !== "" && (
+                          <>
+                            {JSON.parse(producto.image_base64).map((imagen) => {
+                              return (
+                                <img
+                                  alt={producto.name}
+                                  key={imagen.uid}
+                                  src={imagen.thumbUrl}
+                                  style={{
+                                    width: "90px",
+                                    maxWidth: "100%",
+                                    margin: "0 0.5rem 0.5rem 0.2rem",
+                                  }}
+                                />
+                              );
+                            })}
+                          </>
+                        )}
+                    </Col>
+                    <Col span={24}>
+                      <br />
+                      <br />
+                    </Col>
+                  </>
+                ))}
+              </Row>
+            </Skeleton>
           </Col>
 
           {empresa.url !== "" && (

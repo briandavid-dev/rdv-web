@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
-import { Row, Col, Collapse, Skeleton } from "antd";
+import { Row, Col, Skeleton } from "antd";
 import css from "styled-jsx/css";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
