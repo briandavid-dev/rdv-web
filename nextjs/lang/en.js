@@ -55,7 +55,7 @@ strings.historia = {
 strings.elron = {
   pageTitle: `RUM | Rum from Venezuela`,
   title: `Processing and raw materials `,
-  imgEmbasado: "/assets/imgs/elrom/PROCESO-RON-MESCLAS-Y-EMBASADO-EN.png",
+  imgEmbasado: "./assets/imgs/elrom/PROCESO-RON-MESCLAS-Y-EMBASADO-EN.png",
   laCana: {
     titulo: <span>Sugarcane, that's the secret</span>,
     info: (

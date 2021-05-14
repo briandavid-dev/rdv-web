@@ -154,7 +154,7 @@ strings.historia = {
 strings.elron = {
   pageTitle: `El Ron | Ron de Venezuela`,
   title: `Elaboración y materia prima`,
-  imgEmbasado: "/assets/imgs/elrom/PROCESO-RON-MESCLAS-Y-EMBASADO-ES.png",
+  imgEmbasado: "./assets/imgs/elrom/PROCESO-RON-MESCLAS-Y-EMBASADO-ES.png",
   laCana: {
     titulo: <span>La caña de azúcar, allí está el secreto</span>,
     info: (
