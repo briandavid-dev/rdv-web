@@ -106,7 +106,7 @@ const stylesCss = css.global`
   }
 
   .titulo-bello {
-    background-color: #ddd2c2;
+    background-color: #fff4e4;
     color: #443421;
     border-radius: 2px;
     // cursor: pointer;
