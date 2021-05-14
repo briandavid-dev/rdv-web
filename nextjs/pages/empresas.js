@@ -12,8 +12,11 @@ import ApiEmpresas from "../pagesServices/empresas";
 
 const stylesCss = css.global`
   .Section0 {
-    // background-image: url("/assets/imgs/home/fondoEmpresas.png");
-    background-color: #553c28;
+    background-color: #5b402b;
+    background-image: url("/assets/imgs/empresas/fondo-marcas.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
   }
 
   .ant-collapse {
@@ -66,7 +69,6 @@ const PageEmpresas = () => {
     setLoading(true);
     ApiEmpresas.getEmpresas(lang)
       .then((response) => {
-        console.log(`response`, response);
         const { codigo, results } = response.data;
         if (codigo === "1") {
           setDataEmpresas(results);
@@ -130,7 +132,7 @@ const PageEmpresas = () => {
                 {dataEmpresas.length > 0 ? (
                   <>
                     {dataEmpresas.map((empresa) => (
-                      <Col lg={12} sm={12} xs={24}>
+                      <Col lg={12} sm={12} xs={24} key={empresa.id}>
                         <Link
                           href={{
                             pathname: "/marca/[id]",

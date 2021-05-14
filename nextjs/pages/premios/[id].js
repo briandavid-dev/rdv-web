@@ -13,10 +13,14 @@ import ApiProductos from "../../components/panel/Empresas/Productos/services";
 
 const stylesCss = css.global`
   body {
-    background-color: #553c28;
+    background-color: #5b402b;
+    background-image: url("/assets/imgs/empresas/fondo-marcas.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
   }
   .Section0 {
-    background-color: #553c28;
+    /* background-color: #553c28; */
   }
 
   table {
@@ -178,7 +182,7 @@ const PageNoticia = () => {
         <Row type="flex" justify="center">
           <Col xs={24}>
             <img
-              src="/assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              src="/assets/imgs/premios/banner-premios.jpg"
               style={{ maxWidth: "100%" }}
             />
           </Col>
@@ -300,7 +304,7 @@ const PageNoticia = () => {
         <Row type="flex" justify="center">
           <Col xs={24} style={{ marginTop: "58px" }}>
             <img
-              src="/assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              src="/assets/imgs/premios/banner-premios.jpg"
               style={{ maxWidth: "100%" }}
             />
           </Col>

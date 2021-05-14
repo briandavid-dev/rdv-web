@@ -13,10 +13,14 @@ import ApiProductos from "../../components/panel/Empresas/Productos/services";
 
 const stylesCss = css.global`
   body {
-    background-color: #553c28;
+    background-color: #5b402b;
+    background-image: url("/assets/imgs/empresas/fondo-marcas.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
   }
   .Section0 {
-    background-color: #553c28;
+    /* background-color: #553c28; */
   }
 
   .card-empresa-info,
