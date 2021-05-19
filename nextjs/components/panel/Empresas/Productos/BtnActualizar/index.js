@@ -14,7 +14,7 @@ import {
   Image,
 } from "antd";
 import { UploadOutlined, EditTwoTone } from "@ant-design/icons";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import ApiProductos from "../services";
 import notifica from "../../../../../utils/notifica";
 import EditorImport from "../../EditorImport";
@@ -177,6 +177,7 @@ const BtnActualizar = (props) => {
                   ...imagen_,
                   titulo: payload.name,
                   lenguaje: payload.language,
+                  contenido: payload.content_html,
                 };
               }
               return noticia;
@@ -322,12 +323,8 @@ const BtnActualizar = (props) => {
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de{" "}
-                        <strong>
-                          70px x 150px{" "}
-                          <span style={{ color: "red" }}>PENDIENTE</span>
-                        </strong>{" "}
-                        (no superior a 500 KB)
+                        Imágenes jpg o png de <strong>120 x 330 px</strong> (no
+                        superior a 500 KB)
                       </span>
                     }
                     rules={[

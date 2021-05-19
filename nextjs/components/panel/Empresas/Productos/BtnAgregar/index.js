@@ -13,7 +13,7 @@ import {
   Upload,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import ApiProductos from "../services";
 import notifica from "../../../../../utils/notifica";
 import EditorImport from "../../EditorImport";
@@ -181,7 +181,7 @@ const BtnAgregar = (props) => {
       ApiProductos.insertProducto(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
-            const uuid = uuidv4();
+            // const uuid = uuidv4();
             updateNoticias = [
               ...dataProductos,
               {
@@ -190,9 +190,10 @@ const BtnAgregar = (props) => {
                 lenguaje: payload.language,
                 imageBase64: payload.image_base64,
                 imageExtension: payload.image_extension,
-                key: uuid,
-                id: uuid,
+                key: response.data.results.insertId,
+                id: response.data.results.insertId,
                 fechaCreacion: moment().format("DD-MM-YYYY"),
+                contenido: payload.content_html,
               },
             ];
             setDataProductos(updateNoticias);
@@ -216,6 +217,9 @@ const BtnAgregar = (props) => {
       <Button
         type="primary"
         onClick={() => {
+          form.resetFields();
+          setContenidoUpdate("");
+          setImageSrc("");
           setIsModalVisible(true);
         }}
       >
@@ -305,12 +309,8 @@ const BtnAgregar = (props) => {
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de{" "}
-                        <strong>
-                          70px x 150px{" "}
-                          <span style={{ color: "red" }}>PENDIENTE</span>
-                        </strong>{" "}
-                        (no superior a 500 KB)
+                        Imágenes jpg o png de <strong>120 x 330 px</strong> (no
+                        superior a 500 KB)
                       </span>
                     }
                     rules={[

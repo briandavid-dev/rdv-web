@@ -181,7 +181,7 @@ const BtnAgregar = (props) => {
       ApiProductos.insertProducto(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
-            const uuid = uuidv4();
+            // const uuid = uuidv4();
             updateNoticias = [
               ...dataProductos,
               {
@@ -217,6 +217,9 @@ const BtnAgregar = (props) => {
       <Button
         type="primary"
         onClick={() => {
+          form.resetFields();
+          setContenidoUpdate("");
+          setImageSrc("");
           setIsModalVisible(true);
         }}
       >
@@ -273,10 +276,19 @@ const BtnAgregar = (props) => {
 
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Nombre</strong>}
+                    label={
+                      <strong>
+                        Nombre de institución, congreso o competición que otorga
+                        el premio
+                      </strong>
+                    }
                     name="name"
                     rules={[
-                      { required: true, message: "Ingrese el nombre" },
+                      {
+                        required: true,
+                        message:
+                          "Ingrese el nombre de institución, congreso o competición que otorga el premio",
+                      },
                       { min: 10, message: "Mínimo 10 caracteres" },
                     ]}
                   >
@@ -299,7 +311,11 @@ const BtnAgregar = (props) => {
  */}
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Imagenes</strong>}
+                    label={
+                      <strong>
+                        Imagenes de los premios (medallas por ejemplo)
+                      </strong>
+                    }
                     name="imagen"
                     valuePropName="fileList"
                     getValueFromEvent={normFile}

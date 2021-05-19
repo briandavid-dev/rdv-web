@@ -57,8 +57,12 @@ const stylesCss = css.global`
     cursor: pointer;
   }
 
+  .hover-notice-home {
+    border: 1px solid transparent;
+  }
+
   .hover-notice-home:hover {
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 3px;
   }
 
