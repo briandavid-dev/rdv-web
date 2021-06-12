@@ -10,8 +10,8 @@ if (typeof require !== "undefined") {
 }
 
 module.exports = withCSS({
-  basePath: "/qa/nextjs/out",
-  assetPrefix: "https://www.bmosoluciones.com/qa/nextjs/out",
+  basePath: "/qa/out",
+  assetPrefix: "https://www.bmosoluciones.com/qa/out",
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
