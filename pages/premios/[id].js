@@ -202,7 +202,9 @@ const PageNoticia = () => {
                     src="/assets/imgs/home/linea2.png"
                     style={{ height: "4px" }}
                   />
-                  <h1 className="text-center">Premios {empresa.title}</h1>
+                  <h1 className="text-center">
+                    {strings[lang].premios.premios} {empresa.title}
+                  </h1>
                   &nbsp;&nbsp;
                   <img
                     src="/assets/imgs/home/linea1.png"
@@ -327,7 +329,10 @@ const PageNoticia = () => {
                 src="/assets/imgs/home/linea2.png"
                 style={{ height: "4px" }}
               />
-              <h2 className="text-center"> Premios {empresa.title}</h2>
+              <h2 className="text-center">
+                {" "}
+                {strings[lang].premios.premios} {empresa.title}
+              </h2>
               <div style={{ textAlign: "right" }}>
                 <img
                   src="/assets/imgs/home/linea2.png"

@@ -144,7 +144,7 @@ const PageEmpresas = () => {
                             <div style={{ minHeight: "150px" }}>
                               <div style={{ textAlign: "left" }}>
                                 <img
-                                  src="./assets/imgs/home/linea2.png"
+                                  src="./assets/imgs/home/linea1.png"
                                   style={{ height: "4px" }}
                                 />
                               </div>

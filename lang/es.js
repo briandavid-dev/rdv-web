@@ -681,4 +681,8 @@ strings.validacionEdad = {
     "Aún no tienes edad suficiente para visualizar el contenido del sitio",
 };
 
+strings.premios = {
+  premios: "Premios",
+};
+
 export default strings;

@@ -283,7 +283,7 @@ const PageNoticia = () => {
               <br />
               <div className="card-empresa-info">
                 <h1 className="text-center">{empresa.title}</h1>
-
+                <br />
                 <div
                   dangerouslySetInnerHTML={{
                     __html: empresa.content_html,
@@ -312,7 +312,7 @@ const PageNoticia = () => {
                   }}
                 >
                   <Button className="card-empresa-premios zoom-elron">
-                    VER PREMIOS
+                    {strings[lang].empresas.verPremios}
                   </Button>
                 </Link>
               </div>
