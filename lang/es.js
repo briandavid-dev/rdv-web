@@ -159,11 +159,10 @@ strings.elron = {
     titulo: <span>La caña de azúcar, allí está el secreto</span>,
     info: (
       <p>
-        La caña de azúcar proporciona la materia prima que hace la diferencia en
-        el ron de Venezuela. Allí comienza el milagro. La planta crece en buena
-        parte del territorio nacional. El clima local con la diferencia de
-        temperaturas entre el día y la noche resulta benigno para la caña que es
-        particularmente dulce y, por añadidura, se logra un alcohol más limpio.
+        La caña de azúcar proporciona la materia prima que hace la diferencia en el ron de Venezuela. Allí comienza el
+        milagro. La planta crece en buena parte del territorio nacional. El clima local con la diferencia de
+        temperaturas entre el día y la noche resulta benigno para la caña que es particularmente dulce y, por añadidura,
+        se logra un alcohol más limpio.
       </p>
     ),
   },
@@ -171,14 +170,11 @@ strings.elron = {
     titulo: <span>La melaza, alma del ron venezolano</span>,
     info: (
       <p>
-        Si la caña de azúcar es la génesis del ron, la melaza es el comienzo de
-        su elaboración. Densa, de color caramelo intenso proviene del jugo de
-        caña que en los centrales azucareros se le ha extraído el azúcar
-        cristalizable. La melaza venezolana contiene más azúcar y menos
-        impurezas, lo que influye en la calidad del alcohol. Mientras más azúcar
-        en la melaza, el alcohol tiene elementos de más calidad. La Denominación
-        de Origen determina que la melaza tiene que ser venezolana para que
-        presente sus características peculiares.{" "}
+        Si la caña de azúcar es la génesis del ron, la melaza es el comienzo de su elaboración. Densa, de color caramelo
+        intenso proviene del jugo de caña que en los centrales azucareros se le ha extraído el azúcar cristalizable. La
+        melaza venezolana contiene más azúcar y menos impurezas, lo que influye en la calidad del alcohol. Mientras más
+        azúcar en la melaza, el alcohol tiene elementos de más calidad. La Denominación de Origen determina que la
+        melaza tiene que ser venezolana para que presente sus características peculiares.{" "}
       </p>
     ),
   },
@@ -186,14 +182,11 @@ strings.elron = {
     titulo: <span>La fermentación, parte del secreto</span>,
     info: (
       <p>
-        Previo a la destilación está la fermentación, que comienza cuando la
-        melaza se diluye en agua caliente y las levaduras emprenden su labor de
-        convertir el azúcar (sacarosa) en dióxido de carbono y alcohol. Esta
-        etapa del proceso también le otorga particularidad al ron. Influye la
-        calidad de la melaza, la del agua, que debe ser pura, libre de olores y
-        sabores; la personalidad de las levaduras, que presentan las
-        peculiaridades de cada zona; la mano del hombre y el tiempo que se le
-        otorga a la fermentación. A mayor paciencia más riqueza.
+        Previo a la destilación está la fermentación, que comienza cuando la melaza se diluye en agua caliente y las
+        levaduras emprenden su labor de convertir el azúcar (sacarosa) en dióxido de carbono y alcohol. Esta etapa del
+        proceso también le otorga particularidad al ron. Influye la calidad de la melaza, la del agua, que debe ser
+        pura, libre de olores y sabores; la personalidad de las levaduras, que presentan las peculiaridades de cada
+        zona; la mano del hombre y el tiempo que se le otorga a la fermentación. A mayor paciencia más riqueza.
       </p>
     ),
   },
@@ -201,13 +194,21 @@ strings.elron = {
     titulo: <span>Destilación, la alquimia se hace presente</span>,
     info: (
       <p>
-        Durante la destilación se separa el alcohol del agua y se perfila de
-        manera definitiva si un ron será “pesado” que presenta muchos
-        congéneres, es decir más aromas y sabores; o “liviano”, los más
-        habituales, que se logran en abundancia y a velocidad industrial. La
-        diferencia fundamental del ron de Venezuela es el alcohol. Son rones
-        limpios y bien destilados. La destilación puede ser en alambiques o en
-        columnas.
+        Los rones venezolanos suelen ser el resultado de mezclas de rones de diferentes edades que se realiza para
+        obtener un destilado superior a cada una de esas partes. Las mezclas son elaboradas por los maestros roneros
+        quienes poseen un olfato entrenado y una veteranía que suman décadas.
+        <br />
+        Estas mezclas le dan personalidad al blend. Si se trata de rones pesados la mezcla suele ser resultado de la
+        unión de rones más jóvenes. Si suben a la escala de los premium, en su fórmula hay rones más añejos. Para dar
+        por terminado el proceso se realizan ajustes finales. Las casas roneras tienen sus toques secretos.
+        <br />
+        Los maestros roneros son los garantes de que cada etiqueta sea fiel a sí misma, custodian las mezclas, secreto
+        que solo ellos conocen.
+        {/* Se comentó porque dice que el texto no corresponde */}
+        {/* Durante la destilación se separa el alcohol del agua y se perfila de manera definitiva si un ron será “pesado”
+        que presenta muchos congéneres, es decir más aromas y sabores; o “liviano”, los más habituales, que se logran en
+        abundancia y a velocidad industrial. La diferencia fundamental del ron de Venezuela es el alcohol. Son rones
+        limpios y bien destilados. La destilación puede ser en alambiques o en columnas. */}
       </p>
     ),
   },
@@ -216,22 +217,18 @@ strings.elron = {
     info: (
       <>
         <p>
-          En Venezuela para llamarse ron tiene que añejarse por dos años en
-          barrica. Como hay sol todo el año, el envejecimiento es intenso, la
-          evaporación es más alta, así como la oxidación.
+          En Venezuela para llamarse ron tiene que añejarse por dos años en barrica. Como hay sol todo el año, el
+          envejecimiento es intenso, la evaporación es más alta, así como la oxidación.
         </p>
         <p>
-          Cada tipo de alcohol posee su potencial de envejecimiento. Hay
-          alcoholes livianos que no se pueden envejecer más de dos años,
-          mientras que uno pesado requiere quizás más de cuatro. Por ello se
-          habla de madurarlos hasta su edad óptima.
+          Cada tipo de alcohol posee su potencial de envejecimiento. Hay alcoholes livianos que no se pueden envejecer
+          más de dos años, mientras que uno pesado requiere quizás más de cuatro. Por ello se habla de madurarlos hasta
+          su edad óptima.
         </p>
         <p>
-          Por ley, en Venezuela, si se quiere indicar la edad de un ron de
-          mezclas, se utiliza la del ron con menos edad. En cuanto a las
-          barricas para el añejamiento deben ser de roble blanco, que por lo
-          general fueron previamente usadas para añejar bourbon americano o
-          whisky escocés.
+          Por ley, en Venezuela, si se quiere indicar la edad de un ron de mezclas, se utiliza la del ron con menos
+          edad. En cuanto a las barricas para el añejamiento deben ser de roble blanco, que por lo general fueron
+          previamente usadas para añejar bourbon americano o whisky escocés.
         </p>
       </>
     ),
@@ -241,22 +238,18 @@ strings.elron = {
     info: (
       <>
         <p>
-          Los rones venezolanos suelen ser el resultado de mezclas de rones de
-          diferentes edades que se realiza para obtener un destilado superior a
-          cada una de esas partes. Las mezclas son elaboradas por los maestros
-          roneros quienes poseen un olfato entrenado y una veteranía que suman
-          décadas.
+          Los rones venezolanos suelen ser el resultado de mezclas de rones de diferentes edades que se realiza para
+          obtener un destilado superior a cada una de esas partes. Las mezclas son elaboradas por los maestros roneros
+          quienes poseen un olfato entrenado y una veteranía que suman décadas.
         </p>
         <p>
-          Estas mezclas le dan personalidad al blend. Si se trata de rones
-          pesados la mezcla suele ser resultado de la unión de rones más
-          jóvenes. Si suben a la escala de los premium, en su fórmula hay rones
-          más añejos. Para dar por terminado el proceso se realizan ajustes
-          finales. Las casas roneras tienen sus toques secretos.
+          Estas mezclas le dan personalidad al blend. Si se trata de rones pesados la mezcla suele ser resultado de la
+          unión de rones más jóvenes. Si suben a la escala de los premium, en su fórmula hay rones más añejos. Para dar
+          por terminado el proceso se realizan ajustes finales. Las casas roneras tienen sus toques secretos.
         </p>
         <p>
-          Los maestros roneros son los garantes de que cada etiqueta sea fiel a
-          sí misma, custodian las mezclas, secreto que solo ellos conocen.
+          Los maestros roneros son los garantes de que cada etiqueta sea fiel a sí misma, custodian las mezclas, secreto
+          que solo ellos conocen.
         </p>
       </>
     ),
@@ -276,16 +269,14 @@ strings.doc = {
   quees1: (
     <>
       <p className="font_20 text-justify">
-        La Denominación de Origen Controlada es una indicación geográfica
-        utilizada en un producto que tiene un origen geográfico concreto, cuyas
-        cualidades, reputación y características se deben esencialmente a su
-        lugar de origen. Su calidad o características se deben exclusiva o
-        esencialmente al medio geográfico, comprendiendo factores naturales,
-        culturales y humanos.
+        La Denominación de Origen Controlada es una indicación geográfica utilizada en un producto que tiene un origen
+        geográfico concreto, cuyas cualidades, reputación y características se deben esencialmente a su lugar de origen.
+        Su calidad o características se deben exclusiva o esencialmente al medio geográfico, comprendiendo factores
+        naturales, culturales y humanos.
       </p>
       <p className="font_20 text-justify">
-        Pero no solo se trata de geografía, sino de gente que con sus manos
-        siembra la caña, la cosecha, fermenta, destila y envejece.
+        Pero no solo se trata de geografía, sino de gente que con sus manos siembra la caña, la cosecha, fermenta,
+        destila y envejece.
       </p>
     </>
   ),
@@ -293,14 +284,11 @@ strings.doc = {
   existe1: (
     <>
       <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
-        La Denominación de Origen Controlada regula y protege esas
-        características propias de un determinado producto, exigiendo que se
-        cumplan los procesos de fabricación y se utilicen las materias primas
-        exactas.
+        La Denominación de Origen Controlada regula y protege esas características propias de un determinado producto,
+        exigiendo que se cumplan los procesos de fabricación y se utilicen las materias primas exactas.
       </p>
       <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
-        Esta regulación y entramado de normas garantizan al mundo que un
-        producto es único según su terruño.
+        Esta regulación y entramado de normas garantizan al mundo que un producto es único según su terruño.
       </p>
     </>
   ),
@@ -308,40 +296,31 @@ strings.doc = {
   nacimiento1: (
     <>
       <p className="font_20 text-justify">
-        En el boletín del Servicio Autónomo de la Propiedad Intelectual (SAPI)
-        N° 459 del 4 de noviembre de 2003 se publicó que la Denominación Ron de
-        Venezuela es una Denominación de Origen del Estado venezolano para
-        aplicarse a la bebida alcohólica de ron y que sólo podrá aplicarse en el
-        concepto exacto de ron dado por las normas COVENIN, a beneficio de los
-        productores que agrupa la Cámara de la Industria Venezolana de Especies
-        Alcohólicas (CIVEA) todo ello por haber cumplido con lo exigido en los
-        artículos 201, 202, 203 y 204 de la decisión 486 de la Comunidad Andina
-        de Naciones.
+        En el boletín del Servicio Autónomo de la Propiedad Intelectual (SAPI) N° 459 del 4 de noviembre de 2003 se
+        publicó que la Denominación Ron de Venezuela es una Denominación de Origen del Estado venezolano para aplicarse
+        a la bebida alcohólica de ron y que sólo podrá aplicarse en el concepto exacto de ron dado por las normas
+        COVENIN, a beneficio de los productores que agrupa la Cámara de la Industria Venezolana de Especies Alcohólicas
+        (CIVEA) todo ello por haber cumplido con lo exigido en los artículos 201, 202, 203 y 204 de la decisión 486 de
+        la Comunidad Andina de Naciones.
       </p>
       <p className="font_20 text-justify">
-        De acuerdo al acta de la asamblea general celebrada en Caracas el 4 de
-        junio de 2019, los miembros de la Cámara de la Industria Venezolana de
-        Especies Alcohólicas (CIVEA) expresaron su conformidad de que el control
-        y la titularidad de la Denominación de Origen Controlada Ron de
-        Venezuela recayera a partir de la citada fecha en la Asociación Civil
-        Fondo para la Promoción del Ron de Venezuela (FONPRONVEN). De esta
-        manera CIVEA traspasó la titularidad, control, difusión, promoción y
-        otras acciones vinculadas a la Denominación de Origen Controlada Ron de
-        Venezuela a FONPRONVEN.
+        De acuerdo al acta de la asamblea general celebrada en Caracas el 4 de junio de 2019, los miembros de la Cámara
+        de la Industria Venezolana de Especies Alcohólicas (CIVEA) expresaron su conformidad de que el control y la
+        titularidad de la Denominación de Origen Controlada Ron de Venezuela recayera a partir de la citada fecha en la
+        Asociación Civil Fondo para la Promoción del Ron de Venezuela (FONPRONVEN). De esta manera CIVEA traspasó la
+        titularidad, control, difusión, promoción y otras acciones vinculadas a la Denominación de Origen Controlada Ron
+        de Venezuela a FONPRONVEN.
       </p>
       <p className="font_20 text-justify">
-        El Fondo para la Promoción del Ron de Venezuela se creó en 2009 y desde
-        sus inicios ha tenido como objetivo velar porque se cumplan los
-        requisitos de la D.O.C Ron de Venezuela, promocionarla nacional e
-        internacionalmente como producto bandera del país, así como promoverlo a
-        través de la ruta turística Ron de Venezuela.
+        El Fondo para la Promoción del Ron de Venezuela se creó en 2009 y desde sus inicios ha tenido como objetivo
+        velar porque se cumplan los requisitos de la D.O.C Ron de Venezuela, promocionarla nacional e internacionalmente
+        como producto bandera del país, así como promoverlo a través de la ruta turística Ron de Venezuela.
       </p>
       <p className="font_20 text-justify">
-        En agosto de 2019 el SAPI ratificó la Denominación de Origen Controlada
-        que fue otorgada en 2003 según Resolución No. 798 del Servicio Autónomo
-        de Propiedad Intelectual el 04 de noviembre de 2003. Esta actualización
-        permite seguir protegiendo legalmente al ron venezolano en los
-        principales mercados de exportación y en el ámbito nacional.
+        En agosto de 2019 el SAPI ratificó la Denominación de Origen Controlada que fue otorgada en 2003 según
+        Resolución No. 798 del Servicio Autónomo de Propiedad Intelectual el 04 de noviembre de 2003. Esta actualización
+        permite seguir protegiendo legalmente al ron venezolano en los principales mercados de exportación y en el
+        ámbito nacional.
       </p>
     </>
   ),
@@ -349,11 +328,9 @@ strings.doc = {
   regulador1: (
     <>
       <p className="font_20 text-justify">
-        Es el órgano técnico encargado de controlar y certificar el cumplimiento
-        de las condiciones de calidad asociadas a la Denominación de Origen
-        Controlada Ron de Venezuela, así como la generación de normativas
-        necesarias para la verificación de la D.O.C. y evaluación para la
-        admisión de nuevos miembros.
+        Es el órgano técnico encargado de controlar y certificar el cumplimiento de las condiciones de calidad asociadas
+        a la Denominación de Origen Controlada Ron de Venezuela, así como la generación de normativas necesarias para la
+        verificación de la D.O.C. y evaluación para la admisión de nuevos miembros.
       </p>
     </>
   ),
@@ -363,30 +340,26 @@ strings.doc = {
       <p className="font_20 text-justify">
         <ol type="a" className="font_20">
           <li>
-            Recopilar los usos, buenas prácticas y las condiciones de calidad
-            aplicables a la Denominación de Origen Controlada “Ron de Venezuela
+            Recopilar los usos, buenas prácticas y las condiciones de calidad aplicables a la Denominación de Origen
+            Controlada “Ron de Venezuela
           </li>
           <li>
-            Certificar que las empresas que así lo hayan solicitado, cuenten con
-            las capacidades y condiciones que le permitan el uso de la
-            Denominación de Origen Controlada “Ron de Venezuela”{" "}
+            Certificar que las empresas que así lo hayan solicitado, cuenten con las capacidades y condiciones que le
+            permitan el uso de la Denominación de Origen Controlada “Ron de Venezuela”{" "}
           </li>
           <li>
-            Llevar un registro actualizado de las empresas inscritas y aprobadas
-            para hacer uso de la Denominación de Origen “Ron de Venezuela”, así
-            como centrales azucareros, destilerías de alcohol y empresas
-            productoras de ron con bodegas de añejamiento
+            Llevar un registro actualizado de las empresas inscritas y aprobadas para hacer uso de la Denominación de
+            Origen “Ron de Venezuela”, así como centrales azucareros, destilerías de alcohol y empresas productoras de
+            ron con bodegas de añejamiento
           </li>
           <li>
-            Velar mediante auditorias bi-anuales de post certificación que las
-            condiciones bajo las cuales se autorizó el uso de la Denominación de
-            Origen “Ron de Venezuela” se mantengan en el tiempo.{" "}
+            Velar mediante auditorias bi-anuales de post certificación que las condiciones bajo las cuales se autorizó
+            el uso de la Denominación de Origen “Ron de Venezuela” se mantengan en el tiempo.{" "}
           </li>
           <li>
-            Ejercer el control sobre la Denominación de Origen “Ron de
-            Venezuela”, adoptando medidas y recomendaciones en caso de uso
-            inadecuado de tal Denominación, ya sea por uno de sus miembros
-            autorizados o por cualquier tercero
+            Ejercer el control sobre la Denominación de Origen “Ron de Venezuela”, adoptando medidas y recomendaciones
+            en caso de uso inadecuado de tal Denominación, ya sea por uno de sus miembros autorizados o por cualquier
+            tercero
           </li>
         </ol>
       </p>
@@ -395,29 +368,17 @@ strings.doc = {
   organizacion: (
     <>
       <h4 className="titulo-maestro">Organización:</h4>
-      <p className="font_20 text-justify">
-        El Consejo Regulador contará con una Junta y con un Consejo Técnico
-      </p>
-      <p className="font_20 text-justify">
-        La Junta del Consejo Regulador estará integrado por:
-      </p>
+      <p className="font_20 text-justify">El Consejo Regulador contará con una Junta y con un Consejo Técnico</p>
+      <p className="font_20 text-justify">La Junta del Consejo Regulador estará integrado por:</p>
       <ul className="font_20">
         <li>Dos maestros roneros miembros del Consejo Técnico</li>
-        <li>
-          Un representante de la asociación civil FONDONORMA o empresa dedicada
-          a auditorías de calidad
-        </li>
-        <li>
-          Un representante de organizaciones gubernamentales, académicas,
-          científicas y culturales
-        </li>
+        <li>Un representante de la asociación civil FONDONORMA o empresa dedicada a auditorías de calidad</li>
+        <li>Un representante de organizaciones gubernamentales, académicas, científicas y culturales</li>
         <li>El Gerente General de FONPRONVEN.</li>
       </ul>
       <p className="font_20 text-justify">
-        El Consejo Técnico es el órgano de consulta de la Junta del Consejo
-        Regulador, que garantizará además la objetividad de sus decisiones y
-        está conformado por los maestros roneros certificados por el Consejo
-        Regulador
+        El Consejo Técnico es el órgano de consulta de la Junta del Consejo Regulador, que garantizará además la
+        objetividad de sus decisiones y está conformado por los maestros roneros certificados por el Consejo Regulador
       </p>
     </>
   ),
@@ -429,36 +390,30 @@ strings.gente = {
     title: `Cuerpo y alma`,
     parrafo1: (
       <span>
-        Cuando se habla del Ron de Venezuela no se hace referencia a fórmulas
-        químicas secretas que le han dado premios y aplausos en el mundo. En
-        cada botella está encerrado el trabajo de hombres del campo que cuidan
-        la caña que es única y de la que se sienten orgullosos. A las
-        tradiciones ancestrales se suman las tecnologías que aplican con
+        Cuando se habla del Ron de Venezuela no se hace referencia a fórmulas químicas secretas que le han dado premios
+        y aplausos en el mundo. En cada botella está encerrado el trabajo de hombres del campo que cuidan la caña que es
+        única y de la que se sienten orgullosos. A las tradiciones ancestrales se suman las tecnologías que aplican con
         expectativas para optimizar su derivado, la melaza.
       </span>
     ),
     parrafo2: (
       <span>
-        Están las anécdotas de quienes la extraen para luego legar a las
-        destilerías y vaciarla en eso grandes depósitos que la custodian hasta
-        convertirse en licor.
+        Están las anécdotas de quienes la extraen para luego legar a las destilerías y vaciarla en eso grandes depósitos
+        que la custodian hasta convertirse en licor.
       </span>
     ),
     parrafo3: (
       <span>
-        Están los maestros roneros cuyas narices son capaces de percibir, a
-        través del olor, el sabor. De olfato privilegiado, que cuidan y
-        protegen, estos maestros transmiten su pasión a ese producto final que
-        llega orgulloso a la copa.
+        Están los maestros roneros cuyas narices son capaces de percibir, a través del olor, el sabor. De olfato
+        privilegiado, que cuidan y protegen, estos maestros transmiten su pasión a ese producto final que llega
+        orgulloso a la copa.
       </span>
     ),
     parrafo4: (
       <span>
-        En cada etiqueta también se suman proyectos comunitarios, la solidaridad
-        hacia la comunidad, el estímulo a los emprendedores, el respaldo a las
-        artes y fomento al deporte. En fin, todo aquello que contribuya al
-        desarrollo del país, porque los hombres y mujeres del ron son Venezuela
-        y trabajan para ella.
+        En cada etiqueta también se suman proyectos comunitarios, la solidaridad hacia la comunidad, el estímulo a los
+        emprendedores, el respaldo a las artes y fomento al deporte. En fin, todo aquello que contribuya al desarrollo
+        del país, porque los hombres y mujeres del ron son Venezuela y trabajan para ella.
       </span>
     ),
   },
@@ -468,36 +423,29 @@ strings.gente = {
       <>
         <h4 className="titulo-maestro">Maestra Ronera de Ron Carúpano</h4>
         <p className="font_20 text-justify">
-          Los rones de Destilería Carúpano tienen una magia adicional. Y es que
-          su creación depende de la única maestra ronera del país: Carmen López
-          de Bastidas, quien tiene 30 años desarrollando los perfiles de los
-          inigualables productos de Destilería Carúpano.
+          Los rones de Destilería Carúpano tienen una magia adicional. Y es que su creación depende de la única maestra
+          ronera del país: Carmen López de Bastidas, quien tiene 30 años desarrollando los perfiles de los inigualables
+          productos de Destilería Carúpano.
         </p>
         <p className="font_20 text-justify">
-          Hoy en día Carmen López de Bastidas se ha ganado un lugar y
-          reconocimiento en la industria ya que conoce perfectamente cómo
-          seleccionar exclusivos alcoholes de carácter superior y usar la más
-          pura agua de los propios y fecundos manantiales de Destilería
-          Carúpano.
+          Hoy en día Carmen López de Bastidas se ha ganado un lugar y reconocimiento en la industria ya que conoce
+          perfectamente cómo seleccionar exclusivos alcoholes de carácter superior y usar la más pura agua de los
+          propios y fecundos manantiales de Destilería Carúpano.
         </p>
         <p className="font_20 text-justify">
-          El compromiso de Carmen López de Bastidas se engrandece al saber
-          equilibrar la experiencia artesanal acumulada de muchos años con el
-          conocimiento de la más actual técnica de análisis sensorial que les
-          garantizan la singular calidad final a los rones de Ron Carúpano.
+          El compromiso de Carmen López de Bastidas se engrandece al saber equilibrar la experiencia artesanal acumulada
+          de muchos años con el conocimiento de la más actual técnica de análisis sensorial que les garantizan la
+          singular calidad final a los rones de Ron Carúpano.
         </p>
         <p className="font_20 text-justify">
-          En sus propias palabras, ser una maestra ronera significa “tener la
-          capacidad, la sensibilidad gustativa y olfativa al igual que la
-          dedicación para saber mezclar diferentes tipos de rones con distintas
-          añadas de envejecimiento para poder crear productos de altísima
-          calidad”.
+          En sus propias palabras, ser una maestra ronera significa “tener la capacidad, la sensibilidad gustativa y
+          olfativa al igual que la dedicación para saber mezclar diferentes tipos de rones con distintas añadas de
+          envejecimiento para poder crear productos de altísima calidad”.
         </p>
         <p className="font_20 text-justify">
-          Es la mezcla de sus conocimientos, experiencia y sensibilidad femenina
-          lo que da el toque especial a los rones añejos Carúpano, y así sus
-          sabores y aromas singulares son de una calidad única, logrando
-          despertar infinitas sensaciones en quienes los prueban.
+          Es la mezcla de sus conocimientos, experiencia y sensibilidad femenina lo que da el toque especial a los rones
+          añejos Carúpano, y así sus sabores y aromas singulares son de una calidad única, logrando despertar infinitas
+          sensaciones en quienes los prueban.
         </p>
       </>
     ),
@@ -505,37 +453,30 @@ strings.gente = {
       <>
         <h4 className="titulo-maestro">Maestro Ronero de Ron Diplomático</h4>
         <p className="font_20 text-justify">
-          Tito Cordero se unió a Destilerías Unidas S.A. en 1988 (en ese momento
-          llamado Licorerías Unidas S.A.), la compañía propietaria y productora
-          de Ron Diplomático. Trabaja con la marca desde su creación y ha
-          adquirido a lo largo de los años la experiencia y conocimientos
-          necesarios para cumplir su función actual: Maestro Ronero de
-          Diplomático.
+          Tito Cordero se unió a Destilerías Unidas S.A. en 1988 (en ese momento llamado Licorerías Unidas S.A.), la
+          compañía propietaria y productora de Ron Diplomático. Trabaja con la marca desde su creación y ha adquirido a
+          lo largo de los años la experiencia y conocimientos necesarios para cumplir su función actual: Maestro Ronero
+          de Diplomático.
         </p>
         <p className="font_20 text-justify">
-          Asegura que Ron Diplomático es el resultado de la dedicación y los
-          esfuerzos del equipo que trabaja para la marca. Junto con la gama
-          Diplomático Tradición, Tito está particularmente orgulloso de
-          Diplomático Ambassador, ron Premium elaborado a partir de las mejores
-          reservas de ron de la destilería, que destaca su experiencia,
+          Asegura que Ron Diplomático es el resultado de la dedicación y los esfuerzos del equipo que trabaja para la
+          marca. Junto con la gama Diplomático Tradición, Tito está particularmente orgulloso de Diplomático Ambassador,
+          ron Premium elaborado a partir de las mejores reservas de ron de la destilería, que destaca su experiencia,
           representando la máxima expresión de su trabajo de toda la vida.
         </p>
         <p className="font_20 text-justify">
-          Además de su dedicación a la calidad de los rones Diplomático, Tito
-          también ha ayudado a la destilería a garantizar una perfecta armonía
-          entre la producción y el medio ambiente, contribuyendo al proceso de
+          Además de su dedicación a la calidad de los rones Diplomático, Tito también ha ayudado a la destilería a
+          garantizar una perfecta armonía entre la producción y el medio ambiente, contribuyendo al proceso de
           certificación bajo los criterios ambientales ISO 14001.
         </p>
         <p className="font_20 text-justify">
-          Tito también posee una variedad de premios de concursos
-          internacionales para la marca Diplomático como: "Maestro Ronero del
-          año", en los London Rum Barrel Awards en 2011 y 2013, y "Mejor Máster
-          Blender del mundo", en la Conferencia Internacional de Ron de Madrid
-          en 2014.
+          Tito también posee una variedad de premios de concursos internacionales para la marca Diplomático como:
+          "Maestro Ronero del año", en los London Rum Barrel Awards en 2011 y 2013, y "Mejor Máster Blender del mundo",
+          en la Conferencia Internacional de Ron de Madrid en 2014.
         </p>
         <p className="font_20 text-justify">
-          Como Maestro Ronero, su esfuerzo se enfoca en crear un arte que todos
-          puedan disfrutar: el arte del Ron Diplomático.
+          Como Maestro Ronero, su esfuerzo se enfoca en crear un arte que todos puedan disfrutar: el arte del Ron
+          Diplomático.
         </p>
       </>
     ),
@@ -543,22 +484,18 @@ strings.gente = {
       <>
         <h4 className="titulo-maestro">Maestro Ronero de Ron Robles </h4>
         <p className="font_20 text-justify">
-          Giorgio Melis, maestro ronero de reconocida trayectoria y más de 50
-          años de experiencia, es el responsable de las excelentes notas y
-          atributos que distinguen a Ron Roble Viejo®.
+          Giorgio Melis, maestro ronero de reconocida trayectoria y más de 50 años de experiencia, es el responsable de
+          las excelentes notas y atributos que distinguen a Ron Roble Viejo®.
         </p>
         <p className="font_20 text-justify">
-          Ingeniero Químico egresado de la Universidad Central de Venezuela en
-          el año 1966. En 1967 comienza su carrera profesional en la producción
-          de rones venezolanos, labor que continúa hasta el día de hoy
-          demostrando su incansable compromiso con la excelencia.
+          Ingeniero Químico egresado de la Universidad Central de Venezuela en el año 1966. En 1967 comienza su carrera
+          profesional en la producción de rones venezolanos, labor que continúa hasta el día de hoy demostrando su
+          incansable compromiso con la excelencia.
         </p>
         <p className="font_20 text-justify">
-          Su constancia y arduo trabajo para la creación de rones excepcionales
-          rinden frutos en la obtención de múltiples reconocimientos otorgados a
-          Ron Roble Viejo® en las principales ferias internacionales de Madrid,
-          Barcelona, Nueva York, San Francisco, Ciudad de México, Tokio, Praga,
-          Berlín y Roma.
+          Su constancia y arduo trabajo para la creación de rones excepcionales rinden frutos en la obtención de
+          múltiples reconocimientos otorgados a Ron Roble Viejo® en las principales ferias internacionales de Madrid,
+          Barcelona, Nueva York, San Francisco, Ciudad de México, Tokio, Praga, Berlín y Roma.
         </p>
       </>
     ),
@@ -566,40 +503,32 @@ strings.gente = {
       <>
         <h4 className="titulo-maestro">Maestro Ronero de Ron Santa Teresa</h4>
         <p className="font_20 text-justify">
-          Néstor Ortega es considerado como uno de los mejores Maestros Roneros
-          del mundo y ha sido ganador, en dos oportunidades, del reconocimiento
-          como “Best Rum – Maker”: por el Congreso Internacional del Ron en
-          Madrid (2012) y por la D.O.C. Ron de Venezuela (2016); Ortega
-          representa la experticia, la maestría y madurez de los rones de Santa
-          Teresa.
+          Néstor Ortega es considerado como uno de los mejores Maestros Roneros del mundo y ha sido ganador, en dos
+          oportunidades, del reconocimiento como “Best Rum – Maker”: por el Congreso Internacional del Ron en Madrid
+          (2012) y por la D.O.C. Ron de Venezuela (2016); Ortega representa la experticia, la maestría y madurez de los
+          rones de Santa Teresa.
         </p>
         <p className="font_20 text-justify">
-          Néstor es Ingeniero Químico y tiene una trayectoria de 40 años en Ron
-          Santa Teresa. Ortega ha sido pieza clave en el desarrollo de blends
-          únicos que le han atribuido a Santa Teresa su reconocimiento mundial.
-          Su experticia y conocimiento en el arte de la destilación, formulación
-          y añejamiento; y una cuidadosa selección de la mejor materia prima,
-          permitieron que Néstor creara los mejores alcoholes que,
-          posteriormente, lo convierten en el mejor ron del mundo.
+          Néstor es Ingeniero Químico y tiene una trayectoria de 40 años en Ron Santa Teresa. Ortega ha sido pieza clave
+          en el desarrollo de blends únicos que le han atribuido a Santa Teresa su reconocimiento mundial. Su experticia
+          y conocimiento en el arte de la destilación, formulación y añejamiento; y una cuidadosa selección de la mejor
+          materia prima, permitieron que Néstor creara los mejores alcoholes que, posteriormente, lo convierten en el
+          mejor ron del mundo.
         </p>
         <p className="font_20 text-justify">
-          Su rigurosa metodología y experiencia en diferentes áreas lo han hecho
-          cuidar con especial interés cada parte del proceso de los añejos de
-          Santa Teresa, garantizando el balance perfecto de las mezclas y
-          otorgándoles el perfil sensorial único de nuestros líquidos (ron con
-          carácter: seco y balanceado).
+          Su rigurosa metodología y experiencia en diferentes áreas lo han hecho cuidar con especial interés cada parte
+          del proceso de los añejos de Santa Teresa, garantizando el balance perfecto de las mezclas y otorgándoles el
+          perfil sensorial único de nuestros líquidos (ron con carácter: seco y balanceado).
         </p>
         <p className="font_20 text-justify">
-          Como parte de su legado, Néstor Ortega fue quién creó la Bodega de
-          Solera y ha sido el responsable del desarrollo de la mayoría de las
-          marcas que hoy forman parte del portafolio de Santa Teresa.
+          Como parte de su legado, Néstor Ortega fue quién creó la Bodega de Solera y ha sido el responsable del
+          desarrollo de la mayoría de las marcas que hoy forman parte del portafolio de Santa Teresa.
         </p>
         <p className="font_20 text-justify">
-          Su compromiso y su afán por generar productos diferenciadores, junto a
-          los valores de la marca y la familia Vollmer, hacen que Néstor no tome
-          atajos, sino que dedique el tiempo necesario para desarrollar blends
-          sin valerse de aditivos o productos químicos de la manera más
-          artesanal y natural posible, para obtener los resultados deseados.
+          Su compromiso y su afán por generar productos diferenciadores, junto a los valores de la marca y la familia
+          Vollmer, hacen que Néstor no tome atajos, sino que dedique el tiempo necesario para desarrollar blends sin
+          valerse de aditivos o productos químicos de la manera más artesanal y natural posible, para obtener los
+          resultados deseados.
         </p>
       </>
     ),
@@ -609,21 +538,18 @@ strings.gente = {
     parrafos: (
       <>
         <p className="font_20 text-justify">
-          Ron de Venezuela es más que el nombre de un producto. Representa la
-          labor combinada de mucha gente que van sumando esfuerzos hasta
-          alcanzar el resultado definitivo, que en este caso es el ron.
+          Ron de Venezuela es más que el nombre de un producto. Representa la labor combinada de mucha gente que van
+          sumando esfuerzos hasta alcanzar el resultado definitivo, que en este caso es el ron.
         </p>
         <p className="font_20 text-justify">
-          Amparado en la Denominación de Origen Controlada, cada destilería
-          establece sus propios parámetros pero coinciden en la búsqueda de la
-          calidad, en alcanzar su propia identidad y al mismo tiempo cobijarse,
-          gracias a su calidad, bajo una nacionalidad, la venezolana.
+          Amparado en la Denominación de Origen Controlada, cada destilería establece sus propios parámetros pero
+          coinciden en la búsqueda de la calidad, en alcanzar su propia identidad y al mismo tiempo cobijarse, gracias a
+          su calidad, bajo una nacionalidad, la venezolana.
         </p>
         <p className="font_20 text-justify">
-          En el nombre de Venezuela se cobijan empresas que han hecho de la
-          excelencia su norte y del prestigio su denominación común. Allí radica
-          la diferencia que se ha convertido en reconocimientos para catapultar
-          nuestro ron como el mejor del mundo.
+          En el nombre de Venezuela se cobijan empresas que han hecho de la excelencia su norte y del prestigio su
+          denominación común. Allí radica la diferencia que se ha convertido en reconocimientos para catapultar nuestro
+          ron como el mejor del mundo.
         </p>
       </>
     ),
@@ -677,12 +603,15 @@ strings.validacionEdad = {
   loEres: <span>¿Lo eres?</span>,
   si: "SI",
   no: "NO",
-  noTienesEdad:
-    "Aún no tienes edad suficiente para visualizar el contenido del sitio",
+  noTienesEdad: "Aún no tienes edad suficiente para visualizar el contenido del sitio",
 };
 
 strings.premios = {
   premios: "Premios",
+};
+
+strings.videos = {
+  home: "/videos/spanish.mp4",
 };
 
 export default strings;

@@ -95,9 +95,7 @@ const stylesCss = css.global`
   }
 
   .zoom:hover {
-    transform: scale(
-      1.2
-    ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 
   .zoom-elron {
@@ -114,7 +112,7 @@ const stylesCss = css.global`
     border-radius: 2px;
     // cursor: pointer;
     // padding: 0.5rem 1rem 0.5rem 1rem;
-    // font-size: 1.3rem;
+    font-size: 1.5rem;
     // width: 300px;
   }
 

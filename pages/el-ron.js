@@ -124,17 +124,9 @@ export default function ElRon() {
           <div className="row">
             <div className="col-md-12">
               <div className="seccion_titulo valida_mobile">
-                <img
-                  src="./assets/imgs/home/linea2.png"
-                  className="linea1"
-                  style={{ maxHeight: "4px" }}
-                />
+                <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
                 <h1>{strings[lang].elron.title}</h1>
-                <img
-                  src="./assets/imgs/home/linea1.png"
-                  className="linea2"
-                  style={{ maxHeight: "4px" }}
-                />
+                <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
               </div>
 
               <div className="valida_desktop">
@@ -199,25 +191,13 @@ export default function ElRon() {
           />
           <br />
           <br />
-          <img
-            src="./assets/imgs/elrom/FLECHA.png"
-            style={{ height: "50px" }}
-            className="zoom-elron"
-          />
+          <img src="./assets/imgs/elrom/FLECHA.png" style={{ height: "50px" }} className="zoom-elron" />
         </Col>
         <Col lg={0} xs={11}>
-          <img
-            src="./assets/imgs/elrom/PROCESO-RON-CAMION.png"
-            style={{ maxWidth: "90%" }}
-            className="zoom-elron"
-          />
+          <img src="./assets/imgs/elrom/PROCESO-RON-CAMION.png" style={{ maxWidth: "90%" }} className="zoom-elron" />
           <br />
           <br />
-          <img
-            src="./assets/imgs/elrom/FLECHA.png"
-            style={{ height: "50px" }}
-            className="zoom-elron"
-          />
+          <img src="./assets/imgs/elrom/FLECHA.png" style={{ height: "50px" }} className="zoom-elron" />
         </Col>
         <Col span={22} className="text-center">
           <br />
@@ -245,11 +225,7 @@ export default function ElRon() {
 
         <Col xs={22} lg={0} className="text-center">
           <br />
-          <img
-            src="./assets/imgs/elrom/FLECHA.png"
-            style={{ height: "50px" }}
-            className="zoom-elron"
-          />
+          <img src="./assets/imgs/elrom/FLECHA.png" style={{ height: "50px" }} className="zoom-elron" />
           <br />
           <br />
           <Button
@@ -271,10 +247,7 @@ export default function ElRon() {
           <Row>
             <Col span={16} className="text-center">
               <br />
-              <img
-                src="./assets/imgs/elrom/FLECHA.png"
-                className="zoom-elron"
-              />
+              <img src="./assets/imgs/elrom/FLECHA.png" className="zoom-elron" />
               <br />
               <br />
               <Button
@@ -315,17 +288,10 @@ export default function ElRon() {
           <br />
           <Row>
             <Col xs={24} lg={0} className="text-center">
-              <img
-                src="./assets/imgs/elrom/FLECHA.png"
-                style={{ height: "50px" }}
-                className="zoom-elron"
-              />
+              <img src="./assets/imgs/elrom/FLECHA.png" style={{ height: "50px" }} className="zoom-elron" />
             </Col>
             <Col xs={0} lg={24} className="text-center">
-              <img
-                src="./assets/imgs/elrom/FLECHA.png"
-                className="zoom-elron"
-              />
+              <img src="./assets/imgs/elrom/FLECHA.png" className="zoom-elron" />
             </Col>
           </Row>
 
@@ -348,10 +314,7 @@ export default function ElRon() {
         </Col>
 
         <Col lg={20}>
-          <img
-            src="./assets/imgs/elrom/PROCESO-RON-ANEJAMIENTO.png"
-            style={{ maxWidth: "100%", width: "1000px" }}
-          />
+          <img src="./assets/imgs/elrom/PROCESO-RON-ANEJAMIENTO.png" style={{ maxWidth: "100%", width: "1000px" }} />
           <br />
           <br />
         </Col>
