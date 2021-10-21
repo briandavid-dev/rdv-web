@@ -648,7 +648,7 @@ export default function Home() {
                   </div>
 
                   <div style={{ textAlign: "center", marginTop: 50 }}>
-                    <video style={{ maxWidth: "100%" }} controls src={strings[lang].videos.home}>
+                    <video style={{ width: "100%", maxWidth: "100%" }} controls src={strings[lang].videos.home}>
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -1061,7 +1061,7 @@ export default function Home() {
                 </Col>
                 <Col xs={22} className="text-center">
                   <div style={{ textAlign: "center", marginTop: 50 }}>
-                    <video style={{ maxWidth: "100%" }} controls src={strings[lang].videos.home}>
+                    <video style={{ width: "100%", maxWidth: "100%" }} controls src={strings[lang].videos.home}>
                       Your browser does not support the video tag.
                     </video>
                   </div>
