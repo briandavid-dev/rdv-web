@@ -509,4 +509,8 @@ strings.videos = {
   home: "/videos/english.mp4",
 };
 
+strings.images = {
+  "PROCESO-RON-DESTILACION": "PROCESO-RON-DESTILACION-EN.png",
+};
+
 export default strings;

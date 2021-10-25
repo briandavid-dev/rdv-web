@@ -10,7 +10,7 @@ if (typeof require !== "undefined") {
 }
 
 module.exports = withCSS({
-  // se comentan este para develoment
+  // se comentan las siguientes 2 lineas para develoment
   basePath: "/qa/out",
   assetPrefix: "https://www.bmosoluciones.com/qa/out",
   cssModules: true,

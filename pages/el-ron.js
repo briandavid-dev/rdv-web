@@ -278,7 +278,8 @@ export default function ElRon() {
                 text: strings[lang].elron.destilacion.info,
               });
             }}
-            src="./assets/imgs/elrom/PROCESO-RON-DESTILACION.png"
+            // src="./assets/imgs/elrom/PROCESO-RON-DESTILACION.png"
+            src={`./assets/imgs/elrom/${strings[lang].images["PROCESO-RON-DESTILACION"]}`}
             style={{ maxWidth: "100%", width: "1000px" }}
           />
         </Col>

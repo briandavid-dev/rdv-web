@@ -112,7 +112,7 @@ const stylesCss = css.global`
     border-radius: 2px;
     // cursor: pointer;
     // padding: 0.5rem 1rem 0.5rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem !important;
     // width: 300px;
   }
 
