@@ -36,7 +36,7 @@ const stylesCss = css.global`
   }
 `;
 
-const Runmasters = () => {
+const Noticias = () => {
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [contenidoUpdate, setContenidoUpdate] = useState("");
@@ -84,7 +84,8 @@ const Runmasters = () => {
   }, []);
 
   const [fileCertificado, setFileCertificado] = useState([]);
-  const [showSizeMessageCertificado, setShowSizeMessageCertificado] = useState(false);
+  const [showSizeMessageCertificado, setShowSizeMessageCertificado] =
+    useState(false);
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
@@ -101,7 +102,9 @@ const Runmasters = () => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      const rgxBase64 = RegExp(/data:(application|image)\/(jpeg|jpg|png*);base64,([^"]*)/gim);
+      const rgxBase64 = RegExp(
+        /data:(application|image)\/(jpeg|jpg|png*);base64,([^"]*)/gim
+      );
       const rgx = rgxBase64.exec(reader.result);
 
       if (rgx !== null) {
@@ -270,7 +273,9 @@ const Runmasters = () => {
     setContenidoUpdate(noticiaUpdate.contenido);
 
     if (noticiaUpdate.imageBase64 !== "") {
-      setImageSrc(`data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`);
+      setImageSrc(
+        `data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`
+      );
     } else {
       setImageSrc("");
     }
@@ -315,7 +320,11 @@ const Runmasters = () => {
           {/* <Column title="id" dataIndex="id" key="id" /> */}
           <Column title="Nombre" dataIndex="titulo" key="titulo" />
           <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
-          <Column title="Fecha de Creación" dataIndex="fechaCreacion" key="fechaCreacion" />
+          <Column
+            title="Fecha de Creación"
+            dataIndex="fechaCreacion"
+            key="fechaCreacion"
+          />
           <Column
             title="Opciones"
             key="opciones"
@@ -338,9 +347,17 @@ const Runmasters = () => {
                   <DeleteTwoTone onClick={showPopconfirm} />
                 </Popconfirm>
 
-                <Productos empresaId={record.id} empresaNombre={record.titulo} empresaLenguaje={record.lenguaje} />
+                <Productos
+                  empresaId={record.id}
+                  empresaNombre={record.titulo}
+                  empresaLenguaje={record.lenguaje}
+                />
 
-                <BtnPremios empresaId={record.id} empresaNombre={record.titulo} empresaLenguaje={record.lenguaje} />
+                <BtnPremios
+                  empresaId={record.id}
+                  empresaNombre={record.titulo}
+                  empresaLenguaje={record.lenguaje}
+                />
               </Space>
             )}
           />
@@ -348,7 +365,13 @@ const Runmasters = () => {
       </Spin>
 
       <Modal
-        title={procesoActual === "ACTUALIZAR" ? <span>Actualizar Maestro</span> : <span>Agregar Maestro</span>}
+        title={
+          procesoActual === "ACTUALIZAR" ? (
+            <span>Actualizar Empresa</span>
+          ) : (
+            <span>Agregar Nueva Empresa</span>
+          )
+        }
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -421,7 +444,8 @@ const Runmasters = () => {
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de <strong>400px x 400px</strong> (no superior a 500 KB)
+                        Imágenes jpg o png de <strong>400px x 400px</strong> (no
+                        superior a 500 KB)
                       </span>
                     }
                     rules={[
@@ -442,14 +466,21 @@ const Runmasters = () => {
                       accept=".jpg, .jpeg, .png"
                       listType="picture"
                       // showUploadList={false}
-                      beforeUpload={(file) => handleBeforeUploadCertificado(file)}
+                      beforeUpload={(file) =>
+                        handleBeforeUploadCertificado(file)
+                      }
                       onRemove={handleRemoveFileClickCertificado}
                       fileList={fileCertificado}
                     >
-                      <Button icon={<UploadOutlined />}>Click para adjuntar</Button>
+                      <Button icon={<UploadOutlined />}>
+                        Click para adjuntar
+                      </Button>
 
                       {showSizeMessageCertificado && (
-                        <div className="afiliacion-datos-personales__size-message " style={{ color: "red" }}>
+                        <div
+                          className="afiliacion-datos-personales__size-message "
+                          style={{ color: "red" }}
+                        >
                           El archivo no debe pesar más de 500 KB.
                         </div>
                       )}
@@ -523,7 +554,10 @@ const Runmasters = () => {
                 </Col>
                 <Col lg={24}>
                   <br />
-                  <EditorImport contenidoUpdate={contenidoUpdate} setContenidoUpdate={setContenidoUpdate} />
+                  <EditorImport
+                    contenidoUpdate={contenidoUpdate}
+                    setContenidoUpdate={setContenidoUpdate}
+                  />
                 </Col>
                 <Col lg={24} style={{ textAlign: "center" }}>
                   <br />
@@ -531,7 +565,11 @@ const Runmasters = () => {
                   <Button onClick={handleCancel}>Volver</Button>
                   {"  "}
                   <Button type="primary" htmlType="submit">
-                    {procesoActual === "ACTUALIZAR" ? <span>Actualizar</span> : <span>Agregar</span>}
+                    {procesoActual === "ACTUALIZAR" ? (
+                      <span>Actualizar</span>
+                    ) : (
+                      <span>Agregar</span>
+                    )}
                   </Button>
                 </Col>
               </Row>
@@ -543,4 +581,4 @@ const Runmasters = () => {
   );
 };
 
-export default Runmasters;
+export default Noticias;

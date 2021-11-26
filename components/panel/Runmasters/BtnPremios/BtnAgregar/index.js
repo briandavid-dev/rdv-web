@@ -1,121 +1,92 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
-import css from "styled-jsx/css";
 import {
+  Button,
+  Modal,
+  Spin,
+  Form,
+  Input,
   Row,
   Col,
-  Form,
-  Button,
-  Input,
-  Upload,
   Select,
-  Modal,
-  Table,
-  Space,
-  // Radio,
-  Popconfirm,
-  Image,
-  Spin,
+  Upload,
 } from "antd";
-const { Column } = Table;
-import { UploadOutlined, DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
+import { UploadOutlined } from "@ant-design/icons";
 import dynamic from "next/dynamic";
-import ApiNoticias from "../services";
-import Productos from "./Productos";
-import BtnPremios from "./BtnPremios";
-import notifica from "../../../utils/notifica";
+import ApiProductos from "../services";
+import notifica from "../../../../../utils/notifica";
 
-import EditorImport from "./EditorImport";
+const Editor = dynamic(
+  () => {
+    return import("../../Editor");
+  },
+  { ssr: false }
+);
 
-const stylesCss = css.global`
-  body {
-    font-family: var(--bs-font-sans-serif);
-    color: #62452d !important;
-    background-color: #f0f2f5;
-  }
-`;
+const BtnAgregar = (props) => {
+  const {
+    empresaId,
+    empresaNombre,
+    empresaLenguaje,
+    dataProductos,
+    setDataProductos,
+  } = props;
 
-const Runmasters = () => {
   const [form] = Form.useForm();
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [contenidoUpdate, setContenidoUpdate] = useState("");
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [dataSource, setDataSource] = useState();
-  const [imageSrc, setImageSrc] = useState("");
+
   const [procesoActual, setProcesoActual] = useState("AGREGAR");
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [spinModal, setSpinModal] = useState(false);
-  const [spinListado, setSpinListado] = useState(false);
+  const [fileCertificado, setFileCertificado] = useState([]);
+  const [showSizeMessageCertificado, setShowSizeMessageCertificado] =
+    useState(false);
+  const [imageSrc, setImageSrc] = useState("");
+  const [contenidoUpdate, setContenidoUpdate] = useState("");
 
   useEffect(() => {
-    setSpinListado(true);
-    ApiNoticias.getNoticias("empresas")
-      .then((response) => {
-        const { codigo, results } = response.data;
-        if (codigo === "1") {
-          const newDataSource = results.map((noticia) => {
-            return {
-              key: noticia.id,
-              id: noticia.id,
-              titulo: noticia.title,
-              fechaCreacion: noticia.created_at,
-              // imagen: noticia.content_image,
-              imageBase64: noticia.image_base64,
-              imageExtension: noticia.image_extension,
-              lenguaje: noticia.language,
-              visualizacionHome: noticia.name_section,
-              marcarPrincipal: noticia.markMain,
-              contenido: noticia.content_html,
-              summary: noticia.summary,
-            };
-          });
-
-          setDataSource(newDataSource);
-          setSpinListado(false);
-        } else {
-          notifica("error");
-        }
-      })
-      .catch((error) => {
-        notifica("error");
-        setSpinListado(false);
-      });
+    form.resetFields();
+    setContenidoUpdate("");
+    setImageSrc("");
+    // setIsModalVisible(true);
   }, []);
 
-  const [fileCertificado, setFileCertificado] = useState([]);
-  const [showSizeMessageCertificado, setShowSizeMessageCertificado] = useState(false);
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
-    if (file.size / 1000 > 512) {
+    if (file.size / 1000 > 256) {
       setShowSizeMessageCertificado(true);
       return false;
     }
     setShowSizeMessageCertificado(false);
 
-    if (fileCertificado.findIndex((e) => e.name === file.name) >= 0) {
-      return false;
-    }
+    // if (fileCertificado.findIndex((e) => e.name === file.name) >= 0) {
+    //   return false;
+    // }
 
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      const rgxBase64 = RegExp(/data:(application|image)\/(jpeg|jpg|png*);base64,([^"]*)/gim);
+      const rgxBase64 = RegExp(
+        /data:(application|image)\/(jpeg|jpg|png*);base64,([^"]*)/gim
+      );
       const rgx = rgxBase64.exec(reader.result);
 
       if (rgx !== null) {
         setFileCertificado([
-          [
-            {
-              ...file,
-              name: file.name,
-              nombreArchivo: file.name,
-              extension: rgx[2],
-              base64: rgx[3],
-              bytes: null,
-            },
-          ],
+          ...fileCertificado,
+          {
+            ...file,
+            name: file.name,
+            nombreArchivo: file.name,
+            extension: rgx[2],
+            base64: rgx[3],
+            bytes: null,
+          },
+          ,
         ]);
       }
     };
@@ -123,6 +94,31 @@ const Runmasters = () => {
   };
   const handleRemoveFileClickCertificado = () => {
     setFileCertificado([]);
+  };
+
+  const normFile = (e) => {
+    let superaLimite = false;
+    if (e.file.size / 1000 > 256) {
+      setShowSizeMessageCertificado(true);
+      superaLimite = true;
+      e.fileList.pop();
+      return e && e.fileList;
+    } else {
+      setShowSizeMessageCertificado(false);
+      superaLimite = false;
+    }
+
+    if (Array.isArray(e)) {
+      return e;
+    }
+    // if (e.fileList.length > 1) {
+    //   e.fileList.shift();
+    // }
+    // if (superaLimite) {
+    //   e.fileList = [];
+    // }
+
+    return e && e.fileList;
   };
 
   const layout = {
@@ -133,20 +129,22 @@ const Runmasters = () => {
   const onFinish = (values) => {
     const payload = {
       ...values,
-      contenido: contenidoUpdate,
-      imagen: fileCertificado,
-      type: "empresas",
-      proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
+      content_html: contenidoUpdate,
+      image_extension: "",
+      image_base64: JSON.stringify(values.imagen),
+      type: "premios",
     };
 
-    let updateNoticias = dataSource;
+    delete payload.imagen;
+
+    let updateNoticias = dataProductos;
 
     if (procesoActual === "ACTUALIZAR") {
       setSpinModal(true);
-      ApiNoticias.updateNoticias(payload)
+      ApiProductos.updateProducto(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
-            updateNoticias = dataSource.map((noticia) => {
+            updateNoticias = dataProductos.map((noticia) => {
               if (noticia.id === values.id) {
                 const imagen_ = {};
                 if (payload.imagen[0]) {
@@ -163,7 +161,7 @@ const Runmasters = () => {
               return noticia;
             });
 
-            setDataSource(updateNoticias);
+            setDataProductos(updateNoticias);
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
@@ -180,22 +178,25 @@ const Runmasters = () => {
 
     if (procesoActual === "AGREGAR") {
       setSpinModal(true);
-      ApiNoticias.insertNoticias(payload)
+      ApiProductos.insertProducto(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
-            const uuid = uuidv4();
+            // const uuid = uuidv4();
             updateNoticias = [
-              ...dataSource,
+              ...dataProductos,
               {
                 ...payload,
-                imageBase64: payload.imagen[0][0].base64,
-                imageExtension: payload.imagen[0][0].extension,
-                key: uuid,
+                titulo: payload.name,
+                lenguaje: payload.language,
+                imageBase64: payload.image_base64,
+                imageExtension: payload.image_extension,
+                key: response.data.results.insertId,
                 id: response.data.results.insertId,
                 fechaCreacion: moment().format("DD-MM-YYYY"),
+                contenido: payload.content_html,
               },
             ];
-            setDataSource(updateNoticias);
+            setDataProductos(updateNoticias);
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
@@ -211,165 +212,62 @@ const Runmasters = () => {
     }
   };
 
-  const normFile = (e) => {
-    let superaLimite = false;
-    if (e.file.size / 1000 > 512) {
-      setShowSizeMessageCertificado(true);
-      superaLimite = true;
-    } else {
-      setShowSizeMessageCertificado(false);
-      superaLimite = false;
-    }
-
-    if (Array.isArray(e)) {
-      return e;
-    }
-    if (e.fileList.length > 1) {
-      e.fileList.shift();
-    }
-    if (superaLimite) {
-      e.fileList = [];
-    }
-
-    return e && e.fileList;
-  };
-
-  const handleAgregar = () => {
-    setProcesoActual("AGREGAR");
-
-    form.resetFields();
-    setContenidoUpdate("");
-    setImageSrc("");
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleEdit = (idUpdate) => {
-    setProcesoActual("ACTUALIZAR");
-    const noticiaUpdate = dataSource.find((noticia) => noticia.id === idUpdate);
-
-    form.resetFields();
-
-    form.setFieldsValue({
-      id: noticiaUpdate.id,
-      lenguaje: noticiaUpdate.lenguaje,
-      titulo: noticiaUpdate.titulo,
-      marcarPrincipal: noticiaUpdate.marcarPrincipal,
-      visualizacionHome: noticiaUpdate.visualizacionHome,
-      summary: noticiaUpdate.summary,
-      url: noticiaUpdate.url,
-    });
-
-    setContenidoUpdate(noticiaUpdate.contenido);
-
-    if (noticiaUpdate.imageBase64 !== "") {
-      setImageSrc(`data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`);
-    } else {
-      setImageSrc("");
-    }
-
-    setIsModalVisible(true);
-  };
-
-  const handleDelete = (id) => {
-    setSpinListado(true);
-    ApiNoticias.deteteNoticias({ id })
-      .then((response) => {
-        if (response.data.codigo === "1") {
-          setDataSource(dataSource.filter((noticia) => noticia.id !== id));
-          notifica("success");
-        } else {
-          notifica("error");
-        }
-        setSpinListado(false);
-      })
-      .catch((error) => {
-        notifica("error");
-        setSpinListado(false);
-      });
-  };
-
-  const showPopconfirm = () => {
-    setVisible(true);
-  };
-
   return (
-    <div>
-      <style jsx global>
-        {stylesCss}
-      </style>
-      <Button type="primary" onClick={handleAgregar}>
+    <>
+      <Button
+        type="primary"
+        onClick={() => {
+          form.resetFields();
+          setContenidoUpdate("");
+          setImageSrc("");
+          setIsModalVisible(true);
+        }}
+      >
         Agregar
       </Button>
-      <br />
-      <br />
-      <Spin spinning={spinListado}>
-        <Table dataSource={dataSource} pagination={false}>
-          {/* <Column title="id" dataIndex="id" key="id" /> */}
-          <Column title="Nombre" dataIndex="titulo" key="titulo" />
-          <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
-          <Column title="Fecha de Creación" dataIndex="fechaCreacion" key="fechaCreacion" />
-          <Column
-            title="Opciones"
-            key="opciones"
-            render={(text, record) => (
-              <Space size="middle">
-                <EditTwoTone
-                  onClick={() => {
-                    handleEdit(record.id);
-                  }}
-                />
-                <Popconfirm
-                  title="¿Seguro de eliminar este contenido？"
-                  okText="Si"
-                  cancelText="No"
-                  onConfirm={() => {
-                    handleDelete(record.id);
-                  }}
-                  okButtonProps={{ loading: confirmLoading }}
-                >
-                  <DeleteTwoTone onClick={showPopconfirm} />
-                </Popconfirm>
-
-                <Productos empresaId={record.id} empresaNombre={record.titulo} empresaLenguaje={record.lenguaje} />
-
-                <BtnPremios empresaId={record.id} empresaNombre={record.titulo} empresaLenguaje={record.lenguaje} />
-              </Space>
-            )}
-          />
-        </Table>
-      </Spin>
 
       <Modal
-        title={procesoActual === "ACTUALIZAR" ? <span>Actualizar Maestro</span> : <span>Agregar Maestro</span>}
+        title={
+          procesoActual === "ACTUALIZAR" ? (
+            <span>Actualizar premio de {empresaNombre}</span>
+          ) : (
+            <span>Agregar nuevo premio para {empresaNombre}</span>
+          )
+        }
         visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        // onOk={handleOk}
+        onCancel={() => {
+          setIsModalVisible(false);
+        }}
         footer={false}
         width={1000}
         centered
       >
         <Spin spinning={spinModal} delay={500}>
           <div>
-            <Form {...layout} onFinish={onFinish} form={form}>
+            <Form
+              {...layout}
+              onFinish={onFinish}
+              form={form}
+              initialValues={{
+                language: empresaLenguaje,
+                empresa_id: empresaId,
+              }}
+            >
               <Form.Item name="id" hidden={true}>
+                <Input type="text" />
+              </Form.Item>
+              <Form.Item name="empresa_id" hidden={true}>
                 <Input type="text" />
               </Form.Item>
               <Row gutter={(40, 40)}>
                 <Col lg={24}>
                   <Form.Item
                     label={<strong>Lenguaje</strong>}
-                    name="lenguaje"
+                    name="language"
                     rules={[{ required: true, message: "Ingrese el lenguaje" }]}
                   >
-                    <Select placeholder="Seleccione" allowClear>
+                    <Select placeholder="Seleccione" allowClear disabled>
                       <Select.Option value="es">Español</Select.Option>
                       <Select.Option value="en">Inglés</Select.Option>
                     </Select>
@@ -378,10 +276,19 @@ const Runmasters = () => {
 
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Nombre</strong>}
-                    name="titulo"
+                    label={
+                      <strong>
+                        Nombre de institución, congreso o competición que otorga
+                        el premio
+                      </strong>
+                    }
+                    name="name"
                     rules={[
-                      { required: true, message: "Ingrese el titulo" },
+                      {
+                        required: true,
+                        message:
+                          "Ingrese el nombre de institución, congreso o competición que otorga el premio",
+                      },
                       { min: 10, message: "Mínimo 10 caracteres" },
                     ]}
                   >
@@ -389,18 +296,7 @@ const Runmasters = () => {
                   </Form.Item>
                 </Col>
 
-                <Col lg={24}>
-                  <Form.Item
-                    label={<strong>URL</strong>}
-                    name="url"
-                    rules={[{ min: 10, message: "Mínimo 5 caracteres" }]}
-                    extra={<span>Ejemplo: https://www.bmosoluciones.com/</span>}
-                  >
-                    <Input maxLength={100} />
-                  </Form.Item>
-                </Col>
-
-                <Col lg={24}>
+                {/* <Col lg={24}>
                   <Form.Item
                     label={<strong>Resumen</strong>}
                     name="summary"
@@ -412,22 +308,27 @@ const Runmasters = () => {
                     <Input maxLength={500} />
                   </Form.Item>
                 </Col>
-
+ */}
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Imagen</strong>}
+                    label={
+                      <strong>
+                        Imagenes de los premios (medallas por ejemplo)
+                      </strong>
+                    }
                     name="imagen"
                     valuePropName="fileList"
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de <strong>400px x 400px</strong> (no superior a 500 KB)
+                        Imágenes jpg o png de <strong>200 x 200 px </strong> (no
+                        superior a 200 KB)
                       </span>
                     }
                     rules={[
                       {
                         required: imageSrc !== "" ? false : true,
-                        message: "Adjunte un imagen",
+                        message: "Adjunte las imagenes",
                       },
                     ]}
                   >
@@ -442,15 +343,22 @@ const Runmasters = () => {
                       accept=".jpg, .jpeg, .png"
                       listType="picture"
                       // showUploadList={false}
-                      beforeUpload={(file) => handleBeforeUploadCertificado(file)}
-                      onRemove={handleRemoveFileClickCertificado}
+                      beforeUpload={(file) =>
+                        handleBeforeUploadCertificado(file)
+                      }
+                      // onRemove={handleRemoveFileClickCertificado}
                       fileList={fileCertificado}
                     >
-                      <Button icon={<UploadOutlined />}>Click para adjuntar</Button>
+                      <Button icon={<UploadOutlined />}>
+                        Click para adjuntar
+                      </Button>
 
                       {showSizeMessageCertificado && (
-                        <div className="afiliacion-datos-personales__size-message " style={{ color: "red" }}>
-                          El archivo no debe pesar más de 500 KB.
+                        <div
+                          className="afiliacion-datos-personales__size-message "
+                          style={{ color: "red" }}
+                        >
+                          El archivo no debe pesar más de 200 KB.
                         </div>
                       )}
                     </Upload>
@@ -513,9 +421,9 @@ const Runmasters = () => {
                     </Radio.Group>
                   </Form.Item> */}
 
-                  <Form.Item name="marcarPrincipal" hidden={true}>
+                  {/* <Form.Item name="marcarPrincipal" hidden={true}>
                     <Input type="text" />
-                  </Form.Item>
+                  </Form.Item> */}
                 </Col>
                 <Col lg={24}>
                   <span className="label-required"></span>
@@ -523,7 +431,10 @@ const Runmasters = () => {
                 </Col>
                 <Col lg={24}>
                   <br />
-                  <EditorImport contenidoUpdate={contenidoUpdate} setContenidoUpdate={setContenidoUpdate} />
+                  <Editor
+                    data={contenidoUpdate}
+                    actions={{ setContenidoUpdate }}
+                  />
                 </Col>
                 <Col lg={24} style={{ textAlign: "center" }}>
                   <br />
@@ -531,7 +442,11 @@ const Runmasters = () => {
                   <Button onClick={handleCancel}>Volver</Button>
                   {"  "}
                   <Button type="primary" htmlType="submit">
-                    {procesoActual === "ACTUALIZAR" ? <span>Actualizar</span> : <span>Agregar</span>}
+                    {procesoActual === "ACTUALIZAR" ? (
+                      <span>Actualizar premio</span>
+                    ) : (
+                      <span>Agregar premio</span>
+                    )}
                   </Button>
                 </Col>
               </Row>
@@ -539,8 +454,8 @@ const Runmasters = () => {
           </div>
         </Spin>
       </Modal>
-    </div>
+    </>
   );
 };
 
-export default Runmasters;
+export default BtnAgregar;

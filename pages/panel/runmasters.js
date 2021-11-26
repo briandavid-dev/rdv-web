@@ -5,6 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { Layout, Menu, Breadcrumb } from "antd";
 import Empresas from "../../components/panel/Empresas";
+import Runmasters from "../../components/panel/Empresas";
 const { Header, Content, Footer } = Layout;
 
 const stylesCss = css.global`
@@ -60,12 +61,12 @@ const PanelEmpresas = () => {
           rel="stylesheet"
         />
 
-        <title>Empresas - Panel</title>
+        <title>Run Masters - Panel</title>
       </Head>
       <Layout className="layout">
         <Header>
           <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["3"]}>
             <Menu.Item key="1">
               <Link href="/panel/noticias">Noticias</Link>
             </Menu.Item>
@@ -80,10 +81,10 @@ const PanelEmpresas = () => {
         <Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>Panel</Breadcrumb.Item>
-            <Breadcrumb.Item>Empresas</Breadcrumb.Item>
+            <Breadcrumb.Item>Maestros Roneros</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-content">
-            <Empresas />
+            <Runmasters />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>bmosoluciones.com</Footer>
