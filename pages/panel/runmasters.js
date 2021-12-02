@@ -4,8 +4,7 @@ import css from "styled-jsx/css";
 import Link from "next/link";
 import Head from "next/head";
 import { Layout, Menu, Breadcrumb } from "antd";
-import Empresas from "../../components/panel/Empresas";
-import Runmasters from "../../components/panel/Empresas";
+import Runmasters from "../../components/panel/Runmasters";
 const { Header, Content, Footer } = Layout;
 
 const stylesCss = css.global`

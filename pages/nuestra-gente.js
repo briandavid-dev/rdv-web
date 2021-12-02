@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { Row, Col, Divider, Carousel } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
@@ -6,6 +7,7 @@ import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+import ApiRunmasters from "../components/panel/Runmasters/services";
 
 const stylesCss = css.global`
   .Seccion0Gente {
@@ -26,6 +28,22 @@ export default function NuestraGente() {
     lang = "en";
   }
   const strings = { es, en };
+
+  const [listRunMasters, setListRunMasters] = useState([]);
+
+  useEffect(() => {
+    ApiRunmasters.getAll(lang)
+      .then((response) => {
+        if (response.data.codigo === "1") {
+          setListRunMasters(response.data.results);
+        } else {
+          setListRunMasters([]);
+        }
+      })
+      .catch((error) => {
+        console.log(`error`, error);
+      });
+  }, [lang]);
 
   return (
     <div>
@@ -67,17 +85,9 @@ export default function NuestraGente() {
               <div className="row">
                 <div className="col-md-6">
                   <div className="seccion_titulo">
-                    <img
-                      src="./assets/imgs/home/linea2.png"
-                      className="linea1"
-                      style={{ maxHeight: "4px" }}
-                    />
+                    <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
                     <h1>{strings[lang].gente.cuerpo.title}</h1>
-                    <img
-                      src="./assets/imgs/home/linea1.png"
-                      className="linea2"
-                      style={{ maxHeight: "4px" }}
-                    />
+                    <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
                   </div>
                   <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
                     {strings[lang].gente.cuerpo.parrafo1}
@@ -91,15 +101,9 @@ export default function NuestraGente() {
                 </div>
 
                 <div className="col-md-12">
-                  <p className="font_20 text-justify">
-                    {strings[lang].gente.cuerpo.parrafo2}
-                  </p>
-                  <p className="font_20 text-justify">
-                    {strings[lang].gente.cuerpo.parrafo3}
-                  </p>
-                  <p className="font_20 text-justify">
-                    {strings[lang].gente.cuerpo.parrafo4}
-                  </p>
+                  <p className="font_20 text-justify">{strings[lang].gente.cuerpo.parrafo2}</p>
+                  <p className="font_20 text-justify">{strings[lang].gente.cuerpo.parrafo3}</p>
+                  <p className="font_20 text-justify">{strings[lang].gente.cuerpo.parrafo4}</p>
                 </div>
               </div>
             </div>
@@ -109,17 +113,9 @@ export default function NuestraGente() {
             <div className="row">
               <div className="col-md-12">
                 <div className="seccion_titulo">
-                  <img
-                    src="./assets/imgs/home/linea2.png"
-                    className="linea1"
-                    style={{ maxHeight: "4px" }}
-                  />
+                  <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
                   <h1>{strings[lang].gente.maestros.title}</h1>
-                  <img
-                    src="./assets/imgs/home/linea1.png"
-                    className="linea2"
-                    style={{ maxHeight: "4px" }}
-                  />
+                  <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
                 </div>
               </div>
               <br />
@@ -130,6 +126,53 @@ export default function NuestraGente() {
             <div className="row">
               <div className="col-md-12">
                 <Carousel dotPosition="top">
+                  {/* TODO:  */}
+
+                  {listRunMasters.map((master) => (
+                    <div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          color: "#fef4e4",
+                          marginTop: "3rem",
+                        }}
+                      >
+                        <div
+                          style={{
+                            flex: 4,
+                            paddingRight: "calc(var(--bs-gutter-x)/ 2)",
+                          }}
+                        >
+                          {/* <img src="./assets/imgs/gente/m_CARMEN-LOPEZ.png" style={{ maxWidth: "100%" }} /> */}
+                          <img
+                            src={`data:image/${master.image_extension};base64,${master.image_base64}`}
+                            style={{ maxWidth: "100%" }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            flex: 8,
+                            paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
+                            fontSize: "1.5 rem",
+                          }}
+                        >
+                          <h4 className="titulo-maestro">{master.title}</h4>
+                          <br />
+                          <div
+                            style={{
+                              fontSize: "1.4rem",
+                            }}
+                            dangerouslySetInnerHTML={{
+                              __html: master.info,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/*
                   <div>
                     <div
                       style={{
@@ -145,10 +188,7 @@ export default function NuestraGente() {
                           paddingRight: "calc(var(--bs-gutter-x)/ 2)",
                         }}
                       >
-                        <img
-                          src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
-                          style={{ maxWidth: "100%" }}
-                        />
+                        <img src="./assets/imgs/gente/m_CARMEN-LOPEZ.png" style={{ maxWidth: "100%" }} />
                       </div>
                       <div
                         style={{
@@ -175,10 +215,7 @@ export default function NuestraGente() {
                           paddingRight: "calc(var(--bs-gutter-x)/ 2)",
                         }}
                       >
-                        <img
-                          src="./assets/imgs/gente/m_TITO-CORDERO.png"
-                          style={{ maxWidth: "100%" }}
-                        />
+                        <img src="./assets/imgs/gente/m_TITO-CORDERO.png" style={{ maxWidth: "100%" }} />
                       </div>
                       <div
                         style={{
@@ -205,10 +242,7 @@ export default function NuestraGente() {
                           paddingRight: "calc(var(--bs-gutter-x)/ 2)",
                         }}
                       >
-                        <img
-                          src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
-                          style={{ maxWidth: "100%" }}
-                        />
+                        <img src="./assets/imgs/gente/m_GIOGIO-MELIS.png" style={{ maxWidth: "100%" }} />
                       </div>
                       <div
                         style={{
@@ -235,10 +269,7 @@ export default function NuestraGente() {
                           paddingRight: "calc(var(--bs-gutter-x)/ 2)",
                         }}
                       >
-                        <img
-                          src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
-                          style={{ maxWidth: "100%" }}
-                        />
+                        <img src="./assets/imgs/gente/m_NESTRO-ORTEGA.png" style={{ maxWidth: "100%" }} />
                       </div>
                       <div
                         style={{
@@ -250,6 +281,7 @@ export default function NuestraGente() {
                       </div>
                     </div>
                   </div>
+                  */}
                 </Carousel>
               </div>
             </div>
@@ -267,18 +299,10 @@ export default function NuestraGente() {
             <div className="row">
               <div className="col-md-12">
                 <div className="seccion_titulo">
-                  <img
-                    src="./assets/imgs/home/linea2.png"
-                    className="linea1"
-                    style={{ maxHeight: "4px" }}
-                  />
+                  <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
 
                   <h1> {strings[lang].gente.unnombre.titulo}</h1>
-                  <img
-                    src="./assets/imgs/home/linea1.png"
-                    className="linea2"
-                    style={{ maxHeight: "4px" }}
-                  />
+                  <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
                 </div>
 
                 {strings[lang].gente.unnombre.parrafos}
@@ -308,10 +332,7 @@ export default function NuestraGente() {
             <h1>{strings[lang].gente.cuerpo.title}</h1>
           </Col>
           <Col xs={22} className="text-center">
-            <img
-              src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
-              style={{ maxWidth: "100%" }}
-            />
+            <img src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png" style={{ maxWidth: "100%" }} />
           </Col>
           <Col xs={22}>
             <p>{strings[lang].gente.cuerpo.parrafo1}</p>
@@ -327,34 +348,22 @@ export default function NuestraGente() {
 
             <Carousel dotPosition="top" style={{ color: "#fef4e4" }}>
               <div>
-                <img
-                  src="./assets/imgs/gente/m_CARMEN-LOPEZ.png"
-                  style={{ maxWidth: "100%", marginTop: "2rem" }}
-                />
+                <img src="./assets/imgs/gente/m_CARMEN-LOPEZ.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
                 <br />
                 {strings[lang].gente.maestros.carmen}
               </div>
               <div>
-                <img
-                  src="./assets/imgs/gente/m_TITO-CORDERO.png"
-                  style={{ maxWidth: "100%", marginTop: "2rem" }}
-                />
+                <img src="./assets/imgs/gente/m_TITO-CORDERO.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
                 <br />
                 {strings[lang].gente.maestros.tito}
               </div>
               <div>
-                <img
-                  src="./assets/imgs/gente/m_GIOGIO-MELIS.png"
-                  style={{ maxWidth: "100%", marginTop: "2rem" }}
-                />
+                <img src="./assets/imgs/gente/m_GIOGIO-MELIS.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
                 <br />
                 {strings[lang].gente.maestros.giorgio}
               </div>
               <div>
-                <img
-                  src="./assets/imgs/gente/m_NESTRO-ORTEGA.png"
-                  style={{ maxWidth: "100%", marginTop: "2rem" }}
-                />
+                <img src="./assets/imgs/gente/m_NESTRO-ORTEGA.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
                 <br />
                 {strings[lang].gente.maestros.nestor}
               </div>

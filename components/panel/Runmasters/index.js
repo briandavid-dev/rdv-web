@@ -17,13 +17,11 @@ import {
   Popconfirm,
   Image,
   Spin,
+  Divider,
 } from "antd";
 const { Column } = Table;
 import { UploadOutlined, DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
-import dynamic from "next/dynamic";
-import ApiNoticias from "../services";
-import Productos from "./Productos";
-import BtnPremios from "./BtnPremios";
+import ApiRunmasters from "./services";
 import notifica from "../../../utils/notifica";
 
 import EditorImport from "./EditorImport";
@@ -42,7 +40,8 @@ const Noticias = () => {
   const [contenidoUpdate, setContenidoUpdate] = useState("");
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [dataSource, setDataSource] = useState();
+  const [dataSourceEs, setDataSourceEs] = useState();
+  const [dataSourceEn, setDataSourceEn] = useState();
   const [imageSrc, setImageSrc] = useState("");
   const [procesoActual, setProcesoActual] = useState("AGREGAR");
   const [spinModal, setSpinModal] = useState(false);
@@ -50,7 +49,8 @@ const Noticias = () => {
 
   useEffect(() => {
     setSpinListado(true);
-    ApiNoticias.getNoticias("empresas")
+
+    ApiRunmasters.getAll("es")
       .then((response) => {
         const { codigo, results } = response.data;
         if (codigo === "1") {
@@ -58,20 +58,46 @@ const Noticias = () => {
             return {
               key: noticia.id,
               id: noticia.id,
-              titulo: noticia.title,
+              title: noticia.title,
               fechaCreacion: noticia.created_at,
               // imagen: noticia.content_image,
               imageBase64: noticia.image_base64,
               imageExtension: noticia.image_extension,
-              lenguaje: noticia.language,
-              visualizacionHome: noticia.name_section,
-              marcarPrincipal: noticia.markMain,
-              contenido: noticia.content_html,
-              summary: noticia.summary,
+              language: noticia.language,
+              contenido: noticia.info,
             };
           });
 
-          setDataSource(newDataSource);
+          setDataSourceEs(newDataSource);
+          setSpinListado(false);
+        } else {
+          notifica("error");
+        }
+      })
+      .catch((error) => {
+        notifica("error");
+        setSpinListado(false);
+      });
+
+    ApiRunmasters.getAll("en")
+      .then((response) => {
+        const { codigo, results } = response.data;
+        if (codigo === "1") {
+          const newDataSource = results.map((noticia) => {
+            return {
+              key: noticia.id,
+              id: noticia.id,
+              title: noticia.title,
+              fechaCreacion: noticia.created_at,
+              // imagen: noticia.content_image,
+              imageBase64: noticia.image_base64,
+              imageExtension: noticia.image_extension,
+              language: noticia.language,
+              contenido: noticia.info,
+            };
+          });
+
+          setDataSourceEn(newDataSource);
           setSpinListado(false);
         } else {
           notifica("error");
@@ -84,8 +110,7 @@ const Noticias = () => {
   }, []);
 
   const [fileCertificado, setFileCertificado] = useState([]);
-  const [showSizeMessageCertificado, setShowSizeMessageCertificado] =
-    useState(false);
+  const [showSizeMessageCertificado, setShowSizeMessageCertificado] = useState(false);
 
   const handleBeforeUploadCertificado = (file) => {
     // 5 MB = 1024 * 5 = 5120
@@ -102,9 +127,7 @@ const Noticias = () => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      const rgxBase64 = RegExp(
-        /data:(application|image)\/(jpeg|jpg|png*);base64,([^"]*)/gim
-      );
+      const rgxBase64 = RegExp(/data:(application|image)\/(jpeg|jpg|png*);base64,([^"]*)/gim);
       const rgx = rgxBase64.exec(reader.result);
 
       if (rgx !== null) {
@@ -136,43 +159,66 @@ const Noticias = () => {
   const onFinish = (values) => {
     const payload = {
       ...values,
-      contenido: contenidoUpdate,
+      info: contenidoUpdate,
       imagen: fileCertificado,
-      type: "empresas",
       proceso: procesoActual === "ACTUALIZAR" ? "ACTUALIZAR" : "AGREGAR",
     };
 
-    let updateNoticias = dataSource;
+    let updateNoticias = payload.language === "es" ? dataSourceEs : dataSourceEn;
 
     if (procesoActual === "ACTUALIZAR") {
       setSpinModal(true);
-      ApiNoticias.updateNoticias(payload)
+
+      ApiRunmasters.update(payload.id, payload)
         .then((response) => {
           if (response.data.codigo === "1") {
-            updateNoticias = dataSource.map((noticia) => {
-              if (noticia.id === values.id) {
-                const imagen_ = {};
-                if (payload.imagen[0]) {
-                  imagen_.imageBase64 = payload.imagen[0][0].base64;
-                  imagen_.imageExtension = payload.imagen[0][0].extension;
+            if (payload.language === "es") {
+              updateNoticias = dataSourceEs.map((noticia) => {
+                if (noticia.id === values.id) {
+                  const imagen_ = {};
+                  if (payload.imagen[0]) {
+                    imagen_.imageBase64 = payload.imagen[0][0].base64;
+                    imagen_.imageExtension = payload.imagen[0][0].extension;
+                  }
+
+                  return {
+                    ...noticia,
+                    ...payload,
+                    ...imagen_,
+                    contenido: payload.info || "",
+                  };
                 }
+                return noticia;
+              });
+              setDataSourceEs(updateNoticias);
+            } else {
+              updateNoticias = dataSourceEn.map((noticia) => {
+                if (noticia.id === values.id) {
+                  const imagen_ = {};
+                  if (payload.imagen[0]) {
+                    imagen_.imageBase64 = payload.imagen[0][0].base64;
+                    imagen_.imageExtension = payload.imagen[0][0].extension;
+                  }
 
-                return {
-                  ...noticia,
-                  ...payload,
-                  ...imagen_,
-                };
-              }
-              return noticia;
-            });
+                  return {
+                    ...noticia,
+                    ...payload,
+                    ...imagen_,
+                    contenido: payload.info || "",
+                  };
+                }
+                return noticia;
+              });
+              setDataSourceEn(updateNoticias);
+            }
 
-            setDataSource(updateNoticias);
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
             notifica("success");
           } else {
             notifica("error");
+            setSpinModal(false);
           }
         })
         .catch((error) => {
@@ -183,12 +229,14 @@ const Noticias = () => {
 
     if (procesoActual === "AGREGAR") {
       setSpinModal(true);
-      ApiNoticias.insertNoticias(payload)
+      ApiRunmasters.post(payload)
         .then((response) => {
           if (response.data.codigo === "1") {
+            const listData = payload.language === "es" ? dataSourceEs : dataSourceEn;
+
             const uuid = uuidv4();
             updateNoticias = [
-              ...dataSource,
+              ...listData,
               {
                 ...payload,
                 imageBase64: payload.imagen[0][0].base64,
@@ -196,9 +244,15 @@ const Noticias = () => {
                 key: uuid,
                 id: response.data.results.insertId,
                 fechaCreacion: moment().format("DD-MM-YYYY"),
+                contenido: payload.info || "",
               },
             ];
-            setDataSource(updateNoticias);
+            if (payload.language === "es") {
+              setDataSourceEs(updateNoticias);
+            } else {
+              setDataSourceEn(updateNoticias);
+            }
+
             setFileCertificado([]);
             handleCancel();
             setSpinModal(false);
@@ -254,28 +308,25 @@ const Noticias = () => {
     setIsModalVisible(false);
   };
 
-  const handleEdit = (idUpdate) => {
+  const handleEdit = (idUpdate, language) => {
     setProcesoActual("ACTUALIZAR");
-    const noticiaUpdate = dataSource.find((noticia) => noticia.id === idUpdate);
+    const noticiaUpdate =
+      language === "es"
+        ? dataSourceEs.find((noticia) => noticia.id === idUpdate)
+        : dataSourceEn.find((noticia) => noticia.id === idUpdate);
 
     form.resetFields();
 
     form.setFieldsValue({
       id: noticiaUpdate.id,
-      lenguaje: noticiaUpdate.lenguaje,
-      titulo: noticiaUpdate.titulo,
-      marcarPrincipal: noticiaUpdate.marcarPrincipal,
-      visualizacionHome: noticiaUpdate.visualizacionHome,
-      summary: noticiaUpdate.summary,
-      url: noticiaUpdate.url,
+      language: noticiaUpdate.language,
+      title: noticiaUpdate.title,
     });
 
     setContenidoUpdate(noticiaUpdate.contenido);
 
     if (noticiaUpdate.imageBase64 !== "") {
-      setImageSrc(
-        `data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`
-      );
+      setImageSrc(`data:image/${noticiaUpdate.imageExtension};base64,${noticiaUpdate.imageBase64}`);
     } else {
       setImageSrc("");
     }
@@ -283,12 +334,17 @@ const Noticias = () => {
     setIsModalVisible(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id, language) => {
     setSpinListado(true);
-    ApiNoticias.deteteNoticias({ id })
+    ApiRunmasters.delete(id)
       .then((response) => {
         if (response.data.codigo === "1") {
-          setDataSource(dataSource.filter((noticia) => noticia.id !== id));
+          if (language === "es") {
+            setDataSourceEs(dataSourceEs.filter((noticia) => noticia.id !== id));
+          }
+          if (language === "en") {
+            setDataSourceEn(dataSourceEn.filter((noticia) => noticia.id !== id));
+          }
           notifica("success");
         } else {
           notifica("error");
@@ -315,16 +371,14 @@ const Noticias = () => {
       </Button>
       <br />
       <br />
+      <br />
+      <Divider orientation="left">Español</Divider>
       <Spin spinning={spinListado}>
-        <Table dataSource={dataSource} pagination={false}>
+        <Table dataSource={dataSourceEs} pagination={false}>
           {/* <Column title="id" dataIndex="id" key="id" /> */}
-          <Column title="Nombre" dataIndex="titulo" key="titulo" />
-          <Column title="Lenguaje" dataIndex="lenguaje" key="lenguaje" />
-          <Column
-            title="Fecha de Creación"
-            dataIndex="fechaCreacion"
-            key="fechaCreacion"
-          />
+          <Column title="Nombre" dataIndex="title" key="title" />
+          <Column title="Lenguaje" dataIndex="language" key="language" />
+          <Column title="Fecha de Creación" dataIndex="fechaCreacion" key="fechaCreacion" />
           <Column
             title="Opciones"
             key="opciones"
@@ -332,7 +386,7 @@ const Noticias = () => {
               <Space size="middle">
                 <EditTwoTone
                   onClick={() => {
-                    handleEdit(record.id);
+                    handleEdit(record.id, record.language);
                   }}
                 />
                 <Popconfirm
@@ -340,24 +394,48 @@ const Noticias = () => {
                   okText="Si"
                   cancelText="No"
                   onConfirm={() => {
-                    handleDelete(record.id);
+                    handleDelete(record.id, record.language);
                   }}
                   okButtonProps={{ loading: confirmLoading }}
                 >
                   <DeleteTwoTone onClick={showPopconfirm} />
                 </Popconfirm>
+              </Space>
+            )}
+          />
+        </Table>
+      </Spin>
 
-                <Productos
-                  empresaId={record.id}
-                  empresaNombre={record.titulo}
-                  empresaLenguaje={record.lenguaje}
-                />
+      <br />
+      <Divider orientation="left">English</Divider>
 
-                <BtnPremios
-                  empresaId={record.id}
-                  empresaNombre={record.titulo}
-                  empresaLenguaje={record.lenguaje}
+      <Spin spinning={spinListado}>
+        <Table dataSource={dataSourceEn} pagination={false}>
+          {/* <Column title="id" dataIndex="id" key="id" /> */}
+          <Column title="Nombre" dataIndex="title" key="title" />
+          <Column title="Lenguaje" dataIndex="language" key="language" />
+          <Column title="Fecha de Creación" dataIndex="fechaCreacion" key="fechaCreacion" />
+          <Column
+            title="Opciones"
+            key="opciones"
+            render={(text, record) => (
+              <Space size="middle">
+                <EditTwoTone
+                  onClick={() => {
+                    handleEdit(record.id, record.language);
+                  }}
                 />
+                <Popconfirm
+                  title="¿Seguro de eliminar este contenido？"
+                  okText="Si"
+                  cancelText="No"
+                  onConfirm={() => {
+                    handleDelete(record.id, record.language);
+                  }}
+                  okButtonProps={{ loading: confirmLoading }}
+                >
+                  <DeleteTwoTone onClick={showPopconfirm} />
+                </Popconfirm>
               </Space>
             )}
           />
@@ -365,13 +443,7 @@ const Noticias = () => {
       </Spin>
 
       <Modal
-        title={
-          procesoActual === "ACTUALIZAR" ? (
-            <span>Actualizar Empresa</span>
-          ) : (
-            <span>Agregar Nueva Empresa</span>
-          )
-        }
+        title={procesoActual === "ACTUALIZAR" ? <span>Actualizar Maestro</span> : <span>Agregar Maestro</span>}
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -389,7 +461,7 @@ const Noticias = () => {
                 <Col lg={24}>
                   <Form.Item
                     label={<strong>Lenguaje</strong>}
-                    name="lenguaje"
+                    name="language"
                     rules={[{ required: true, message: "Ingrese el lenguaje" }]}
                   >
                     <Select placeholder="Seleccione" allowClear>
@@ -401,8 +473,8 @@ const Noticias = () => {
 
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>Nombre</strong>}
-                    name="titulo"
+                    label={<strong>Title</strong>}
+                    name="title"
                     rules={[
                       { required: true, message: "Ingrese el titulo" },
                       { min: 10, message: "Mínimo 10 caracteres" },
@@ -414,38 +486,13 @@ const Noticias = () => {
 
                 <Col lg={24}>
                   <Form.Item
-                    label={<strong>URL</strong>}
-                    name="url"
-                    rules={[{ min: 10, message: "Mínimo 5 caracteres" }]}
-                    extra={<span>Ejemplo: https://www.bmosoluciones.com/</span>}
-                  >
-                    <Input maxLength={100} />
-                  </Form.Item>
-                </Col>
-
-                <Col lg={24}>
-                  <Form.Item
-                    label={<strong>Resumen</strong>}
-                    name="summary"
-                    rules={[
-                      { required: true, message: "Ingrese el resumen" },
-                      { min: 100, message: "Mínimo 100 caracteres" },
-                    ]}
-                  >
-                    <Input maxLength={500} />
-                  </Form.Item>
-                </Col>
-
-                <Col lg={24}>
-                  <Form.Item
                     label={<strong>Imagen</strong>}
-                    name="imagen"
+                    name="image_base64"
                     valuePropName="fileList"
                     getValueFromEvent={normFile}
                     extra={
                       <span>
-                        Imágenes jpg o png de <strong>400px x 400px</strong> (no
-                        superior a 500 KB)
+                        Imágenes jpg o png de <strong>500px x 600px</strong> (no superior a 500 KB)
                       </span>
                     }
                     rules={[
@@ -455,32 +502,19 @@ const Noticias = () => {
                       },
                     ]}
                   >
-                    {/* <Upload name="logo" action="/upload.do" listType="picture">
-                    <Button icon={<UploadOutlined />}>
-                      Click para adjuntar
-                    </Button>
-                  </Upload> */}
-
                     <Upload
                       name="fileCertificado"
                       accept=".jpg, .jpeg, .png"
                       listType="picture"
                       // showUploadList={false}
-                      beforeUpload={(file) =>
-                        handleBeforeUploadCertificado(file)
-                      }
+                      beforeUpload={(file) => handleBeforeUploadCertificado(file)}
                       onRemove={handleRemoveFileClickCertificado}
                       fileList={fileCertificado}
                     >
-                      <Button icon={<UploadOutlined />}>
-                        Click para adjuntar
-                      </Button>
+                      <Button icon={<UploadOutlined />}>Click para adjuntar</Button>
 
                       {showSizeMessageCertificado && (
-                        <div
-                          className="afiliacion-datos-personales__size-message "
-                          style={{ color: "red" }}
-                        >
+                        <div className="afiliacion-datos-personales__size-message " style={{ color: "red" }}>
                           El archivo no debe pesar más de 500 KB.
                         </div>
                       )}
@@ -502,62 +536,14 @@ const Noticias = () => {
                     </div>
                   )}
                 </Col>
-                {/* <Col lg={24}>
-                  <Form.Item
-                    label={<strong>¿Desea visualización en el Home?</strong>}
-                    name="visualizacionHome"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Ingrese visualización en el Home",
-                      },
-                    ]}
-                  >
-                    <Select placeholder="Seleccione" allowClear>
-                      <Select.Option value="S">Si</Select.Option>
-                      <Select.Option value="N">No</Select.Option>
-                    </Select>
-                  </Form.Item>
-                </Col> */}
-                <Col lg={24}>
-                  {/* <Form.Item
-                    name="marcarPrincipal"
-                    label={
-                      <span>
-                        <strong>¿Desea marcar como principal?</strong> <br />
-                        <small>
-                          Si selecciona 'Si' se agregará como noticias principal
-                          en el home (el cuadro grande)
-                        </small>
-                      </span>
-                    }
-                    rules={[
-                      {
-                        required: true,
-                        message: "Seleccione si o no",
-                      },
-                    ]}
-                  >
-                    <Radio.Group>
-                      <Radio value="S">Si</Radio>
-                      <Radio value="N">No</Radio>
-                    </Radio.Group>
-                  </Form.Item> */}
 
-                  <Form.Item name="marcarPrincipal" hidden={true}>
-                    <Input type="text" />
-                  </Form.Item>
-                </Col>
                 <Col lg={24}>
                   <span className="label-required"></span>
                   <strong>Contenido:</strong> &nbsp;&nbsp;
                 </Col>
                 <Col lg={24}>
                   <br />
-                  <EditorImport
-                    contenidoUpdate={contenidoUpdate}
-                    setContenidoUpdate={setContenidoUpdate}
-                  />
+                  <EditorImport contenidoUpdate={contenidoUpdate} setContenidoUpdate={setContenidoUpdate} />
                 </Col>
                 <Col lg={24} style={{ textAlign: "center" }}>
                   <br />
@@ -565,11 +551,7 @@ const Noticias = () => {
                   <Button onClick={handleCancel}>Volver</Button>
                   {"  "}
                   <Button type="primary" htmlType="submit">
-                    {procesoActual === "ACTUALIZAR" ? (
-                      <span>Actualizar</span>
-                    ) : (
-                      <span>Agregar</span>
-                    )}
+                    {procesoActual === "ACTUALIZAR" ? <span>Actualizar</span> : <span>Agregar</span>}
                   </Button>
                 </Col>
               </Row>

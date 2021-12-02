@@ -348,7 +348,7 @@ const Runmasters = () => {
       </Spin>
 
       <Modal
-        title={procesoActual === "ACTUALIZAR" ? <span>Actualizar Maestro</span> : <span>Agregar Maestro</span>}
+        title={procesoActual === "ACTUALIZAR" ? <span>Actualizar Empresa</span> : <span>Agregar Empresa</span>}
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}

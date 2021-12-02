@@ -461,7 +461,7 @@ export default function Home() {
                 <br />
               </div>
 
-              <div className="SeccionMaestrosRoneros">
+              {/* <div className="SeccionMaestrosRoneros">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-12" className="titulo" style={{ marginBottom: "2rem" }}>
@@ -490,7 +490,7 @@ export default function Home() {
                 </div>
                 <br />
                 <br />
-              </div>
+              </div> */}
 
               <div className="SeccionNoticias">
                 <div className="container">
@@ -887,7 +887,7 @@ export default function Home() {
                 </Col>
               </Row>
 
-              <Row type="flex" justify="center" className="SectionMobile1" gutter={[10, 10]}>
+              {/* <Row type="flex" justify="center" className="SectionMobile1" gutter={[10, 10]}>
                 <Col xs={22}>
                   <div className="seccion_titulo_mobile">
                     <img src="./assets/imgs/home/linea2.png" className="linea1mobile" />
@@ -910,7 +910,7 @@ export default function Home() {
                 <Col xs={22}>
                   <img src="./assets/imgs/home/mesa-maestros.png" style={{ maxWidth: "100%" }} />
                 </Col>
-              </Row>
+              </Row> */}
 
               <Row type="flex" justify="center" className="SectionMobile1">
                 <Col xs={22}>
