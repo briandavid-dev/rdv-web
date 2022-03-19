@@ -2,17 +2,14 @@ const withSass = require("@zeit/next-sass");
 const withLess = require("@zeit/next-less");
 const withCSS = require("@zeit/next-css");
 
-const isProd = process.env.NODE_ENV === "production";
-
 // fix: prevents error when .less files are required by node
 if (typeof require !== "undefined") {
   require.extensions[".less"] = (file) => {};
 }
 
 module.exports = withCSS({
-  // se comentan las siguientes 2 lineas para develoment
-  basePath: "/qa/out",
-  assetPrefix: "https://www.bmosoluciones.com/qa/out",
+  // basePath: "/qa/out", // descomentar para PRODUCTION
+  // assetPrefix: "https://www.bmosoluciones.com/qa/out", // descomentar para PRODUCTION
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,

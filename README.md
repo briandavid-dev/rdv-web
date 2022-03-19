@@ -8,11 +8,11 @@ NextJS | TypeScript | AntDesign
 
 ```bash
 # Install dependencies
-$ npm i
+$ yarn
 # local
-$ npm run dev
+$ yarn dev
 # generate script by production
-$ npm run build
+$ yarn build
 ```
 
 ## General
