@@ -1,11 +1,13 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
-import { Row, Col } from "antd";
+import { Row, Col, Skeleton } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+import ApiAboutus from "../services/aboutus";
 
 const stylesCss = css.global`
   .SeccionRon {
@@ -36,6 +38,71 @@ export default function QuienesSomos() {
     lang = "en";
   }
   const strings = { es, en };
+
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({
+    es: {
+      text1: "",
+      text2: "",
+      text3: "",
+      text4: "",
+      text5: "",
+      text6: "",
+      text7: "",
+      text8: "",
+      text9: "",
+      title1: "",
+      title2: "",
+      title3: "",
+      title4: "",
+      title5: "",
+    },
+    en: {
+      text1: "",
+      text2: "",
+      text3: "",
+      text4: "",
+      text5: "",
+      text6: "",
+      text7: "",
+      text8: "",
+      text9: "",
+      title1: "",
+      title2: "",
+      title3: "",
+      title4: "",
+      title5: "",
+    },
+  });
+
+  useEffect(() => {
+    const aboutusEsObj = { es: {} };
+    const aboutusEnObj = { en: {} };
+
+    setLoading(true);
+    ApiAboutus.getAll()
+      .then((response) => {
+        const { codigo, results } = response.data;
+        if (codigo === "1") {
+          results.forEach((aboutus) => {
+            if (aboutus.lang === "es") {
+              aboutusEsObj.es[aboutus.name_section] = aboutus.content;
+            } else if (aboutus.lang === "en") {
+              aboutusEnObj.en[aboutus.name_section] = aboutus.content;
+            }
+          });
+          setData({ ...data, ...aboutusEsObj, ...aboutusEnObj });
+        } else {
+          console.log("error", `service return code ${codigo}`);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div>
@@ -73,10 +140,7 @@ export default function QuienesSomos() {
       <div className="valida_mobile font_20">
         <div className="SeccionCopa">
           <div style={{ position: "relative" }}>
-            <img
-              src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
-              style={{ maxWidth: "100%" }}
-            />
+            <img src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg" style={{ maxWidth: "100%" }} />
           </div>
         </div>
 
@@ -86,25 +150,23 @@ export default function QuienesSomos() {
               <div className="col-md-12">
                 <div className="seccion_titulo">
                   <img src="./assets/imgs/home/linea2.png" className="linea1" />
-                  <h1>{strings[lang].quienes.title1}</h1>
+                  <Skeleton loading={loading} active>
+                    {/* <h1>{strings[lang].quienes.title1}</h1> */}
+                    <h1>{data[lang].title1}</h1>
+                  </Skeleton>
                   <img src="./assets/imgs/home/linea1.png" className="linea2" />
                 </div>
               </div>
-              <div
-                className="col-md-5 font_20"
-                style={{ textAlign: "justify" }}
-              >
-                {strings[lang].quienes.parrafo1}
+              <div className="col-md-5 font_20" style={{ textAlign: "justify" }}>
+                {/* {strings[lang].quienes.parrafo1} */}
+                {data[lang].text1}
               </div>
-              <div
-                className="col-md-5 font_20"
-                style={{ textAlign: "justify" }}
-              >
-                {strings[lang].quienes.parrafo2}
+              <div className="col-md-5 font_20" style={{ textAlign: "justify" }}>
+                {/* {strings[lang].quienes.parrafo2} */}
+                {data[lang].text2}
               </div>
               <div className="col-md-12">
                 <br />
-
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
                     src="./assets/imgs/quienessomos/ICONO-SOL.png"
@@ -124,29 +186,27 @@ export default function QuienesSomos() {
                 </div>
               </div>
               <div className="col-md-5" style={{ textAlign: "center" }}>
-                <img
-                  src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
-                  style={{ maxWidth: "100%", maxHeight: "600px" }}
-                />
+                <img src="./assets/imgs/quienessomos/FOTO-TRAGO.png" style={{ maxWidth: "100%", maxHeight: "600px" }} />
               </div>
               <div className="col-md-5" style={{ textAlign: "right" }}>
                 <div>
                   <div className="titulo">
-                    <img
-                      src="./assets/imgs/home/linea1.png"
-                      style={{ height: "5px", marginRight: "110px" }}
-                    />
-                    <h1>{strings[lang].quienes.quienes}</h1>
-                    <img
-                      src="./assets/imgs/home/linea2.png"
-                      style={{ height: "5px" }}
-                    />
+                    <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                    {/* <h1>{strings[lang].quienes.quienes}</h1> */}
+                    <h1>{data[lang].title2}</h1>
+                    <img src="./assets/imgs/home/linea2.png" style={{ height: "5px" }} />
                   </div>
                 </div>
 
-                <p className="font_20">{strings[lang].quienes.elfondo1}</p>
+                <p className="font_20">
+                  {/* {strings[lang].quienes.elfondo1} */}
+                  {data[lang].text3}
+                </p>
 
-                <p className="font_20">{strings[lang].quienes.elfondo2}</p>
+                <p className="font_20">
+                  {/* {strings[lang].quienes.elfondo2} */}
+                  {data[lang].text4}
+                </p>
               </div>
               <div>
                 <br />
@@ -160,11 +220,13 @@ export default function QuienesSomos() {
             <div className="row justify-content-center">
               <div className="col-md-5">
                 <p className="font_20" style={{ textAlign: "justify" }}>
-                  {strings[lang].quienes.tambien}
+                  {/* {strings[lang].quienes.tambien} */}
+                  {data[lang].text5}
                 </p>
                 <br />
                 <p className="font_20" style={{ textAlign: "justify" }}>
-                  {strings[lang].quienes.integran}
+                  {/* {strings[lang].quienes.integran} */}
+                  {data[lang].text6}
                 </p>
               </div>
               <div className="col-md-5">
@@ -188,38 +250,41 @@ export default function QuienesSomos() {
               <div className="col-md-5">
                 <div className="col-md-12">
                   <div>
-                    <img
-                      src="./assets/imgs/home/linea1.png"
-                      style={{ height: "5px", marginRight: "110px" }}
-                    />
-                    <h1>{strings[lang].quienes.mision}</h1>
+                    <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                    {/* <h1>{strings[lang].quienes.mision}</h1> */}
+                    <h1>{data[lang].title3}</h1>
                     <br />
-                    <p>{strings[lang].quienes.promover}</p>
+                    <p>
+                      {/* {strings[lang].quienes.promover} */}
+                      {data[lang].text7}
+                    </p>
                   </div>
                   <br />
                 </div>
                 <div className="col-md-12">
                   <div>
-                    <img
-                      src="./assets/imgs/home/linea1.png"
-                      style={{ height: "5px", marginRight: "110px" }}
-                    />
-                    <h1>{strings[lang].quienes.vision}</h1>
+                    <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                    {/* <h1>{strings[lang].quienes.vision}</h1> */}
+                    <h1>{data[lang].title4}</h1>
                     <br />
-                    <p>{strings[lang].quienes.vision1}</p>
+                    {/* <p>{strings[lang].quienes.vision1}</p> */}
+                    <p>{data[lang].text8}</p>
                   </div>
                   <br />
                 </div>
               </div>
               <div className="col-md-5">
                 <div>
-                  <img
-                    src="./assets/imgs/home/linea1.png"
-                    style={{ height: "5px", marginRight: "110px" }}
-                  />
-                  <h1>{strings[lang].quienes.valores}</h1>
+                  <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                  {/* <h1>{strings[lang].quienes.valores}</h1> */}
+                  <h1>{data[lang].title5}</h1>
                   <br />
-                  <p>{strings[lang].quienes.entusiasmo}</p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data[lang].text9.replace(/(?:\r\n|\r|\n)/g, "<br />"),
+                    }}
+                  ></div>{" "}
+                  {/* <p>{strings[lang].quienes.entusiasmo}</p>
                   <p>{strings[lang].quienes.entusiasmo1}</p>
                   <br />
 
@@ -229,7 +294,7 @@ export default function QuienesSomos() {
 
                   <p>{strings[lang].quienes.colaboracion}</p>
                   <p>{strings[lang].quienes.colaboracion1}</p>
-                  <br />
+                  <br /> */}
                 </div>
                 <br />
               </div>
@@ -273,14 +338,8 @@ export default function QuienesSomos() {
             <p>{strings[lang].quienes.parrafo1}</p>
             <p>{strings[lang].quienes.parrafo2}</p>
             <div className="text-center">
-              <img
-                src="./assets/imgs/quienessomos/ICONO-SOL.png"
-                style={{ maxWidth: "25%", margin: "0.5rem" }}
-              />
-              <img
-                src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
-                style={{ maxWidth: "25%", margin: "0.5rem" }}
-              />
+              <img src="./assets/imgs/quienessomos/ICONO-SOL.png" style={{ maxWidth: "25%", margin: "0.5rem" }} />
+              <img src="./assets/imgs/quienessomos/ICONO-HOMBRE.png" style={{ maxWidth: "25%", margin: "0.5rem" }} />
               <img
                 src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
                 style={{ maxWidth: "25%", margin: "0.5rem" }}
@@ -289,10 +348,7 @@ export default function QuienesSomos() {
             <br />
           </Col>
           <Col xs={22}>
-            <img
-              src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
-              style={{ maxWidth: "100%", maxHeight: "600px" }}
-            />
+            <img src="./assets/imgs/quienessomos/FOTO-TRAGO.png" style={{ maxWidth: "100%", maxHeight: "600px" }} />
             <br />
             <br />
             <div className="seccion_titulo_mobile_">
@@ -311,10 +367,7 @@ export default function QuienesSomos() {
             <p className="font_20">{strings[lang].quienes.elfondo2}</p>
           </Col>
           <Col xs={22}>
-            <img
-              src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
-              style={{ maxWidth: "100%", maxHeight: "500px" }}
-            />
+            <img src="./assets/imgs/quienessomos/FOTO-BARIICA.png" style={{ maxWidth: "100%", maxHeight: "500px" }} />
             <br />
             <br />
             <p>{strings[lang].quienes.tambien}</p>
@@ -322,29 +375,20 @@ export default function QuienesSomos() {
             <br />
           </Col>
           <Col xs={22}>
-            <img
-              src="./assets/imgs/home/linea1.png"
-              style={{ height: "3px" }}
-            />
+            <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
             <h1>{strings[lang].quienes.mision}</h1>
             <br />
             <p>{strings[lang].quienes.promover}</p>
 
             <br />
 
-            <img
-              src="./assets/imgs/home/linea1.png"
-              style={{ height: "3px" }}
-            />
+            <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
             <h1>{strings[lang].quienes.vision}</h1>
             <br />
             <p>{strings[lang].quienes.vision1}</p>
             <br />
 
-            <img
-              src="./assets/imgs/home/linea1.png"
-              style={{ height: "3px" }}
-            />
+            <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
             <h1>{strings[lang].quienes.valores}</h1>
             <br />
             <p>{strings[lang].quienes.entusiasmo}</p>

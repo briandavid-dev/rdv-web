@@ -8,8 +8,8 @@ if (typeof require !== "undefined") {
 }
 
 module.exports = withCSS({
-  // basePath: "/qa/out", // descomentar para PRODUCTION
-  // assetPrefix: "https://www.bmosoluciones.com/qa/out", // descomentar para PRODUCTION
+  basePath: process.env.BASE_PATH,
+  assetPrefix: process.env.ASSET_PREFIX,
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,

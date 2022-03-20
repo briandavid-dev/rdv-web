@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
-import ApiNoticias from "../pagesServices/noticias";
+import ApiNoticias from "../services/noticias";
 
 const stylesCss = css.global`
   .Section0 {

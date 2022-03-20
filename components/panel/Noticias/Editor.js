@@ -1,8 +1,6 @@
 import React from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import InlineEditor from "@ckeditor/ckeditor5-build-inline";
-// https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/installation.html
 import css from "styled-jsx/css";
 
 const stylesCss = css.global`
@@ -24,6 +22,8 @@ const Editor = (props) => {
         {stylesCss}
       </style>
       <CKEditor
+        key={12}
+        id={12}
         editor={InlineEditor}
         data={data}
         onReady={(editor) => {

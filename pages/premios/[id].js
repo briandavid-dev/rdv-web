@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 import MenuDesktop from "../../components/MenuDesktop";
 import es from "../../lang/es";
 import en from "../../lang/en";
-import ApiEmpresas from "../../pagesServices/empresas";
+import ApiEmpresas from "../../services/empresas";
 import ApiProductos from "../../components/panel/Empresas/Productos/services";
 
 const stylesCss = css.global`
@@ -187,10 +187,7 @@ const PageNoticia = () => {
       <div className="valida_mobile Section0">
         <Row type="flex" justify="center">
           <Col xs={24}>
-            <img
-              src="./../assets/imgs/premios/banner-premios.jpg"
-              style={{ maxWidth: "100%" }}
-            />
+            <img src="./../assets/imgs/premios/banner-premios.jpg" style={{ maxWidth: "100%" }} />
           </Col>
         </Row>
         <div style={{ padding: "0rem 0 0rem 0 " }}>
@@ -198,18 +195,12 @@ const PageNoticia = () => {
             <Col xs={22} lg={14}>
               <Skeleton active loading={loadingEmpresa}>
                 <div className="seccion_titulo">
-                  <img
-                    src="/assets/imgs/home/linea2.png"
-                    style={{ height: "4px" }}
-                  />
+                  <img src="/assets/imgs/home/linea2.png" style={{ height: "4px" }} />
                   <h1 className="text-center">
                     {strings[lang].premios.premios} {empresa.title}
                   </h1>
                   &nbsp;&nbsp;
-                  <img
-                    src="/assets/imgs/home/linea1.png"
-                    style={{ height: "4px" }}
-                  />
+                  <img src="/assets/imgs/home/linea1.png" style={{ height: "4px" }} />
                 </div>
               </Skeleton>
               <Skeleton active loading={loadingPremios}>
@@ -217,11 +208,7 @@ const PageNoticia = () => {
                 <Row>
                   {productos.map((producto) => (
                     <>
-                      <Col
-                        span={20}
-                        className=" card-botellita-content"
-                        key={producto.id}
-                      >
+                      <Col span={20} className=" card-botellita-content" key={producto.id}>
                         <div className="card-botellita-producto-uno">
                           <h4>
                             <span
@@ -253,27 +240,24 @@ const PageNoticia = () => {
                           />
                         )}
 
-                        {producto.image_extension === "" &&
-                          producto.image_base64 !== "" && (
-                            <>
-                              {JSON.parse(producto.image_base64).map(
-                                (imagen) => {
-                                  return (
-                                    <img
-                                      alt={producto.name}
-                                      key={imagen.uid}
-                                      src={imagen.thumbUrl}
-                                      style={{
-                                        width: "50",
-                                        maxWidth: "100%",
-                                        marginBottom: "1rem",
-                                      }}
-                                    />
-                                  );
-                                }
-                              )}
-                            </>
-                          )}
+                        {producto.image_extension === "" && producto.image_base64 !== "" && (
+                          <>
+                            {JSON.parse(producto.image_base64).map((imagen) => {
+                              return (
+                                <img
+                                  alt={producto.name}
+                                  key={imagen.uid}
+                                  src={imagen.thumbUrl}
+                                  style={{
+                                    width: "50",
+                                    maxWidth: "100%",
+                                    marginBottom: "1rem",
+                                  }}
+                                />
+                              );
+                            })}
+                          </>
+                        )}
                       </Col>
                       <Col span={24}>
                         <br />
@@ -293,9 +277,7 @@ const PageNoticia = () => {
                 {strings[lang].empresas.paraMayor}
                 <p>
                   <a href={empresa.url} target="_blank">
-                    <Button className="card-empresa-premios zoom-elron">
-                      {empresa.url}
-                    </Button>
+                    <Button className="card-empresa-premios zoom-elron">{empresa.url}</Button>
                   </a>
                 </p>
               </div>
@@ -316,28 +298,19 @@ const PageNoticia = () => {
       <div className="valida_desktop font_20 Section0">
         <Row type="flex" justify="center">
           <Col xs={24} style={{ marginTop: "58px" }}>
-            <img
-              src="./../assets/imgs/premios/banner-premios.jpg"
-              style={{ maxWidth: "100%" }}
-            />
+            <img src="./../assets/imgs/premios/banner-premios.jpg" style={{ maxWidth: "100%" }} />
           </Col>
         </Row>
         <Row type="flex" justify="center" className="Section0">
           <Col xs={22} style={{ marginTop: "1rem" }}>
             <Skeleton active loading={loadingEmpresa}>
-              <img
-                src="/assets/imgs/home/linea2.png"
-                style={{ height: "4px" }}
-              />
+              <img src="/assets/imgs/home/linea2.png" style={{ height: "4px" }} />
               <h2 className="text-center">
                 {" "}
                 {strings[lang].premios.premios} {empresa.title}
               </h2>
               <div style={{ textAlign: "right" }}>
-                <img
-                  src="/assets/imgs/home/linea2.png"
-                  style={{ height: "4px" }}
-                />
+                <img src="/assets/imgs/home/linea2.png" style={{ height: "4px" }} />
               </div>
             </Skeleton>
 
@@ -370,25 +343,24 @@ const PageNoticia = () => {
                         />
                       )}
 
-                      {producto.image_extension === "" &&
-                        producto.image_base64 !== "" && (
-                          <>
-                            {JSON.parse(producto.image_base64).map((imagen) => {
-                              return (
-                                <img
-                                  alt={producto.name}
-                                  key={imagen.uid}
-                                  src={imagen.thumbUrl}
-                                  style={{
-                                    width: "90px",
-                                    maxWidth: "100%",
-                                    margin: "0 0.5rem 0.5rem 0.2rem",
-                                  }}
-                                />
-                              );
-                            })}
-                          </>
-                        )}
+                      {producto.image_extension === "" && producto.image_base64 !== "" && (
+                        <>
+                          {JSON.parse(producto.image_base64).map((imagen) => {
+                            return (
+                              <img
+                                alt={producto.name}
+                                key={imagen.uid}
+                                src={imagen.thumbUrl}
+                                style={{
+                                  width: "90px",
+                                  maxWidth: "100%",
+                                  margin: "0 0.5rem 0.5rem 0.2rem",
+                                }}
+                              />
+                            );
+                          })}
+                        </>
+                      )}
                     </Col>
                     <Col span={24}>
                       <br />
@@ -407,9 +379,7 @@ const PageNoticia = () => {
                   {strings[lang].empresas.paraMayor}
                   <p>
                     <a href={empresa.url} target="_blank">
-                      <Button className="card-empresa-premios zoom-elron">
-                        {empresa.url}
-                      </Button>
+                      <Button className="card-empresa-premios zoom-elron">{empresa.url}</Button>
                     </a>
                   </p>
                 </div>

@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const config = {
-  // baseURL: "https://www.bmosoluciones.com/services-rdv/", // PRODUCTION
-  // baseURL: "http://localhost:1000/services-rdv/", // DEVELOMENT
-  // "Content-Type": "application/json",
+  baseURL: process.env.NEXT_PUBLIC_URL_API_RDV,
 };
+
 const request = axios.create(config);
 
 request.interceptors.response.use(

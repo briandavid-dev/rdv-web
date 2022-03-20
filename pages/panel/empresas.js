@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import css from "styled-jsx/css";
-import Link from "next/link";
 import Head from "next/head";
 import { Layout, Menu, Breadcrumb } from "antd";
 import Empresas from "../../components/panel/Empresas";
-const { Header, Content, Footer } = Layout;
+import { PrincipalMenu } from "../../components/PrincipalMenu";
 
 const stylesCss = css.global`
   body {
@@ -63,21 +62,9 @@ const PanelEmpresas = () => {
         <title>Empresas - Panel</title>
       </Head>
       <Layout className="layout">
-        <Header>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-            <Menu.Item key="1">
-              <Link href="/panel/noticias">Noticias</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link href="/panel/empresas">Empresas</Link>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Link href="/panel/runmasters">Maestros Roneros</Link>
-            </Menu.Item>
-          </Menu>
-        </Header>
-        <Content style={{ padding: "0 50px" }}>
+        <PrincipalMenu defaultSelectedKeys={["2"]} />
+
+        <Layout.Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>Panel</Breadcrumb.Item>
             <Breadcrumb.Item>Empresas</Breadcrumb.Item>
@@ -85,8 +72,8 @@ const PanelEmpresas = () => {
           <div className="site-layout-content">
             <Empresas />
           </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>bmosoluciones.com</Footer>
+        </Layout.Content>
+        <Layout.Footer style={{ textAlign: "center" }}>bmosoluciones.com</Layout.Footer>
       </Layout>
     </>
   );
