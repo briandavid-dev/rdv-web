@@ -40,6 +40,7 @@ Self Managed Panel Modules
   - Productos
   - Premios
 - Noticias
+- Quienes Somos
 
 
 ```
