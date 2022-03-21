@@ -392,7 +392,6 @@ export default function QuienesSomos() {
                 <Skeleton loading={loading} active>
                   <h1>{data[lang].title2}</h1>
                 </Skeleton>
-                }
               </h1>
               {/* <img
                 src="./assets/imgs/home/linea1.png"
