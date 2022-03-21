@@ -1,32 +1,10 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import css from "styled-jsx/css";
 import Head from "next/head";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Breadcrumb } from "antd";
 import Runmasters from "../../components/panel/Runmasters";
 import { PrincipalMenu } from "../../components/PrincipalMenu";
-
-const stylesCss = css.global`
-  body {
-    color: #62452d;
-  }
-  .site-layout-content {
-    min-height: 280px;
-    padding: 24px;
-    background: #fff;
-  }
-  #components-layout-demo-top .logo {
-    float: left;
-    width: 120px;
-    height: 31px;
-    margin: 16px 24px 16px 0;
-    background: rgba(255, 255, 255, 0.3);
-  }
-  .ant-row-rtl #components-layout-demo-top .logo {
-    float: right;
-    margin: 16px 0 16px 24px;
-  }
-`;
+import { stylesCssPanel } from "../../styles/stylesCssPanel";
 
 const PanelEmpresas = () => {
   const router = useRouter();
@@ -40,7 +18,7 @@ const PanelEmpresas = () => {
   return (
     <>
       <style jsx global>
-        {stylesCss}
+        {stylesCssPanel}
       </style>
       <Head>
         <meta charSet="UTF-8" />

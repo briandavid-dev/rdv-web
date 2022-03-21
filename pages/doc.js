@@ -1,11 +1,13 @@
 import Head from "next/head";
-import { Row, Col } from "antd";
+import { Row, Col, Skeleton, Button } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
+import { useEffect, useState } from "react";
+import ApiDoc from "../services/doc";
 
 const stylesCss = css.global`
   .SeccionDoc0 {
@@ -42,6 +44,28 @@ export default function Doc() {
   }
   const strings = { es, en };
 
+  const [dataForm, setDataForm] = useState({ es: null, en: null });
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    ApiDoc.getAll()
+      .then((response) => {
+        const { codigo, data } = response.data;
+        if (codigo === "1") {
+          setDataForm(data);
+        } else {
+          console.log("error", `service return code ${codigo}`);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div>
       <style jsx global>
@@ -77,35 +101,18 @@ export default function Doc() {
 
       <div className="SeccionDoc0 valida_mobile">
         <div className="SeccionDoc1">
-          <img
-            src="./assets/imgs/doc/BARRIL-LETRA-D.png"
-            style={{ maxWidth: "25%", width: "400px" }}
-          />
-          <img
-            src="./assets/imgs/doc/BARRIL-LETRA-O.png"
-            style={{ maxWidth: "25%", width: "400px" }}
-          />
-          <img
-            src="./assets/imgs/doc/BARRIL-LETRA-C.png"
-            style={{ maxWidth: "25%", width: "400px" }}
-          />
+          <img src="./assets/imgs/doc/BARRIL-LETRA-D.png" style={{ maxWidth: "25%", width: "400px" }} />
+          <img src="./assets/imgs/doc/BARRIL-LETRA-O.png" style={{ maxWidth: "25%", width: "400px" }} />
+          <img src="./assets/imgs/doc/BARRIL-LETRA-C.png" style={{ maxWidth: "25%", width: "400px" }} />
         </div>
         <div className="SeccionDoc2">
           <div className="container">
             <div className="row justify-content-center gx-1">
               <div className="col-md-12">
                 <div className="seccion_titulo text-center">
-                  <img
-                    src="./assets/imgs/home/linea2.png"
-                    className="linea1"
-                    style={{ maxHeight: "4px" }}
-                  />
+                  <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
                   <h1>{strings[lang].doc.title1}</h1>
-                  <img
-                    src="./assets/imgs/home/linea1.png"
-                    className="linea2"
-                    style={{ maxHeight: "4px" }}
-                  />
+                  <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
                 </div>
               </div>
               <div className="col-md-10">
@@ -120,36 +127,49 @@ export default function Doc() {
                 {strings[lang].doc.existe1}
               </div>
               <div className="col-md-3 " style={{ textAlign: "right" }}>
-                <img
-                  src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
-                  style={{ maxWidth: "80%" }}
-                />
+                <img src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png" style={{ maxWidth: "80%" }} />
               </div>
             </div>
           </div>
           <div className="container">
             <div className="row justify-content-center ">
               <div className="col-md-10 SeccionDocNacimiento">
-                <h3 className="titulo-maestro">
-                  {strings[lang].doc.nacimiento}
-                </h3>
+                <h3 className="titulo-maestro">{strings[lang].doc.nacimiento}</h3>
                 {strings[lang].doc.nacimiento1}
               </div>
 
               <div className="col-md-10">
-                <h3 className="titulo-maestro">
-                  {strings[lang].doc.regulador}
-                </h3>
+                <h3 className="titulo-maestro">{strings[lang].doc.regulador}</h3>
                 {strings[lang].doc.regulador1}
 
                 {strings[lang].doc.funciones}
 
                 {strings[lang].doc.organizacion}
 
-                {/* <!--           <h4 className="titulo-maestro">Regulaciones:</h4>
-          <p className="font_20 text-justify">
-          aaaa
-          </p> --> */}
+                <br />
+
+                <Skeleton active loading={loading}>
+                  {dataForm[lang] && dataForm[lang].regularizations && (
+                    <>
+                      <h4 className="titulo-maestro">{dataForm[lang].regularizations.title}</h4>
+                      <p className="font_20 text-justify">
+                        {dataForm[lang].regularizations.files.map((file, key) => (
+                          <>
+                            <a
+                              key={key}
+                              href={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/${file.fileName}`}
+                              target="_blank"
+                              style={{ color: "#C6E1EA" }}
+                            >
+                              {file.text} .pdf (click aquí)
+                            </a>
+                            <br />
+                          </>
+                        ))}
+                      </p>
+                    </>
+                  )}
+                </Skeleton>
                 <br />
                 <br />
               </div>
@@ -209,20 +229,9 @@ export default function Doc() {
         <Row type="flex" justify="center">
           <Col xs={22} className="text-center" style={{ marginTop: "58px" }}>
             <br />
-            <img
-              src="./assets/imgs/doc/BARRIL-LETRA-D.png"
-              style={{ maxWidth: "30%" }}
-            />{" "}
-            &nbsp;&nbsp;
-            <img
-              src="./assets/imgs/doc/BARRIL-LETRA-O.png"
-              style={{ maxWidth: "30%" }}
-            />{" "}
-            &nbsp;&nbsp;
-            <img
-              src="./assets/imgs/doc/BARRIL-LETRA-C.png"
-              style={{ maxWidth: "30%" }}
-            />
+            <img src="./assets/imgs/doc/BARRIL-LETRA-D.png" style={{ maxWidth: "30%" }} /> &nbsp;&nbsp;
+            <img src="./assets/imgs/doc/BARRIL-LETRA-O.png" style={{ maxWidth: "30%" }} /> &nbsp;&nbsp;
+            <img src="./assets/imgs/doc/BARRIL-LETRA-C.png" style={{ maxWidth: "30%" }} />
             <br />
             <br />
           </Col>
@@ -237,10 +246,7 @@ export default function Doc() {
             {strings[lang].doc.existe1}
           </Col>
           <Col xs={22} className="text-center">
-            <img
-              src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
-              style={{ maxWidth: "100%" }}
-            />
+            <img src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png" style={{ maxWidth: "100%" }} />
             <br />
             <br />
           </Col>
@@ -253,6 +259,29 @@ export default function Doc() {
             {strings[lang].doc.funciones}
 
             {strings[lang].doc.organizacion}
+            <br />
+            <Skeleton active loading={loading}>
+              {dataForm[lang] && dataForm[lang].regularizations && (
+                <>
+                  <h4 className="titulo-maestro">{dataForm[lang].regularizations.title}</h4>
+                  <p className="font_20 text-justify">
+                    {dataForm[lang].regularizations.files.map((file, key) => (
+                      <>
+                        <a
+                          key={key}
+                          href={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/${file.fileName}`}
+                          target="_blank"
+                          style={{ color: "#C6E1EA" }}
+                        >
+                          {file.text} .pdf (click aquí)
+                        </a>
+                        <br />
+                      </>
+                    ))}
+                  </p>
+                </>
+              )}
+            </Skeleton>
           </Col>
           <Col xs={22} className="text-center">
             <img

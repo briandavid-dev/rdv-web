@@ -235,7 +235,7 @@ strings.doc = {
   funciones: (
     <>
       <h4 className="titulo-maestro">Functions:</h4>
-      <p className="font_20 text-justify">
+      <div className="font_20 text-justify">
         <ol type="a" className="font_20">
           <li>
             To compile uses, good practices and quality conditions applicable to the A.C.O. “Ron de Venezuela” (D.O.C.
@@ -258,7 +258,7 @@ strings.doc = {
             inappropriate use of such Appellation, either by one of its authorized members or by any third party.
           </li>
         </ol>
-      </p>
+      </div>
     </>
   ),
   organizacion: (

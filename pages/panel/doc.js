@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { Layout, Breadcrumb } from "antd";
-import Empresas from "../../components/panel/Empresas";
+import { Doc } from "../../components/panel/Doc";
 import { PrincipalMenu } from "../../components/PrincipalMenu";
 import { stylesCssPanel } from "../../styles/stylesCssPanel";
 
@@ -37,18 +37,18 @@ const PanelEmpresas = () => {
           rel="stylesheet"
         />
 
-        <title>Empresas - Panel</title>
+        <title>D.O.C. - Panel</title>
       </Head>
       <Layout className="layout">
-        <PrincipalMenu defaultSelectedKeys={["2"]} />
+        <PrincipalMenu defaultSelectedKeys={["5"]} />
 
         <Layout.Content style={{ padding: "0 50px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>Panel</Breadcrumb.Item>
-            <Breadcrumb.Item>Empresas</Breadcrumb.Item>
+            <Breadcrumb.Item>D.O.C.</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-content">
-            <Empresas />
+            <Doc />
           </div>
         </Layout.Content>
         <Layout.Footer style={{ textAlign: "center" }}>bmosoluciones.com</Layout.Footer>

@@ -337,7 +337,7 @@ strings.doc = {
   funciones: (
     <>
       <h4 className="titulo-maestro">Funciones:</h4>
-      <p className="font_20 text-justify">
+      <div className="font_20 text-justify">
         <ol type="a" className="font_20">
           <li>
             Recopilar los usos, buenas prácticas y las condiciones de calidad aplicables a la Denominación de Origen
@@ -362,7 +362,7 @@ strings.doc = {
             tercero
           </li>
         </ol>
-      </p>
+      </div>
     </>
   ),
   organizacion: (

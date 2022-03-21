@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
-import css from "styled-jsx/css";
 import { Tabs, Spin } from "antd";
 import FormAboutus from "./FormAboutus";
 import ApiAboutus from "./../../../services/aboutus";
 import notifica from "../../../utils/notifica";
-
-const stylesCss = css.global`
-  body {
-    font-family: var(--bs-font-sans-serif);
-    color: #62452d !important;
-    background-color: #f0f2f5;
-  }
-`;
 
 export const Aboutus = () => {
   const [dataFormEs, setDataFormEs] = useState();
@@ -50,9 +41,6 @@ export const Aboutus = () => {
 
   return (
     <div>
-      <style jsx global>
-        {stylesCss}
-      </style>
       <Spin spinning={loading}>
         <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab="Español" key="1">

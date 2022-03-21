@@ -159,11 +159,15 @@ export default function QuienesSomos() {
               </div>
               <div className="col-md-5 font_20" style={{ textAlign: "justify" }}>
                 {/* {strings[lang].quienes.parrafo1} */}
-                {data[lang].text1}
+                <Skeleton loading={loading} active>
+                  {data[lang].text1}
+                </Skeleton>
               </div>
               <div className="col-md-5 font_20" style={{ textAlign: "justify" }}>
                 {/* {strings[lang].quienes.parrafo2} */}
-                {data[lang].text2}
+                <Skeleton loading={loading} active>
+                  {data[lang].text2}
+                </Skeleton>
               </div>
               <div className="col-md-12">
                 <br />
@@ -193,19 +197,25 @@ export default function QuienesSomos() {
                   <div className="titulo">
                     <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
                     {/* <h1>{strings[lang].quienes.quienes}</h1> */}
-                    <h1>{data[lang].title2}</h1>
+                    <Skeleton loading={loading} active>
+                      <h1>{data[lang].title2}</h1>
+                    </Skeleton>
                     <img src="./assets/imgs/home/linea2.png" style={{ height: "5px" }} />
                   </div>
                 </div>
 
                 <p className="font_20">
                   {/* {strings[lang].quienes.elfondo1} */}
-                  {data[lang].text3}
+                  <Skeleton loading={loading} active>
+                    {data[lang].text3}
+                  </Skeleton>
                 </p>
 
                 <p className="font_20">
                   {/* {strings[lang].quienes.elfondo2} */}
-                  {data[lang].text4}
+                  <Skeleton loading={loading} active>
+                    {data[lang].text4}
+                  </Skeleton>
                 </p>
               </div>
               <div>
@@ -219,15 +229,17 @@ export default function QuienesSomos() {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-5">
-                <p className="font_20" style={{ textAlign: "justify" }}>
-                  {/* {strings[lang].quienes.tambien} */}
-                  {data[lang].text5}
-                </p>
-                <br />
-                <p className="font_20" style={{ textAlign: "justify" }}>
-                  {/* {strings[lang].quienes.integran} */}
-                  {data[lang].text6}
-                </p>
+                <Skeleton loading={loading} active>
+                  <p className="font_20" style={{ textAlign: "justify" }}>
+                    {/* {strings[lang].quienes.tambien} */}
+                    {data[lang].text5}
+                  </p>
+                  <br />
+                  <p className="font_20" style={{ textAlign: "justify" }}>
+                    {/* {strings[lang].quienes.integran} */}
+                    {data[lang].text6}
+                  </p>
+                </Skeleton>
               </div>
               <div className="col-md-5">
                 <div style={{ display: "flex", justifyContent: "center" }}>
@@ -251,24 +263,28 @@ export default function QuienesSomos() {
                 <div className="col-md-12">
                   <div>
                     <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
-                    {/* <h1>{strings[lang].quienes.mision}</h1> */}
-                    <h1>{data[lang].title3}</h1>
-                    <br />
-                    <p>
-                      {/* {strings[lang].quienes.promover} */}
-                      {data[lang].text7}
-                    </p>
+                    <Skeleton loading={loading} active>
+                      {/* <h1>{strings[lang].quienes.mision}</h1> */}
+                      <h1>{data[lang].title3}</h1>
+                      <br />
+                      <p>
+                        {/* {strings[lang].quienes.promover} */}
+                        {data[lang].text7}
+                      </p>
+                    </Skeleton>
                   </div>
                   <br />
                 </div>
                 <div className="col-md-12">
                   <div>
                     <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
-                    {/* <h1>{strings[lang].quienes.vision}</h1> */}
-                    <h1>{data[lang].title4}</h1>
-                    <br />
-                    {/* <p>{strings[lang].quienes.vision1}</p> */}
-                    <p>{data[lang].text8}</p>
+                    <Skeleton loading={loading} active>
+                      {/* <h1>{strings[lang].quienes.vision}</h1> */}
+                      <h1>{data[lang].title4}</h1>
+                      <br />
+                      {/* <p>{strings[lang].quienes.vision1}</p> */}
+                      <p>{data[lang].text8}</p>
+                    </Skeleton>
                   </div>
                   <br />
                 </div>
@@ -277,13 +293,15 @@ export default function QuienesSomos() {
                 <div>
                   <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
                   {/* <h1>{strings[lang].quienes.valores}</h1> */}
-                  <h1>{data[lang].title5}</h1>
-                  <br />
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data[lang].text9.replace(/(?:\r\n|\r|\n)/g, "<br />"),
-                    }}
-                  ></div>{" "}
+                  <Skeleton loading={loading} active>
+                    <h1>{data[lang].title5}</h1>
+                    <br />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data[lang].text9.replace(/(?:\r\n|\r|\n)/g, "<br />"),
+                      }}
+                    ></div>
+                  </Skeleton>
                   {/* <p>{strings[lang].quienes.entusiasmo}</p>
                   <p>{strings[lang].quienes.entusiasmo1}</p>
                   <br />
@@ -326,7 +344,10 @@ export default function QuienesSomos() {
                 src="./assets/imgs/home/linea2.png"
                 className="linea1mobile"
               /> */}
-              <h1>{strings[lang].quienes.title1}</h1>
+              <Skeleton loading={loading} active>
+                {/* <h1>{strings[lang].quienes.title1}</h1> */}
+                <h1>{data[lang].title1}</h1>
+              </Skeleton>
               {/* <img
                 src="./assets/imgs/home/linea1.png"
                 className="linea2mobile"
@@ -335,8 +356,18 @@ export default function QuienesSomos() {
             <img src="./assets/imgs/home/linea1.png" className="linea2mobile" />
           </Col>
           <Col xs={22}>
-            <p>{strings[lang].quienes.parrafo1}</p>
-            <p>{strings[lang].quienes.parrafo2}</p>
+            <p>
+              {/* {strings[lang].quienes.parrafo1} */}
+              <Skeleton loading={loading} active>
+                {data[lang].text1}
+              </Skeleton>
+            </p>
+            <p>
+              {/* {strings[lang].quienes.parrafo2} */}
+              <Skeleton loading={loading} active>
+                {data[lang].text2}
+              </Skeleton>
+            </p>
             <div className="text-center">
               <img src="./assets/imgs/quienessomos/ICONO-SOL.png" style={{ maxWidth: "25%", margin: "0.5rem" }} />
               <img src="./assets/imgs/quienessomos/ICONO-HOMBRE.png" style={{ maxWidth: "25%", margin: "0.5rem" }} />
@@ -356,40 +387,77 @@ export default function QuienesSomos() {
                 src="./assets/imgs/home/linea2.png"
                 className="linea1mobile"
               /> */}
-              <h1 className="text-center_">{strings[lang].quienes.quienes}</h1>
+              <h1 className="text-center_">
+                {/* <h1>{strings[lang].quienes.quienes}</h1> */}
+                <Skeleton loading={loading} active>
+                  <h1>{data[lang].title2}</h1>
+                </Skeleton>
+                }
+              </h1>
               {/* <img
                 src="./assets/imgs/home/linea1.png"
                 className="linea2mobile"
               /> */}
             </div>
             <img src="./assets/imgs/home/linea1.png" className="linea2mobile" />
-            <p className="font_20">{strings[lang].quienes.elfondo1}</p>
-            <p className="font_20">{strings[lang].quienes.elfondo2}</p>
+            <p className="font_20">
+              {/* {strings[lang].quienes.elfondo1} */}
+              <Skeleton loading={loading} active>
+                {data[lang].text3}
+              </Skeleton>
+            </p>
+            <p className="font_20">
+              {/* {strings[lang].quienes.elfondo2} */}
+              <Skeleton loading={loading} active>
+                {data[lang].text4}
+              </Skeleton>
+            </p>
           </Col>
           <Col xs={22}>
             <img src="./assets/imgs/quienessomos/FOTO-BARIICA.png" style={{ maxWidth: "100%", maxHeight: "500px" }} />
             <br />
             <br />
-            <p>{strings[lang].quienes.tambien}</p>
-            <p>{strings[lang].quienes.integran}</p>
+            <p>
+              {/* {strings[lang].quienes.tambien} */}
+              {data[lang].text5}
+            </p>
+            <p>
+              {/* {strings[lang].quienes.integran} */}
+              {data[lang].text6}
+            </p>
             <br />
           </Col>
           <Col xs={22}>
             <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
-            <h1>{strings[lang].quienes.mision}</h1>
+            {/* <h1>{strings[lang].quienes.mision}</h1> */}
+            <h1>{data[lang].title3}</h1>
             <br />
-            <p>{strings[lang].quienes.promover}</p>
+            <p>
+              {/* {strings[lang].quienes.promover} */}
+              {data[lang].text7}
+            </p>
 
             <br />
 
             <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
-            <h1>{strings[lang].quienes.vision}</h1>
+            {/* <h1>{strings[lang].quienes.vision}</h1> */}
+            <h1>{data[lang].title4}</h1>
             <br />
-            <p>{strings[lang].quienes.vision1}</p>
+            {/* <p>{strings[lang].quienes.vision1}</p> */}
+            <p>{data[lang].text8}</p>
             <br />
 
             <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
-            <h1>{strings[lang].quienes.valores}</h1>
+            <Skeleton loading={loading} active>
+              <h1>{data[lang].title5}</h1>
+              <br />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data[lang].text9.replace(/(?:\r\n|\r|\n)/g, "<br />"),
+                }}
+              ></div>
+            </Skeleton>
+            {/* <h1>{strings[lang].quienes.valores}</h1>
             <br />
             <p>{strings[lang].quienes.entusiasmo}</p>
             <p>{strings[lang].quienes.entusiasmo1}</p>
@@ -400,7 +468,7 @@ export default function QuienesSomos() {
             <br />
 
             <p>{strings[lang].quienes.colaboracion}</p>
-            <p>{strings[lang].quienes.colaboracion1}</p>
+            <p>{strings[lang].quienes.colaboracion1}</p> */}
             <br />
           </Col>
           <Col xs={22}></Col>

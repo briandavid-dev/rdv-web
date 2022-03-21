@@ -1,33 +1,10 @@
 import { useState } from "react";
-import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { Button, Input, Form, Row, Col, notification, Spin } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import ApiUser from "../../components/panel/User/services";
-
-const stylesCss = css.global`
-  body {
-    font-family: var(--bs-font-sans-serif);
-    color: #62452d !important;
-  }
-  .site-layout-content {
-    min-height: 280px;
-    padding: 24px;
-    background: #fff;
-  }
-  #components-layout-demo-top .logo {
-    float: left;
-    width: 120px;
-    height: 31px;
-    margin: 16px 24px 16px 0;
-    background: rgba(255, 255, 255, 0.3);
-  }
-  .ant-row-rtl #components-layout-demo-top .logo {
-    float: right;
-    margin: 16px 0 16px 24px;
-  }
-`;
+import { stylesCssPanel } from "../../styles/stylesCssPanel";
 
 const login = () => {
   const [form] = Form.useForm();
@@ -74,7 +51,7 @@ const login = () => {
   return (
     <>
       <style jsx global>
-        {stylesCss}
+        {stylesCssPanel}
       </style>
       <Head>
         <meta charSet="UTF-8" />
@@ -114,12 +91,7 @@ const login = () => {
           }}
         >
           <Spin spinning={loading}>
-            <Form
-              form={form}
-              style={{ marginTop: "2rem" }}
-              {...formItemLayout}
-              onFinish={onFinish}
-            >
+            <Form form={form} style={{ marginTop: "2rem" }} {...formItemLayout} onFinish={onFinish}>
               <Row type="flex" justify="center">
                 <Col lg={20}>
                   <Form.Item
@@ -131,20 +103,14 @@ const login = () => {
                     ]}
                     autoFocus
                   >
-                    <Input
-                      autoFocus
-                      prefix={<UserOutlined className="site-form-item-icon" />}
-                    />
+                    <Input autoFocus prefix={<UserOutlined className="site-form-item-icon" />} />
                   </Form.Item>
                   <Form.Item
                     label={<strong>Clave</strong>}
                     name="clave"
                     rules={[{ required: true, message: "Ingrese la clave" }]}
                   >
-                    <Input
-                      prefix={<LockOutlined className="site-form-item-icon" />}
-                      type="password"
-                    />
+                    <Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" />
                   </Form.Item>
                 </Col>
               </Row>
@@ -155,9 +121,7 @@ const login = () => {
                     htmlType="submit"
                     disabled={
                       !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
+                      !!form.getFieldsError().filter(({ errors }) => errors.length).length
                     }
                   >
                     Iniciar Sesión
