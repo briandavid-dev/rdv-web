@@ -13,6 +13,12 @@ $ yarn
 $ yarn dev
 # generate script by production
 $ yarn build
+
+After build steps:
+1 - git push changes to git
+2 - git pull in server
+3 - save in server rute /repositories/rdv-web
+4 - go to into /repositories/rdv-web/out/ and move all files to /public_html/
 ```
 
 ## General
@@ -24,8 +30,8 @@ WEB http://localhost:3000/
 ADMIN http://localhost:3000/panel/login
 
 Staging
-WEB https://bmosoluciones.com/qa/out/
-ADMIN https://bmosoluciones.com/qa/out/panel/login.html
+WEB https://www.rondevenezuela.com
+ADMIN https://www.rondevenezuela.com/panel/login.html
 
 ```
 
@@ -41,6 +47,5 @@ Self Managed Panel Modules
   - Premios
 - Noticias
 - Quienes Somos
-
 
 ```
