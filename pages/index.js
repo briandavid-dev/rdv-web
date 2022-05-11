@@ -134,6 +134,28 @@ export default function Home() {
   const [modalEdadVisible, setModalEdadVisible] = useState(true);
   const [textoMayorEdad, setTextoMayorEdad] = useState("");
 
+  const [dataAllHome, setDataAllHome] = useState({ es: null, en: null });
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    ApiHome.getAllPageHome()
+      .then((response) => {
+        const { codigo, data } = response.data;
+        if (codigo === "1") {
+          setDataAllHome(data);
+        } else {
+          console.log("error", `service return code ${codigo}`);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   useEffect(() => {
     setDataNoticiasLoading(true);
     ApiHome.getHomeNoticias(lang)
@@ -177,7 +199,10 @@ export default function Home() {
         <Head>
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
 
           <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -205,7 +230,10 @@ export default function Home() {
             <MenuDesktop />
             <div className="seccion0 valida_mobile">
               <div className="seccion1">
-                <div className="container" style={{ position: "relative", top: "13rem", zIndex: 900 }}>
+                <div
+                  className="container"
+                  style={{ position: "relative", top: "13rem", zIndex: 900 }}
+                >
                   <div className="row">
                     <div className="col-md-6">&nbsp;</div>
                     <div
@@ -216,29 +244,39 @@ export default function Home() {
                         alignItems: "center",
                       }}
                     >
-                      <h1>{strings[lang].home.pageTitle}</h1>
-                      <div className="text-center font_20">{strings[lang].calidad}</div>
+                      {/* <h1>{strings[lang].home.pageTitle}</h1> */}
+                      <h1>{dataAllHome[lang]?.banner?.title}</h1>
+                      <div className="text-center font_20">
+                        {/* {strings[lang].calidad} */}
+                        {dataAllHome[lang]?.banner.info}
+                      </div>
                       <div>&nbsp;</div>
-                      <img src="./assets/imgs/home/linea1.png" style={{ height: "8px" }} />
+                      <img
+                        src="./assets/imgs/home/linea1.png"
+                        style={{ height: "8px" }}
+                      />
                       {/* <!-- <div>Registra tu correo para más información</div>
-        <div style={{display: 'flex', alignItems: 'center', height: '60px'}}>
-          <div style=
-              {{
-                padding: '5px 10px 5px 10px',
-              backgroundColor: 'var(--color-fondo-cajitas)'}}
-            >
-            E-Mail
-          </div>
-          <div style={{border: 1px solid var(--color-letra)">
-            <input style={{background-color: transparent; color: var(--color-letra)" type="email" />
-          </div>
-        </div> --> */}
+                      <div style={{display: 'flex', alignItems: 'center', height: '60px'}}>
+                        <div style=
+                            {{
+                              padding: '5px 10px 5px 10px',
+                            backgroundColor: 'var(--color-fondo-cajitas)'}}
+                          >
+                          E-Mail
+                        </div>
+                        <div style={{border: 1px solid var(--color-letra)">
+                          <input style={{background-color: transparent; color: var(--color-letra)" type="email" />
+                        </div>
+                      </div> --> */}
                     </div>
                     <div className="col-md-2">&nbsp;</div>
                   </div>
                 </div>
                 <div style={{ position: "relative", top: "-220px" }}>
-                  <img src="./assets/imgs/home/copa.jpg" style={{ maxWidth: "100%" }} />
+                  <img
+                    src="./assets/imgs/home/copa.jpg"
+                    style={{ maxWidth: "100%" }}
+                  />
                 </div>
               </div>
 
@@ -247,27 +285,57 @@ export default function Home() {
                   <div className="row">
                     <div className="col-md-12" style={{ display: "flex" }}>
                       <div className="content-1">
-                        <h1 style={{ right: "-2rem", position: "relative" }}>{strings[lang].elron1}</h1>
-                        <p className="font_20" style={{ textAlign: "right", padding: "1rem" }}>
-                          {strings[lang].melasa}
+                        <h1 style={{ right: "-2rem", position: "relative" }}>
+                          {/* {strings[lang].elron1} */}
+                          {dataAllHome[lang]?.elron.title}
+                        </h1>
+                        <p
+                          className="font_20"
+                          style={{ textAlign: "right", padding: "1rem" }}
+                        >
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: dataAllHome[lang]?.elron.info?.replaceAll(
+                                "\n",
+                                "<br />"
+                              ),
+                            }}
+                          ></div>
+
+                          {/* {strings[lang].melasa}
                           <br />
-                          {strings[lang].aunque}
+                          {strings[lang].aunque} */}
                         </p>
                       </div>
                       <div style={{ flex: 55 }}>
-                        <img src="./assets/imgs/home/foto-ron.jpg" style={{ maxWidth: "100%" }} />
+                        <img
+                          // src="./assets/imgs/home/foto-ron.jpg"
+                          src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/${dataAllHome[lang]?.elron.image}`}
+                          style={{ maxWidth: "100%" }}
+                        />
                       </div>
                     </div>
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
                     <div className="col-md-12" style={{ display: "flex" }}>
                       <div style={{ flex: 55 }}>
-                        <img src="./assets/imgs/home/foto-proceso.jpg" style={{ maxWidth: "100%" }} />
+                        <img
+                          // src="./assets/imgs/home/foto-proceso.jpg"
+                          src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/${dataAllHome[lang]?.procesoelaboracion.image}`}
+                          style={{ maxWidth: "100%" }}
+                        />
                       </div>
                       <div className="content-1">
-                        <h1 style={{ left: "-2rem", position: "relative" }}>{strings[lang].proceso}</h1>
-                        <p className="font_20" style={{ textAlign: "left", padding: "1rem" }}>
-                          {strings[lang].productores}
+                        <h1 style={{ left: "-2rem", position: "relative" }}>
+                          {/* {strings[lang].proceso} */}
+                          {dataAllHome[lang]?.procesoelaboracion.title}
+                        </h1>
+                        <p
+                          className="font_20"
+                          style={{ textAlign: "left", padding: "1rem" }}
+                        >
+                          {/* {strings[lang].productores}                           */}
+                          {dataAllHome[lang]?.procesoelaboracion.info}
                         </p>
                       </div>
                     </div>
@@ -280,14 +348,46 @@ export default function Home() {
                   <div className="row">
                     <div className="col-md-12 mb-1">
                       <div className="seccion_titulo">
-                        <img src="./assets/imgs/home/linea2.png" className="linea1" />
-                        <h1>{strings[lang].home.empresas}</h1>
-                        <img src="./assets/imgs/home/linea1.png" className="linea2" />
+                        <img
+                          src="./assets/imgs/home/linea2.png"
+                          className="linea1"
+                        />
+                        {/* <h1>{strings[lang].home.empresas}</h1> */}
+                        <h1>{dataAllHome[lang]?.logosempresas.title}</h1>
+                        <img
+                          src="./assets/imgs/home/linea1.png"
+                          className="linea2"
+                        />
                       </div>
                     </div>
                     <div className="col-md-3"></div>
                     <div className="col-md-6">
-                      <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+                      <div
+                        id="carouselExampleIndicators"
+                        className="carousel slide"
+                        data-bs-ride="carousel"
+                      >
+                        <div className="carousel-inner">
+                          {dataAllHome[lang]?.logosempresas.image !== "" &&
+                            dataAllHome[lang]?.logosempresas.image
+                              .split(",")
+                              .map((imageName, key) => (
+                                <div
+                                  className={`carousel-item ${
+                                    key === 0 && "active"
+                                  }`}
+                                >
+                                  <div>
+                                    <img
+                                      src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/logo-empresa/${imageName}`}
+                                      className="d-block w-1 img_marcas"
+                                      alt="..."
+                                    />
+                                  </div>
+                                </div>
+                              ))}
+                        </div>
+                        {/*                          
                         <div className="carousel-inner">
                           <div className="carousel-item active">
                             <div>
@@ -434,13 +534,17 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
+                         */}
                         <button
                           className="carousel-control-prev"
                           type="button"
                           data-bs-target="#carouselExampleIndicators"
                           data-bs-slide="prev"
                         >
-                          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span
+                            className="carousel-control-prev-icon"
+                            aria-hidden="true"
+                          ></span>
                           <span className="visually-hidden">Previous</span>
                         </button>
                         <button
@@ -449,7 +553,10 @@ export default function Home() {
                           data-bs-target="#carouselExampleIndicators"
                           data-bs-slide="next"
                         >
-                          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span
+                            className="carousel-control-next-icon"
+                            aria-hidden="true"
+                          ></span>
                           <span className="visually-hidden">Next</span>
                         </button>
                       </div>
@@ -497,9 +604,15 @@ export default function Home() {
                   <div className="row">
                     <div className="col-md-12 mb-5">
                       <div className="titulo">
-                        <img src="./assets/imgs/home/linea2.png" style={{ height: "8px" }} />
+                        <img
+                          src="./assets/imgs/home/linea2.png"
+                          style={{ height: "8px" }}
+                        />
                         <h1>{strings[lang].noticias}</h1>
-                        <img src="./assets/imgs/home/linea1.png" style={{ height: "8px", marginLeft: "8px" }} />
+                        <img
+                          src="./assets/imgs/home/linea1.png"
+                          style={{ height: "8px", marginLeft: "8px" }}
+                        />
                       </div>
                     </div>
 
@@ -516,16 +629,25 @@ export default function Home() {
                                 query: { lang },
                               }}
                             >
-                              <div className="col-md-4 cursor-pointer hover-notice-home" key={noticia.id}>
+                              <div
+                                className="col-md-4 cursor-pointer hover-notice-home"
+                                key={noticia.id}
+                              >
                                 <br />
                                 <div className="mb-4 text-center">
                                   <h3>{noticia.title}</h3>
                                 </div>
                                 <div className="noticias_img">
-                                  <img src={imageSrc} style={{ maxWidth: "90%" }} alt={noticia.title} />
+                                  <img
+                                    src={imageSrc}
+                                    style={{ maxWidth: "90%" }}
+                                    alt={noticia.title}
+                                  />
                                 </div>
 
-                                <div className="mt-4 text-center noticias_cuadro">{noticia.summary}</div>
+                                <div className="mt-4 text-center noticias_cuadro">
+                                  {noticia.summary}
+                                </div>
                               </div>
                             </Link>
                           );
@@ -634,21 +756,56 @@ export default function Home() {
                 <div className="container">
                   <div className="row">
                     <div className="col-md-12 text-center mt-5">
-                      <a href="https://www.facebook.com/RondeVenezuela" target="_blank">
-                        <img src="./assets/imgs/home/ICONO-FACEBOOK.png" className="iconos_abajo zoom" />
+                      <a
+                        // href="https://www.facebook.com/RondeVenezuela"
+                        href={dataAllHome[lang]?.rsFacebook.info}
+                        target="_blank"
+                      >
+                        <img
+                          src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                          className="iconos_abajo zoom"
+                        />
                       </a>
-                      <img src="./assets/imgs/home/LINEA-REDES-1.png" className="linea1" />
-                      <a href="https://www.instagram.com/rondevenezuela/" target="_blank">
-                        <img src="./assets/imgs/home/ICONO-INSTAGRAM.png" className="iconos_abajo zoom" />
+                      <img
+                        src="./assets/imgs/home/LINEA-REDES-1.png"
+                        className="linea1"
+                      />
+                      <a
+                        // href="https://www.instagram.com/rondevenezuela/"
+                        href={dataAllHome[lang]?.rsInstagram.info}
+                        target="_blank"
+                      >
+                        <img
+                          src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                          className="iconos_abajo zoom"
+                        />
                       </a>
-                      <img src="./assets/imgs/home/LINEA-REDES-2.png" className="linea1" />
-                      <img src="./assets/imgs/home/ICONO-YOUTUBE.png" className="iconos_abajo zoom" />
+                      <img
+                        src="./assets/imgs/home/LINEA-REDES-2.png"
+                        className="linea1"
+                      />
+                      <a
+                        href={dataAllHome[lang]?.rsYoutube.info}
+                        target="_blank"
+                      >
+                        <img
+                          src="./assets/imgs/home/ICONO-YOUTUBE.png"
+                          className="iconos_abajo zoom"
+                        />
+                      </a>
                     </div>
-                    <div className="col-md-12 text-center mt-5">@RONDEVENEZUELA</div>
+                    <div className="col-md-12 text-center mt-5">
+                      @RONDEVENEZUELA
+                    </div>
                   </div>
 
                   <div style={{ textAlign: "center", marginTop: 50 }}>
-                    <video style={{ width: "100%", maxWidth: "100%" }} controls src={strings[lang].videos.home}>
+                    <video
+                      style={{ width: "100%", maxWidth: "100%" }}
+                      controls
+                      // src={strings[lang].videos.home}
+                      src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/video/${dataAllHome[lang]?.video.info}`}
+                    >
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -657,7 +814,10 @@ export default function Home() {
 
               <div className="container">
                 <div className="row">
-                  <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+                  <div
+                    className="col-md-12"
+                    style={{ backgroundColor: "#3d2514" }}
+                  >
                     <br />
                     <br />
                   </div>
@@ -668,36 +828,73 @@ export default function Home() {
             <div className="SectionMobile0 valida_desktop">
               <Row type="flex" justify="center" className="SectionMobile0">
                 <Col xs={24}>
-                  <img src="./assets/imgs/home/copa.jpg" style={{ maxWidth: "100%", marginTop: "58px" }} />
+                  <img
+                    src="./assets/imgs/home/copa.jpg"
+                    style={{ maxWidth: "100%", marginTop: "58px" }}
+                  />
                 </Col>
                 <Col xs={22} className="text-center">
                   <br />
-                  <h1 className="text-center">{strings[lang].home.pageTitle}</h1>
-                  <p className="text-center font_20">{strings[lang].calidad}</p>
-                  <img src="./assets/imgs/home/linea1.png" style={{ height: "8px" }} />
-                  <br />
-                  <br />
-                </Col>
-              </Row>
-              <Row type="flex" justify="center" className="SectionMobile1">
-                <Col xs={22}>
-                  <br />
-                  <h1>{strings[lang].elron1}</h1>
-                  <p>
-                    {strings[lang].melasa}
-                    <br />
-                    {strings[lang].aunque}
+                  <h1 className="text-center">
+                    {/* {strings[lang].home.pageTitle} */}
+                    {dataAllHome[lang]?.banner?.title}
+                  </h1>
+                  <p className="text-center font_20">
+                    {/* {strings[lang].calidad} */}
+                    {dataAllHome[lang]?.banner.info}
                   </p>
-                  <img src="./assets/imgs/home/foto-ron.jpg" style={{ maxWidth: "100%" }} />
+                  <img
+                    src="./assets/imgs/home/linea1.png"
+                    style={{ height: "8px" }}
+                  />
                   <br />
                   <br />
                 </Col>
               </Row>
               <Row type="flex" justify="center" className="SectionMobile1">
                 <Col xs={22}>
-                  <h1>{strings[lang].proceso}</h1>
-                  <p>{strings[lang].productores}</p>
-                  <img src="./assets/imgs/home/foto-proceso.jpg" style={{ maxWidth: "100%" }} />
+                  <br />
+                  <h1>
+                    {/* {strings[lang].elron1} */}
+                    {dataAllHome[lang]?.elron.title}
+                  </h1>
+                  <p>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: dataAllHome[lang]?.elron.info?.replaceAll(
+                          "\n",
+                          "<br />"
+                        ),
+                      }}
+                    ></div>
+                    {/* {strings[lang].melasa}
+                    <br />
+                    {strings[lang].aunque} */}
+                  </p>
+                  <img
+                    // src="./assets/imgs/home/foto-ron.jpg"
+                    src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/${dataAllHome[lang]?.elron.image}`}
+                    style={{ maxWidth: "100%" }}
+                  />
+                  <br />
+                  <br />
+                </Col>
+              </Row>
+              <Row type="flex" justify="center" className="SectionMobile1">
+                <Col xs={22}>
+                  <h1>
+                    {/* {strings[lang].proceso} */}
+                    {dataAllHome[lang]?.procesoelaboracion.title}
+                  </h1>
+                  <p>
+                    {/* {strings[lang].productores} */}
+                    {dataAllHome[lang]?.procesoelaboracion.info}
+                  </p>
+                  <img
+                    // src="./assets/imgs/home/foto-proceso.jpg"
+                    src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/${dataAllHome[lang]?.procesoelaboracion.image}`}
+                    style={{ maxWidth: "100%" }}
+                  />
                   <br />
                   <br />
                 </Col>
@@ -707,15 +904,48 @@ export default function Home() {
                 <Col xs={22}>
                   <div className="col-md-12 mb-1">
                     <div className="seccion_titulo_mobile">
-                      <img src="./assets/imgs/home/linea2.png" className="linea1mobile" />
-                      <h1>{strings[lang].home.empresas}</h1>
-                      <img src="./assets/imgs/home/linea1.png" className="linea2mobile" />
+                      <img
+                        src="./assets/imgs/home/linea2.png"
+                        className="linea1mobile"
+                      />
+                      <h1>
+                        {/* {strings[lang].home.empresas} */}
+                        {dataAllHome[lang]?.logosempresas.title}
+                      </h1>
+                      <img
+                        src="./assets/imgs/home/linea1.png"
+                        className="linea2mobile"
+                      />
                     </div>
                   </div>
                   <div className="col-md-3"></div>
                   <div className="col-md-6">
-                    <div id="carouselExampleIndicators2" className="carousel slide" data-bs-ride="carousel">
+                    <div
+                      id="carouselExampleIndicators2"
+                      className="carousel slide"
+                      data-bs-ride="carousel"
+                    >
                       <div className="carousel-inner">
+                        {dataAllHome[lang]?.logosempresas.image !== "" &&
+                          dataAllHome[lang]?.logosempresas.image
+                            .split(",")
+                            .map((imageName, key) => (
+                              <div
+                                className={`carousel-item ${
+                                  key === 0 && "active"
+                                }`}
+                              >
+                                <div>
+                                  <img
+                                    src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/logo-empresa/${imageName}`}
+                                    className="d-block w-1 img_marcas"
+                                    alt="..."
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                      </div>
+                      {/* <div className="carousel-inner">
                         <div className="carousel-item active">
                           <div>
                             <img
@@ -860,14 +1090,17 @@ export default function Home() {
                             />
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                       <button
                         className="carousel-control-prev"
                         type="button"
                         data-bs-target="#carouselExampleIndicators2"
                         data-bs-slide="prev"
                       >
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span
+                          className="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        ></span>
                         <span className="visually-hidden">Previous</span>
                       </button>
                       <button
@@ -876,7 +1109,10 @@ export default function Home() {
                         data-bs-target="#carouselExampleIndicators2"
                         data-bs-slide="next"
                       >
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span
+                          className="carousel-control-next-icon"
+                          aria-hidden="true"
+                        ></span>
                         <span className="visually-hidden">Next</span>
                       </button>
                     </div>
@@ -915,9 +1151,15 @@ export default function Home() {
               <Row type="flex" justify="center" className="SectionMobile1">
                 <Col xs={22}>
                   <div className="seccion_titulo_mobile">
-                    <img src="./assets/imgs/home/linea2.png" className="linea1mobile" />
+                    <img
+                      src="./assets/imgs/home/linea2.png"
+                      className="linea1mobile"
+                    />
                     <h1 className="text-center">{strings[lang].noticias}</h1>
-                    <img src="./assets/imgs/home/linea1.png" className="linea2mobile" />
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      className="linea2mobile"
+                    />
                   </div>
                 </Col>
                 <Col xs={22}>
@@ -935,15 +1177,24 @@ export default function Home() {
                                 query: { lang },
                               }}
                             >
-                              <div className="col-md-4 cursor-pointer hover-notice-home" key={noticia.id}>
+                              <div
+                                className="col-md-4 cursor-pointer hover-notice-home"
+                                key={noticia.id}
+                              >
                                 <div className="mb-4 text-center">
                                   <h3>{noticia.title}</h3>
                                 </div>
                                 <div className="noticias_img">
-                                  <img src={imageSrc} style={{ maxWidth: "90%" }} alt={noticia.title} />
+                                  <img
+                                    src={imageSrc}
+                                    style={{ maxWidth: "90%" }}
+                                    alt={noticia.title}
+                                  />
                                 </div>
 
-                                <div className="mt-4 text-center noticias_cuadro">{noticia.summary}</div>
+                                <div className="mt-4 text-center noticias_cuadro">
+                                  {noticia.summary}
+                                </div>
                                 <br />
                               </div>
                             </Link>
@@ -1045,14 +1296,33 @@ export default function Home() {
                   <br />
                   <br />
 
-                  <a href="https://www.facebook.com/RondeVenezuela" target="_blank">
-                    <img src="./assets/imgs/home/ICONO-FACEBOOK.png" className="iconos_abajo_mobile" />
+                  <a
+                    // href="https://www.facebook.com/RondeVenezuela"
+                    href={dataAllHome[lang]?.rsFacebook.info}
+                    target="_blank"
+                  >
+                    <img
+                      src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                      className="iconos_abajo_mobile"
+                    />
                   </a>
-                  <a href="https://www.instagram.com/rondevenezuela/" target="_blank">
-                    <img src="./assets/imgs/home/ICONO-INSTAGRAM.png" className="iconos_abajo_mobile" />
+                  <a
+                    // href="https://www.instagram.com/rondevenezuela/"
+                    href={dataAllHome[lang]?.rsInstagram.info}
+                    target="_blank"
+                  >
+                    <img
+                      src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                      className="iconos_abajo_mobile"
+                    />
                   </a>
 
-                  <img src="./assets/imgs/home/ICONO-YOUTUBE.png" className="iconos_abajo_mobile" />
+                  <a href={dataAllHome[lang]?.rsYoutube.info} target="_blank">
+                    <img
+                      src="./assets/imgs/home/ICONO-YOUTUBE.png"
+                      className="iconos_abajo_mobile"
+                    />
+                  </a>
                 </Col>
                 <Col xs={22} className="text-center">
                   <br />
@@ -1061,7 +1331,12 @@ export default function Home() {
                 </Col>
                 <Col xs={22} className="text-center">
                   <div style={{ textAlign: "center", marginTop: 50 }}>
-                    <video style={{ width: "100%", maxWidth: "100%" }} controls src={strings[lang].videos.home}>
+                    <video
+                      style={{ width: "100%", maxWidth: "100%" }}
+                      controls
+                      // src={strings[lang].videos.home}
+                      src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/home/video/${dataAllHome[lang]?.video.info}`}
+                    >
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -1075,7 +1350,10 @@ export default function Home() {
               </Row>
               <div className="container">
                 <div className="row">
-                  <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
+                  <div
+                    className="col-md-12"
+                    style={{ backgroundColor: "#3d2514" }}
+                  >
                     <br />
                     <br />
                   </div>
@@ -1083,12 +1361,20 @@ export default function Home() {
               </div>
             </div>
 
-            <Footer />
+            <Footer
+              footer1={dataAllHome[lang]?.footer1.info}
+              footer2={dataAllHome[lang]?.footer2.info}
+            />
           </>
         )}
       </div>
 
-      <Modal visible={modalEdadVisible} footer={false} maskClosable={false} closable={false}>
+      <Modal
+        visible={modalEdadVisible}
+        footer={false}
+        maskClosable={false}
+        closable={false}
+      >
         <div
           style={{
             backgroundImage: "url('/assets/imgs/home/fondoEdad2.png')",
@@ -1109,7 +1395,10 @@ export default function Home() {
           >
             <Row type="flex" justify="center">
               <Col span={24}>
-                <img src="./assets/imgs/home/logo_blanco.png" style={{ height: "150px" }} />
+                <img
+                  src="./assets/imgs/home/logo_blanco.png"
+                  style={{ height: "150px" }}
+                />
                 <br />
                 <br />
               </Col>

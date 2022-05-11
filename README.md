@@ -47,5 +47,6 @@ Self Managed Panel Modules
   - Premios
 - Noticias
 - Quienes Somos
-
+- DOC
+  - Regularizaciones
 ```

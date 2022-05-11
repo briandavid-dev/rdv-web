@@ -101,18 +101,35 @@ export default function Doc() {
 
       <div className="SeccionDoc0 valida_mobile">
         <div className="SeccionDoc1">
-          <img src="./assets/imgs/doc/BARRIL-LETRA-D.png" style={{ maxWidth: "25%", width: "400px" }} />
-          <img src="./assets/imgs/doc/BARRIL-LETRA-O.png" style={{ maxWidth: "25%", width: "400px" }} />
-          <img src="./assets/imgs/doc/BARRIL-LETRA-C.png" style={{ maxWidth: "25%", width: "400px" }} />
+          <img
+            src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+            style={{ maxWidth: "25%", width: "400px" }}
+          />
+          <img
+            src="./assets/imgs/doc/BARRIL-LETRA-O.png"
+            style={{ maxWidth: "25%", width: "400px" }}
+          />
+          <img
+            src="./assets/imgs/doc/BARRIL-LETRA-C.png"
+            style={{ maxWidth: "25%", width: "400px" }}
+          />
         </div>
         <div className="SeccionDoc2">
           <div className="container">
             <div className="row justify-content-center gx-1">
               <div className="col-md-12">
                 <div className="seccion_titulo text-center">
-                  <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
+                  <img
+                    src="./assets/imgs/home/linea2.png"
+                    className="linea1"
+                    style={{ maxHeight: "4px" }}
+                  />
                   <h1>{strings[lang].doc.title1}</h1>
-                  <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
+                  <img
+                    src="./assets/imgs/home/linea1.png"
+                    className="linea2"
+                    style={{ maxHeight: "4px" }}
+                  />
                 </div>
               </div>
               <div className="col-md-10">
@@ -127,19 +144,26 @@ export default function Doc() {
                 {strings[lang].doc.existe1}
               </div>
               <div className="col-md-3 " style={{ textAlign: "right" }}>
-                <img src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png" style={{ maxWidth: "80%" }} />
+                <img
+                  src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
+                  style={{ maxWidth: "80%" }}
+                />
               </div>
             </div>
           </div>
           <div className="container">
             <div className="row justify-content-center ">
               <div className="col-md-10 SeccionDocNacimiento">
-                <h3 className="titulo-maestro">{strings[lang].doc.nacimiento}</h3>
+                <h3 className="titulo-maestro">
+                  {strings[lang].doc.nacimiento}
+                </h3>
                 {strings[lang].doc.nacimiento1}
               </div>
 
               <div className="col-md-10">
-                <h3 className="titulo-maestro">{strings[lang].doc.regulador}</h3>
+                <h3 className="titulo-maestro">
+                  {strings[lang].doc.regulador}
+                </h3>
                 {strings[lang].doc.regulador1}
 
                 {strings[lang].doc.funciones}
@@ -151,21 +175,25 @@ export default function Doc() {
                 <Skeleton active loading={loading}>
                   {dataForm[lang] && dataForm[lang].regularizations && (
                     <>
-                      <h4 className="titulo-maestro">{dataForm[lang].regularizations.title}</h4>
+                      <h4 className="titulo-maestro">
+                        {dataForm[lang].regularizations.title}
+                      </h4>
                       <p className="font_20 text-justify">
-                        {dataForm[lang].regularizations.files.map((file, key) => (
-                          <>
-                            <a
-                              key={key}
-                              href={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/${file.fileName}`}
-                              target="_blank"
-                              style={{ color: "#C6E1EA" }}
-                            >
-                              {file.text} .pdf (click aquí)
-                            </a>
-                            <br />
-                          </>
-                        ))}
+                        {dataForm[lang].regularizations.files.map(
+                          (file, key) => (
+                            <>
+                              <a
+                                key={key}
+                                href={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/${file.fileName}`}
+                                target="_blank"
+                                style={{ color: "#C6E1EA" }}
+                              >
+                                {file.text} .pdf (click aquí)
+                              </a>
+                              <br />
+                            </>
+                          )
+                        )}
                       </p>
                     </>
                   )}
@@ -229,9 +257,20 @@ export default function Doc() {
         <Row type="flex" justify="center">
           <Col xs={22} className="text-center" style={{ marginTop: "58px" }}>
             <br />
-            <img src="./assets/imgs/doc/BARRIL-LETRA-D.png" style={{ maxWidth: "30%" }} /> &nbsp;&nbsp;
-            <img src="./assets/imgs/doc/BARRIL-LETRA-O.png" style={{ maxWidth: "30%" }} /> &nbsp;&nbsp;
-            <img src="./assets/imgs/doc/BARRIL-LETRA-C.png" style={{ maxWidth: "30%" }} />
+            <img
+              src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+              style={{ maxWidth: "30%" }}
+            />{" "}
+            &nbsp;&nbsp;
+            <img
+              src="./assets/imgs/doc/BARRIL-LETRA-O.png"
+              style={{ maxWidth: "30%" }}
+            />{" "}
+            &nbsp;&nbsp;
+            <img
+              src="./assets/imgs/doc/BARRIL-LETRA-C.png"
+              style={{ maxWidth: "30%" }}
+            />
             <br />
             <br />
           </Col>
@@ -246,7 +285,10 @@ export default function Doc() {
             {strings[lang].doc.existe1}
           </Col>
           <Col xs={22} className="text-center">
-            <img src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png" style={{ maxWidth: "100%" }} />
+            <img
+              src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
+              style={{ maxWidth: "100%" }}
+            />
             <br />
             <br />
           </Col>
@@ -263,7 +305,9 @@ export default function Doc() {
             <Skeleton active loading={loading}>
               {dataForm[lang] && dataForm[lang].regularizations && (
                 <>
-                  <h4 className="titulo-maestro">{dataForm[lang].regularizations.title}</h4>
+                  <h4 className="titulo-maestro">
+                    {dataForm[lang].regularizations.title}
+                  </h4>
                   <p className="font_20 text-justify">
                     {dataForm[lang].regularizations.files.map((file, key) => (
                       <>

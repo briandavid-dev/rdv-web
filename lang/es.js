@@ -1,5 +1,5 @@
 const strings = {
-  calidad: "Calidad de un suelo, tesón de los hombres del campo.",
+  calidad: "Calidad de un suelo, tesón de los hombresss del campo.",
   melasa: "La melaza es el comienzo del Ron Venezolano.",
   aunque: `Aunque hay lugares en el Caribe que elaboran rones de jugo de caña`,
   elron1: "EL RON",

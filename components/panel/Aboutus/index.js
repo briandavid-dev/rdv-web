@@ -44,11 +44,23 @@ export const Aboutus = () => {
       <Spin spinning={loading}>
         <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab="Español" key="1">
-            {dataFormEs && <FormAboutus lang="es" dataForm={dataFormEs} setLoading={setLoading} />}
+            {dataFormEs && (
+              <FormAboutus
+                lang="es"
+                dataForm={dataFormEs}
+                setLoading={setLoading}
+              />
+            )}
           </Tabs.TabPane>
 
           <Tabs.TabPane tab="English" key="2">
-            {dataFormEs && <FormAboutus lang="en" dataForm={dataFormEn} setLoading={setLoading} />}
+            {dataFormEs && (
+              <FormAboutus
+                lang="en"
+                dataForm={dataFormEn}
+                setLoading={setLoading}
+              />
+            )}
           </Tabs.TabPane>
         </Tabs>
       </Spin>

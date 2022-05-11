@@ -8,7 +8,14 @@ export const PrincipalMenu = (props) => {
   return (
     <Layout.Header>
       <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={defaultSelectedKeys}>
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={defaultSelectedKeys}
+      >
+        <Menu.Item key="6">
+          <Link href="/panel/home">Home</Link>
+        </Menu.Item>
         <Menu.Item key="1">
           <Link href="/panel/noticias">Noticias</Link>
         </Menu.Item>

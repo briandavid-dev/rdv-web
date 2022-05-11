@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from "react";
 import css from "styled-jsx/css";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ApiHome from "./../../services/home";
 
 const stylesCss = css.global`
   .nav_bar_superior {
@@ -82,6 +84,30 @@ const MenuDesktop = () => {
       nuestraGente: "Our people",
     },
   };
+
+  const [data, setData] = useState({ es: null, en: null });
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    ApiHome.getRrssFooter()
+      .then((response) => {
+        const { codigo, data } = response.data;
+        if (codigo === "1") {
+          setData(data);
+        } else {
+          console.log("error", `service return code ${codigo}`);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  console.log("data[lang]?.footer1.info", data[lang]?.rsFacebook.info);
 
   return (
     <>
@@ -291,10 +317,7 @@ const MenuDesktop = () => {
                   }}
                 >
                   <div style={{ width: "100%" }}>
-                    <a
-                      href="https://www.facebook.com/RondeVenezuela"
-                      target="_blank"
-                    >
+                    <a href={data[lang]?.rsFacebook.info} target="_blank">
                       <img
                         src="/assets/imgs/home/ICONO-FACEBOOK.png"
                         className="cursor-pointer"
@@ -324,10 +347,7 @@ const MenuDesktop = () => {
                     </Link>
                   </div>
                   <div style={{ width: "100%" }}>
-                    <a
-                      href="https://www.instagram.com/rondevenezuela/"
-                      target="_blank"
-                    >
+                    <a href={data[lang]?.rsInstagram.info} target="_blank">
                       <img
                         src="/assets/imgs/home/ICONO-INSTAGRAM.png"
                         className="cursor-pointer"
