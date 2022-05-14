@@ -34,13 +34,23 @@ export const Doc = () => {
           <Tabs defaultActiveKey="1">
             <Tabs.TabPane tab="Español" key="1">
               {dataForm.es && (
-                <FormDoc lang="es" dataForm={dataForm.es} setDataForm={setDataForm} setLoading={setLoading} />
+                <FormDoc
+                  lang="es"
+                  dataForm={dataForm.es}
+                  setDataForm={setDataForm}
+                  setLoading={setLoading}
+                />
               )}
             </Tabs.TabPane>
 
             <Tabs.TabPane tab="English" key="2">
               {dataForm.en && (
-                <FormDoc lang="en" dataForm={dataForm.en} setDataForm={setDataForm} setLoading={setLoading} />
+                <FormDoc
+                  lang="en"
+                  dataForm={dataForm.en}
+                  setDataForm={setDataForm}
+                  setLoading={setLoading}
+                />
               )}
             </Tabs.TabPane>
           </Tabs>

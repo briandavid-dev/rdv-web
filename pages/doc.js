@@ -101,18 +101,31 @@ export default function Doc() {
 
       <div className="SeccionDoc0 valida_mobile">
         <div className="SeccionDoc1">
-          <img
-            src="./assets/imgs/doc/BARRIL-LETRA-D.png"
-            style={{ maxWidth: "25%", width: "400px" }}
-          />
-          <img
-            src="./assets/imgs/doc/BARRIL-LETRA-O.png"
-            style={{ maxWidth: "25%", width: "400px" }}
-          />
-          <img
-            src="./assets/imgs/doc/BARRIL-LETRA-C.png"
-            style={{ maxWidth: "25%", width: "400px" }}
-          />
+          <Skeleton loading={loading} active>
+            {dataForm[lang]?.doc_image_1.image && (
+              <img
+                // src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_image_1.image}`}
+                style={{ maxWidth: "25%", width: "400px" }}
+              />
+            )}
+
+            {dataForm[lang]?.doc_image_2.image && (
+              <img
+                // src="./assets/imgs/doc/BARRIL-LETRA-O.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_image_2.image}`}
+                style={{ maxWidth: "25%", width: "400px" }}
+              />
+            )}
+
+            {dataForm[lang]?.doc_image_3.image && (
+              <img
+                // src="./assets/imgs/doc/BARRIL-LETRA-C.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_image_3.image}`}
+                style={{ maxWidth: "25%", width: "400px" }}
+              />
+            )}
+          </Skeleton>
         </div>
         <div className="SeccionDoc2">
           <div className="container">
@@ -124,7 +137,10 @@ export default function Doc() {
                     className="linea1"
                     style={{ maxHeight: "4px" }}
                   />
-                  <h1>{strings[lang].doc.title1}</h1>
+                  <h1>
+                    {/* {strings[lang].doc.title1} */}
+                    {dataForm[lang]?.denominacion.title}
+                  </h1>
                   <img
                     src="./assets/imgs/home/linea1.png"
                     className="linea2"
@@ -133,19 +149,47 @@ export default function Doc() {
                 </div>
               </div>
               <div className="col-md-10">
-                <h3 className="titulo-maestro">{strings[lang].doc.quees}</h3>
-                {strings[lang].doc.quees1}
+                <h3 className="titulo-maestro">
+                  {/* {strings[lang].doc.quees} */}
+                  {dataForm[lang]?.quees.title}
+                </h3>
+
+                <p className="font_20 text-justify">
+                  {/* {strings[lang].doc.quees1} */}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: dataForm[lang]?.quees.content.replaceAll(
+                        "\n",
+                        "<br />"
+                      ),
+                    }}
+                  ></div>
+                </p>
 
                 <br />
                 <br />
               </div>
               <div className="col-md-7">
-                <h3 className="titulo-maestro">{strings[lang].doc.existe}</h3>
-                {strings[lang].doc.existe1}
+                <h3 className="titulo-maestro">
+                  {/* {strings[lang].doc.existe} */}
+                  {dataForm[lang]?.porqueexiste.title}
+                </h3>
+                <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
+                  {/* {strings[lang].doc.existe1} */}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: dataForm[lang]?.porqueexiste.content.replaceAll(
+                        "\n",
+                        "<br />"
+                      ),
+                    }}
+                  ></div>
+                </p>
               </div>
               <div className="col-md-3 " style={{ textAlign: "right" }}>
                 <img
-                  src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
+                  // src="./assets/imgs/doc/FOTO-BODEGA-BARRICAS.png"
+                  src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.porqueexiste.image}`}
                   style={{ maxWidth: "80%" }}
                 />
               </div>
@@ -155,20 +199,69 @@ export default function Doc() {
             <div className="row justify-content-center ">
               <div className="col-md-10 SeccionDocNacimiento">
                 <h3 className="titulo-maestro">
-                  {strings[lang].doc.nacimiento}
+                  {/* {strings[lang].doc.nacimiento} */}
+                  {dataForm[lang]?.acta_nacimiento.title}
                 </h3>
-                {strings[lang].doc.nacimiento1}
+                <p className="font_20 text-justify">
+                  {/* {strings[lang].doc.nacimiento1} */}
+
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: dataForm[
+                        lang
+                      ]?.acta_nacimiento.content.replaceAll("\n", "<br />"),
+                    }}
+                  ></div>
+                </p>
               </div>
 
               <div className="col-md-10">
                 <h3 className="titulo-maestro">
-                  {strings[lang].doc.regulador}
+                  {/* {strings[lang].doc.regulador} */}
+                  {dataForm[lang]?.organismo_regulador.title}
                 </h3>
-                {strings[lang].doc.regulador1}
+                <p className="font_20 text-justify">
+                  {/* {strings[lang].doc.regulador1} */}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: dataForm[
+                        lang
+                      ]?.organismo_regulador.content.replaceAll("\n", "<br />"),
+                    }}
+                  ></div>
+                </p>
+                <br />
+                <h3 className="titulo-maestro">
+                  {dataForm[lang]?.funciones.title}
+                </h3>
+                <div>
+                  {/* {dataForm[lang]?.funciones.content} */}
+                  <div
+                    className="font_20 text-justify"
+                    dangerouslySetInnerHTML={{
+                      __html: dataForm[lang]?.funciones.content.replaceAll(
+                        "\n",
+                        "<br />"
+                      ),
+                    }}
+                  ></div>
+                </div>
+                <br />
+                <h3 className="titulo-maestro">
+                  {dataForm[lang]?.organizacion.title}
+                </h3>
+                <div className="font_20 text-justify">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: dataForm[lang]?.organizacion.content.replaceAll(
+                        "\n",
+                        "<br />"
+                      ),
+                    }}
+                  ></div>
+                </div>
 
-                {strings[lang].doc.funciones}
-
-                {strings[lang].doc.organizacion}
+                {/* {strings[lang].doc.organizacion} */}
 
                 <br />
 
@@ -188,7 +281,7 @@ export default function Doc() {
                                 target="_blank"
                                 style={{ color: "#C6E1EA" }}
                               >
-                                {file.text} .pdf (click aquí)
+                                {file.text}
                               </a>
                               <br />
                             </>
@@ -208,7 +301,8 @@ export default function Doc() {
             <div className="row justify-content-center gx-1">
               <div className="col-md-12 text-center">
                 <img
-                  src="./assets/imgs/doc/FOTO-CAMION.png"
+                  // src="./assets/imgs/doc/FOTO-CAMION.png"
+                  src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_footer_image_1.image}`}
                   style={{
                     marginLeft: "1rem",
                     marginRight: "1rem",
@@ -217,7 +311,8 @@ export default function Doc() {
                   }}
                 />
                 <img
-                  src="./assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
+                  // src="./assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
+                  src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_footer_image_2.image}`}
                   style={{
                     marginLeft: "1rem",
                     marginRight: "1rem",
@@ -226,7 +321,8 @@ export default function Doc() {
                   }}
                 />
                 <img
-                  src="./assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
+                  // src="./assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
+                  src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_footer_image_3.image}`}
                   style={{
                     marginLeft: "1rem",
                     marginRight: "1rem",
@@ -257,32 +353,71 @@ export default function Doc() {
         <Row type="flex" justify="center">
           <Col xs={22} className="text-center" style={{ marginTop: "58px" }}>
             <br />
-            <img
-              src="./assets/imgs/doc/BARRIL-LETRA-D.png"
-              style={{ maxWidth: "30%" }}
-            />{" "}
+            {dataForm[lang]?.doc_image_1.image && (
+              <img
+                // src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_image_1.image}`}
+                style={{ maxWidth: "30%" }}
+              />
+            )}
             &nbsp;&nbsp;
-            <img
-              src="./assets/imgs/doc/BARRIL-LETRA-O.png"
-              style={{ maxWidth: "30%" }}
-            />{" "}
+            {dataForm[lang]?.doc_image_2.image && (
+              <img
+                // src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_image_2.image}`}
+                style={{ maxWidth: "30%" }}
+              />
+            )}
             &nbsp;&nbsp;
-            <img
-              src="./assets/imgs/doc/BARRIL-LETRA-C.png"
-              style={{ maxWidth: "30%" }}
-            />
+            {dataForm[lang]?.doc_image_3.image && (
+              <img
+                // src="./assets/imgs/doc/BARRIL-LETRA-D.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_image_3.image}`}
+                style={{ maxWidth: "30%" }}
+              />
+            )}
             <br />
             <br />
           </Col>
           <Col xs={22}>
-            <h1>{strings[lang].doc.title1}</h1>
+            <h1>
+              {/* {strings[lang].doc.title1} */}
+              {dataForm[lang]?.denominacion.title}
+            </h1>
             <br />
 
-            <h3 className="titulo-maestro">{strings[lang].doc.quees}</h3>
-            {strings[lang].doc.quees1}
+            <h3 className="titulo-maestro">
+              {/* {strings[lang].doc.quees} */}
+              {dataForm[lang]?.quees.title}
+            </h3>
 
-            <h3 className="titulo-maestro">{strings[lang].doc.existe}</h3>
-            {strings[lang].doc.existe1}
+            <p className="font_20 text-justify">
+              {/* {strings[lang].doc.quees1} */}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.quees.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
+            </p>
+
+            <h3 className="titulo-maestro">
+              {/* {strings[lang].doc.existe}  */}
+              {dataForm[lang]?.porqueexiste.title}
+            </h3>
+            <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
+              {/* {strings[lang].doc.existe1} */}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.porqueexiste.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
+            </p>
           </Col>
           <Col xs={22} className="text-center">
             <img
@@ -293,14 +428,67 @@ export default function Doc() {
             <br />
           </Col>
           <Col xs={22}>
-            <h3 className="titulo-maestro">{strings[lang].doc.nacimiento}</h3>
-            {strings[lang].doc.nacimiento1}
-            <h3 className="titulo-maestro">{strings[lang].doc.regulador}</h3>
-            {strings[lang].doc.regulador1}
+            <h3 className="titulo-maestro">
+              {/* {strings[lang].doc.nacimiento} */}
+              {dataForm[lang]?.acta_nacimiento.title}
+            </h3>
+            <p className="font_20 text-justify">
+              {/* {strings[lang].doc.nacimiento1} */}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.acta_nacimiento.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
+            </p>
+            <h3 className="titulo-maestro">
+              {/* {strings[lang].doc.regulador} */}
+              {dataForm[lang]?.organismo_regulador.title}
+            </h3>
+            <p className="font_20 text-justify">
+              {/* {strings[lang].doc.regulador1} */}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[
+                    lang
+                  ]?.organismo_regulador.content.replaceAll("\n", "<br />"),
+                }}
+              ></div>
+            </p>
 
-            {strings[lang].doc.funciones}
+            <h3 className="titulo-maestro">
+              {dataForm[lang]?.funciones.title}
+            </h3>
+            <div className="font_20 text-justify">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.funciones.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
+            </div>
 
-            {strings[lang].doc.organizacion}
+            <h3 className="titulo-maestro">
+              {dataForm[lang]?.organizacion.title}
+            </h3>
+            <div className="font_20 text-justify">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.organizacion.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
+            </div>
+
+            {/* {strings[lang].doc.funciones} */}
+
+            {/* {strings[lang].doc.organizacion} */}
             <br />
             <Skeleton active loading={loading}>
               {dataForm[lang] && dataForm[lang].regularizations && (
@@ -317,7 +505,7 @@ export default function Doc() {
                           target="_blank"
                           style={{ color: "#C6E1EA" }}
                         >
-                          {file.text} .pdf (click aquí)
+                          {file.text}
                         </a>
                         <br />
                       </>
@@ -329,21 +517,24 @@ export default function Doc() {
           </Col>
           <Col xs={22} className="text-center">
             <img
-              src="./assets/imgs/doc/FOTO-CAMION.png"
+              // src="./assets/imgs/doc/FOTO-CAMION.png"
+              src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_footer_image_1.image}`}
               style={{
                 maxWidth: "30%",
               }}
             />{" "}
             &nbsp;&nbsp;
             <img
-              src="./assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
+              // src="./assets/imgs/doc/FOTO-CANA-DE-AZUCAR.png"
+              src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_footer_image_2.image}`}
               style={{
                 maxWidth: "30%",
               }}
             />{" "}
             &nbsp;&nbsp;
             <img
-              src="./assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
+              // src="./assets/imgs/doc/FOTO-BODEGA-BARRICA-BOTELLAS.png"
+              src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/doc/image/${dataForm[lang]?.doc_footer_image_3.image}`}
               style={{
                 maxWidth: "30%",
               }}

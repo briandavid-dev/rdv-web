@@ -107,8 +107,6 @@ const MenuDesktop = () => {
       });
   }, []);
 
-  console.log("data[lang]?.footer1.info", data[lang]?.rsFacebook.info);
-
   return (
     <>
       <style jsx global>

@@ -4,7 +4,6 @@ import ApiHome from "../../../services/home";
 import notifica from "../../../utils/notifica";
 import { UploadOutlined } from "@ant-design/icons";
 import { getBase64 } from "../../../utils/getBase64";
-const { v4: uuidv4 } = require("uuid");
 
 const FormHome = (props) => {
   const [form] = Form.useForm();
