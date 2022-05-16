@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { Row, Col, Divider, Carousel } from "antd";
+import { Row, Col, Carousel, Skeleton } from "antd";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
@@ -8,6 +8,7 @@ import MenuDesktop from "../components/MenuDesktop";
 import es from "../lang/es";
 import en from "../lang/en";
 import ApiRunmasters from "../components/panel/Runmasters/services";
+import ApiOurpeople from "../services/ourpeople";
 
 const stylesCss = css.global`
   .Seccion0Gente {
@@ -45,6 +46,28 @@ export default function NuestraGente() {
       });
   }, [lang]);
 
+  const [dataForm, setDataForm] = useState({ es: null, en: null });
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    ApiOurpeople.getAll()
+      .then((response) => {
+        const { codigo, data } = response.data;
+        if (codigo === "1") {
+          setDataForm(data);
+        } else {
+          console.log("error", `service return code ${codigo}`);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div>
       <style jsx global>
@@ -77,102 +100,149 @@ export default function NuestraGente() {
       </Head>
 
       <MenuDesktop />
+      <Skeleton loading={loading} active>
+        <div className="valida_mobile font_20">
+          <div className="Seccion0Gente">
+            <div className="Seccion1Gente">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="seccion_titulo">
+                      <img
+                        src="./assets/imgs/home/linea2.png"
+                        className="linea1"
+                        style={{ maxHeight: "4px" }}
+                      />
+                      <h1>
+                        {/* {strings[lang].gente.cuerpo.title} */}
+                        {dataForm[lang]?.cuerpoalma.title}
+                      </h1>
+                      <img
+                        src="./assets/imgs/home/linea1.png"
+                        className="linea2"
+                        style={{ maxHeight: "4px" }}
+                      />
+                    </div>
+                    {/* <p
+                      className="font_20 text-justify"
+                      style={{ lineHeight: 2 }}
+                    >
+                      {strings[lang].gente.cuerpo.parrafo1}                    
+                    </p> */}
 
-      <div className="valida_mobile font_20">
-        <div className="Seccion0Gente">
-          <div className="Seccion1Gente">
+                    <div
+                      className="font_20 text-justify"
+                      dangerouslySetInnerHTML={{
+                        __html: dataForm[lang]?.cuerpoalma.content.replaceAll(
+                          "\n",
+                          "<br />"
+                        ),
+                      }}
+                    ></div>
+                  </div>
+                  <div className="col-md-6 text-center">
+                    <img
+                      // src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
+                      src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/our-people/image/${dataForm[lang]?.cuerpoalma.image}`}
+                      style={{ width: "400px", maxWidth: "100%" }}
+                    />
+                  </div>
+
+                  <div className="col-md-12">
+                    {/* <p className="font_20 text-justify">
+                      {strings[lang].gente.cuerpo.parrafo2}
+                    </p>
+                    <p className="font_20 text-justify">
+                      {strings[lang].gente.cuerpo.parrafo3}
+                    </p>
+                    <p className="font_20 text-justify">
+                      {strings[lang].gente.cuerpo.parrafo4}
+                    </p> */}
+
+                    <div
+                      className="font_20 text-justify"
+                      dangerouslySetInnerHTML={{
+                        __html: dataForm[lang]?.cuerpoalma2.content.replaceAll(
+                          "\n",
+                          "<br />"
+                        ),
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="container">
               <div className="row">
-                <div className="col-md-6">
-                  <div className="seccion_titulo">
-                    <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
-                    <h1>{strings[lang].gente.cuerpo.title}</h1>
-                    <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
-                  </div>
-                  <p className="font_20 text-justify" style={{ lineHeight: 2 }}>
-                    {strings[lang].gente.cuerpo.parrafo1}
-                  </p>
-                </div>
-                <div className="col-md-6 text-center">
-                  <img
-                    src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
-                    style={{ width: "400px", maxWidth: "100%" }}
-                  />
-                </div>
-
                 <div className="col-md-12">
-                  <p className="font_20 text-justify">{strings[lang].gente.cuerpo.parrafo2}</p>
-                  <p className="font_20 text-justify">{strings[lang].gente.cuerpo.parrafo3}</p>
-                  <p className="font_20 text-justify">{strings[lang].gente.cuerpo.parrafo4}</p>
+                  <div className="seccion_titulo">
+                    <img
+                      src="./assets/imgs/home/linea2.png"
+                      className="linea1"
+                      style={{ maxHeight: "4px" }}
+                    />
+                    <h1>{strings[lang].gente.maestros.title}</h1>
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      className="linea2"
+                      style={{ maxHeight: "4px" }}
+                    />
+                  </div>
                 </div>
+                <br />
               </div>
             </div>
-          </div>
 
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="seccion_titulo">
-                  <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
-                  <h1>{strings[lang].gente.maestros.title}</h1>
-                  <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
-                </div>
-              </div>
-              <br />
-            </div>
-          </div>
-
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <Carousel dotPosition="top">
-                  {/* TODO:  */}
-
-                  {listRunMasters.map((master) => (
-                    <div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          color: "#fef4e4",
-                          marginTop: "3rem",
-                        }}
-                      >
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <Carousel dotPosition="top">
+                    {listRunMasters.map((master) => (
+                      <div>
                         <div
                           style={{
-                            flex: 4,
-                            paddingRight: "calc(var(--bs-gutter-x)/ 2)",
+                            display: "flex",
+                            flexDirection: "row",
+                            color: "#fef4e4",
+                            marginTop: "3rem",
                           }}
                         >
-                          {/* <img src="./assets/imgs/gente/m_CARMEN-LOPEZ.png" style={{ maxWidth: "100%" }} /> */}
-                          <img
-                            src={`data:image/${master.image_extension};base64,${master.image_base64}`}
-                            style={{ maxWidth: "100%" }}
-                          />
-                        </div>
-                        <div
-                          style={{
-                            flex: 8,
-                            paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
-                            fontSize: "1.5 rem",
-                          }}
-                        >
-                          <h4 className="titulo-maestro">{master.title}</h4>
-                          <br />
                           <div
                             style={{
-                              fontSize: "1.4rem",
+                              flex: 4,
+                              paddingRight: "calc(var(--bs-gutter-x)/ 2)",
                             }}
-                            dangerouslySetInnerHTML={{
-                              __html: master.info,
+                          >
+                            {/* <img src="./assets/imgs/gente/m_CARMEN-LOPEZ.png" style={{ maxWidth: "100%" }} /> */}
+                            <img
+                              src={`data:image/${master.image_extension};base64,${master.image_base64}`}
+                              style={{ maxWidth: "100%" }}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              flex: 8,
+                              paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
+                              fontSize: "1.5 rem",
                             }}
-                          ></div>
+                          >
+                            <h4 className="titulo-maestro">{master.title}</h4>
+                            <br />
+                            <div
+                              style={{
+                                fontSize: "1.4rem",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html: master.info,
+                              }}
+                            ></div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
 
-                  {/*
+                    {/*
                   <div>
                     <div
                       style={{
@@ -282,112 +352,201 @@ export default function NuestraGente() {
                     </div>
                   </div>
                   */}
-                </Carousel>
-              </div>
-            </div>
-          </div>
-
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <hr style={{ margin: "3rem 0 3rem 0" }} />
-              </div>
-            </div>
-          </div>
-
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="seccion_titulo">
-                  <img src="./assets/imgs/home/linea2.png" className="linea1" style={{ maxHeight: "4px" }} />
-
-                  <h1> {strings[lang].gente.unnombre.titulo}</h1>
-                  <img src="./assets/imgs/home/linea1.png" className="linea2" style={{ maxHeight: "4px" }} />
+                  </Carousel>
                 </div>
-
-                {strings[lang].gente.unnombre.parrafos}
-
-                <br />
-                <br />
-                <br />
               </div>
             </div>
-          </div>
 
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
-                <br />
-                <br />
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <hr style={{ margin: "3rem 0 3rem 0" }} />
+                </div>
+              </div>
+            </div>
+
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="seccion_titulo">
+                    <img
+                      src="./assets/imgs/home/linea2.png"
+                      className="linea1"
+                      style={{ maxHeight: "4px" }}
+                    />
+
+                    <h1>
+                      {/* {strings[lang].gente.unnombre.titulo} */}
+                      {dataForm[lang]?.unnombre.title}
+                    </h1>
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      className="linea2"
+                      style={{ maxHeight: "4px" }}
+                    />
+                  </div>
+
+                  {/* {strings[lang].gente.unnombre.parrafos} */}
+
+                  <div
+                    className="font_20 text-justify"
+                    dangerouslySetInnerHTML={{
+                      __html: dataForm[lang]?.unnombre.content.replaceAll(
+                        "\n",
+                        "<br />"
+                      ),
+                    }}
+                  ></div>
+
+                  <br />
+                  <br />
+                  <br />
+                </div>
+              </div>
+            </div>
+
+            <div className="container">
+              <div className="row">
+                <div
+                  className="col-md-12"
+                  style={{ backgroundColor: "#3d2514" }}
+                >
+                  <br />
+                  <br />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="valida_desktop font_20">
-        <Row type="flex" justify="center">
-          <Col xs={22} style={{ marginTop: "58px" }}>
-            <br />
-            <h1>{strings[lang].gente.cuerpo.title}</h1>
-          </Col>
-          <Col xs={22} className="text-center">
-            <img src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png" style={{ maxWidth: "100%" }} />
-          </Col>
-          <Col xs={22}>
-            <p>{strings[lang].gente.cuerpo.parrafo1}</p>
-            <p>{strings[lang].gente.cuerpo.parrafo2}</p>
-            <p>{strings[lang].gente.cuerpo.parrafo3}</p>
-            <p>{strings[lang].gente.cuerpo.parrafo4}</p>
-          </Col>
+        <div className="valida_desktop font_20">
+          <Row type="flex" justify="center">
+            <Col xs={22} style={{ marginTop: "58px" }}>
+              <br />
+              <h1>
+                {/* {strings[lang].gente.cuerpo.title} */}
+                {dataForm[lang]?.cuerpoalma.title}
+              </h1>
+            </Col>
+            <Col xs={22} className="text-center">
+              <img
+                // src="./assets/imgs/gente/FOTO-GRUPO-RON-DE-VENEZUELA.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/our-people/image/${dataForm[lang]?.cuerpoalma.image}`}
+                style={{ maxWidth: "100%" }}
+              />
+            </Col>
+            <Col xs={22}>
+              <div
+                className="font_20 text-justify"
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.cuerpoalma.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
 
-          <Col xs={22}>
-            <br />
+              {/* <p>{strings[lang].gente.cuerpo.parrafo2}</p>
+              <p>{strings[lang].gente.cuerpo.parrafo3}</p>
+              <p>{strings[lang].gente.cuerpo.parrafo4}</p> */}
 
-            <h1>{strings[lang].gente.maestros.title}</h1>
+              <div
+                className="font_20 text-justify"
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.cuerpoalma2.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
+            </Col>
 
-            <Carousel dotPosition="top" style={{ color: "#fef4e4" }}>
-              <div>
-                <img src="./assets/imgs/gente/m_CARMEN-LOPEZ.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
-                <br />
-                {strings[lang].gente.maestros.carmen}
-              </div>
-              <div>
-                <img src="./assets/imgs/gente/m_TITO-CORDERO.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
-                <br />
-                {strings[lang].gente.maestros.tito}
-              </div>
-              <div>
-                <img src="./assets/imgs/gente/m_GIOGIO-MELIS.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
-                <br />
-                {strings[lang].gente.maestros.giorgio}
-              </div>
-              <div>
-                <img src="./assets/imgs/gente/m_NESTRO-ORTEGA.png" style={{ maxWidth: "100%", marginTop: "2rem" }} />
-                <br />
-                {strings[lang].gente.maestros.nestor}
-              </div>
-            </Carousel>
-          </Col>
+            <Col xs={22}>
+              <br />
 
-          <Col xs={22}>
-            <h1> {strings[lang].gente.unnombre.titulo}</h1>
-            <br />
-            {strings[lang].gente.unnombre.parrafos}
-          </Col>
+              <h1>{strings[lang].gente.maestros.title}</h1>
 
-          <Col xs={22}></Col>
+              <Carousel dotPosition="top" style={{ color: "#fef4e4" }}>
+                {listRunMasters.map((master) => (
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        color: "#fef4e4",
+                        marginTop: "3rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          flex: 4,
+                          paddingRight: "calc(var(--bs-gutter-x)/ 2)",
+                        }}
+                      >
+                        {/* <img src="./assets/imgs/gente/m_CARMEN-LOPEZ.png" style={{ maxWidth: "100%" }} /> */}
+                        <img
+                          src={`data:image/${master.image_extension};base64,${master.image_base64}`}
+                          style={{ maxWidth: "100%" }}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          flex: 8,
+                          paddingLeft: "calc(var(--bs-gutter-x)/ 2)",
+                          fontSize: "1.5 rem",
+                        }}
+                      >
+                        <h4 className="titulo-maestro">{master.title}</h4>
+                        <br />
+                        <div
+                          style={{
+                            fontSize: "1.4rem",
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: master.info,
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </Carousel>
+            </Col>
 
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12" style={{ backgroundColor: "#3d2514" }}>
-                <br />
+            <Col xs={22}>
+              <h1>
+                {/* {strings[lang].gente.unnombre.titulo} */}
+                {dataForm[lang]?.unnombre.title}
+              </h1>
+              <br />
+              {/* {strings[lang].gente.unnombre.parrafos} */}
+
+              <div
+                className="font_20 text-justify"
+                dangerouslySetInnerHTML={{
+                  __html: dataForm[lang]?.unnombre.content.replaceAll(
+                    "\n",
+                    "<br />"
+                  ),
+                }}
+              ></div>
+            </Col>
+
+            <Col xs={22}></Col>
+
+            <div className="container">
+              <div className="row">
+                <div
+                  className="col-md-12"
+                  style={{ backgroundColor: "#3d2514" }}
+                >
+                  <br />
+                </div>
               </div>
             </div>
-          </div>
-        </Row>
-      </div>
-
+          </Row>
+        </div>
+      </Skeleton>
       <Footer />
     </div>
   );

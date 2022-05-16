@@ -11,25 +11,29 @@ export const PrincipalMenu = (props) => {
       <Menu
         theme="dark"
         mode="horizontal"
+        style={{ fontSize: 12 }}
         defaultSelectedKeys={defaultSelectedKeys}
       >
         <Menu.Item key="6">
           <Link href="/panel/home">Home</Link>
-        </Menu.Item>
-        <Menu.Item key="1">
-          <Link href="/panel/noticias">Noticias</Link>
-        </Menu.Item>
-        <Menu.Item key="2">
-          <Link href="/panel/empresas">Empresas</Link>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <Link href="/panel/runmasters">Maestros Roneros</Link>
         </Menu.Item>
         <Menu.Item key="4">
           <Link href="/panel/quienessomos">Quienes Somos</Link>
         </Menu.Item>
         <Menu.Item key="5">
           <Link href="/panel/doc">D.O.C.</Link>
+        </Menu.Item>
+        <Menu.Item key="7">
+          <Link href="/panel/nuestragente">Nuestra Gente</Link>
+        </Menu.Item>
+        <Menu.Item key="3">
+          <Link href="/panel/runmasters">Maestros Roneros</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link href="/panel/empresas">Empresas</Link>
+        </Menu.Item>
+        <Menu.Item key="1">
+          <Link href="/panel/noticias">Noticias</Link>
         </Menu.Item>
       </Menu>
     </Layout.Header>
