@@ -153,126 +153,126 @@ strings.historia = {
 
 strings.elron = {
   pageTitle: `El Ron | Ron de Venezuela`,
-  title: `Elaboración y materia prima`,
-  imgEmbasado: "./assets/imgs/elrom/PROCESO-RON-MESCLAS-Y-EMBASADO-ES.png",
-  laCana: {
-    titulo: <span>La caña de azúcar, allí está el secreto</span>,
-    info: (
-      <p>
-        La caña de azúcar proporciona la materia prima que hace la diferencia en
-        el ron de Venezuela. Allí comienza el milagro. La planta crece en buena
-        parte del territorio nacional. El clima local con la diferencia de
-        temperaturas entre el día y la noche resulta benigno para la caña que es
-        particularmente dulce y, por añadidura, se logra un alcohol más limpio.
-      </p>
-    ),
-  },
-  laMelasa: {
-    titulo: <span>La melaza, alma del ron venezolano</span>,
-    info: (
-      <p>
-        Si la caña de azúcar es la génesis del ron, la melaza es el comienzo de
-        su elaboración. Densa, de color caramelo intenso proviene del jugo de
-        caña que en los centrales azucareros se le ha extraído el azúcar
-        cristalizable. La melaza venezolana contiene más azúcar y menos
-        impurezas, lo que influye en la calidad del alcohol. Mientras más azúcar
-        en la melaza, el alcohol tiene elementos de más calidad. La Denominación
-        de Origen determina que la melaza tiene que ser venezolana para que
-        presente sus características peculiares.{" "}
-      </p>
-    ),
-  },
-  laFermentacion: {
-    titulo: <span>La fermentación, parte del secreto</span>,
-    info: (
-      <p>
-        Previo a la destilación está la fermentación, que comienza cuando la
-        melaza se diluye en agua caliente y las levaduras emprenden su labor de
-        convertir el azúcar (sacarosa) en dióxido de carbono y alcohol. Esta
-        etapa del proceso también le otorga particularidad al ron. Influye la
-        calidad de la melaza, la del agua, que debe ser pura, libre de olores y
-        sabores; la personalidad de las levaduras, que presentan las
-        peculiaridades de cada zona; la mano del hombre y el tiempo que se le
-        otorga a la fermentación. A mayor paciencia más riqueza.
-      </p>
-    ),
-  },
-  destilacion: {
-    titulo: <span>Destilación, la alquimia se hace presente</span>,
-    info: (
-      <p>
-        Los rones venezolanos suelen ser el resultado de mezclas de rones de
-        diferentes edades que se realiza para obtener un destilado superior a
-        cada una de esas partes. Las mezclas son elaboradas por los maestros
-        roneros quienes poseen un olfato entrenado y una veteranía que suman
-        décadas.
-        <br />
-        Estas mezclas le dan personalidad al blend. Si se trata de rones pesados
-        la mezcla suele ser resultado de la unión de rones más jóvenes. Si suben
-        a la escala de los premium, en su fórmula hay rones más añejos. Para dar
-        por terminado el proceso se realizan ajustes finales. Las casas roneras
-        tienen sus toques secretos.
-        <br />
-        Los maestros roneros son los garantes de que cada etiqueta sea fiel a sí
-        misma, custodian las mezclas, secreto que solo ellos conocen.
-        {/* Se comentó porque dice que el texto no corresponde */}
-        {/* Durante la destilación se separa el alcohol del agua y se perfila de manera definitiva si un ron será “pesado”
-        que presenta muchos congéneres, es decir más aromas y sabores; o “liviano”, los más habituales, que se logran en
-        abundancia y a velocidad industrial. La diferencia fundamental del ron de Venezuela es el alcohol. Son rones
-        limpios y bien destilados. La destilación puede ser en alambiques o en columnas. */}
-      </p>
-    ),
-  },
-  elAnejamiento: {
-    titulo: <span>El añejamiento, tiempo de paciencia</span>,
-    info: (
-      <>
-        <p>
-          En Venezuela para llamarse ron tiene que añejarse por dos años en
-          barrica. Como hay sol todo el año, el envejecimiento es intenso, la
-          evaporación es más alta, así como la oxidación.
-        </p>
-        <p>
-          Cada tipo de alcohol posee su potencial de envejecimiento. Hay
-          alcoholes livianos que no se pueden envejecer más de dos años,
-          mientras que uno pesado requiere quizás más de cuatro. Por ello se
-          habla de madurarlos hasta su edad óptima.
-        </p>
-        <p>
-          Por ley, en Venezuela, si se quiere indicar la edad de un ron de
-          mezclas, se utiliza la del ron con menos edad. En cuanto a las
-          barricas para el añejamiento deben ser de roble blanco, que por lo
-          general fueron previamente usadas para añejar bourbon americano o
-          whisky escocés.
-        </p>
-      </>
-    ),
-  },
-  mezclas: {
-    titulo: <span>Mezclas, todo un arte</span>,
-    info: (
-      <>
-        <p>
-          Los rones venezolanos suelen ser el resultado de mezclas de rones de
-          diferentes edades que se realiza para obtener un destilado superior a
-          cada una de esas partes. Las mezclas son elaboradas por los maestros
-          roneros quienes poseen un olfato entrenado y una veteranía que suman
-          décadas.
-        </p>
-        <p>
-          Estas mezclas le dan personalidad al blend. Si se trata de rones
-          pesados la mezcla suele ser resultado de la unión de rones más
-          jóvenes. Si suben a la escala de los premium, en su fórmula hay rones
-          más añejos. Para dar por terminado el proceso se realizan ajustes
-          finales. Las casas roneras tienen sus toques secretos.
-        </p>
-        <p>
-          Los maestros roneros son los garantes de que cada etiqueta sea fiel a
-          sí misma, custodian las mezclas, secreto que solo ellos conocen.
-        </p>
-      </>
-    ),
-  },
+  // title: `Elaboración y materia prima`,
+  // imgEmbasado: "./assets/imgs/elrom/PROCESO-RON-MESCLAS-Y-EMBASADO-ES.png",
+  // laCana: {
+  //   titulo: <span>La caña de azúcar, allí está el secreto</span>,
+  //   info: (
+  //     <p>
+  //       La caña de azúcar proporciona la materia prima que hace la diferencia en
+  //       el ron de Venezuela. Allí comienza el milagro. La planta crece en buena
+  //       parte del territorio nacional. El clima local con la diferencia de
+  //       temperaturas entre el día y la noche resulta benigno para la caña que es
+  //       particularmente dulce y, por añadidura, se logra un alcohol más limpio.
+  //     </p>
+  //   ),
+  // },
+  // laMelasa: {
+  //   titulo: <span>La melaza, alma del ron venezolano</span>,
+  //   info: (
+  //     <p>
+  //       Si la caña de azúcar es la génesis del ron, la melaza es el comienzo de
+  //       su elaboración. Densa, de color caramelo intenso proviene del jugo de
+  //       caña que en los centrales azucareros se le ha extraído el azúcar
+  //       cristalizable. La melaza venezolana contiene más azúcar y menos
+  //       impurezas, lo que influye en la calidad del alcohol. Mientras más azúcar
+  //       en la melaza, el alcohol tiene elementos de más calidad. La Denominación
+  //       de Origen determina que la melaza tiene que ser venezolana para que
+  //       presente sus características peculiares.{" "}
+  //     </p>
+  //   ),
+  // },
+  // laFermentacion: {
+  //   titulo: <span>La fermentación, parte del secreto</span>,
+  //   info: (
+  //     <p>
+  //       Previo a la destilación está la fermentación, que comienza cuando la
+  //       melaza se diluye en agua caliente y las levaduras emprenden su labor de
+  //       convertir el azúcar (sacarosa) en dióxido de carbono y alcohol. Esta
+  //       etapa del proceso también le otorga particularidad al ron. Influye la
+  //       calidad de la melaza, la del agua, que debe ser pura, libre de olores y
+  //       sabores; la personalidad de las levaduras, que presentan las
+  //       peculiaridades de cada zona; la mano del hombre y el tiempo que se le
+  //       otorga a la fermentación. A mayor paciencia más riqueza.
+  //     </p>
+  //   ),
+  // },
+  // destilacion: {
+  //   titulo: <span>Destilación, la alquimia se hace presente</span>,
+  //   info: (
+  //     <p>
+  //       Los rones venezolanos suelen ser el resultado de mezclas de rones de
+  //       diferentes edades que se realiza para obtener un destilado superior a
+  //       cada una de esas partes. Las mezclas son elaboradas por los maestros
+  //       roneros quienes poseen un olfato entrenado y una veteranía que suman
+  //       décadas.
+  //       <br />
+  //       Estas mezclas le dan personalidad al blend. Si se trata de rones pesados
+  //       la mezcla suele ser resultado de la unión de rones más jóvenes. Si suben
+  //       a la escala de los premium, en su fórmula hay rones más añejos. Para dar
+  //       por terminado el proceso se realizan ajustes finales. Las casas roneras
+  //       tienen sus toques secretos.
+  //       <br />
+  //       Los maestros roneros son los garantes de que cada etiqueta sea fiel a sí
+  //       misma, custodian las mezclas, secreto que solo ellos conocen.
+  //       {/* Se comentó porque dice que el texto no corresponde */}
+  //       {/* Durante la destilación se separa el alcohol del agua y se perfila de manera definitiva si un ron será “pesado”
+  //       que presenta muchos congéneres, es decir más aromas y sabores; o “liviano”, los más habituales, que se logran en
+  //       abundancia y a velocidad industrial. La diferencia fundamental del ron de Venezuela es el alcohol. Son rones
+  //       limpios y bien destilados. La destilación puede ser en alambiques o en columnas. */}
+  //     </p>
+  //   ),
+  // },
+  // elAnejamiento: {
+  //   titulo: <span>El añejamiento, tiempo de paciencia</span>,
+  //   info: (
+  //     <>
+  //       <p>
+  //         En Venezuela para llamarse ron tiene que añejarse por dos años en
+  //         barrica. Como hay sol todo el año, el envejecimiento es intenso, la
+  //         evaporación es más alta, así como la oxidación.
+  //       </p>
+  //       <p>
+  //         Cada tipo de alcohol posee su potencial de envejecimiento. Hay
+  //         alcoholes livianos que no se pueden envejecer más de dos años,
+  //         mientras que uno pesado requiere quizás más de cuatro. Por ello se
+  //         habla de madurarlos hasta su edad óptima.
+  //       </p>
+  //       <p>
+  //         Por ley, en Venezuela, si se quiere indicar la edad de un ron de
+  //         mezclas, se utiliza la del ron con menos edad. En cuanto a las
+  //         barricas para el añejamiento deben ser de roble blanco, que por lo
+  //         general fueron previamente usadas para añejar bourbon americano o
+  //         whisky escocés.
+  //       </p>
+  //     </>
+  //   ),
+  // },
+  // mezclas: {
+  //   titulo: <span>Mezclas, todo un arte</span>,
+  //   info: (
+  //     <>
+  //       <p>
+  //         Los rones venezolanos suelen ser el resultado de mezclas de rones de
+  //         diferentes edades que se realiza para obtener un destilado superior a
+  //         cada una de esas partes. Las mezclas son elaboradas por los maestros
+  //         roneros quienes poseen un olfato entrenado y una veteranía que suman
+  //         décadas.
+  //       </p>
+  //       <p>
+  //         Estas mezclas le dan personalidad al blend. Si se trata de rones
+  //         pesados la mezcla suele ser resultado de la unión de rones más
+  //         jóvenes. Si suben a la escala de los premium, en su fórmula hay rones
+  //         más añejos. Para dar por terminado el proceso se realizan ajustes
+  //         finales. Las casas roneras tienen sus toques secretos.
+  //       </p>
+  //       <p>
+  //         Los maestros roneros son los garantes de que cada etiqueta sea fiel a
+  //         sí misma, custodian las mezclas, secreto que solo ellos conocen.
+  //       </p>
+  //     </>
+  //   ),
+  // },
 };
 
 strings.doc = {

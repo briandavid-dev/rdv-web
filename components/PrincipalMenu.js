@@ -23,6 +23,9 @@ export const PrincipalMenu = (props) => {
         <Menu.Item key="8">
           <Link href="/panel/historia">Historia</Link>
         </Menu.Item>
+        <Menu.Item key="9">
+          <Link href="/panel/elron">El Ron</Link>
+        </Menu.Item>
         <Menu.Item key="5">
           <Link href="/panel/doc">D.O.C.</Link>
         </Menu.Item>
