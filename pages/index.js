@@ -756,43 +756,64 @@ export default function Home() {
                 <div className="container">
                   <div className="row">
                     <div className="col-md-12 text-center mt-5">
-                      <a
-                        // href="https://www.facebook.com/RondeVenezuela"
-                        href={dataAllHome[lang]?.rsFacebook.info}
-                        target="_blank"
-                      >
+                      {dataAllHome[lang]?.rsFacebook.info === "NO" ? (
                         <img
                           src="./assets/imgs/home/ICONO-FACEBOOK.png"
                           className="iconos_abajo zoom"
                         />
-                      </a>
+                      ) : (
+                        <a
+                          // href="https://www.facebook.com/RondeVenezuela"
+                          href={dataAllHome[lang]?.rsFacebook.info}
+                          target="_blank"
+                        >
+                          <img
+                            src="./assets/imgs/home/ICONO-FACEBOOK.png"
+                            className="iconos_abajo zoom"
+                          />
+                        </a>
+                      )}
                       <img
                         src="./assets/imgs/home/LINEA-REDES-1.png"
                         className="linea1"
                       />
-                      <a
-                        // href="https://www.instagram.com/rondevenezuela/"
-                        href={dataAllHome[lang]?.rsInstagram.info}
-                        target="_blank"
-                      >
+                      {dataAllHome[lang]?.rsInstagram.info === "NO" ? (
                         <img
                           src="./assets/imgs/home/ICONO-INSTAGRAM.png"
                           className="iconos_abajo zoom"
                         />
-                      </a>
+                      ) : (
+                        <a
+                          // href="https://www.instagram.com/rondevenezuela/"
+                          href={dataAllHome[lang]?.rsInstagram.info}
+                          target="_blank"
+                        >
+                          <img
+                            src="./assets/imgs/home/ICONO-INSTAGRAM.png"
+                            className="iconos_abajo zoom"
+                          />
+                        </a>
+                      )}
                       <img
                         src="./assets/imgs/home/LINEA-REDES-2.png"
                         className="linea1"
                       />
-                      <a
-                        href={dataAllHome[lang]?.rsYoutube.info}
-                        target="_blank"
-                      >
+                      {dataAllHome[lang]?.rsYoutube.info === "NO" ? (
                         <img
                           src="./assets/imgs/home/ICONO-YOUTUBE.png"
                           className="iconos_abajo zoom"
                         />
-                      </a>
+                      ) : (
+                        <a
+                          href={dataAllHome[lang]?.rsYoutube.info}
+                          target="_blank"
+                        >
+                          <img
+                            src="./assets/imgs/home/ICONO-YOUTUBE.png"
+                            className="iconos_abajo zoom"
+                          />
+                        </a>
+                      )}
                     </div>
                     <div className="col-md-12 text-center mt-5">
                       @RONDEVENEZUELA

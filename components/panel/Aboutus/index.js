@@ -8,8 +8,9 @@ export const Aboutus = () => {
   const [dataFormEs, setDataFormEs] = useState();
   const [dataFormEn, setDataFormEn] = useState();
   const [loading, setLoading] = useState(false);
+  const [randonByFast, setRandonByFast] = useState(0);
 
-  useEffect(() => {
+  const getAllData = () => {
     const aboutusEsObj = {};
     const aboutusEnObj = {};
 
@@ -37,7 +38,10 @@ export const Aboutus = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  };
+
+  useEffect(getAllData, []);
+  useEffect(getAllData, [randonByFast]);
 
   return (
     <div>
@@ -49,6 +53,7 @@ export const Aboutus = () => {
                 lang="es"
                 dataForm={dataFormEs}
                 setLoading={setLoading}
+                setRandonByFast={setRandonByFast}
               />
             )}
           </Tabs.TabPane>
@@ -59,6 +64,7 @@ export const Aboutus = () => {
                 lang="en"
                 dataForm={dataFormEn}
                 setLoading={setLoading}
+                setRandonByFast={setRandonByFast}
               />
             )}
           </Tabs.TabPane>

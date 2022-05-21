@@ -338,7 +338,12 @@ const FormHome = (props) => {
         <Col span={6}>
           <Form.Item
             name={`fileLogoEmpresa`}
-            extra="Máximo 500 KB. Solo Archivos .jpg, .jpeg, .png"
+            extra={
+              <span style={{ color: "#FFF" }}>
+                Máximo 500 KB. Solo Archivos .jpg, .jpeg, .png
+              </span>
+            }
+            style={{ backgroundColor: "#452F21", padding: 5 }}
           >
             <Upload accept=".jpg, .jpeg, .png" maxCount={1} listType="picture">
               <Button icon={<UploadOutlined />}>Click para adjuntar</Button>
@@ -411,6 +416,10 @@ const FormHome = (props) => {
       <Row gutter={(40, 40)} justify="center" style={{ marginTop: "2rem" }}>
         <Col span={12}>
           <h2 style={{ color: "#452F21" }}>RRSS</h2>
+          <div style={{ color: "#452F21" }}>
+            En caso de no tener alguna red social colocar <b>NO</b> (en
+            mayúscula).
+          </div>
         </Col>
       </Row>
       <Row gutter={(40, 40)} justify="center" style={{ marginTop: "1rem" }}>

@@ -315,17 +315,28 @@ const MenuDesktop = () => {
                   }}
                 >
                   <div style={{ width: "100%" }}>
-                    <a href={data[lang]?.rsFacebook.info} target="_blank">
+                    {data[lang]?.rsFacebook.info === "NO" ? (
                       <img
                         src="/assets/imgs/home/ICONO-FACEBOOK.png"
-                        className="cursor-pointer"
                         style={{
                           height: "30px",
                           padding: "30px",
                           padding: "3px",
                         }}
                       />
-                    </a>
+                    ) : (
+                      <a href={data[lang]?.rsFacebook.info} target="_blank">
+                        <img
+                          src="/assets/imgs/home/ICONO-FACEBOOK.png"
+                          className="cursor-pointer"
+                          style={{
+                            height: "30px",
+                            padding: "30px",
+                            padding: "3px",
+                          }}
+                        />
+                      </a>
+                    )}
                     <Link
                       href={{
                         pathname: router.pathname,
@@ -345,17 +356,28 @@ const MenuDesktop = () => {
                     </Link>
                   </div>
                   <div style={{ width: "100%" }}>
-                    <a href={data[lang]?.rsInstagram.info} target="_blank">
+                    {data[lang]?.rsInstagram.info === "NO" ? (
                       <img
                         src="/assets/imgs/home/ICONO-INSTAGRAM.png"
-                        className="cursor-pointer"
                         style={{
                           height: "30px",
                           padding: "30px",
                           padding: "3px",
                         }}
                       />
-                    </a>
+                    ) : (
+                      <a href={data[lang]?.rsInstagram.info} target="_blank">
+                        <img
+                          src="/assets/imgs/home/ICONO-INSTAGRAM.png"
+                          className="cursor-pointer"
+                          style={{
+                            height: "30px",
+                            padding: "30px",
+                            padding: "3px",
+                          }}
+                        />
+                      </a>
+                    )}
                     <Link
                       href={{
                         pathname: router.pathname,

@@ -56,6 +56,12 @@ export default function QuienesSomos() {
       title3: "",
       title4: "",
       title5: "",
+      image_head: "",
+      image_tre1: "",
+      image_tre2: "",
+      image_tre3: "",
+      quienes1: "",
+      quienes2: "",
     },
     en: {
       text1: "",
@@ -72,6 +78,12 @@ export default function QuienesSomos() {
       title3: "",
       title4: "",
       title5: "",
+      image_head: "",
+      image_tre1: "",
+      image_tre2: "",
+      image_tre3: "",
+      quienes1: "",
+      quienes2: "",
     },
   });
 
@@ -140,7 +152,11 @@ export default function QuienesSomos() {
       <div className="valida_mobile font_20">
         <div className="SeccionCopa">
           <div style={{ position: "relative" }}>
-            <img src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg" style={{ maxWidth: "100%" }} />
+            {/* <img src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg" style={{ maxWidth: "100%" }} /> */}
+            <img
+              src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_head}`}
+              style={{ maxWidth: "100%" }}
+            />
           </div>
         </div>
 
@@ -157,13 +173,19 @@ export default function QuienesSomos() {
                   <img src="./assets/imgs/home/linea1.png" className="linea2" />
                 </div>
               </div>
-              <div className="col-md-5 font_20" style={{ textAlign: "justify" }}>
+              <div
+                className="col-md-5 font_20"
+                style={{ textAlign: "justify" }}
+              >
                 {/* {strings[lang].quienes.parrafo1} */}
                 <Skeleton loading={loading} active>
                   {data[lang].text1}
                 </Skeleton>
               </div>
-              <div className="col-md-5 font_20" style={{ textAlign: "justify" }}>
+              <div
+                className="col-md-5 font_20"
+                style={{ textAlign: "justify" }}
+              >
                 {/* {strings[lang].quienes.parrafo2} */}
                 <Skeleton loading={loading} active>
                   {data[lang].text2}
@@ -173,15 +195,18 @@ export default function QuienesSomos() {
                 <br />
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
-                    src="./assets/imgs/quienessomos/ICONO-SOL.png"
+                    // src="./assets/imgs/quienessomos/ICONO-SOL.png"
+                    src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_tre1}`}
                     style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
                   />
                   <img
-                    src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
+                    // src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
+                    src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_tre2}`}
                     style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
                   />
                   <img
-                    src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                    // src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                    src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_tre3}`}
                     style={{ width: "250px", maxWidth: "100%", margin: "2rem" }}
                   />
                 </div>
@@ -190,17 +215,27 @@ export default function QuienesSomos() {
                 </div>
               </div>
               <div className="col-md-5" style={{ textAlign: "center" }}>
-                <img src="./assets/imgs/quienessomos/FOTO-TRAGO.png" style={{ maxWidth: "100%", maxHeight: "600px" }} />
+                <img
+                  // src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
+                  src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.quienes1}`}
+                  style={{ maxWidth: "100%", maxHeight: "600px" }}
+                />
               </div>
               <div className="col-md-5" style={{ textAlign: "right" }}>
                 <div>
                   <div className="titulo">
-                    <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      style={{ height: "5px", marginRight: "110px" }}
+                    />
                     {/* <h1>{strings[lang].quienes.quienes}</h1> */}
                     <Skeleton loading={loading} active>
                       <h1>{data[lang].title2}</h1>
                     </Skeleton>
-                    <img src="./assets/imgs/home/linea2.png" style={{ height: "5px" }} />
+                    <img
+                      src="./assets/imgs/home/linea2.png"
+                      style={{ height: "5px" }}
+                    />
                   </div>
                 </div>
 
@@ -244,7 +279,8 @@ export default function QuienesSomos() {
               <div className="col-md-5">
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
-                    src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
+                    // src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
+                    src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.quienes2}`}
                     style={{ maxWidth: "100%", maxHeight: "500px" }}
                   />
                 </div>
@@ -262,7 +298,10 @@ export default function QuienesSomos() {
               <div className="col-md-5">
                 <div className="col-md-12">
                   <div>
-                    <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      style={{ height: "5px", marginRight: "110px" }}
+                    />
                     <Skeleton loading={loading} active>
                       {/* <h1>{strings[lang].quienes.mision}</h1> */}
                       <h1>{data[lang].title3}</h1>
@@ -277,7 +316,10 @@ export default function QuienesSomos() {
                 </div>
                 <div className="col-md-12">
                   <div>
-                    <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                    <img
+                      src="./assets/imgs/home/linea1.png"
+                      style={{ height: "5px", marginRight: "110px" }}
+                    />
                     <Skeleton loading={loading} active>
                       {/* <h1>{strings[lang].quienes.vision}</h1> */}
                       <h1>{data[lang].title4}</h1>
@@ -291,14 +333,20 @@ export default function QuienesSomos() {
               </div>
               <div className="col-md-5">
                 <div>
-                  <img src="./assets/imgs/home/linea1.png" style={{ height: "5px", marginRight: "110px" }} />
+                  <img
+                    src="./assets/imgs/home/linea1.png"
+                    style={{ height: "5px", marginRight: "110px" }}
+                  />
                   {/* <h1>{strings[lang].quienes.valores}</h1> */}
                   <Skeleton loading={loading} active>
                     <h1>{data[lang].title5}</h1>
                     <br />
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: data[lang].text9.replace(/(?:\r\n|\r|\n)/g, "<br />"),
+                        __html: data[lang].text9.replace(
+                          /(?:\r\n|\r|\n)/g,
+                          "<br />"
+                        ),
                       }}
                     ></div>
                   </Skeleton>
@@ -333,7 +381,8 @@ export default function QuienesSomos() {
         <Row type="flex" justify="center" className="SectionMobile0">
           <Col xs={24}>
             <img
-              src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              // src="./assets/imgs/quienessomos/QUIENES-SOMOS-IMAGEN-1.jpg"
+              src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_head}`}
               style={{ maxWidth: "100%", marginTop: "58px" }}
             />
           </Col>
@@ -369,17 +418,30 @@ export default function QuienesSomos() {
               </Skeleton>
             </p>
             <div className="text-center">
-              <img src="./assets/imgs/quienessomos/ICONO-SOL.png" style={{ maxWidth: "25%", margin: "0.5rem" }} />
-              <img src="./assets/imgs/quienessomos/ICONO-HOMBRE.png" style={{ maxWidth: "25%", margin: "0.5rem" }} />
               <img
-                src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                // src="./assets/imgs/quienessomos/ICONO-SOL.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_tre1}`}
+                style={{ maxWidth: "25%", margin: "0.5rem" }}
+              />
+              <img
+                // src="./assets/imgs/quienessomos/ICONO-HOMBRE.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_tre2}`}
+                style={{ maxWidth: "25%", margin: "0.5rem" }}
+              />
+              <img
+                // src="./assets/imgs/quienessomos/ICONO-CANA-DE-AZUCAR.png"
+                src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.image_tre3}`}
                 style={{ maxWidth: "25%", margin: "0.5rem" }}
               />
             </div>
             <br />
           </Col>
           <Col xs={22}>
-            <img src="./assets/imgs/quienessomos/FOTO-TRAGO.png" style={{ maxWidth: "100%", maxHeight: "600px" }} />
+            <img
+              // src="./assets/imgs/quienessomos/FOTO-TRAGO.png"
+              src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.quienes1}`}
+              style={{ maxWidth: "100%", maxHeight: "600px" }}
+            />
             <br />
             <br />
             <div className="seccion_titulo_mobile_">
@@ -413,7 +475,11 @@ export default function QuienesSomos() {
             </p>
           </Col>
           <Col xs={22}>
-            <img src="./assets/imgs/quienessomos/FOTO-BARIICA.png" style={{ maxWidth: "100%", maxHeight: "500px" }} />
+            <img
+              // src="./assets/imgs/quienessomos/FOTO-BARIICA.png"
+              src={`${process.env.NEXT_PUBLIC_URL_API_RDV}/aboutus/image/${data[lang]?.quienes2}`}
+              style={{ maxWidth: "100%", maxHeight: "500px" }}
+            />
             <br />
             <br />
             <p>
@@ -427,7 +493,10 @@ export default function QuienesSomos() {
             <br />
           </Col>
           <Col xs={22}>
-            <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
+            <img
+              src="./assets/imgs/home/linea1.png"
+              style={{ height: "3px" }}
+            />
             {/* <h1>{strings[lang].quienes.mision}</h1> */}
             <h1>{data[lang].title3}</h1>
             <br />
@@ -438,7 +507,10 @@ export default function QuienesSomos() {
 
             <br />
 
-            <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
+            <img
+              src="./assets/imgs/home/linea1.png"
+              style={{ height: "3px" }}
+            />
             {/* <h1>{strings[lang].quienes.vision}</h1> */}
             <h1>{data[lang].title4}</h1>
             <br />
@@ -446,7 +518,10 @@ export default function QuienesSomos() {
             <p>{data[lang].text8}</p>
             <br />
 
-            <img src="./assets/imgs/home/linea1.png" style={{ height: "3px" }} />
+            <img
+              src="./assets/imgs/home/linea1.png"
+              style={{ height: "3px" }}
+            />
             <Skeleton loading={loading} active>
               <h1>{data[lang].title5}</h1>
               <br />

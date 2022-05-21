@@ -14,11 +14,13 @@ $ yarn dev
 # generate script by production
 $ yarn build
 
+# Deployment en prod
 After build steps:
 1 - git push changes to git
 2 - git pull in server
 3 - save in server rute /repositories/rdv-web
 4 - go to into /repositories/rdv-web/out/ and move all files to /public_html/
+5 - update database
 ```
 
 ## General

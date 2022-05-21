@@ -17,4 +17,20 @@ api.put = (payload) => {
   });
 };
 
+api.updateImageDoc = (payload) => {
+  return request({
+    method: "PUT",
+    url: `aboutus/image`,
+    data: payload,
+  });
+};
+
+api.deleteFileDoc = (payload) => {
+  return request({
+    method: "DELETE",
+    url: `aboutus/image`,
+    data: payload,
+  });
+};
+
 export default api;
