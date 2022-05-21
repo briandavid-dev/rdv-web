@@ -18,8 +18,13 @@ $ yarn build
 After build steps:
 1 - git push changes to git
 2 - git pull in server
+CASE BACK:
+3 - Restart application node js
+CASE FRONT:
+Go to file admin and:
 3 - save in server rute /repositories/rdv-web
 4 - go to into /repositories/rdv-web/out/ and move all files to /public_html/
+CASE DATABASE:
 5 - update database
 ```
 
