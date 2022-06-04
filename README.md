@@ -28,6 +28,9 @@ Go to file admin and:
 4 - go to into /repositories/rdv-web/out/ and move all files to /public_html/
 CASE DATABASE:
 5 - update database
+CASE .htaccess
+6 - save in server rute /repositories/rdv-web
+7 - go to into /repositories/rdv-web/ and move only .htaccess file to /public_html/
 ```
 
 ## General
@@ -48,14 +51,4 @@ ADMIN https://www.rondevenezuela.com/panel/login.html
 Roles
 - ADMIN
 
-Self Managed Panel Modules
-- Nuestra Gente
-  - Maestros Roneros
-- Empresas
-  - Productos
-  - Premios
-- Noticias
-- Quienes Somos
-- DOC
-  - Regularizaciones
 ```
