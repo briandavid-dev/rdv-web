@@ -8,16 +8,17 @@ RewriteEngine On
 # This is a standard generic htaccess file that does NOT provide any website security
 # The DEFAULT .HTACCESS file should be used for testing and troubleshooting purposes only
 
+# todo el siguiente bloque del IfModule lo comente a ver que onda, 
+# porque veo que es algo de WordPress y PHP y aqui no usamos esa cosas
 # BEGIN WordPress
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /Rdv/
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /Rdv/index.php [L]
-</IfModule>
-
+# <IfModule mod_rewrite.c>
+# RewriteEngine On
+# RewriteBase /Rdv/
+# RewriteRule ^index\.php$ - [L]
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . /Rdv/index.php [L]
+# </IfModule>
 # END WordPress
 
 # php -- BEGIN cPanel-generated handler, do not edit
