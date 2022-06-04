@@ -41,6 +41,9 @@ RewriteEngine On
 # RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 # RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 
-# RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+# si no tiene el www
 RewriteCond %{HTTP_HOST} ^rondevenezuela.com
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# todas las peticiones debe ir a https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
