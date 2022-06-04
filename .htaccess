@@ -42,5 +42,5 @@ RewriteEngine On
 # RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 
 # RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
-RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteCond %{HTTP_HOST} ^rondevenezuela.com
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
