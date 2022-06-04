@@ -339,7 +339,7 @@ const MenuDesktop = () => {
                     )}
                     <Link
                       href={{
-                        pathname: router.pathname,
+                        pathname: `${router.pathname}${urlProd}`,
                         query: { lang: "en" },
                       }}
                       scroll={false}
@@ -380,7 +380,7 @@ const MenuDesktop = () => {
                     )}
                     <Link
                       href={{
-                        pathname: router.pathname,
+                        pathname: `${router.pathname}${urlProd}`,
                         query: { lang: "es" },
                       }}
                       scroll={false}
