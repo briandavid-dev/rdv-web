@@ -1,16 +1,42 @@
-
+# ### #
 RewriteEngine On
 
-# if a directory or a file exists, use it directly
+#   BULLETPROOF DEFAULT .HTACCESS      
+
+# If you edit the line of code above you will see error messages on the BPS Security Status page
+# WARNING!!! THE default.htaccess FILE DOES NOT PROTECT YOUR WEBSITE AGAINST HACKERS
+# This is a standard generic htaccess file that does NOT provide any website security
+# The DEFAULT .HTACCESS file should be used for testing and troubleshooting purposes only
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /Rdv/
+RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /Rdv/index.php [L]
+</IfModule>
+
+# END WordPress
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
+
+
+
+
+# if a directory or a file exists, use it directly
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
 
 # otherwise forward it to index.php
-RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
-RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule . index.php
+# RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+# RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# RewriteRule . index.php
 
-RewriteCond %{HTTPS} off
-RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
-RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# RewriteCond %{HTTPS} off
+# RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+# RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
