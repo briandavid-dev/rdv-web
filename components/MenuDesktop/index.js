@@ -51,8 +51,8 @@ const stylesCss = css.global`
   }
 `;
 
-const urlProd = "";
-// const urlProd = ".html";
+let urlProd = "";
+if (process.env.NODE_ENV === "production") urlProd = ".html";
 
 const MenuDesktop = () => {
   const router = useRouter();

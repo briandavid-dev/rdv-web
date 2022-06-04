@@ -16,6 +16,7 @@ $ yarn build
 
 # Deployment en prod
 After build steps:
+  - Make sure .env NODE_ENV=production
 1 - git push changes to git
 2 - git pull in server
 CASE BACK:

@@ -9,7 +9,7 @@ if (typeof require !== "undefined") {
 
 module.exports = withCSS({
   basePath: process.env.BASE_PATH,
-  // assetPrefix: process.env.ASSET_PREFIX,
+  assetPrefix: process.env.ASSET_PREFIX,
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
