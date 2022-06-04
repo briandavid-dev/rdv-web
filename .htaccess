@@ -40,5 +40,6 @@ RewriteEngine On
 # RewriteCond %{HTTPS} off
 # RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 # RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteCond %{HTTP_HOST} !^www\. [NC]
+
+RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
